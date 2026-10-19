@@ -13,8 +13,10 @@ public class CampaignManager {
 
     private static CampaignManager instance;
     public static final int LAST_LEVEL_INDEX = 1517;
+    public static final int LEVELS_PER_CHAPTER = 30;
     private static final String PREFS = "yio.tro.opacha.campaign";
     ArrayList<Integer> completedLevels;
+    private int visualChapter;
 
 
     public CampaignManager() {
@@ -47,12 +49,14 @@ public class CampaignManager {
             if (token.length() < 1) continue;
             completedLevels.add(Integer.valueOf(token));
         }
+        visualChapter = chapterOf(getIndexOfHighestUnlockedLevel());
     }
 
 
     public void onLevelCompleted(int index) {
         if (isLevelCompleted(index)) return;
         completedLevels.add(index);
+        visualChapter = chapterOf(getIndexOfHighestUnlockedLevel());
         Scenes.campaign.onLevelMarkedAsCompleted();
         saveValues();
     }
@@ -117,6 +121,9 @@ public class CampaignManager {
     public int getNumberOfCompletedLevels() {
         return completedLevels.size();
     }
+
+    public static int chapterOf(int levelIndex) { return Math.max(0, levelIndex) / LEVELS_PER_CHAPTER; }
+    public int getVisualChapter() { return visualChapter; }
 
 
     public CciType getLevelType(int levelIndex) {

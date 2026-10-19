@@ -30,6 +30,7 @@ public class OnKeyReactions {
     public void keyDown(int keycode) {
         if (checkForKeyboard(keycode)) return;
         if (checkForInterfaceElements(keycode)) return; // key press was stolen by ui element
+        if (yio.tro.opacha.menu.MenuKeyboard.handle(menuControllerYio, keycode)) return;
 
         if (keycode == Input.Keys.BACK || keycode == Input.Keys.ESCAPE) {
             onBackPressed();

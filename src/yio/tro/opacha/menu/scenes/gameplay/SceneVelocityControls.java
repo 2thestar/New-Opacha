@@ -14,8 +14,8 @@ public class SceneVelocityControls extends ModalSceneYio{
     protected void initialize() {
         velocitySliderElement = uiFactory.getVelocitySliderElement()
                 .setParent(followGameViewElement)
-                .setSize(0.4, 0.028)
-                .alignTop(GraphicsYio.convertToHeight(0.03) + 0.01)
+                .setSize(0.94, 0.066)
+                .alignTop(.09)
                 .alignLeft(0.03);
     }
 }

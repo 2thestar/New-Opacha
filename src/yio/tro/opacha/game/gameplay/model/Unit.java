@@ -21,6 +21,10 @@ public class Unit implements ReusableYio, AcceleratableYio{
     boolean alive;
     Planet target;
     public RenderableTextYio title;
+    public boolean digger;
+    private double digAccumulator;
+    private static int nextJourney;
+    int journeyId;
 
 
     public Unit(UnitManager unitManager) {
@@ -42,6 +46,8 @@ public class Unit implements ReusableYio, AcceleratableYio{
         fraction = null;
         setAlive(false);
         target = null;
+        digger = false;
+        digAccumulator = 0;
     }
 
 
@@ -53,12 +59,31 @@ public class Unit implements ReusableYio, AcceleratableYio{
 
     private void applyWalk() {
         if (!alive) return;
-
+        float oldPosition = acceleratableFactor.value;
         if (acceleratableFactor.move(VelocityManager.getInstance().value)) {
+            if (digger) dig(oldPosition);
+            unitManager.objectsLayer.tactics.checkBombs(this, oldPosition, acceleratableFactor.value);
             readyToUpdateViewPosition = true;
         } else {
             onReachedTarget();
         }
+    }
+
+    private void dig(float previous) {
+        if (!link.isBlueprint()) { digger = false; return; }
+        float next = acceleratableFactor.value;
+        float front = link.constructionProgress();
+        if (next <= front) return;
+        digAccumulator += Math.max(0, next - Math.max(previous, front)) * link.constructionCost;
+        int requested = next >= 1 ? link.constructionCost - link.constructionSpent : (int) (digAccumulator + .00001);
+        int work = Math.min(value, Math.min(link.constructionCost - link.constructionSpent, requested));
+        link.constructionSpent += work;
+        digAccumulator -= work;
+        setValue(value - work);
+        acceleratableFactor.value = Math.min(next, link.constructionProgress());
+        if (link.isBlueprint()) acceleratableFactor.needsToMove = true;
+        if (value == 0) setAlive(false);
+        if (!link.isBlueprint()) digger = false;
     }
 
 
@@ -89,15 +114,17 @@ public class Unit implements ReusableYio, AcceleratableYio{
         }
 
         this.link = link;
+        journeyId = ++nextJourney;
 
         if (start == link.one) {
-            acceleratableFactor.appear(link.movementMultiplier);
+            acceleratableFactor.appear(link.movementMultiplier * link.speedFrom(start));
         } else {
-            acceleratableFactor.destroy(link.movementMultiplier);
+            acceleratableFactor.destroy(link.movementMultiplier * link.speedFrom(start));
         }
 
         viewPosition.setRadius(2 * link.thickness);
         target = link.getOppositePlanet(start);
+        digger = link.isBlueprint();
         setAlive(true);
     }
 
@@ -156,6 +183,11 @@ public class Unit implements ReusableYio, AcceleratableYio{
         this.value = value;
         title.setString("" + value);
         title.updateMetrics();
+    }
+
+    public void takeDamage(int damage) {
+        setValue(Math.max(0, value - damage));
+        if (value == 0) setAlive(false);
     }
 
 

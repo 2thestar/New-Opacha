@@ -85,21 +85,10 @@ public class RenderRoundShape extends RenderInterfaceElement{
 
 
     public void renderRoundShape(SpriteBatch argBatch, RectangleYio position, int groundIndex, float cornerRadius) {
-        currentBatch = argBatch;
-        currentBackground = getBackgroundTexture(groundIndex);
-        currentCorner = getCornerTexture(groundIndex);
-        cr = cornerRadius / 2;
-        this.position = position;
-
-        updatePos1();
-        updatePos2();
-        updatePos3();
-        updateCorners();
-
-        GraphicsYio.drawByRectangle(currentBatch, currentBackground, pos1);
-        GraphicsYio.drawByRectangle(currentBatch, currentBackground, pos2);
-        GraphicsYio.drawByRectangle(currentBatch, currentBackground, pos3);
-        renderCorners();
+        yio.tro.opacha.menu.UiStyle.get().rounded(argBatch, position.x, position.y, position.width,
+                position.height, groundIndex < 0 || groundIndex >= 6
+                        ? yio.tro.opacha.menu.UiStyle.INK : yio.tro.opacha.menu.UiStyle.surface(groundIndex),
+                argBatch.getColor().a);
     }
 
 

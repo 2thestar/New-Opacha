@@ -39,11 +39,14 @@ public class RenderUnits extends GameRender{
 
 
     private void renderSingleUnit(Unit unit) {
-        GraphicsYio.drawByCircle(
-                batchMovable,
-                getUnitTexture(unit),
-                unit.viewPosition
-        );
+        if (yio.tro.opacha.SettingsManager.getInstance().colorblindMode) {
+            GraphicsYio.drawByCircle(batchMovable, getUnitTexture(unit), unit.viewPosition);
+        } else {
+            yio.tro.opacha.menu.UiStyle skin = yio.tro.opacha.menu.UiStyle.get();
+            float x = unit.viewPosition.center.x, y = unit.viewPosition.center.y, r = unit.viewPosition.radius;
+            skin.disc(batchMovable, x, y, r, yio.tro.opacha.menu.UiStyle.INK, 1);
+            skin.disc(batchMovable, x, y, r * .78f, yio.tro.opacha.menu.UiStyle.faction(unit.fraction), 1);
+        }
 
         if (gameController.initialLevelSize != LevelSize.normal) {
             GraphicsYio.renderText(batchMovable, unit.title);

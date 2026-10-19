@@ -18,6 +18,8 @@ public class SettingsManager {
     public boolean colorblindMode;
     public boolean thinBezels;
     public int graphicsQuality;
+    public boolean nightMode;
+    public boolean abstractBackgrounds;
 
 
     public static SettingsManager getInstance() {
@@ -38,6 +40,8 @@ public class SettingsManager {
         Preferences prefs = getPreferences();
 
         prefs.putBoolean("sound", soundEnabled);
+        prefs.putBoolean("night_mode", nightMode);
+        prefs.putBoolean("abstract_backgrounds", abstractBackgrounds);
         prefs.putBoolean("full_screen", fullScreenMode);
         prefs.putInteger("graphics_quality", graphicsQuality);
         prefs.putBoolean("halved_mode_button", halvedModeButtonEnabled);
@@ -62,9 +66,12 @@ public class SettingsManager {
         Preferences prefs = getPreferences();
 
         soundEnabled = prefs.getBoolean("sound", true);
+        nightMode = prefs.getBoolean("night_mode", false);
+        abstractBackgrounds = prefs.getBoolean("abstract_backgrounds", false);
+        yio.tro.opacha.menu.UiStyle.applyTheme(nightMode);
         fullScreenMode = prefs.getBoolean("full_screen", true);
         graphicsQuality = prefs.getInteger("graphics_quality", 1);
-        halvedModeButtonEnabled = prefs.getBoolean("halved_mode_button", false);
+        halvedModeButtonEnabled = prefs.getBoolean("halved_mode_button", true);
         adaptiveDifficulty = prefs.getBoolean("adaptive_difficulty", true);
         spectateAfterVictory = prefs.getBoolean("spectate_after_victory", false);
         lockButtonEnabled = prefs.getBoolean("lock_button", false);

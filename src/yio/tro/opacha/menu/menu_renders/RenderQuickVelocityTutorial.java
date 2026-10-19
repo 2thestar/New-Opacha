@@ -56,7 +56,7 @@ public class RenderQuickVelocityTutorial extends RenderInterfaceElement{
         GraphicsYio.setBatchAlpha(batch, 0.8 * f);
         GraphicsYio.drawByRectangle(batch, blackPixel, increasedBounds);
         font = title.font;
-        Color fontBackupColor = font.getColor();
+        Color fontBackupColor = new Color(font.getColor());
         font.setColor(Color.WHITE);
         GraphicsYio.setFontAlpha(title.font, f);
         GraphicsYio.renderText(batch, title);

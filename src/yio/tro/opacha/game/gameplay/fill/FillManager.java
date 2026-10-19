@@ -161,7 +161,7 @@ public class FillManager implements IGameplayManager{
             return;
         }
 
-        Scenes.chooseGameMode.create();
-        menuControllerYio.onReturningBackButtonPressed();
+        Scenes.matchResults.create();
+        Scenes.matchResults.setMatchResults(matchResults);
     }
 }

@@ -6,6 +6,7 @@ import yio.tro.opacha.menu.elements.InterfaceElement;
 import yio.tro.opacha.stuff.GraphicsYio;
 import yio.tro.opacha.stuff.RectangleYio;
 import yio.tro.opacha.stuff.RenderableTextYio;
+import yio.tro.opacha.menu.UiStyle;
 
 public class RenderButton extends RenderInterfaceElement {
 
@@ -59,7 +60,13 @@ public class RenderButton extends RenderInterfaceElement {
 
 
     public void renderCurrentButton() {
+        if (!buttonYio.hasCustomTexture()) {
+            renderPaperButton();
+            return;
+        }
         renderButtonShadow();
+        if (UiStyle.isNight()) UiStyle.get().rounded(batch, viewPos.x, viewPos.y, viewPos.width,
+                viewPos.height, UiStyle.NEUTRAL, f * f);
         updateBatchAlpha();
         renderDefaultBackground();
         renderCustomBackground();
@@ -69,6 +76,39 @@ public class RenderButton extends RenderInterfaceElement {
 
         renderSelection();
         renderText();
+    }
+
+    private void renderPaperButton() {
+        UiStyle skin = UiStyle.get();
+        float alpha = f * f;
+        float stroke = Math.max(1.5f, w * .0042f);
+        float press = buttonYio.isTouchable() && buttonYio.isSelected()
+                ? buttonYio.selectionFactor.get() * w * .006f : 0;
+        float x = viewPos.x, y = viewPos.y - press, width = viewPos.width, height = viewPos.height;
+        if (buttonYio.backgroundEnabled) {
+            boolean raised = buttonYio.isTouchable() && height < .13f * h && !buttonYio.isInSilentReactionMode();
+            if (buttonYio.shadowEnabled || raised) {
+                skin.rounded(batch, x + stroke, y - w * .012f, width, height, UiStyle.INK, .09f * alpha);
+                skin.rounded(batch, x + stroke * .5f, y - Math.max(0, w * .008f - press), width, height, UiStyle.INK, alpha);
+            }
+            if (buttonYio.isBorderEnabled()) {
+                skin.rounded(batch, x, y, width, height, UiStyle.OUTLINE, alpha);
+                skin.rounded(batch, x + stroke, y + stroke, width - 2 * stroke, height - 2 * stroke,
+                        UiStyle.surface(buttonYio.groundIndex), alpha);
+            } else {
+                skin.rounded(batch, x, y, width, height, UiStyle.surface(buttonYio.groundIndex), alpha);
+            }
+            if (buttonYio.isSelected() && !buttonYio.isInSilentReactionMode()) {
+                skin.rounded(batch, x + stroke, y + stroke, width - 2 * stroke, height - 2 * stroke,
+                        UiStyle.INK, .07f * buttonYio.selectionFactor.get() * alpha);
+            }
+        }
+        batch.setColor(1, 1, 1, 1);
+        buttonYio.font.setColor(UiStyle.buttonText(buttonYio.groundIndex, buttonYio.backgroundEnabled));
+        for (RenderableTextYio item : buttonYio.items) item.position.y -= press;
+        renderText();
+        for (RenderableTextYio item : buttonYio.items) item.position.y += press;
+        buttonYio.font.setColor(UiStyle.TEXT);
     }
 
 

@@ -28,6 +28,11 @@ public class RenderCircleButton extends RenderInterfaceElement{
     public void renderSecondLayer(InterfaceElement element) {
         circleButton = (CircleButtonYio) element;
         f = circleButton.getAlpha();
+        if (yio.tro.opacha.menu.UiStyle.isNight()) {
+            yio.tro.opacha.stuff.RectangleYio r = circleButton.getViewPosition();
+            yio.tro.opacha.menu.UiStyle.get().disc(batch, r.x + r.width / 2, r.y + r.height / 2,
+                    Math.min(r.width, r.height) * .46f, yio.tro.opacha.menu.UiStyle.NEUTRAL, f);
+        }
 
         if (f < 1) {
             batch.setColor(c.r, c.g, c.b, f);

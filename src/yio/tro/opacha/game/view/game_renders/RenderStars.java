@@ -18,12 +18,7 @@ public class RenderStars extends GameRender{
 
     @Override
     public void render() {
-        GraphicsYio.setBatchAlpha(batchMovable, 0.1);
-        for (Star star : getObjectsLayer().starsManager.stars) {
-            if (!star.isCurrentlyVisible()) continue;
-            renderSingleStar(star);
-        }
-        GraphicsYio.setBatchAlpha(batchMovable, 1);
+        // A quiet board keeps moving troops and route directions legible.
     }
 
 

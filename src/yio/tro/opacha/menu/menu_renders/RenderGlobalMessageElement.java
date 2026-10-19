@@ -47,7 +47,9 @@ public class RenderGlobalMessageElement extends RenderInterfaceElement{
 
 
     private void renderBackground() {
-        GraphicsYio.drawByRectangle(batch, backgroundPixel, gmElement.backgroundPosition);
+        batch.setColor(yio.tro.opacha.menu.UiStyle.BOARD);
+        GraphicsYio.drawByRectangle(batch, yio.tro.opacha.menu.UiStyle.get().pixel, gmElement.backgroundPosition);
+        batch.setColor(com.badlogic.gdx.graphics.Color.WHITE);
     }
 
 

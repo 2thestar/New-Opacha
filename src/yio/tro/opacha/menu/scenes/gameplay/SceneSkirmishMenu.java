@@ -3,6 +3,7 @@ package yio.tro.opacha.menu.scenes.gameplay;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import yio.tro.opacha.YioGdxGame;
+import yio.tro.opacha.game.PlayType;
 import yio.tro.opacha.game.loading.LoadingParameters;
 import yio.tro.opacha.game.loading.LoadingType;
 import yio.tro.opacha.menu.LanguagesManager;
@@ -27,6 +28,9 @@ public class SceneSkirmishMenu extends SceneYio {
     private SliderYio colorsSlider;
     private CheckButtonYio chkAiOnly;
     private SliderYio opponentsSlider;
+    public ButtonYio playTypeButton, routesButton;
+    private int playTypeIndex;
+    private boolean directional = true;
 
 
     @Override
@@ -35,10 +39,13 @@ public class SceneSkirmishMenu extends SceneYio {
 
         initColorsValues();
         createBackButton();
+        uiFactory.getLabelElement().setSize(.72, .075).centerHorizontal().alignBottom(.875)
+                .setFont(yio.tro.opacha.Fonts.titleFont).setString(languagesManager.getString("skirmish"));
         createStartButton();
         createInnerParent();
         createLabel();
         createSliders();
+        createTacticsOptions();
         createChecks();
 
         loadValues();
@@ -63,7 +70,7 @@ public class SceneSkirmishMenu extends SceneYio {
 
     private void createInnerParent() {
         innerParent = uiFactory.getButton()
-                .setSize(1, 0.9)
+                .setSize(1, 1)
                 .centerHorizontal()
                 .alignBottom()
                 .setAnimation(AnimationYio.none)
@@ -75,10 +82,11 @@ public class SceneSkirmishMenu extends SceneYio {
     private void createLabel() {
         label = uiFactory.getButton()
                 .setParent(innerParent)
-                .setSize(0.8, 0.69)
+                .setSize(0.86, 0.70)
                 .centerHorizontal()
-                .centerVertical()
+                .alignBottom(.13)
                 .applyText(" ")
+                .setBackgroundEnabled(false).setBorder(false)
                 .setTouchable(false)
                 .setAnimation(AnimationYio.none);
     }
@@ -87,8 +95,8 @@ public class SceneSkirmishMenu extends SceneYio {
     private void createSliders() {
         levelSizeSlider = uiFactory.getSlider()
                 .setParent(label)
-                .setSize(0.65)
-                .alignTop(0.03)
+                .setSize(0.76)
+                .alignTop(0.01)
                 .setAnimation(AnimationYio.none)
                 .centerHorizontal()
                 .setName("level_size")
@@ -103,7 +111,7 @@ public class SceneSkirmishMenu extends SceneYio {
 
         difficultySlider = uiFactory.getSlider()
                 .clone(previousElement)
-                .alignBottom(previousElement, 0.05)
+                .alignBottom(previousElement, 0.015)
                 .setName("difficulty")
                 .setAnimation(AnimationYio.none)
                 .setValues(0.25, 3)
@@ -117,7 +125,7 @@ public class SceneSkirmishMenu extends SceneYio {
 
         colorsSlider = uiFactory.getSlider()
                 .clone(previousElement)
-                .alignBottom(previousElement, 0.05)
+                .alignBottom(previousElement, 0.015)
                 .setName("colors")
                 .setAnimation(AnimationYio.none)
                 .setValues(0, colorValues.length)
@@ -131,7 +139,7 @@ public class SceneSkirmishMenu extends SceneYio {
 
         opponentsSlider = uiFactory.getSlider()
                 .clone(previousElement)
-                .alignBottom(previousElement, 0.05)
+                .alignBottom(previousElement, 0.015)
                 .setName("ai_opponents")
                 .setAnimation(AnimationYio.none)
                 .setValues(0, 4)
@@ -184,9 +192,29 @@ public class SceneSkirmishMenu extends SceneYio {
         chkAiOnly = uiFactory.getCheckButton()
                 .setParent(label)
                 .setName("ai_only")
-                .alignBottom(0.02)
+                .alignBottom(0.01)
                 .setWidth(0.75)
                 .centerHorizontal();
+    }
+
+    private void createTacticsOptions() {
+        playTypeButton = uiFactory.getButton().setParent(label).setSize(.7, .055)
+                .centerHorizontal().alignBottom(.155).setAnimation(AnimationYio.none)
+                .setBackgroundEnabled(true).setBorder(true)
+                .setReaction(new Reaction() { @Override protected void reaction() {
+                    playTypeIndex = (playTypeIndex + 1) % PlayType.values().length; updateTacticsLabels();
+                }});
+        routesButton = uiFactory.getButton().setParent(label).setSize(.7, .055)
+                .centerHorizontal().alignBottom(.085).setAnimation(AnimationYio.none)
+                .setBackgroundEnabled(true).setBorder(true)
+                .setReaction(new Reaction() { @Override protected void reaction() {
+                    directional = !directional; updateTacticsLabels();
+                }});
+    }
+
+    private void updateTacticsLabels() {
+        playTypeButton.applyText("play_" + PlayType.values()[playTypeIndex]);
+        routesButton.applyText(directional ? "routes_mixed" : "routes_normal");
     }
 
 
@@ -198,6 +226,9 @@ public class SceneSkirmishMenu extends SceneYio {
         colorsSlider.setValueIndex(prefs.getInteger("colors", 0));
         chkAiOnly.setChecked(prefs.getBoolean("ai_only", false));
         opponentsSlider.setValueIndex(Math.max(0, Math.min(3, prefs.getInteger("opponents", 0))));
+        playTypeIndex = Math.max(0, Math.min(3, prefs.getInteger("play_type", 0)));
+        directional = prefs.getBoolean("directional", true);
+        updateTacticsLabels();
     }
 
 
@@ -209,6 +240,8 @@ public class SceneSkirmishMenu extends SceneYio {
         prefs.putInteger("colors", colorsSlider.getValueIndex());
         prefs.putBoolean("ai_only", chkAiOnly.isChecked());
         prefs.putInteger("opponents", opponentsSlider.getValueIndex());
+        prefs.putInteger("play_type", playTypeIndex);
+        prefs.putBoolean("directional", directional);
 
         prefs.flush();
     }
@@ -221,8 +254,8 @@ public class SceneSkirmishMenu extends SceneYio {
 
     private void createStartButton() {
         startButton = uiFactory.getButton()
-                .setPosition(0.55, 0.9, 0.4, 0.07)
-                .applyText("start", BackgroundYio.green)
+                .setSize(.82, .067).centerHorizontal().alignBottom(.04)
+                .applyText("ui_start_match").setGroundIndex(GroundIndex.YELLOW)
                 .setReaction(new Reaction() {
                     @Override
                     protected void reaction() {
@@ -233,6 +266,8 @@ public class SceneSkirmishMenu extends SceneYio {
                         loadingParameters.addParameter("ai_only", chkAiOnly.isChecked());
                         loadingParameters.addParameter("difficulty", difficultySlider.getValueIndex());
                         loadingParameters.addParameter("opponents", opponentsSlider.getValueIndex());
+                        loadingParameters.addParameter("play_type", PlayType.values()[playTypeIndex].toString());
+                        loadingParameters.addParameter("directional", directional);
                         loadingParameters.addParameter("seed", YioGdxGame.random.nextInt());
                         yioGdxGame.loadingManager.startInstantly(LoadingType.skirmish_create, loadingParameters);
                     }

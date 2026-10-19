@@ -132,6 +132,10 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
 
 
     private void checkToUnblockCamera() {
+        if (gameController.objectsLayer.tactics.pending != yio.tro.opacha.game.gameplay.model.TacticsManager.Action.none) {
+            cameraBlocked = false;
+            return;
+        }
         if (twoFingerDetected) return;
         if (!cameraBlocked) return;
         cameraBlocked = false;
@@ -163,6 +167,7 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
 
 
     private void onLongTapDetected() {
+        if (gameController.objectsLayer.tactics.pending != yio.tro.opacha.game.gameplay.model.TacticsManager.Action.none) return;
         if (GameRules.aiOnlyMode) return;
 
         Planet touchedPlanet = getPlanetsManager().findTouchedPlanet(gameController.currentTouchConverted);

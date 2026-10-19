@@ -9,6 +9,7 @@ import yio.tro.opacha.menu.scenes.info.SceneAboutGame;
 import yio.tro.opacha.menu.scenes.info.SceneSpecialThanks;
 import yio.tro.opacha.menu.scenes.options.SceneLanguages;
 import yio.tro.opacha.menu.scenes.options.SceneSettingsMenu;
+import yio.tro.opacha.menu.scenes.options.SceneAppearance;
 import yio.tro.opacha.menu.scenes.tutorial.*;
 
 public class Scenes {
@@ -21,6 +22,7 @@ public class Scenes {
     public static SceneNotification notification;
     public static SceneExceptionReport exceptionReport;
     public static SceneSettingsMenu settingsMenu;
+    public static SceneAppearance appearance;
     public static SceneHelpMenu helpMenu;
     public static SceneSpecialThanks specialThanks;
     public static SceneLanguages languages;
@@ -34,6 +36,8 @@ public class Scenes {
     public static SceneDebugPanel debugPanel;
     public static SceneSpeedControls speedControls;
     public static SceneSelectionOverlay selectionOverlay;
+    public static SceneNodeActions nodeActions;
+    public static SceneDiplomacy diplomacy;
     public static SceneMatchResults matchResults;
     public static SceneOnCampaignLevelCompleted onCampaignLevelCompleted;
     public static SceneTutorialBegin tutorialBegin;
@@ -79,6 +83,7 @@ public class Scenes {
         notification = new SceneNotification();
         exceptionReport = new SceneExceptionReport();
         settingsMenu = new SceneSettingsMenu();
+        appearance = new SceneAppearance();
         helpMenu = new SceneHelpMenu();
         specialThanks = new SceneSpecialThanks();
         languages = new SceneLanguages();
@@ -92,6 +97,8 @@ public class Scenes {
         debugPanel = new SceneDebugPanel();
         speedControls = new SceneSpeedControls();
         selectionOverlay = new SceneSelectionOverlay();
+        nodeActions = new SceneNodeActions();
+        diplomacy = new SceneDiplomacy();
         matchResults = new SceneMatchResults();
         onCampaignLevelCompleted = new SceneOnCampaignLevelCompleted();
         tutorialBegin = new SceneTutorialBegin();

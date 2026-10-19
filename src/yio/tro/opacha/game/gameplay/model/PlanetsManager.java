@@ -128,6 +128,7 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
 
 
     public void onClick(PointYio touchPoint) {
+        if (objectsLayer.tactics.onWorldTap(touchPoint)) return;
         Planet touchedPlanet = findTouchedPlanet(touchPoint);
         if (touchedPlanet == null) {
             deselect();
@@ -247,6 +248,7 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
 
     private boolean sendUnitsAmount(Planet start, Planet target, int unitsToLaunch) {
         if (start == null || target == null || start == target || !start.isLinkedTo(target)) return false;
+        if (!start.getLink(target).canUse(start, start.fraction)) return false;
         if (unitsToLaunch <= 0 || unitsToLaunch > (int) start.unitsInside) return false;
         objectsLayer.unitManager.launchUnit(start, target, unitsToLaunch);
         start.decreaseUnitsInside(unitsToLaunch);
@@ -260,7 +262,7 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
         for (Link adjoinedLink : planet.adjoinedLinks) {
             ArrayList<Unit> walkersToTarget = adjoinedLink.getWalkersToTarget(planet);
             for (Unit unit : walkersToTarget) {
-                if (unit.fraction == planet.fraction) continue;
+                if (objectsLayer.tactics.alliances.friendly(unit.fraction, planet.fraction)) continue;
                 threat += unit.value;
             }
         }
@@ -464,7 +466,8 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
         for (Link adjoinedLink : planet.adjoinedLinks) {
             Planet oppositePlanet = adjoinedLink.getOppositePlanet(planet);
             if (oppositePlanet.isNeutral()) continue;
-            if (oppositePlanet.fraction == planet.fraction) continue;
+            if (objectsLayer.tactics.alliances.friendly(oppositePlanet.fraction, planet.fraction)) continue;
+            if (adjoinedLink.isBlueprint()) continue;
             c++;
         }
         return c;
@@ -487,7 +490,8 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
         for (Link adjoinedLink : planet.adjoinedLinks) {
             Planet oppositePlanet = adjoinedLink.getOppositePlanet(planet);
             if (oppositePlanet.isNeutral()) continue;
-            if (oppositePlanet.fraction == planet.fraction) continue;
+            if (objectsLayer.tactics.alliances.friendly(oppositePlanet.fraction, planet.fraction)) continue;
+            if (adjoinedLink.isBlueprint()) continue;
             sum += oppositePlanet.unitsInside;
         }
         return sum;

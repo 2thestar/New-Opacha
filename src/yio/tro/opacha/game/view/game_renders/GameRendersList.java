@@ -13,6 +13,7 @@ public class GameRendersList {
     public RenderTmDefault renderTmDefault;
     public RenderStars renderStars;
     public RenderPlanets renderPlanets;
+    public RenderTactics renderTactics;
     public RenderLinks renderLinks;
     public RenderParticles renderParticles;
     public RenderUnits renderUnits;
@@ -54,6 +55,7 @@ public class GameRendersList {
         renderTmDefault = new RenderTmDefault();
         renderStars = new RenderStars();
         renderPlanets = new RenderPlanets();
+        renderTactics = new RenderTactics();
         renderLinks = new RenderLinks();
         renderParticles = new RenderParticles();
         renderUnits = new RenderUnits();

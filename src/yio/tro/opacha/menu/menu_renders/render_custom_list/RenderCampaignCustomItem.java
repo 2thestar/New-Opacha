@@ -45,7 +45,9 @@ public class RenderCampaignCustomItem extends AbstractRenderCustomListItem{
         GraphicsYio.drawByRectangle(batch, mapTextures.get(cciInnerItem.type), cciInnerItem.position);
 
         if (cciInnerItem.type == CciType.unlocked) {
+            cciInnerItem.title.font.setColor(yio.tro.opacha.menu.UiStyle.INK);
             GraphicsYio.renderTextOptimized(batch, blackPixel, cciInnerItem.title, alpha);
+            cciInnerItem.title.font.setColor(yio.tro.opacha.menu.UiStyle.TEXT);
             GraphicsYio.setBatchAlpha(batch, alpha);
         }
 

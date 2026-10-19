@@ -17,6 +17,7 @@ import yio.tro.opacha.game.view.game_renders.GameRender;
 import yio.tro.opacha.game.view.game_renders.GameRendersList;
 import yio.tro.opacha.stuff.*;
 import yio.tro.opacha.stuff.factor_yio.FactorYio;
+import yio.tro.opacha.menu.UiStyle;
 
 public class GameView implements LoadingListener{
 
@@ -159,8 +160,10 @@ public class GameView implements LoadingListener{
         instance.renderLinks.renderShadows();
         instance.renderPlanets.renderShadows();
         instance.renderLinks.render();
+        instance.renderTactics.renderRoutes();
         instance.renderUnits.render();
         instance.renderPlanets.render();
+        instance.renderTactics.render();
         instance.renderFillers.render();
 
         renderDyingTouchModes();
@@ -188,9 +191,19 @@ public class GameView implements LoadingListener{
 
 
     private void renderBackground() {
+        batchSolid.begin();
+        batchSolid.setColor(UiStyle.PAPER);
+        batchSolid.draw(UiStyle.get().pixel, 0, 0, w, h);
+        batchSolid.setColor(Color.WHITE);
+        batchSolid.end();
         batchMovable.begin();
-        TextureRegion backgroundPixel = this.backgroundPixel;
-        batchMovable.draw(backgroundPixel, 0, 0, gameController.boundWidth, gameController.boundHeight);
+        batchMovable.setColor(UiStyle.BOARD);
+        batchMovable.draw(UiStyle.get().pixel, 0, 0, gameController.boundWidth, gameController.boundHeight);
+        batchMovable.setColor(Color.WHITE);
+        int chapter = gameController.gameMode == yio.tro.opacha.game.GameMode.campaign
+                ? yio.tro.opacha.game.campaign.CampaignManager.chapterOf(GameRules.levelIndex) : 0;
+        yio.tro.opacha.menu.ChapterBackground.draw(batchMovable, 0, 0,
+                gameController.boundWidth, gameController.boundHeight, chapter, 1);
         batchMovable.end();
     }
 

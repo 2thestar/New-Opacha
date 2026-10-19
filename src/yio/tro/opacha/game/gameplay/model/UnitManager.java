@@ -73,6 +73,7 @@ public class UnitManager implements IGameplayManager{
 
     public FractionType getAliveFraction(FractionType ignoredFraction) {
         for (Unit unit : units) {
+            if (!unit.isAlive()) continue;
             if (ignoredFraction != null && unit.fraction == ignoredFraction) continue;
             return unit.fraction;
         }

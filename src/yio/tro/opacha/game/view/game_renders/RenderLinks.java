@@ -9,6 +9,7 @@ import yio.tro.opacha.stuff.GraphicsYio;
 import yio.tro.opacha.stuff.Storage3xTexture;
 
 import java.util.HashMap;
+import yio.tro.opacha.menu.UiStyle;
 
 public class RenderLinks extends GameRender{
 
@@ -39,16 +40,12 @@ public class RenderLinks extends GameRender{
 
 
     public void renderShadows() {
-        linksManager = getObjectsLayer().linksManager;
-
-        for (Link link : linksManager.links) {
-            if (!link.isCurrentlyVisible()) continue;
-            renderSingleShadow(link);
-        }
+        // Nodes carry the depth; routes stay flat and easy to follow.
     }
 
 
     private void renderSingleShadow(Link link) {
+        if (link.isBlueprint()) return;
         if (link.isNeutral()) return;
 
         batchMovable.draw(
@@ -67,34 +64,30 @@ public class RenderLinks extends GameRender{
 
 
     private void renderNeutralLink(Link link) {
-        for (CircleYio nPoint : link.nPoints) {
-            GraphicsYio.drawByCircle(
-                    batchMovable,
-                    mapTextures.get(FractionType.neutral).getTexture(getCurrentZoomQuality()),
-                    nPoint
-            );
+        double dx = Math.cos(link.angle), dy = Math.sin(link.angle);
+        double start = link.one.viewPosition.radius, end = link.distance - link.two.viewPosition.radius;
+        double dash = Math.max(w * .012, link.thickness * 2.2);
+        for (double d = start; d < end; d += dash * 2.2) {
+            double e = Math.min(end, d + dash);
+            UiStyle.get().line(batchMovable, link.one.viewPosition.center.x + dx * d,
+                    link.one.viewPosition.center.y + dy * d, link.one.viewPosition.center.x + dx * e,
+                    link.one.viewPosition.center.y + dy * e, link.thickness * .60, UiStyle.MUTED, .55f);
         }
     }
 
 
     private void renderSingleLink(Link link) {
+        if (link.isBlueprint()) return;
         if (link.isNeutral()) {
             renderNeutralLink(link);
             return;
         }
 
-        batchMovable.draw(
-                mapTextures.get(link.fractionType).getTexture(getCurrentZoomQuality()),
-                link.one.viewPosition.center.x,
-                (float) (link.one.viewPosition.center.y - link.thickness * 0.5),
-                0f,
-                link.thickness * 0.5f,
-                (float) link.distance,
-                link.thickness,
-                1f,
-                1f,
-                (float) (180 / Math.PI * link.angle)
-        );
+        UiStyle.get().line(batchMovable, link.one.viewPosition.center.x, link.one.viewPosition.center.y,
+                link.two.viewPosition.center.x, link.two.viewPosition.center.y, link.thickness * 1.25, UiStyle.OUTLINE, .65f);
+        UiStyle.get().line(batchMovable, link.one.viewPosition.center.x, link.one.viewPosition.center.y,
+                link.two.viewPosition.center.x, link.two.viewPosition.center.y, link.thickness * .65,
+                UiStyle.faction(link.fractionType), 1);
     }
 
 

@@ -1,102 +1,32 @@
 package yio.tro.opacha.menu.scenes.gameplay;
 
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import yio.tro.opacha.SettingsManager;
 import yio.tro.opacha.menu.elements.ButtonYio;
-import yio.tro.opacha.menu.elements.InterfaceElement;
+import yio.tro.opacha.menu.elements.ground.GroundIndex;
 import yio.tro.opacha.menu.reactions.Reaction;
 import yio.tro.opacha.menu.scenes.ModalSceneYio;
-import yio.tro.opacha.stuff.GraphicsYio;
 
 public class SceneSpeedControls extends ModalSceneYio {
+    public ButtonYio playPauseButton, fastForwardButton;
 
-
-    public ButtonYio playPauseButton;
-    private TextureRegion playIcon;
-    private TextureRegion selectionTexture;
-    private TextureRegion tacticalPauseIcon;
-    private double touchOffset;
-    private ButtonYio fastForwardButton;
-    private double visualOffset;
-
-
-    @Override
-    protected void initialize() {
-        loadTextures();
-        touchOffset = 0.04;
-        visualOffset = 0.03;
-        createSpeedControls();
+    @Override protected void initialize() {
+        playPauseButton = uiFactory.getButton().setSize(.24, .052).alignLeft(.03).alignTop(.025)
+                .setTouchOffset(.008)
+                .setIgnoreResumePause(true).applyText("ui_pause").setReaction(new Reaction() {
+                    @Override protected void reaction() { gameController.speedManager.onPlayPauseButtonPressed(); }
+                });
+        fastForwardButton = uiFactory.getButton().setSize(.21, .052).alignLeft(.29).alignTop(.025)
+                .setTouchOffset(.008)
+                .setIgnoreResumePause(true).applyText("ui_faster").setReaction(new Reaction() {
+                    @Override protected void reaction() { gameController.speedManager.onFastForwardButtonPressed(); }
+                });
     }
-
-
-    private void createSpeedControls() {
-        playPauseButton = uiFactory.getButton()
-                .setSize(GraphicsYio.convertToWidth(0.05))
-                .alignLeft(touchOffset)
-                .alignTop(getTopOffset())
-                .setTouchOffset(touchOffset)
-                .setIgnoreResumePause(true)
-                .setReaction(getPlayPauseReaction())
-                .setSelectionTexture(selectionTexture);
-
-        fastForwardButton = uiFactory.getButton()
-                .clone(previousElement)
-                .alignRight(previousElement, 2 * touchOffset)
-                .setReaction(getFastForwardReaction())
-                .loadTexture("menu/gameplay/fast_forward_icon.png")
-                .setSelectionTexture(selectionTexture);
-    }
-
-
-    @Override
-    protected void onAppear() {
-        super.onAppear();
-        onSpeedStateChanged();
-    }
-
-
-    private double getTopOffset() {
-        double hOffset = GraphicsYio.convertToHeight(touchOffset);
-        if (SettingsManager.getInstance().velocitySliderEnabled) {
-            return 0.06 + hOffset;
-        }
-        return hOffset;
-    }
-
-
-    private Reaction getFastForwardReaction() {
-        return new Reaction() {
-            @Override
-            protected void reaction() {
-                gameController.speedManager.onFastForwardButtonPressed();
-            }
-        };
-    }
-
-
-    private void loadTextures() {
-        selectionTexture = GraphicsYio.loadTextureRegion("menu/selection.png", true);
-        playIcon = GraphicsYio.loadTextureRegion("menu/gameplay/play_icon.png", true);
-        tacticalPauseIcon = GraphicsYio.loadTextureRegion("menu/gameplay/tactical_pause_icon.png", true);
-    }
-
-
+    @Override protected void onAppear() { super.onAppear(); onSpeedStateChanged(); }
     public void onSpeedStateChanged() {
         if (playPauseButton == null) return;
-        if (yioGdxGame.gameController.speedManager.getSpeed() == 0) {
-            playPauseButton.setTextureRegion(playIcon);
-        } else {
-            playPauseButton.setTextureRegion(tacticalPauseIcon);
-        }
-    }
-
-
-    private Reaction getPlayPauseReaction() {
-        return new Reaction() {
-            @Override
-            protected void reaction() {
-                gameController.speedManager.onPlayPauseButtonPressed();
-            }
-        };
+        int speed = yioGdxGame.gameController.speedManager.getSpeed();
+        playPauseButton.applyText(speed == 0 ? "ui_resume" : "ui_pause")
+                .setGroundIndex(speed == 0 ? GroundIndex.YELLOW : GroundIndex.BUTTON_WHITE);
+        fastForwardButton.applyText(speed > 1 ? "ui_normal_speed" : "ui_faster")
+                .setGroundIndex(speed > 1 ? GroundIndex.YELLOW : GroundIndex.BUTTON_WHITE);
     }
 }

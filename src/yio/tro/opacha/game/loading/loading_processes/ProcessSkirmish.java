@@ -4,6 +4,8 @@ import yio.tro.opacha.YioGdxGame;
 import yio.tro.opacha.game.Difficulty;
 import yio.tro.opacha.game.GameMode;
 import yio.tro.opacha.game.GameRules;
+import yio.tro.opacha.game.PlayType;
+import yio.tro.opacha.game.gameplay.model.Link;
 import yio.tro.opacha.game.loading.LoadingManager;
 import yio.tro.opacha.game.gameplay.ai.AiType;
 import yio.tro.opacha.game.gameplay.model.FractionType;
@@ -28,6 +30,9 @@ public class ProcessSkirmish extends AbstractLoadingProcess {
         GameRules.aiOnlyMode = (boolean) loadingParameters.getParameter("ai_only");
         int difficultyIndex = (int) loadingParameters.getParameter("difficulty");
         GameRules.difficulty = Difficulty.values()[difficultyIndex];
+        Object mode = loadingParameters.getParameter("play_type");
+        GameRules.playType = mode instanceof String ? PlayType.valueOf((String) mode) : PlayType.conquest;
+        GameRules.directionalRoutes = Boolean.TRUE.equals(loadingParameters.getParameter("directional"));
     }
 
 
@@ -44,6 +49,10 @@ public class ProcessSkirmish extends AbstractLoadingProcess {
         int colors = (int) loadingParameters.getParameter("colors");
         getObjectsLayer().mapGenerator.generateLinkedMap(getMapSizeFromParameters(), colors);
         assignAiTypes(seed);
+        if (GameRules.directionalRoutes) {
+            Random routes = new Random(seed ^ 0x526f7574);
+            for (Link link : getObjectsLayer().linksManager.links) link.directional = routes.nextInt(4) == 0;
+        }
     }
 
     private void assignAiTypes(int seed) {

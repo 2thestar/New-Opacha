@@ -53,7 +53,9 @@ public class RenderCalendarViewElement extends RenderInterfaceElement{
     private void renderTab(CveTab tab) {
         GraphicsYio.setBatchAlpha(batch, alpha);
         GraphicsYio.drawByRectangle(batch, mapColors.get(tab.month.color), tab.topArea);
+        tab.title.font.setColor(yio.tro.opacha.menu.UiStyle.INK);
         GraphicsYio.renderTextOptimized(batch, blackPixel, tab.title, alpha);
+        tab.title.font.setColor(yio.tro.opacha.menu.UiStyle.TEXT);
         if (tab.completed) return;
         for (CveDayButton dayButton : tab.dayButtons) {
             renderSingleDayButton(dayButton);
@@ -68,6 +70,10 @@ public class RenderCalendarViewElement extends RenderInterfaceElement{
                 break;
             case locked:
                 GraphicsYio.setBatchAlpha(batch, alpha);
+                if (yio.tro.opacha.menu.UiStyle.isNight())
+                    yio.tro.opacha.menu.UiStyle.get().disc(batch, dayButton.position.center.x,
+                            dayButton.position.center.y, dayButton.position.radius * .9f,
+                            yio.tro.opacha.menu.UiStyle.NEUTRAL, alpha);
                 GraphicsYio.drawByCircle(batch, lockedTexture, dayButton.position);
                 break;
             case unlocked:

@@ -198,10 +198,10 @@ public abstract class SceneYio implements LoadingListener{
         CircleButtonYio backButton;
 
         backButton = uiFactory.getCircleButton()
-                .setSize(GraphicsYio.convertToWidth(0.09))
+                .setSize(GraphicsYio.convertToWidth(0.052))
                 .alignLeft(0.04)
                 .alignTop(0.02)
-                .setTouchOffset(0.05)
+                .setTouchOffset(0.015)
                 .loadTexture("menu/back_icon.png")
                 .setAnimation(AnimationYio.none)
                 .setReaction(reaction)

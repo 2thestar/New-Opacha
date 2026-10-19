@@ -37,6 +37,7 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
     public int maxDefense;
     public RenderableTextYio text;
     public float unitsInside;
+    public float artilleryReload;
     RepeatYio<Planet> repeatBuildUnits, repeatIncreaseDefense;
     public Planet autoTarget;
     public CircleYio atViewPosition;
@@ -150,6 +151,7 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
         adjoinedLinks.clear();
         flag = false;
         type = PlanetType.empty;
+        artilleryReload = 0;
         holdSelection = false;
         jumpEngineYio.reset();
         viewTypeFactor.reset();
@@ -344,6 +346,8 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
         SoundManager.playSound(SoundManager.fall);
         planetsManager.lastCapturedPlanet = this;
         aiData.reset();
+        artilleryReload = 0;
+        planetsManager.objectsLayer.tactics.onCaptured(this);
     }
 
 
@@ -383,6 +387,11 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
 
 
     public void onUnitReached(Unit unit) {
+        if (planetsManager.objectsLayer.tactics.alliances.areAllied(unit.fraction, fraction)) {
+            increaseUnitsInside(.7 * unit.value);
+            applyPopEffect();
+            return;
+        }
         if (unit.fraction == fraction) {
             onSameFractionsReached(unit);
         } else {
@@ -399,6 +408,16 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
 
     public int getFullHp() {
         return (int) unitsInside + (int) currentDefense;
+    }
+
+    public void takeArtilleryDamage(int damage) {
+        float shieldDamage = Math.min(currentDefense, damage);
+        setCurrentDefense(currentDefense - shieldDamage);
+        float remaining = damage - shieldDamage;
+        boolean destroyed = remaining >= unitsInside && currentDefense <= 0;
+        setUnitsInside(Math.max(0, unitsInside - remaining));
+        if (destroyed) { setType(PlanetType.empty); setCurrentDefense(0); }
+        applyPopEffect();
     }
 
 
@@ -644,7 +663,8 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
         for (Link adjoinedLink : adjoinedLinks) {
             Planet oppositePlanet = adjoinedLink.getOppositePlanet(this);
             if (oppositePlanet.isNeutral()) continue;
-            if (oppositePlanet.fraction == fraction) continue;
+            if (planetsManager.objectsLayer.tactics.alliances.friendly(oppositePlanet.fraction, fraction)) continue;
+            if (adjoinedLink.isBlueprint()) continue;
             c++;
         }
         return c;
@@ -677,7 +697,8 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
     public String saveToString() {
         double rx = Yio.roundUp(position.center.x / GraphicsYio.width, 3);
         double ry = Yio.roundUp(position.center.y / GraphicsYio.width, 3);
-        return fraction + " " + type + " " + (int) unitsInside + " " + rx + " " + ry;
+        return fraction + " " + type + " " + (int) unitsInside + " " + rx + " " + ry
+                + " " + artilleryReload + " " + currentDefense;
     }
 
 

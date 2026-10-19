@@ -7,6 +7,7 @@ import yio.tro.opacha.menu.elements.slider.SliderYio;
 import yio.tro.opacha.stuff.GraphicsYio;
 import yio.tro.opacha.stuff.RectangleYio;
 import yio.tro.opacha.stuff.RenderableTextYio;
+import yio.tro.opacha.menu.UiStyle;
 
 public class RenderSlider extends RenderInterfaceElement {
 
@@ -62,10 +63,19 @@ public class RenderSlider extends RenderInterfaceElement {
 
         checkToChangeBatchAlpha();
 
-        renderBlackLine();
-        renderAccent();
-        renderSegments();
-        renderValueCircle();
+        UiStyle skin = UiStyle.get();
+        float lineWidth = Math.max(2, w * .005f);
+        float x = sliderYio.getRunnerValueViewX(), y = viewPosition.y;
+        skin.line(batch, viewPosition.x, y, viewPosition.x + viewPosition.width, y,
+                lineWidth, UiStyle.RULE, f * f);
+        skin.line(batch, viewPosition.x, y, x, y, lineWidth, UiStyle.TEXT, f * f);
+        if (sliderYio.isSegmentsVisible()) {
+            for (int i = 0; i <= sliderYio.numberOfSegments; i++)
+                skin.disc(batch, sliderYio.getSegmentLeftSidePos(i), y, w * .004f, UiStyle.TEXT, f * f);
+        }
+        skin.disc(batch, x + 1, y - w * .004f, sliderYio.circleSize, UiStyle.INK, .12f * f * f);
+        skin.disc(batch, x, y, sliderYio.circleSize, UiStyle.OUTLINE, f * f);
+        skin.disc(batch, x, y + w * .002f, sliderYio.circleSize - w * .004f, UiStyle.GOLD, f * f);
         renderText();
 
         // used only for debug

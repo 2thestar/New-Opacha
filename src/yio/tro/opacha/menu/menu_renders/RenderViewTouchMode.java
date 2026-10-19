@@ -36,8 +36,9 @@ public class RenderViewTouchMode extends RenderInterfaceElement{
 
         if (!viewTouchModeElement.hasText) return;
 
-        GraphicsYio.setBatchAlpha(batch, 0.25);
-        GraphicsYio.drawByRectangle(batch, whitePixel, viewTouchModeElement.backgroundPosition);
+        yio.tro.opacha.stuff.RectangleYio r = viewTouchModeElement.backgroundPosition;
+        yio.tro.opacha.menu.UiStyle.get().rounded(batch, r.x, r.y, r.width, r.height,
+                yio.tro.opacha.menu.UiStyle.BOARD, .94f);
         GraphicsYio.setBatchAlpha(batch, 1);
 
         GraphicsYio.setFontAlpha(font, viewTouchModeElement.getTextAlpha());

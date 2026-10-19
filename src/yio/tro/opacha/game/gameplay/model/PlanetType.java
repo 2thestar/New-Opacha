@@ -7,5 +7,6 @@ public enum PlanetType {
     defensive,
 
     economic,
+    artillery,
 
 }

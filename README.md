@@ -5,9 +5,9 @@ The original Java source and assets stay in `src/` and `assets/`.
 
 ## Install on a Pixel 8a
 
-Download the APK from [Releases](https://github.com/2thestar/New-Opacha/releases) on the phone and open it to install **New Opacha**. Android may ask you to allow the browser to install apps. The app has its own package ID and saves, so it can be installed alongside the original game.
+Download **New-Opacha-0.3.0-install.zip** from [Releases](https://github.com/2thestar/New-Opacha/releases). Open it in Files by Google, tap **Extract**, then open the extracted APK to install **New Opacha**. Android may ask you to allow Files to install apps. The app has its own package ID and saves, so it can be installed alongside the original game.
 
-If Chrome stays on "Downloading" at 100% and the APK never appears in Downloads, use the **install.zip** release asset. Open the ZIP in Files by Google, tap **Extract**, then open the extracted APK to install. It contains the same signed APK. ZIP download and installation were confirmed on the affected Pixel 8a with version 0.1.0. Install updates over the existing app to keep its saves.
+The ZIP avoids Chrome's stalled direct APK downloads and contains the same signed APK. ZIP installation was confirmed on the affected Pixel 8a with version 0.1.0. Install updates over the existing app to keep its saves.
 
 ## AI players
 
@@ -18,6 +18,14 @@ In Skirmish, choose **AI opponents**: Mixed, Simple, Savvy or Silly. A four-colo
 - **Circle, Silly:** original AI with a 20% chance per planned command of issuing a random legal troop order.
 
 Markers follow the current owner of each node. Difficulty controls decision speed separately. [AI behaviour and the original implementation](docs/ai.md) describe the rules and checks.
+
+## Routes, weapons and match modes
+
+Skirmish setup cycles between **Conquest**, **Flag: neutral supernode**, **Flag: starting nodes**, and **Alliances**. Choose normal routes or a mix that includes directional routes.
+
+Select one of your nodes and tap **Actions** to draw a route, buy or place bombs, or build and fire artillery. In alliance matches, use **Pacts** to offer, accept or break an alliance. [Gameplay rules](docs/tactics.md) list the costs, controls and victory conditions.
+
+The refreshed interface uses labeled controls and raised nodes and buttons. The speed slider has its own wide row, visible stops and a light Android haptic tick when speed changes. **Settings → Appearance** offers Day or Night and optional abstract backgrounds that change with campaign chapters. [DESIGN.md](DESIGN.md) records the visual conventions and font licenses.
 
 ## Build the Android APK
 
@@ -36,7 +44,7 @@ Then build the APK:
 
 To also create the ZIP download, run `.\opacha.ps1 :android:exportInstallZip`.
 
-The installable file is `build/downloads/New-Opacha-0.2.0.apk`. It contains ARM64 libraries for the Pixel 8a and x86-64 libraries for emulator testing. The minimum Android version is 8.0. This development build is signed with the local key in `.tools/signing/`; keep that directory to build updates that preserve your installed app and saves. Signing keys and machine-specific SDK paths are excluded from Git.
+The installable file is `build/downloads/New-Opacha-0.3.0.apk`. It contains ARM64 libraries for the Pixel 8a and x86-64 libraries for emulator testing. The minimum Android version is 8.0. This development build is signed with the local key in `.tools/signing/`; keep that directory to build updates that preserve your installed app and saves. Signing keys and machine-specific SDK paths are excluded from Git.
 
 For USB installation with USB debugging enabled:
 
@@ -46,7 +54,7 @@ For USB installation with USB debugging enabled:
 
 The Android build uses SDK platform 36, target SDK 35, build-tools 35.0.0, and Android Gradle Plugin 8.13.2. The SDK setup helper pins command-line tools 19.0 and verifies the files required by the build after installation.
 
-Android checks: APK signing and 16 KB ZIP/native-library alignment; lint with no errors; installation, menu navigation, a skirmish, Android Back-to-pause, and Home/launcher resume on an Android 15 emulator with the Pixel 8a's 1080 × 2400 display profile. The launcher keeps one game instance. Physical Pixel 8a installation was confirmed for 0.1.0; the AI update is checked in the emulator.
+Android checks: APK signing and 16 KB ZIP/native-library alignment; lint with no errors; update installation, menu navigation, a skirmish, Day/Night and background settings, Android Back-to-pause, and Home/launcher resume on an Android 15 emulator with the Pixel 8a's 1080 × 2400 display profile. The launcher keeps one game instance. Physical Pixel 8a installation was confirmed for 0.1.0; this update is checked in the emulator.
 
 ## Run on Windows
 

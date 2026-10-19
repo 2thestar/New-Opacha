@@ -3,6 +3,7 @@ package yio.tro.opacha.game.gameplay.model;
 public class MatchResults {
 
     public FractionType winner;
+    public final java.util.ArrayList<FractionType> coalition = new java.util.ArrayList<>();
     public boolean humanWon;
     public boolean campaignMode;
     public boolean calendarMode;

@@ -38,6 +38,8 @@ The random order picks one of its own nodes with troops, a linked neighbour, and
 
 The 2026-10-19 balance check ran twelve seeded two-player maps (six tiny, six small), each twice with starting colours swapped, on hard at the default speed. Savvy won 19, Simple won 5, with no unfinished matches at the 36,000-tick limit. This is a small regression benchmark, not a claim about every map, difficulty or multiplayer matchup. Run `.\opacha.ps1 :lwjgl3:aiMatches` to repeat it.
 
+That benchmark isolates ordinary troop planning. The [tactical checks](tactics.md#verification-and-future-changes) exercise weapons, digging and diplomacy, including complete mixed-AI matches in each mode.
+
 The optional `ai_types` section in exported maps records colour-to-type assignments. Older maps without it use Simple. Campaign, calendar and original custom levels retain Simple unless a map explicitly records other types. Restarting a skirmish preserves its seeded assignment.
 
 Run `.\opacha.ps1 :lwjgl3:aiSmokeTest` on Windows for native scenario and UI checks at 480 × 800 and 390 × 844. They exercise capture outcomes for all three troop shares, incoming-threat reserves, combined attacks, redundant-wave avoidance, rear supply, the random-command rate, map round trips, ownership markers, all selector values, AI-only play and pausing. Screenshots are in `lwjgl3/build/ai-smoke/`.

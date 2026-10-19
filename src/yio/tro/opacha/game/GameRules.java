@@ -15,6 +15,8 @@ public class GameRules {
     public static boolean aiOnlyMode;
     public static Difficulty difficulty;
     public static int levelIndex;
+    public static PlayType playType = PlayType.conquest;
+    public static boolean directionalRoutes;
     public static final EnumMap<FractionType, AiType> aiTypes = new EnumMap<>(FractionType.class);
 
 
@@ -30,11 +32,15 @@ public class GameRules {
         aiOnlyMode = false;
         difficulty = Difficulty.easy;
         levelIndex = -1;
+        playType = PlayType.conquest;
+        directionalRoutes = false;
         aiTypes.clear();
     }
 
 
     public static String saveToString() {
-        return difficulty + " " + aiOnlyMode;
+        return difficulty + " " + aiOnlyMode + " " + playType + " " + directionalRoutes;
     }
+
+    public static boolean isFlagMode() { return playType == PlayType.capture_flag || playType == PlayType.home_flags; }
 }

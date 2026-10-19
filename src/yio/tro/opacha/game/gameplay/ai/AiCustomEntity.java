@@ -109,6 +109,7 @@ public class AiCustomEntity extends AbstractAiEntity {
     private Planet pickTargetForCoordinatedAttack() {
         for (Planet planet : getPlanetsList()) {
             if (!isBeyondCommand(planet)) continue;
+            if (objectsLayer.tactics.alliances.friendly(fractionType, planet.fraction)) continue;
             if (calculateAttackPotential(planet) < planet.getFullHp() + 8) continue;
             return planet;
         }
@@ -257,7 +258,8 @@ public class AiCustomEntity extends AbstractAiEntity {
 
 
     void checkForAttack(Planet start, Planet target) {
-        if (start.fraction == target.fraction) return;
+        if (objectsLayer.tactics.alliances.friendly(start.fraction, target.fraction)) return;
+        if (start.getLink(target).isBlueprint()) return;
         if ((int) start.unitsInside < target.getFullHp()) return;
         if (!target.isNeutral() && (int) start.unitsInside < target.getFullHp() + 5) return;
         orderLaunch(start, target);
@@ -268,18 +270,21 @@ public class AiCustomEntity extends AbstractAiEntity {
     }
 
     protected void orderLaunch(Planet start, Planet target) {
+        if (start.type == PlanetType.artillery || start.getLink(target).isBlueprint()) return;
         if ((int) start.unitsInside > 0 && replacePlannedMove()) return;
         launchUnits(start, target);
         onActionPerformed();
     }
 
     protected void orderAutoTarget(Planet start, Planet target) {
+        if (start.type == PlanetType.artillery || start.getLink(target).isBlueprint()) return;
         if (start.autoTarget != target && replacePlannedMove()) return;
         start.setAutoTarget(target);
         onActionPerformed();
     }
 
     protected void orderUpgrade(Planet planet, PlanetType type) {
+        if (planet.type == PlanetType.artillery) return;
         if (replacePlannedMove()) return;
         getPlanetsManager().applyUpgrade(planet, type);
         if (type == PlanetType.defensive) planet.setAutoTarget(null);

@@ -39,22 +39,33 @@ public class RenderGround extends RenderInterfaceElement{
 
         updateAlpha();
         renderGround();
-        renderParticles();
+        yio.tro.opacha.menu.ChapterBackground.draw(batch, groundElement.getViewPosition().x,
+                groundElement.getViewPosition().y, w, h,
+                yio.tro.opacha.game.campaign.CampaignManager.getInstance().getVisualChapter(), groundElement.getFactor().get());
+        renderMainMenuMark();
 
         GraphicsYio.setBatchAlpha(batch, 1);
     }
 
 
-    private void renderParticles() {
-        GraphicsYio.setBatchAlpha(batch, 0.2f * groundElement.pFactor.get() * groundElement.getFactor().get());
+    private void renderMainMenuMark() {
+        if (groundElement != yio.tro.opacha.menu.scenes.Scenes.mainMenu.getGround()) return;
+        yio.tro.opacha.menu.UiStyle skin = yio.tro.opacha.menu.UiStyle.get();
+        float alpha = groundElement.getFactor().get();
+        float x1 = w * .29f, x2 = w * .51f, x3 = w * .72f;
+        float y1 = h * .545f, y2 = h * .50f, y3 = h * .56f, r = w * .048f;
+        skin.line(batch, x1, y1, x2, y2, w * .006, yio.tro.opacha.menu.UiStyle.OUTLINE, alpha);
+        skin.line(batch, x2, y2, x3, y3, w * .006, yio.tro.opacha.menu.UiStyle.OUTLINE, alpha);
+        markNode(skin, x1, y1, r, yio.tro.opacha.menu.UiStyle.GREEN, alpha);
+        markNode(skin, x2, y2, r, yio.tro.opacha.menu.UiStyle.GOLD, alpha);
+        markNode(skin, x3, y3, r, yio.tro.opacha.menu.UiStyle.CYAN, alpha);
+    }
 
-        for (GeParticle particle : groundElement.particles) {
-            GraphicsYio.drawByCircle(
-                    batch,
-                    getParticleTexture(),
-                    particle.viewPosition
-            );
-        }
+    private void markNode(yio.tro.opacha.menu.UiStyle skin, float x, float y, float r,
+                          com.badlogic.gdx.graphics.Color fill, float alpha) {
+        skin.disc(batch, x + w * .006f, y - w * .009f, r, yio.tro.opacha.menu.UiStyle.INK, .15f * alpha);
+        skin.disc(batch, x, y, r, yio.tro.opacha.menu.UiStyle.INK, alpha);
+        skin.disc(batch, x, y + w * .003f, r - w * .005f, fill, alpha);
     }
 
 
@@ -68,11 +79,11 @@ public class RenderGround extends RenderInterfaceElement{
 
 
     private void renderGround() {
-        GraphicsYio.drawByRectangle(
-                batch,
-                groundTextures[groundElement.getGroundIndex()],
-                groundElement.getViewPosition()
-        );
+        com.badlogic.gdx.graphics.Color color = yio.tro.opacha.menu.UiStyle.PAPER;
+        float alpha = batch.getColor().a;
+        batch.setColor(color.r, color.g, color.b, alpha);
+        GraphicsYio.drawByRectangle(batch, yio.tro.opacha.menu.UiStyle.get().pixel, groundElement.getViewPosition());
+        batch.setColor(1, 1, 1, 1);
     }
 
 

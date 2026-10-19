@@ -54,6 +54,7 @@ public class PathFinder {
         Planet planet = propagationList.get(0);
         propagationList.remove(0);
         for (Link adjoinedLink : planet.adjoinedLinks) {
+            if (adjoinedLink.isBlueprint()) continue;
             Planet oppositePlanet = adjoinedLink.getOppositePlanet(planet);
             if (oppositePlanet.flag) continue;
             addToPropagationList(oppositePlanet, planet);

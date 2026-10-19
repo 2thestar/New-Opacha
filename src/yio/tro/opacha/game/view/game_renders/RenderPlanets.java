@@ -9,6 +9,8 @@ import yio.tro.opacha.stuff.GraphicsYio;
 import yio.tro.opacha.stuff.Storage3xTexture;
 
 import java.util.HashMap;
+import yio.tro.opacha.menu.UiStyle;
+import yio.tro.opacha.SettingsManager;
 
 public class RenderPlanets extends GameRender{
 
@@ -34,7 +36,7 @@ public class RenderPlanets extends GameRender{
 
         mapTypeTextures = new HashMap<>();
         for (PlanetType planetType : PlanetType.values()) {
-            mapTypeTextures.put(planetType, load3xTexture("type_" + planetType));
+            mapTypeTextures.put(planetType, load3xTexture("type_" + (planetType == PlanetType.artillery ? PlanetType.empty : planetType)));
         }
 
         mapShieldSmallTextures = new HashMap<>();
@@ -77,9 +79,9 @@ public class RenderPlanets extends GameRender{
         AiType type = getObjectsLayer().aiManager.getType(planet.fraction);
         if (type == null) return;
         float r = planet.viewPosition.radius;
-        float size = 1.15f * r;
+        float size = .72f * r;
         batchMovable.draw(aiMarkers.get(type), planet.viewPosition.center.x - size / 2,
-                planet.viewPosition.center.y + 1.25f * r, size, size);
+                planet.viewPosition.center.y + 1.02f * r, size, size);
     }
 
 
@@ -94,11 +96,9 @@ public class RenderPlanets extends GameRender{
 
 
     private void renderShadow(Planet planet) {
-        GraphicsYio.drawByCircle(
-                batchMovable,
-                shadowTexture.getTexture(getCurrentZoomQuality()),
-                planet.viewPosition
-        );
+        float r = planet.viewPosition.radius, x = planet.viewPosition.center.x, y = planet.viewPosition.center.y;
+        UiStyle.get().disc(batchMovable, x + r * .10f, y - r * .20f, r * 1.12f, UiStyle.INK, .06f);
+        UiStyle.get().disc(batchMovable, x + r * .07f, y - r * .14f, r, UiStyle.INK, .13f);
     }
 
 
@@ -159,6 +159,14 @@ public class RenderPlanets extends GameRender{
 
 
     private void renderMainPart(Planet planet) {
+        if (!SettingsManager.getInstance().colorblindMode) {
+            float r = planet.viewPosition.radius, x = planet.viewPosition.center.x, y = planet.viewPosition.center.y;
+            UiStyle skin = UiStyle.get();
+            skin.disc(batchMovable, x, y, r, UiStyle.INK, 1);
+            skin.disc(batchMovable, x, y + r * .055f, r * .89f, UiStyle.faction(planet.fraction), 1);
+            skin.disc(batchMovable, x - r * .28f, y + r * .48f, r * .18f, UiStyle.WHITE, .40f);
+            return;
+        }
         GraphicsYio.drawByCircle(
                 batchMovable,
                 mapMainTextures.get(planet.fraction).getTexture(getCurrentZoomQuality()),
@@ -186,6 +194,15 @@ public class RenderPlanets extends GameRender{
 
     private void renderSelection(Planet planet) {
         if (!planet.selectionEngineYio.isSelected()) return;
+
+        if (!planet.halvedSelectionMode) {
+            float r = planet.selectionPosition.radius;
+            UiStyle.get().disc(batchMovable, planet.selectionPosition.center.x, planet.selectionPosition.center.y,
+                    r, UiStyle.GOLD, .7f);
+            UiStyle.get().disc(batchMovable, planet.selectionPosition.center.x, planet.selectionPosition.center.y,
+                    r * .90f, UiStyle.BOARD, 1);
+            return;
+        }
 
         GraphicsYio.drawByCircle(
                 batchMovable,

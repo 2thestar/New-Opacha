@@ -64,14 +64,17 @@ public class RenderCheckButton extends RenderInterfaceElement {
 
 
     private void renderActiveSquare() {
-        if (f < 1) {
-            GraphicsYio.setBatchAlpha(batch, f);
-        }
-        GraphicsYio.renderBorder(batch, blackPixel, checkButton.getActiveSquare());
-
-        if (checkButton.activeFactor.get() > 0) {
-            GraphicsYio.setBatchAlpha(batch, Math.min(checkButton.activeFactor.get(), f));
-            GraphicsYio.drawByRectangle(batch, activeTexture, checkButton.getActiveSquare());
+        yio.tro.opacha.stuff.RectangleYio r = checkButton.getActiveSquare();
+        yio.tro.opacha.menu.UiStyle skin = yio.tro.opacha.menu.UiStyle.get();
+        float border = Math.max(1.5f, w * .004f);
+        skin.rounded(batch, r.x, r.y, r.width, r.height, yio.tro.opacha.menu.UiStyle.OUTLINE, f);
+        skin.rounded(batch, r.x + border, r.y + border, r.width - 2 * border, r.height - 2 * border,
+                checkButton.isChecked() ? yio.tro.opacha.menu.UiStyle.GOLD : yio.tro.opacha.menu.UiStyle.BOARD, f);
+        if (checkButton.isChecked()) {
+            skin.line(batch, r.x + .23f * r.width, r.y + .50f * r.height,
+                    r.x + .43f * r.width, r.y + .29f * r.height, border, yio.tro.opacha.menu.UiStyle.INK, f);
+            skin.line(batch, r.x + .43f * r.width, r.y + .29f * r.height,
+                    r.x + .77f * r.width, r.y + .73f * r.height, border, yio.tro.opacha.menu.UiStyle.INK, f);
         }
     }
 

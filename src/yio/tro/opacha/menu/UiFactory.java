@@ -31,9 +31,7 @@ public class UiFactory {
         ButtonYio buttonYio = new ButtonYio(menuControllerYio, getNewID());
         addElementToScene(buttonYio);
 
-        if (sceneYio.getGround() != null) {
-            buttonYio.setGroundIndex(sceneYio.getGround().getGroundIndex());
-        }
+        buttonYio.setGroundIndex(yio.tro.opacha.menu.elements.ground.GroundIndex.BUTTON_WHITE);
 
         return buttonYio;
     }

@@ -90,3 +90,97 @@ tasks.register('aiMatches', JavaExec) {
     args 480, 800, layout.buildDirectory.dir('ai-matches').get().asFile.absolutePath, 'matches'
     if (System.getProperty('os.name').toLowerCase().contains('mac')) jvmArgs '-XstartOnFirstThread'
 }
+
+['Desktop': [480, 800], 'Phone': [390, 844]].each { label, dimensions ->
+    tasks.register("tactics$label", JavaExec) {
+        group = 'verification'
+        dependsOn tasks.named('installDist'), tasks.named('smokeTestClasses')
+        timeout = java.time.Duration.ofSeconds(190)
+        classpath = files(sourceSets.smokeTest.output, fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+        mainClass = 'yio.tro.opacha.lwjgl3.TacticsSmokeTest'
+        workingDir rootProject.projectDir
+        args dimensions[0], dimensions[1], layout.buildDirectory.dir("tactics/$label").get().asFile.absolutePath
+        if (System.getProperty('os.name').toLowerCase().contains('mac')) jvmArgs '-XstartOnFirstThread'
+    }
+}
+tasks.register('tacticsTest') {
+    group = 'verification'
+    dependsOn tasks.named('tacticsDesktop'), tasks.named('tacticsPhone')
+}
+tasks.register('tacticsRules', JavaExec) {
+    group = 'verification'
+    dependsOn tasks.named('installDist'), tasks.named('smokeTestClasses')
+    timeout = java.time.Duration.ofSeconds(190)
+    classpath = files(sourceSets.smokeTest.output, fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+    mainClass = 'yio.tro.opacha.lwjgl3.TacticsSmokeTest'
+    workingDir rootProject.projectDir
+    args 480, 800, layout.buildDirectory.dir('tactics/rules').get().asFile.absolutePath, 'rules'
+    if (System.getProperty('os.name').toLowerCase().contains('mac')) jvmArgs '-XstartOnFirstThread'
+}
+['Desktop': [480, 800], 'Phone': [390, 844]].each { label, dimensions ->
+    tasks.register("victory$label", JavaExec) {
+        group = 'verification'
+        dependsOn tasks.named('installDist'), tasks.named('smokeTestClasses')
+        timeout = java.time.Duration.ofSeconds(60)
+        classpath = files(sourceSets.smokeTest.output, fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+        mainClass = 'yio.tro.opacha.lwjgl3.TacticsSmokeTest'
+        workingDir rootProject.projectDir
+        args dimensions[0], dimensions[1], layout.buildDirectory.dir("tactics/$label").get().asFile.absolutePath, 'victory'
+        if (System.getProperty('os.name').toLowerCase().contains('mac')) jvmArgs '-XstartOnFirstThread'
+    }
+}
+
+['Desktop': [480, 800], 'Phone': [390, 844]].each { label, dimensions ->
+    tasks.register("ui$label", JavaExec) {
+        group = 'verification'
+        description = 'Check menu entry points, keyboard focus, tactical pause and touch actions.'
+        dependsOn tasks.named('installDist'), tasks.named('smokeTestClasses')
+        timeout = java.time.Duration.ofSeconds(110)
+        classpath = files(sourceSets.smokeTest.output, fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+        mainClass = 'yio.tro.opacha.lwjgl3.UiSmokeTest'
+        workingDir rootProject.projectDir
+        args dimensions[0], dimensions[1], layout.buildDirectory.dir("ui/$label").get().asFile.absolutePath
+        if (System.getProperty('os.name').toLowerCase().contains('mac')) jvmArgs '-XstartOnFirstThread'
+    }
+}
+tasks.register('uiTest') {
+    group = 'verification'
+    dependsOn tasks.named('uiDesktop'), tasks.named('uiPhone')
+}
+
+['Desktop': [480, 800], 'Phone': [390, 844]].each { label, dimensions ->
+    tasks.register("theme$label", JavaExec) {
+        group = 'verification'
+        description = 'Check saved day/night themes and optional campaign chapter backgrounds.'
+        dependsOn tasks.named('installDist'), tasks.named('smokeTestClasses')
+        timeout = java.time.Duration.ofSeconds(170)
+        classpath = files(sourceSets.smokeTest.output, fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+        mainClass = 'yio.tro.opacha.lwjgl3.ThemeSmokeTest'
+        workingDir rootProject.projectDir
+        args dimensions[0], dimensions[1], layout.buildDirectory.dir("themes/$label").get().asFile.absolutePath
+        if (System.getProperty('os.name').toLowerCase().contains('mac')) jvmArgs '-XstartOnFirstThread'
+    }
+}
+tasks.register('themeTest') {
+    group = 'verification'
+    dependsOn tasks.named('themeDesktop'), tasks.named('themePhone')
+}
+
+['Desktop': [480, 800], 'Phone': [390, 844]].each { label, dimensions ->
+    tasks.register("speedSlider$label", JavaExec) {
+        group = 'verification'
+        description = 'Check speed-slider touch input, exact stops, haptic event bounds and persistence.'
+        dependsOn tasks.named('installDist'), tasks.named('smokeTestClasses')
+        timeout = java.time.Duration.ofSeconds(95)
+        classpath = files(sourceSets.smokeTest.output, fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+        mainClass = 'yio.tro.opacha.lwjgl3.SpeedSliderSmokeTest'
+        workingDir rootProject.projectDir
+        args dimensions[0], dimensions[1], layout.buildDirectory.dir("speed-slider/$label").get().asFile.absolutePath
+        if (System.getProperty('os.name').toLowerCase().contains('mac')) jvmArgs '-XstartOnFirstThread'
+    }
+}
+
+tasks.register('speedSliderTest') {
+    group = 'verification'
+    dependsOn tasks.named('speedSliderDesktop'), tasks.named('speedSliderPhone')
+}

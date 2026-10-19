@@ -36,17 +36,18 @@ public class AiSavvyEntity extends AbstractAiEntity {
             if (!available(source)) continue;
             best = better(best, upgradePlan(source));
             for (Link link : source.adjoinedLinks) {
+                if (link.isBlueprint()) continue;
                 Planet target = link.getOppositePlanet(source);
                 if (target.fraction == fractionType) {
                     best = better(best, supportPlan(source, target));
-                } else {
+                } else if (!objectsLayer.tactics.alliances.areAllied(fractionType, target.fraction)) {
                     best = better(best, attackPlan(source, target));
                 }
             }
         }
         if (currentAllowedActionCount >= 2) {
             for (Planet target : getPlanetsList()) {
-                if (target.fraction == fractionType) continue;
+                if (objectsLayer.tactics.alliances.friendly(fractionType, target.fraction)) continue;
                 best = better(best, coordinatedPlan(target));
             }
         }
@@ -54,7 +55,7 @@ public class AiSavvyEntity extends AbstractAiEntity {
     }
 
     private boolean available(Planet planet) {
-        return !isBeyondCommand(planet) && !usedSources.contains(planet);
+        return !isBeyondCommand(planet) && planet.type != PlanetType.artillery && !usedSources.contains(planet);
     }
 
     private Plan better(Plan one, Plan two) {
@@ -77,6 +78,7 @@ public class AiSavvyEntity extends AbstractAiEntity {
         Plan best = null;
         ArrayList<Planet> sources = new ArrayList<>();
         for (Link link : target.adjoinedLinks) {
+            if (link.isBlueprint()) continue;
             Planet source = link.getOppositePlanet(target);
             if (available(source) && source.unitsInside >= 1) sources.add(source);
         }
@@ -85,8 +87,10 @@ public class AiSavvyEntity extends AbstractAiEntity {
                 Planet a = sources.get(i), b = sources.get(j);
                 Link la = a.getLink(target), lb = b.getLink(target);
                 // Large arrival gaps turn a pincer into two losing attacks. Build up instead.
-                if (Math.max(la.distance, lb.distance) > 1.5 * Math.min(la.distance, lb.distance)) continue;
-                Link slower = la.movementMultiplier < lb.movementMultiplier ? la : lb;
+                double ta = 1 / (la.movementMultiplier * la.speedFrom(a));
+                double tb = 1 / (lb.movementMultiplier * lb.speedFrom(b));
+                if (Math.max(ta, tb) > 1.5 * Math.min(ta, tb)) continue;
+                Link slower = ta > tb ? la : lb;
                 int required = requiredAttack(target, slower)
                         + opposingWave(target, la) + opposingWave(target, lb) - opposingWave(target, slower);
                 if (required <= 0) continue;
@@ -112,7 +116,7 @@ public class AiSavvyEntity extends AbstractAiEntity {
     private int requiredAttack(Planet target, Link journey) {
         // Both regeneration timers run every seven normalized simulation steps. Velocity
         // multiplies movement and regeneration together, so it cancels over a full journey.
-        double steps = 1 / Math.max(0.00001, journey.movementMultiplier);
+        double steps = 1 / Math.max(0.00001, journey.movementMultiplier * journey.speedFrom(journey.getOppositePlanet(target)));
         double production = target.isNeutral() ? 0 : steps * 0.1 / 7 * (target.isEconomic() ? 2 : 1);
         double defenseGrowth = target.isEconomic() ? 0 : Math.min(
                 Math.max(0, target.maxDefense - target.currentDefense), steps * 0.1 / 7 * (target.isDefensive() ? 3 : 1));
@@ -125,13 +129,15 @@ public class AiSavvyEntity extends AbstractAiEntity {
     private int opposingWave(Planet target, Link journey) {
         int value = 0;
         for (Unit unit : journey.getWalkersToTarget(journey.getOppositePlanet(target))) {
-            if (unit.isAlive() && unit.fraction != fractionType) value += unit.value;
+            if (unit.isAlive() && !objectsLayer.tactics.alliances.friendly(unit.fraction, fractionType)) value += unit.value;
         }
         return value;
     }
 
     private double attackScore(Planet target, int troops, Link link) {
-        return 35 + (target.isNeutral() ? 0 : 8) + (target.isEconomic() ? 10 : 0)
+        boolean objective = objectsLayer.tactics.flagPlanet == target;
+        for (Planet flag : objectsLayer.tactics.homeFlags) if (flag == target && target.fraction != fractionType) objective = true;
+        return (objective ? 100 : 0) + 35 + (target.isNeutral() ? 0 : 8) + (target.isEconomic() ? 10 : 0)
                 + 1.5 * target.adjoinedLinks.size() - 0.12 * troops - 0.015 / Math.max(0.00001, link.movementMultiplier);
     }
 
@@ -139,7 +145,9 @@ public class AiSavvyEntity extends AbstractAiEntity {
         int value = 0;
         for (Link link : planet.adjoinedLinks) {
             for (Unit unit : link.getWalkersToTarget(planet)) {
-                if (unit.isAlive() && unit.fraction == owner) value += unit.value;
+                if (!unit.isAlive()) continue;
+                if (unit.fraction == owner) value += unit.value;
+                else if (objectsLayer.tactics.alliances.areAllied(owner, unit.fraction)) value += (int) (.7 * unit.value);
             }
         }
         return value;
@@ -149,7 +157,7 @@ public class AiSavvyEntity extends AbstractAiEntity {
         int value = 0;
         for (Link link : planet.adjoinedLinks) {
             for (Unit unit : link.getWalkersToTarget(planet)) {
-                if (unit.isAlive() && unit.fraction != fractionType) value += unit.value;
+                if (unit.isAlive() && !objectsLayer.tactics.alliances.friendly(unit.fraction, fractionType)) value += unit.value;
             }
         }
         return value;
@@ -165,7 +173,7 @@ public class AiSavvyEntity extends AbstractAiEntity {
         int nearbyThreat = 0;
         for (Link link : source.adjoinedLinks) {
             Planet other = link.getOppositePlanet(source);
-            if (other == attackedTarget || other.isNeutral() || other.fraction == fractionType) continue;
+            if (link.isBlueprint() || other == attackedTarget || other.isNeutral() || objectsLayer.tactics.alliances.friendly(other.fraction, fractionType)) continue;
             nearbyThreat = Math.max(nearbyThreat, (int) Math.ceil(other.unitsInside * 0.3));
         }
         // A possible attack is a risk to price, not a reason to delay every expansion
@@ -234,7 +242,7 @@ public class AiSavvyEntity extends AbstractAiEntity {
             if (isBeyondCommand(planet)) continue;
             boolean border = false;
             for (Link link : planet.adjoinedLinks) {
-                if (link.getOppositePlanet(planet).fraction != fractionType) border = true;
+                if (!link.isBlueprint() && !objectsLayer.tactics.alliances.friendly(link.getOppositePlanet(planet).fraction, fractionType)) border = true;
             }
             frontDistance.put(planet, border ? 0 : Integer.MAX_VALUE);
             if (border) queue.add(planet);
@@ -242,6 +250,7 @@ public class AiSavvyEntity extends AbstractAiEntity {
         while (!queue.isEmpty()) {
             Planet planet = queue.remove();
             for (Link link : planet.adjoinedLinks) {
+                if (link.isBlueprint()) continue;
                 Planet other = link.getOppositePlanet(planet);
                 if (isBeyondCommand(other) || frontDistance.get(other) != Integer.MAX_VALUE) continue;
                 frontDistance.put(other, frontDistance.get(planet) + 1);

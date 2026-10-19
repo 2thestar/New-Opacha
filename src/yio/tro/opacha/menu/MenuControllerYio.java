@@ -15,6 +15,9 @@ public class MenuControllerYio {
     ArrayList<InterfaceElement> interfaceElements, visibleElements;
     public LanguagesManager languagesManager;
     private SceneYio currentScene;
+    private final ArrayList<SceneYio> screenOrder = new ArrayList<>();
+    public InterfaceElement keyboardFocus;
+    public boolean showKeyboardFocus;
 
 
     public MenuControllerYio(YioGdxGame yioGdxGame) {
@@ -116,6 +119,16 @@ public class MenuControllerYio {
 
     public void setCurrentScene(SceneYio currentScene) {
         this.currentScene = currentScene;
+        screenOrder.remove(currentScene);
+        screenOrder.add(currentScene);
+        keyboardFocus = null;
+        showKeyboardFocus = false;
+    }
+
+    public SceneYio getCurrentScene() {
+        for (int i = screenOrder.size() - 1; i >= 0; i--)
+            if (screenOrder.get(i).isCurrentlyVisible()) return screenOrder.get(i);
+        return currentScene;
     }
 
 

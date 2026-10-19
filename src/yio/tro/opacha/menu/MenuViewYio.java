@@ -82,6 +82,7 @@ public class MenuViewYio {
             if (element.getDyingStatus() != dyingStatus) continue;
             if (element.isViewPositionNotUpdatedYet()) continue;
             element.getRenderSystem().renderThirdLayer(element);
+            MenuKeyboard.renderFocus(this, element);
         }
     }
 

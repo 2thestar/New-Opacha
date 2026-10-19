@@ -19,6 +19,7 @@ public class Fonts {
     public static BitmapFont miniFont;
     public static BitmapFont gameFont;
     public static BitmapFont unitFont;
+    public static BitmapFont titleFont;
 
 
     public static void initFonts() {
@@ -26,40 +27,63 @@ public class Fonts {
         // because of lang_chars
         CustomLanguageLoader.loadLanguage();
 
-        FileHandle fontFile = Gdx.files.internal("font.ttf");
+        // Keep the original font for scripts Quicksand does not cover.
+        String languageCharacters = LanguagesManager.getInstance().getString("lang_characters");
+        FileHandle fontFile = Gdx.files.internal(languageCharacters.trim().isEmpty()
+                ? "fonts/Quicksand-SemiBold.ttf" : "font.ttf");
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(fontFile);
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        FONT_SIZE = (int) (0.041 * Gdx.graphics.getHeight());
+        FONT_SIZE = (int) Math.min(0.029 * Gdx.graphics.getHeight(), 0.059 * Gdx.graphics.getWidth());
+        parameter.minFilter = com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
+        parameter.magFilter = com.badlogic.gdx.graphics.Texture.TextureFilter.Linear;
 
         parameter.size = (int) (1.0f * FONT_SIZE);
         parameter.characters = getAllCharacters();
         parameter.flip = false;
         buttonFont = generator.generateFont(parameter);
-        buttonFont.setColor(Color.BLACK);
+        buttonFont.setColor(yio.tro.opacha.menu.UiStyle.INK);
 
-        parameter.size = (int) (0.8f * FONT_SIZE);
+        parameter.size = (int) (0.86f * FONT_SIZE);
         parameter.flip = false;
         smallFont = generator.generateFont(parameter);
-        smallFont.setColor(Color.BLACK);
+        smallFont.setColor(yio.tro.opacha.menu.UiStyle.INK);
 
-        parameter.size = (int) (1.6f * FONT_SIZE);
+        parameter.size = (int) (2.25f * FONT_SIZE);
         parameter.flip = false;
         gameFont = generator.generateFont(parameter);
-        gameFont.setColor(Color.BLACK);
+        gameFont.setColor(yio.tro.opacha.menu.UiStyle.INK);
         gameFont.getData().setScale(0.3f);
 
-        parameter.size = (int) (1.0f * FONT_SIZE);
+        parameter.size = (int) (1.4f * FONT_SIZE);
         parameter.flip = false;
         unitFont = generator.generateFont(parameter);
-        unitFont.setColor(Color.WHITE);
+        unitFont.setColor(yio.tro.opacha.menu.UiStyle.INK);
         unitFont.getData().setScale(0.3f);
 
-        parameter.size = (int) (0.65 * FONT_SIZE);
+        parameter.size = (int) (0.76 * FONT_SIZE);
         parameter.flip = false;
         miniFont = generator.generateFont(parameter);
-        miniFont.setColor(Color.BLACK);
+        miniFont.setColor(yio.tro.opacha.menu.UiStyle.INK);
 
         generator.dispose();
+        generator = new FreeTypeFontGenerator(Gdx.files.internal(languageCharacters.trim().isEmpty()
+                ? "fonts/Fraunces-Bold.ttf" : "font.ttf"));
+        parameter.size = (int) (FONT_SIZE * 1.9f);
+        parameter.characters = getAllCharacters();
+        titleFont = generator.generateFont(parameter);
+        titleFont.setColor(yio.tro.opacha.menu.UiStyle.INK);
+        generator.dispose();
+        applyTheme();
+    }
+
+    public static void applyTheme() {
+        if (buttonFont == null) return;
+        buttonFont.setColor(yio.tro.opacha.menu.UiStyle.TEXT);
+        smallFont.setColor(yio.tro.opacha.menu.UiStyle.TEXT);
+        miniFont.setColor(yio.tro.opacha.menu.UiStyle.TEXT);
+        titleFont.setColor(yio.tro.opacha.menu.UiStyle.TEXT);
+        gameFont.setColor(yio.tro.opacha.menu.UiStyle.INK);
+        unitFont.setColor(yio.tro.opacha.menu.UiStyle.INK);
     }
 
 

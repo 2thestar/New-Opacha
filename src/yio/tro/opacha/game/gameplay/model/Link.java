@@ -13,6 +13,7 @@ import yio.tro.opacha.stuff.object_pool.ObjectPoolYio;
 import yio.tro.opacha.stuff.object_pool.ReusableYio;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Link implements ReusableYio, AcceleratableYio, SavableYio{
 
@@ -30,6 +31,10 @@ public class Link implements ReusableYio, AcceleratableYio, SavableYio{
     PointYio tempPoint;
     public ArrayList<Unit> upWalkers;
     public ArrayList<Unit> downWalkers;
+    public boolean directional;
+    public FractionType builder;
+    public int constructionCost, constructionSpent;
+    private final HashSet<Long> peacefulCrossings = new HashSet<>();
     RepeatYio<Link> repeatCheckForBattles;
 
 
@@ -72,6 +77,12 @@ public class Link implements ReusableYio, AcceleratableYio, SavableYio{
         one = null;
         two = null;
         fractionType = null;
+        directional = false;
+        builder = null;
+        constructionCost = constructionSpent = 0;
+        upWalkers.clear();
+        downWalkers.clear();
+        peacefulCrossings.clear();
     }
 
 
@@ -143,25 +154,23 @@ public class Link implements ReusableYio, AcceleratableYio, SavableYio{
 
 
     public void checkForBattles() {
-        if (upWalkers.size() == 0) return;
-        if (downWalkers.size() == 0) return;
-
-        Unit firstUpWalker = upWalkers.get(0);
-        for (Unit downWalker : downWalkers) {
-            if (checkForSingleBattle(firstUpWalker, downWalker)) break;
-        }
-        if (downWalkers.size() == 0) return;
-
-        Unit firstDownWalker = downWalkers.get(0);
-        for (Unit upWalker : upWalkers) {
-            if (checkForSingleBattle(upWalker, firstDownWalker)) break;
+        for (int i = upWalkers.size() - 1; i >= 0; i--) {
+            Unit up = upWalkers.get(i);
+            for (int j = downWalkers.size() - 1; j >= 0 && up.isAlive(); j--) {
+                checkForSingleBattle(up, downWalkers.get(j));
+            }
         }
     }
 
 
     private boolean checkForSingleBattle(Unit upWalker, Unit downWalker) {
-        if (upWalker.fraction == downWalker.fraction) return false;
         if (upWalker.acceleratableFactor.value < downWalker.acceleratableFactor.value) return false;
+        long pair = ((long) upWalker.journeyId << 32) | (downWalker.journeyId & 0xffffffffL);
+        if (peacefulCrossings.contains(pair)) return false;
+        if (linksManager.objectsLayer.tactics.alliances.friendly(upWalker.fraction, downWalker.fraction)) {
+            peacefulCrossings.add(pair);
+            return false;
+        }
 
         applyBattle(upWalker, downWalker);
         return true;
@@ -210,6 +219,7 @@ public class Link implements ReusableYio, AcceleratableYio, SavableYio{
 
     public void onUnitDied(Unit unit) {
         getProperWalkersList(unit).remove(unit);
+        if (upWalkers.isEmpty() || downWalkers.isEmpty()) peacefulCrossings.clear();
     }
 
 
@@ -228,7 +238,21 @@ public class Link implements ReusableYio, AcceleratableYio, SavableYio{
         double ry1 = Yio.roundUp(one.position.center.y / GraphicsYio.width, 3);
         double rx2 = Yio.roundUp(two.position.center.x / GraphicsYio.width, 3);
         double ry2 = Yio.roundUp(two.position.center.y / GraphicsYio.width, 3);
-        return fractionType + " " + rx1 + " " + ry1 + " " + rx2 + " " + ry2;
+        return fractionType + " " + rx1 + " " + ry1 + " " + rx2 + " " + ry2
+                + " " + directional + " " + (builder == null ? "none" : builder)
+                + " " + constructionCost + " " + constructionSpent;
+    }
+
+    public boolean isBlueprint() { return constructionSpent < constructionCost; }
+
+    public float constructionProgress() {
+        return constructionCost == 0 ? 1 : (float) constructionSpent / constructionCost;
+    }
+
+    public float speedFrom(Planet start) { return !directional ? 1 : start == one ? 2 : .3f; }
+
+    public boolean canUse(Planet start, FractionType faction) {
+        return !isBlueprint() || (start == one && faction == builder);
     }
 
 

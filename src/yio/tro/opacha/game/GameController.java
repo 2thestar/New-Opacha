@@ -356,6 +356,9 @@ public class GameController {
 
 
     public void onEscapedToPauseMenu() {
+        objectsLayer.tactics.cancel();
+        Scenes.nodeActions.destroy();
+        Scenes.diplomacy.destroy();
         resetTouchMode();
         objectsLayer.planetsManager.deselect();
     }

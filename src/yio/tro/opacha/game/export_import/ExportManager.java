@@ -38,6 +38,8 @@ public class ExportManager {
         saveGeneralInfo();
         savePlanets();
         saveLinks();
+        startSection("tactics");
+        builder.append(objectsLayer.tactics.save());
 
         builder.append("#");
         return builder.toString();

@@ -195,6 +195,8 @@ public class CheckButtonYio extends InterfaceElement<CheckButtonYio> {
         }
     }
 
+    @Override public void pressArtificially() { onClick(); }
+
 
     public CheckButtonYio setReaction(Reaction reaction) {
         this.reaction = reaction;

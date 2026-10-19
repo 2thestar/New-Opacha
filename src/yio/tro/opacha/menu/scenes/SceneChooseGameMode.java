@@ -14,31 +14,35 @@ public class SceneChooseGameMode extends SceneYio {
     @Override
     public void initialize() {
         setBackground(GroundIndex.CYAN);
+        uiFactory.getLabelElement().setSize(.8, .08).centerHorizontal().alignBottom(.76)
+                .setFont(yio.tro.opacha.Fonts.titleFont).setString(languagesManager.getString("ui_choose_game"));
 
         skirmishButton = uiFactory.getButton()
-                .setSize(0.8, 0.08)
-                .setPosition(0.1, 0.57)
+                .setSize(0.8, 0.075)
+                .setPosition(0.1, 0.61)
                 .applyText("skirmish")
+                .setGroundIndex(GroundIndex.YELLOW)
                 .setReaction(getSkirmishReaction())
                 .setAnimation(AnimationYio.none);
 
         uiFactory.getButton()
                 .clone(previousElement)
                 .alignBottom(previousElement, 0.02)
-                .applyText("editor")
-                .setReaction(getEditorReaction());
+                .applyText("campaign").setGroundIndex(GroundIndex.BUTTON_WHITE)
+                .setReaction(getCampaignReaction());
 
         uiFactory.getButton()
                 .clone(previousElement)
                 .alignBottom(previousElement, 0.02)
                 .applyText("calendar")
+                .setGroundIndex(GroundIndex.BUTTON_WHITE)
                 .setReaction(getCalendarReaction());
 
         uiFactory.getButton()
                 .clone(previousElement)
                 .alignBottom(previousElement, 0.02)
-                .applyText("campaign")
-                .setReaction(getCampaignReaction());
+                .applyText("editor").setGroundIndex(GroundIndex.BUTTON_WHITE)
+                .setReaction(getEditorReaction());
 
         spawnBackButton(getBackReaction());
     }

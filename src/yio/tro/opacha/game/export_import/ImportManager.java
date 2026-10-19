@@ -32,6 +32,7 @@ public class ImportManager {
         applyAiTypes();
         applyPlanets();
         applyLinks();
+        objectsLayer.tactics.load(getSection("tactics"));
 
         finish();
     }
@@ -63,6 +64,12 @@ public class ImportManager {
 
         Link link = objectsLayer.linksManager.addLink(one, two);
         link.setFractionType(fractionType);
+        if (split.length >= 9) {
+            link.directional = Boolean.parseBoolean(split[5]);
+            link.builder = split[6].equals("none") ? null : FractionType.valueOf(split[6]);
+            link.constructionCost = Integer.parseInt(split[7]);
+            link.constructionSpent = Integer.parseInt(split[8]);
+        }
     }
 
 
@@ -92,6 +99,10 @@ public class ImportManager {
         planet.setType(planetType);
         planet.setUnitsInside(unitsInside);
         planet.applyMaxShields();
+        if (split.length >= 7) {
+            planet.artilleryReload = Float.parseFloat(split[5]);
+            planet.setCurrentDefense(Float.parseFloat(split[6]));
+        }
     }
 
 
@@ -102,6 +113,8 @@ public class ImportManager {
         String[] split = gameRulesSection.split(" ");
 
         GameRules.difficulty = Difficulty.valueOf(split[0]);
+        GameRules.playType = split.length > 2 ? PlayType.valueOf(split[2]) : PlayType.conquest;
+        GameRules.directionalRoutes = split.length > 3 && Boolean.parseBoolean(split[3]);
         if (split.length > 1) {
             GameRules.aiOnlyMode = Boolean.valueOf(split[1]);
         }

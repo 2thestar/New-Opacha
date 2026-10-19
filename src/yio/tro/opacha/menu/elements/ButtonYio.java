@@ -173,7 +173,7 @@ public class ButtonYio extends InterfaceElement<ButtonYio> {
     protected void onSizeChanged() {
         super.onSizeChanged();
 
-        if (position.height < 0.061 * GraphicsYio.height) {
+        if (position.height < 0.045 * GraphicsYio.height) {
             setFont(Fonts.miniFont);
         }
 
@@ -181,10 +181,7 @@ public class ButtonYio extends InterfaceElement<ButtonYio> {
             setBorder(false);
         }
 
-        cornerRadius = position.height / 2 - 1;
-        if (cornerRadius > 0.05f * GraphicsYio.height) {
-            cornerRadius = 0.05f * GraphicsYio.height;
-        }
+        cornerRadius = Math.min(position.height / 2 - 1, 0.055f * GraphicsYio.width);
     }
 
 
@@ -205,7 +202,7 @@ public class ButtonYio extends InterfaceElement<ButtonYio> {
 
         menuControllerYio.yioGdxGame.render();
         needToPerformAction = true;
-        timeToPerformAction = System.currentTimeMillis() + 100;
+        timeToPerformAction = System.currentTimeMillis() + 45;
     }
 
 

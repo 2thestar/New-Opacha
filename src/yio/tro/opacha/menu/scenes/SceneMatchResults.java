@@ -2,6 +2,8 @@ package yio.tro.opacha.menu.scenes;
 
 import yio.tro.opacha.game.gameplay.model.MatchResults;
 import yio.tro.opacha.menu.LanguagesManager;
+import yio.tro.opacha.menu.elements.ButtonYio;
+import yio.tro.opacha.menu.elements.AnimationYio;
 import yio.tro.opacha.menu.reactions.Reaction;
 import yio.tro.opacha.stuff.factor_yio.FactorYio;
 
@@ -11,17 +13,30 @@ public class SceneMatchResults extends ModalSceneYio{
 
     MatchResults matchResults;
     private ArrayList<String> lines;
-    FactorYio waitFactor;
+    public ButtonYio continueButton;
+
+    @Override protected void beginCreation() {
+        menuControllerYio.setCurrentScene(this);
+        destroyAllVisibleElements();
+        menuControllerYio.checkToRemoveInvisibleElements();
+    }
 
 
     @Override
     protected void initialize() {
         lines = new ArrayList<>();
         matchResults = null;
-        waitFactor = new FactorYio();
         createCloseButton();
         updateBackReaction();
         createDefaultLabel(0.8, 0.3);
+        defaultLabel.alignBottom(.28);
+        continueButton = uiFactory.getButton().setParent(defaultLabel).setSize(.62, .065)
+                .centerHorizontal().alignBottom(.025).applyText("continue_match")
+                .setGroundIndex(yio.tro.opacha.menu.elements.ground.GroundIndex.YELLOW)
+                .setBackgroundEnabled(true).setBorder(true)
+                .setAnimation(AnimationYio.down).setReaction(new Reaction() {
+                    @Override protected void reaction() { getBackReaction().performReactActions(menuControllerYio); }
+                });
     }
 
 
@@ -38,26 +53,24 @@ public class SceneMatchResults extends ModalSceneYio{
     @Override
     protected void onAppear() {
         super.onAppear();
-        waitFactor.reset();
-        waitFactor.appear(0, 0.18);
     }
 
 
     @Override
     public void move() {
         super.move();
-        moveWaitFactor();
-    }
-
-
-    private void moveWaitFactor() {
-        if (!waitFactor.move()) return;
-        if (waitFactor.get() < 1) return;
-        getBackReaction().performReactActions(menuControllerYio);
     }
 
 
     private String getWinnerColorLine() {
+        if (matchResults.coalition.size() > 1) {
+            StringBuilder colors = new StringBuilder();
+            for (yio.tro.opacha.game.gameplay.model.FractionType owner : matchResults.coalition) {
+                if (colors.length() > 0) colors.append(", ");
+                colors.append(languagesManager.getString(owner.toString()));
+            }
+            return languagesManager.getString("winners") + ": " + colors;
+        }
         String colorString = LanguagesManager.getInstance().getString(matchResults.winner + "");
         return LanguagesManager.getInstance().getString("winner") + ": " + colorString;
     }
@@ -73,7 +86,7 @@ public class SceneMatchResults extends ModalSceneYio{
 
 
     private void updateBackReaction() {
-        closeButton.setReaction(null);
+        closeButton.setReaction(getBackReaction());
     }
 
 

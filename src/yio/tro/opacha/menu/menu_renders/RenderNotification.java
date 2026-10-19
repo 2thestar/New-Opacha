@@ -40,14 +40,14 @@ public class RenderNotification extends RenderInterfaceElement {
 
 
     private void renderMessage() {
-        Color color = font.getColor();
+        float r = font.getColor().r, g = font.getColor().g, b = font.getColor().b, a = font.getColor().a;
         font.setColor(Color.BLACK);
         GraphicsYio.setFontAlpha(font, notificationElement.getFactor().get());
 
         GraphicsYio.renderText(batch, font, notificationElement.message, notificationElement.textPosition);
 
         GraphicsYio.setFontAlpha(font, 1);
-        font.setColor(color);
+        font.setColor(r, g, b, a);
     }
 
 

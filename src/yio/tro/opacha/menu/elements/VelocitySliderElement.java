@@ -4,6 +4,7 @@ import yio.tro.opacha.Fonts;
 import yio.tro.opacha.Yio;
 import yio.tro.opacha.game.VelocityManager;
 import yio.tro.opacha.menu.MenuControllerYio;
+import yio.tro.opacha.menu.UiHaptics;
 import yio.tro.opacha.menu.menu_renders.MenuRenders;
 import yio.tro.opacha.menu.menu_renders.RenderInterfaceElement;
 import yio.tro.opacha.stuff.*;
@@ -19,6 +20,8 @@ public class VelocitySliderElement extends InterfaceElement<VelocitySliderElemen
     boolean touched;
     public SelectionEngineYio selectionEngineYio;
     boolean forceVisualFrame;
+    private float grabOffset;
+    private int activePointer = -1;
 
 
     public VelocitySliderElement(MenuControllerYio menuControllerYio, int id) {
@@ -26,7 +29,7 @@ public class VelocitySliderElement extends InterfaceElement<VelocitySliderElemen
         centralLine = new RectangleYio();
         framePosition = new CircleYio();
         title = new RenderableTextYio();
-        title.setFont(Fonts.miniFont);
+        title.setFont(Fonts.smallFont);
         visualFrame = new CircleYio();
         touched = false;
         selectionEngineYio = new SelectionEngineYio();
@@ -64,7 +67,7 @@ public class VelocitySliderElement extends InterfaceElement<VelocitySliderElemen
         float actualValue = VelocityManager.getInstance().value;
         int index = convertVelocityToIndex(actualValue);
         if (index == -1) {
-            index = 10;
+            index = 6;
         }
         setIndex(index);
     }
@@ -93,7 +96,8 @@ public class VelocitySliderElement extends InterfaceElement<VelocitySliderElemen
 
 
     private void updateTitle() {
-        title.setString(values[index] + "x");
+        float value = values[index];
+        title.setString((value == (int) value ? Integer.toString((int) value) : Float.toString(value)) + "x");
         title.updateMetrics();
     }
 
@@ -149,23 +153,24 @@ public class VelocitySliderElement extends InterfaceElement<VelocitySliderElemen
 
     private void updateFramePosition() {
         framePosition.center.y = centralLine.y + centralLine.height / 2;
-        framePosition.radius = 0.05f * GraphicsYio.height;
-        float length = centralLine.width - 2 * framePosition.radius;
-        float delta = length / (values.length + 1);
-        framePosition.center.x = centralLine.x + framePosition.radius + (index + 1) * delta;
+        framePosition.radius = 0.10f * GraphicsYio.width;
+        framePosition.center.x = centralLine.x + index * centralLine.width / (values.length - 1);
     }
 
 
     private void updateCentralLinePosition() {
-        centralLine.x = viewPosition.x;
+        float inset = .11f * GraphicsYio.width;
+        centralLine.x = viewPosition.x + inset;
         centralLine.height = 2 * GraphicsYio.borderThickness;
         centralLine.y = viewPosition.y + viewPosition.height / 2 - centralLine.height / 2;
-        centralLine.width = viewPosition.width;
+        centralLine.width = viewPosition.width - 2 * inset;
     }
 
 
     @Override
     public void onDestroy() {
+        touched = false;
+        activePointer = -1;
         VelocityManager.getInstance().saveValues();
     }
 
@@ -179,6 +184,8 @@ public class VelocitySliderElement extends InterfaceElement<VelocitySliderElemen
 
     @Override
     public void onAppear() {
+        touched = false;
+        activePointer = -1;
         loadValues();
         forceVisualFrame = true;
     }
@@ -195,35 +202,35 @@ public class VelocitySliderElement extends InterfaceElement<VelocitySliderElemen
         touched = isTouched();
         if (!touched) return false;
         selectionEngineYio.select();
+        grabOffset = Math.abs(currentTouch.x - visualFrame.center.x) <= visualFrame.radius
+                ? currentTouch.x - visualFrame.center.x : 0;
+        applyCurrentTouch();
         return true;
     }
 
 
     private boolean isTouched() {
-        float verOffset = 0.03f * GraphicsYio.height;
-        float horOffset = 0.03f * GraphicsYio.width;
-        return isTouchInsideRectangle(currentTouch.x, currentTouch.y, viewPosition, horOffset, verOffset);
+        return isTouchInsideRectangle(currentTouch.x, currentTouch.y, viewPosition, 0, .005f * GraphicsYio.height);
     }
 
 
     void applyCurrentTouch() {
         int previousIndex = index;
 
-        float sx = centralLine.x + framePosition.radius;
-        float length = centralLine.width - 2 * framePosition.radius;
-        float v = (currentTouch.x - sx) / length;
+        float sx = centralLine.x;
+        float length = centralLine.width;
+        float v = (currentTouch.x - grabOffset - sx) / length;
         if (v < 0) {
             v = 0;
         }
         if (v > 1) {
             v = 1;
         }
-        float delta = 1f / (values.length - 1);
-        float f = v / delta;
-        setIndex((int) f);
+        setIndex(Math.round(v * (values.length - 1)));
 
         if (previousIndex != index) {
             applyValues();
+            UiHaptics.speedStep();
         }
 
         visualFrame.center.x = sx + v * length;
@@ -232,6 +239,46 @@ public class VelocitySliderElement extends InterfaceElement<VelocitySliderElemen
 
     public void applyValues() {
         VelocityManager.getInstance().setValue(values[index]);
+    }
+
+    public int getStepCount() { return values.length; }
+
+    public boolean isDragging() { return touched; }
+
+    public boolean cancelTouch(int pointer) {
+        if (pointer != activePointer) return false;
+        touched = false;
+        activePointer = -1;
+        forceVisualFrame = true;
+        VelocityManager.getInstance().saveValues();
+        return true;
+    }
+
+    public void stepFromInput(int direction) {
+        int previousIndex = index;
+        setIndex(index + direction);
+        if (index == previousIndex) return;
+        applyValues();
+        UiHaptics.speedStep();
+    }
+
+    /** One finger owns the drag until release; another touch cannot move or release it. */
+    @Override public boolean touchDownElement(int x, int y, int pointer, int button) {
+        if (activePointer != -1) return true;
+        if (!super.touchDownElement(x, y, pointer, button)) return false;
+        activePointer = pointer;
+        return true;
+    }
+
+    @Override public boolean touchDragElement(int x, int y, int pointer) {
+        return pointer == activePointer && super.touchDragElement(x, y, pointer);
+    }
+
+    @Override public boolean touchUpElement(int x, int y, int pointer, int button) {
+        if (pointer != activePointer) return false;
+        boolean handled = super.touchUpElement(x, y, pointer, button);
+        activePointer = -1;
+        return handled;
     }
 
 

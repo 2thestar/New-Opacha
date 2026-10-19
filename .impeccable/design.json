@@ -1,0 +1,527 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-19T18:12:37.458Z",
+  "title": "Design System: New Opacha",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Warm paper",
+        "tonalRamp": [
+          "oklch(15.00% 0.0136 34.30)",
+          "oklch(26.43% 0.0136 34.30)",
+          "oklch(37.86% 0.0136 34.30)",
+          "oklch(49.29% 0.0136 34.30)",
+          "oklch(60.71% 0.0136 34.30)",
+          "oklch(72.14% 0.0136 34.30)",
+          "oklch(83.57% 0.0136 34.30)",
+          "oklch(95.00% 0.0136 34.30)"
+        ]
+      },
+      "board": {
+        "role": "neutral",
+        "displayName": "Near-white board",
+        "tonalRamp": [
+          "oklch(15.00% 0.0017 67.80)",
+          "oklch(26.43% 0.0017 67.80)",
+          "oklch(37.86% 0.0017 67.80)",
+          "oklch(49.29% 0.0017 67.80)",
+          "oklch(60.71% 0.0017 67.80)",
+          "oklch(72.14% 0.0017 67.80)",
+          "oklch(83.57% 0.0017 67.80)",
+          "oklch(95.00% 0.0017 67.80)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Charcoal ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0096 39.34)",
+          "oklch(26.43% 0.0096 39.34)",
+          "oklch(37.86% 0.0096 39.34)",
+          "oklch(49.29% 0.0096 39.34)",
+          "oklch(60.71% 0.0096 39.34)",
+          "oklch(72.14% 0.0096 39.34)",
+          "oklch(83.57% 0.0096 39.34)",
+          "oklch(95.00% 0.0096 39.34)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted route ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0149 48.42)",
+          "oklch(26.43% 0.0149 48.42)",
+          "oklch(37.86% 0.0149 48.42)",
+          "oklch(49.29% 0.0149 48.42)",
+          "oklch(60.71% 0.0149 48.42)",
+          "oklch(72.14% 0.0149 48.42)",
+          "oklch(83.57% 0.0149 48.42)",
+          "oklch(95.00% 0.0149 48.42)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Soft track rule",
+        "tonalRamp": [
+          "oklch(15.00% 0.0125 43.26)",
+          "oklch(26.43% 0.0125 43.26)",
+          "oklch(37.86% 0.0125 43.26)",
+          "oklch(49.29% 0.0125 43.26)",
+          "oklch(60.71% 0.0125 43.26)",
+          "oklch(72.14% 0.0125 43.26)",
+          "oklch(83.57% 0.0125 43.26)",
+          "oklch(95.00% 0.0125 43.26)"
+        ]
+      },
+      "gold": {
+        "role": "primary",
+        "displayName": "Gold",
+        "tonalRamp": [
+          "oklch(15.00% 0.1615 91.35)",
+          "oklch(26.43% 0.1615 91.35)",
+          "oklch(37.86% 0.1615 91.35)",
+          "oklch(49.29% 0.1615 91.35)",
+          "oklch(60.71% 0.1615 91.35)",
+          "oklch(72.14% 0.1615 91.35)",
+          "oklch(83.57% 0.1615 91.35)",
+          "oklch(95.00% 0.1615 91.35)"
+        ]
+      },
+      "green": {
+        "role": "secondary",
+        "displayName": "Green faction",
+        "tonalRamp": [
+          "oklch(15.00% 0.1265 159.40)",
+          "oklch(26.43% 0.1265 159.40)",
+          "oklch(37.86% 0.1265 159.40)",
+          "oklch(49.29% 0.1265 159.40)",
+          "oklch(60.71% 0.1265 159.40)",
+          "oklch(72.14% 0.1265 159.40)",
+          "oklch(83.57% 0.1265 159.40)",
+          "oklch(95.00% 0.1265 159.40)"
+        ]
+      },
+      "red": {
+        "role": "secondary",
+        "displayName": "Coral faction",
+        "tonalRamp": [
+          "oklch(15.00% 0.1192 27.56)",
+          "oklch(26.43% 0.1192 27.56)",
+          "oklch(37.86% 0.1192 27.56)",
+          "oklch(49.29% 0.1192 27.56)",
+          "oklch(60.71% 0.1192 27.56)",
+          "oklch(72.14% 0.1192 27.56)",
+          "oklch(83.57% 0.1192 27.56)",
+          "oklch(95.00% 0.1192 27.56)"
+        ]
+      },
+      "cyan": {
+        "role": "secondary",
+        "displayName": "Cyan faction",
+        "tonalRamp": [
+          "oklch(15.00% 0.0797 218.70)",
+          "oklch(26.43% 0.0797 218.70)",
+          "oklch(37.86% 0.0797 218.70)",
+          "oklch(49.29% 0.0797 218.70)",
+          "oklch(60.71% 0.0797 218.70)",
+          "oklch(72.14% 0.0797 218.70)",
+          "oklch(83.57% 0.0797 218.70)",
+          "oklch(95.00% 0.0797 218.70)"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Day menu text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0096 39.34)",
+          "oklch(26.43% 0.0096 39.34)",
+          "oklch(37.86% 0.0096 39.34)",
+          "oklch(49.29% 0.0096 39.34)",
+          "oklch(60.71% 0.0096 39.34)",
+          "oklch(72.14% 0.0096 39.34)",
+          "oklch(83.57% 0.0096 39.34)",
+          "oklch(95.00% 0.0096 39.34)"
+        ]
+      },
+      "outline": {
+        "role": "neutral",
+        "displayName": "Day outline",
+        "tonalRamp": [
+          "oklch(15.00% 0.0096 39.34)",
+          "oklch(26.43% 0.0096 39.34)",
+          "oklch(37.86% 0.0096 39.34)",
+          "oklch(49.29% 0.0096 39.34)",
+          "oklch(60.71% 0.0096 39.34)",
+          "oklch(72.14% 0.0096 39.34)",
+          "oklch(83.57% 0.0096 39.34)",
+          "oklch(95.00% 0.0096 39.34)"
+        ]
+      },
+      "neutral": {
+        "role": "neutral",
+        "displayName": "Day neutral node",
+        "tonalRamp": [
+          "oklch(15.00% 0.0017 67.80)",
+          "oklch(26.43% 0.0017 67.80)",
+          "oklch(37.86% 0.0017 67.80)",
+          "oklch(49.29% 0.0017 67.80)",
+          "oklch(60.71% 0.0017 67.80)",
+          "oklch(72.14% 0.0017 67.80)",
+          "oklch(83.57% 0.0017 67.80)",
+          "oklch(95.00% 0.0017 67.80)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Node highlight",
+        "tonalRamp": [
+          "oklch(15.00% 0.0000 89.88)",
+          "oklch(26.43% 0.0000 89.88)",
+          "oklch(37.86% 0.0000 89.88)",
+          "oklch(49.29% 0.0000 89.88)",
+          "oklch(60.71% 0.0000 89.88)",
+          "oklch(72.14% 0.0000 89.88)",
+          "oklch(83.57% 0.0000 89.88)",
+          "oklch(95.00% 0.0000 89.88)"
+        ]
+      },
+      "night-paper": {
+        "role": "neutral",
+        "displayName": "Night menu",
+        "tonalRamp": [
+          "oklch(15.00% 0.0175 255.68)",
+          "oklch(26.43% 0.0175 255.68)",
+          "oklch(37.86% 0.0175 255.68)",
+          "oklch(49.29% 0.0175 255.68)",
+          "oklch(60.71% 0.0175 255.68)",
+          "oklch(72.14% 0.0175 255.68)",
+          "oklch(83.57% 0.0175 255.68)",
+          "oklch(95.00% 0.0175 255.68)"
+        ]
+      },
+      "night-board": {
+        "role": "neutral",
+        "displayName": "Night board",
+        "tonalRamp": [
+          "oklch(15.00% 0.0234 253.63)",
+          "oklch(26.43% 0.0234 253.63)",
+          "oklch(37.86% 0.0234 253.63)",
+          "oklch(49.29% 0.0234 253.63)",
+          "oklch(60.71% 0.0234 253.63)",
+          "oklch(72.14% 0.0234 253.63)",
+          "oklch(83.57% 0.0234 253.63)",
+          "oklch(95.00% 0.0234 253.63)"
+        ]
+      },
+      "night-text": {
+        "role": "neutral",
+        "displayName": "Night menu text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0108 76.60)",
+          "oklch(26.43% 0.0108 76.60)",
+          "oklch(37.86% 0.0108 76.60)",
+          "oklch(49.29% 0.0108 76.60)",
+          "oklch(60.71% 0.0108 76.60)",
+          "oklch(72.14% 0.0108 76.60)",
+          "oklch(83.57% 0.0108 76.60)",
+          "oklch(95.00% 0.0108 76.60)"
+        ]
+      },
+      "night-outline": {
+        "role": "neutral",
+        "displayName": "Night outline",
+        "tonalRamp": [
+          "oklch(15.00% 0.0260 248.20)",
+          "oklch(26.43% 0.0260 248.20)",
+          "oklch(37.86% 0.0260 248.20)",
+          "oklch(49.29% 0.0260 248.20)",
+          "oklch(60.71% 0.0260 248.20)",
+          "oklch(72.14% 0.0260 248.20)",
+          "oklch(83.57% 0.0260 248.20)",
+          "oklch(95.00% 0.0260 248.20)"
+        ]
+      },
+      "night-muted": {
+        "role": "neutral",
+        "displayName": "Night neutral route",
+        "tonalRamp": [
+          "oklch(15.00% 0.0237 248.14)",
+          "oklch(26.43% 0.0237 248.14)",
+          "oklch(37.86% 0.0237 248.14)",
+          "oklch(49.29% 0.0237 248.14)",
+          "oklch(60.71% 0.0237 248.14)",
+          "oklch(72.14% 0.0237 248.14)",
+          "oklch(83.57% 0.0237 248.14)",
+          "oklch(95.00% 0.0237 248.14)"
+        ]
+      },
+      "night-rule": {
+        "role": "neutral",
+        "displayName": "Night inactive track",
+        "tonalRamp": [
+          "oklch(15.00% 0.0283 254.10)",
+          "oklch(26.43% 0.0283 254.10)",
+          "oklch(37.86% 0.0283 254.10)",
+          "oklch(49.29% 0.0283 254.10)",
+          "oklch(60.71% 0.0283 254.10)",
+          "oklch(72.14% 0.0283 254.10)",
+          "oklch(83.57% 0.0283 254.10)",
+          "oklch(95.00% 0.0283 254.10)"
+        ]
+      },
+      "night-neutral": {
+        "role": "neutral",
+        "displayName": "Night neutral node",
+        "tonalRamp": [
+          "oklch(15.00% 0.0068 233.65)",
+          "oklch(26.43% 0.0068 233.65)",
+          "oklch(37.86% 0.0068 233.65)",
+          "oklch(49.29% 0.0068 233.65)",
+          "oklch(60.71% 0.0068 233.65)",
+          "oklch(72.14% 0.0068 233.65)",
+          "oklch(83.57% 0.0068 233.65)",
+          "oklch(95.00% 0.0068 233.65)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Menu title",
+        "purpose": "Fraunces titles; original font retained when lang_characters is nonempty."
+      },
+      "body": {
+        "displayName": "Standard control",
+        "purpose": "Button labels and slider headings."
+      },
+      "label": {
+        "displayName": "Compact label",
+        "purpose": "Small actions, slider values, checkbox labels."
+      },
+      "caption": {
+        "displayName": "Smallest label",
+        "purpose": "Existing miniFont uses."
+      },
+      "node": {
+        "displayName": "Node count",
+        "purpose": "Game-camera text; generated at 2.25B and rendered at 0.3 scale."
+      },
+      "unit": {
+        "displayName": "Unit count",
+        "purpose": "Game-camera text; generated at 1.4B and rendered at 0.3 scale."
+      }
+    },
+    "shadows": [
+      {
+        "name": "button-depth",
+        "value": "s=max(1.5px,0.0042W); opaque ink at (+0.5s,-max(0,0.008W-press)); 9% ink at (+s,-0.012W)",
+        "purpose": "Native bottom-left coordinates; face y is also reduced by press. Automatic for touchable non-silent buttons below 0.13H, or explicit shadow."
+      },
+      {
+        "name": "node-depth",
+        "value": "6% ink disc at (x+0.10r,y-0.20r), radius 1.12r; 13% ink disc at (x+0.07r,y-0.14r), radius r",
+        "purpose": "Depth beneath each visible node."
+      },
+      {
+        "name": "node-face",
+        "value": "ink radius r; faction face at (x,y+0.055r), radius 0.89r; 40% white highlight at (x-0.28r,y+0.48r), radius 0.18r",
+        "purpose": "Normal node face; colorblind mode keeps original faction textures."
+      },
+      {
+        "name": "slider-depth",
+        "value": "12% ink disc at (x+1px,y-0.004W); face at y+0.002W, radius circleSize-0.004W",
+        "purpose": "Shallow thumb offset."
+      },
+      {
+        "name": "speed-handle-depth",
+        "value": "16% ink underlay at y-0.003H beneath the handle; solid ink rim inset by max(1.5px,0.004W)",
+        "purpose": "Shallow handle depth in both themes."
+      }
+    ],
+    "motion": [
+      {
+        "name": "button-press",
+        "value": "press=selectionFactor*0.006W; ink wash=0.07*selectionFactor; selectionFactor.setValues(1,0); selectionFactor.destroy(1,0.5)",
+        "purpose": "Native engine feedback while selected; not a millisecond duration or a hover animation."
+      },
+      {
+        "name": "slider-press",
+        "value": "radius=0.012H+0.005H*sizeFactor",
+        "purpose": "Transient thumb enlargement."
+      },
+      {
+        "name": "speed-handle",
+        "value": "While dragging: halfWidth=0.10W+0.004W; height=0.87 × cardHeight. Rest: halfWidth=0.10W; height=0.81 × cardHeight. After drag: x += 0.2 × (snappedX-x).",
+        "purpose": "Transient handle growth and native settling toward the displayed nearest stop."
+      }
+    ],
+    "breakpoints": [],
+    "themes": {
+      "default": "day",
+      "settingsRoute": "Settings > Appearance",
+      "savedPreferences": [
+        "night_mode",
+        "abstract_backgrounds"
+      ],
+      "abstractBackgroundsDefault": false,
+      "nightOverrides": {
+        "paper": "{colors.night-paper}",
+        "board": "{colors.night-board}",
+        "text": "{colors.night-text}",
+        "outline": "{colors.night-outline}",
+        "muted": "{colors.night-muted}",
+        "rule": "{colors.night-rule}",
+        "neutral": "{colors.night-neutral}"
+      },
+      "behavior": "Changes mutate retained Color objects and recolor fonts immediately. Colored-button labels and node/unit counts retain dark ink."
+    },
+    "backgrounds": {
+      "motifs": [
+        "bottom waves",
+        "upper-right arcs",
+        "left waves",
+        "top waves",
+        "lower-left arcs",
+        "right waves"
+      ],
+      "chapter": "max(0, levelIndex) / 30 using integer division; tutorial index 0 belongs to the first group",
+      "selection": "motif=floorMod(chapter,6); drift=(chapter%7)*0.019; tint cycles cyan, green, gold",
+      "context": "Menus: highest unlocked chapter. Campaign map: current level chapter. Skirmish/editor: chapter 0.",
+      "geometry": "Two edge discs (0.48 and 0.47 × width), three bands, 32 line segments per band, stroke=0.0035 × width",
+      "opacity": "Day discs 0.045 and lines 0.10; Night discs 0.055 and lines 0.13; multiplied by scene alpha",
+      "motion": "Static; no clock, randomness, or gameplay-state consumption"
+    },
+    "speedControl": {
+      "card": "0.94W × 0.066H at left 0.03W, top 0.09H; paper fill; track inset 0.11W on both sides",
+      "rail": "outline width 0.016W; gold progress width 0.008W; outline stop radii 0.007W, or 0.011W for 1x; hole radius 0.0035W, gold through the selected index and paper after it",
+      "handle": "width 0.20W; height 0.81 × cardHeight; pressed half-width adds 0.004W and height becomes 0.87 × cardHeight; inset max(1.5px,0.004W); dark Fonts.smallFont label",
+      "values": [
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.75,
+        1,
+        1.25,
+        1.5,
+        2,
+        2.5,
+        3,
+        4
+      ],
+      "input": "Tap away applies immediately. Grabbing the handle preserves pointer offset. Index=round(clamp(position,0,1) × 12). One pointer owns the drag; touchCancelled releases ownership and preserves the last value. Left/Right steps a focused control.",
+      "persistence": "VelocityManager stores the chosen speed; slider loads it on appearance and saves on cancellation or destruction.",
+      "nearbyControls": "Pacts: 0.21W × 0.052H, left 0.52W, top 0.025H. Target banner: top 0.18H."
+    },
+    "haptics": [
+      {
+        "name": "speed-step",
+        "value": "UiHaptics.speedStep(); minimum interval 70ms; changed stop only",
+        "platform": "Android native View.performHapticFeedback: API 34+ SEGMENT_FREQUENT_TICK, otherwise CLOCK_TICK; respects system haptic settings. Desktop defaults to a no-op.",
+        "verification": "Source and automated event behavior can be checked without a device; physical haptic feel is not verified."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button — native preview",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Day HTML/CSS preview of a gold canvas action at W=390, H=844; uses installed fonts when available.",
+      "html": "<button class=\"ds-primary\">Play</button>",
+      "css": ".ds-primary{font:600 23px Quicksand,sans-serif;color:#302A28;border:1.64px solid #302A28;border-radius:16px;min-height:63.3px;padding:8px 24px;box-shadow:.82px 3.12px 0 #302A28,1.64px 4.68px 0 rgba(48,42,40,.09);background:#FED23F}.ds-primary:hover{cursor:pointer}.ds-primary:focus-visible{outline:2px solid #302A28;outline-offset:3.51px}.ds-primary:active{transform:translateY(2.34px);box-shadow:.82px .78px 0 #302A28,1.64px 4.68px 0 rgba(48,42,40,.09);background-image:linear-gradient(rgba(48,42,40,.07),rgba(48,42,40,.07))}"
+    },
+    {
+      "name": "Secondary button — native preview",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Day HTML/CSS preview of a board-colored canvas choice; dimensions vary by scene.",
+      "html": "<button class=\"ds-secondary\">How to play</button>",
+      "css": ".ds-secondary{font:600 23px Quicksand,sans-serif;color:#302A28;border:1.64px solid #302A28;border-radius:16px;min-height:50.64px;padding:8px 24px;box-shadow:.82px 3.12px 0 #302A28,1.64px 4.68px 0 rgba(48,42,40,.09);background:#FCFBFA}.ds-secondary:hover{cursor:pointer}.ds-secondary:focus-visible{outline:2px solid #302A28;outline-offset:3.51px}.ds-secondary:active{transform:translateY(2.34px);box-shadow:.82px .78px 0 #302A28,1.64px 4.68px 0 rgba(48,42,40,.09);background-image:linear-gradient(rgba(48,42,40,.07),rgba(48,42,40,.07))}"
+    },
+    {
+      "name": "Quiet action — native preview",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Day HTML/CSS preview of the borderless small-font action.",
+      "html": "<button class=\"ds-quiet\">Quit</button>",
+      "css": ".ds-quiet{font:600 19px Quicksand,sans-serif;background:transparent;color:#302A28;border:0;padding:8px 16px}.ds-quiet:hover{cursor:pointer}.ds-quiet:focus-visible{outline:2px solid #302A28;outline-offset:3.51px}.ds-quiet:active{transform:translateY(2.34px)}"
+    },
+    {
+      "name": "Setup slider — native preview",
+      "kind": "input",
+      "refersTo": "slider",
+      "description": "Day HTML/CSS preview of the native slider; the label and segment positions are a static sample.",
+      "html": "<label class=\"ds-slider\"><span class=\"ds-slider-title\">Level size</span><span class=\"ds-slider-value\">small</span><input class=\"ds-slider-input\" type=\"range\" min=\"0\" max=\"4\" value=\"1\" aria-label=\"Level size\" /></label>",
+      "css": ".ds-slider{display:grid;width:296px;gap:12px;color:#302A28;font:600 23px Quicksand,sans-serif}.ds-slider-title{grid-column:1}.ds-slider-value{grid-column:2;justify-self:end;align-self:end;font-size:19px}.ds-slider-input{grid-column:1/3;width:100%;height:2px;appearance:none;background:linear-gradient(to right,#302A28 25%,#D8CECA 25%);accent-color:#FED23F}.ds-slider-input::-webkit-slider-thumb{appearance:none;width:20.26px;height:20.26px;border:1.56px solid #302A28;border-radius:50%;background:#FED23F;box-shadow:1px 1.56px 0 rgba(48,42,40,.12)}.ds-slider-input::-moz-range-thumb{width:17.14px;height:17.14px;border:1.56px solid #302A28;border-radius:50%;background:#FED23F;box-shadow:1px 1.56px 0 rgba(48,42,40,.12)}.ds-slider-input:hover{cursor:pointer}.ds-slider-input:focus-visible{outline:2px solid #302A28;outline-offset:8px}.ds-slider-input:active::-webkit-slider-thumb{width:28.7px;height:28.7px}.ds-slider-input:active::-moz-range-thumb{width:25.58px;height:25.58px}"
+    },
+    {
+      "name": "Checkbox — native preview",
+      "kind": "input",
+      "refersTo": "checkbox",
+      "description": "Day HTML/CSS preview of the current rounded checkbox, with a tick as well as color for checked state.",
+      "html": "<label class=\"ds-check\"><span>AI only</span><input class=\"ds-check-input\" type=\"checkbox\" /><svg class=\"ds-check-tick\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5.5 12 10.3 17 18.5 6.5\" fill=\"none\" stroke=\"#302A28\" stroke-width=\"1.56\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></label>",
+      "css": ".ds-check{position:relative;display:flex;align-items:center;justify-content:space-between;width:292px;min-height:59.08px;font:600 19px Quicksand,sans-serif;color:#302A28}.ds-check-input{appearance:none;width:23.63px;height:23.63px;border:1.56px solid #302A28;border-radius:10.5px;background:#FCFBFA;margin:0}.ds-check-input:checked{background:#FED23F}.ds-check-tick{position:absolute;right:0;width:23.63px;height:23.63px;display:none;pointer-events:none}.ds-check-input:checked+.ds-check-tick{display:block}.ds-check-input:hover{cursor:pointer}.ds-check-input:focus-visible{outline:2px solid #302A28;outline-offset:3.51px}.ds-check:active{background:rgba(48,42,40,.2)}"
+    },
+    {
+      "name": "Game navigation — native preview",
+      "kind": "nav",
+      "refersTo": "game-navigation",
+      "description": "Day HTML/CSS preview of compact canvas navigation. Native focus is handled by MenuKeyboard, not browser focus.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Game\"><button class=\"ds-nav-button\">Pause</button><button class=\"ds-nav-button\">Fast</button><button class=\"ds-nav-button ds-nav-menu\">Menu</button></nav>",
+      "css": ".ds-nav{display:flex;gap:8px;width:367px;padding:8px 0;background:#FCF0ED}.ds-nav-button{font:600 23px Quicksand,sans-serif;color:#302A28;background:#FCFBFA;border:1.64px solid #302A28;border-radius:16px;min-height:43.89px;padding:2px 12px;box-shadow:.82px 3.12px 0 #302A28}.ds-nav-menu{margin-left:auto}.ds-nav-button:hover{cursor:pointer}.ds-nav-button:focus-visible{outline:2px solid #302A28;outline-offset:3.51px}.ds-nav-button:active{transform:translateY(2.34px);box-shadow:.82px .78px 0 #302A28;background-image:linear-gradient(rgba(48,42,40,.07),rgba(48,42,40,.07))}"
+    },
+    {
+      "name": "Selected node — native preview",
+      "kind": "custom",
+      "refersTo": "planet",
+      "description": "Day Static HTML/CSS preview of a selected green canvas node at r=20px; the actual count scales through the game camera.",
+      "html": "<div class=\"ds-node\" role=\"img\" aria-label=\"Selected green node, 40 units\"><span class=\"ds-node-count\">40</span></div>",
+      "css": ".ds-node{position:relative;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#302A28;box-shadow:1.4px 2.8px 0 rgba(48,42,40,.13),2px 4px 0 2.4px rgba(48,42,40,.06);outline:2px solid rgba(254,210,63,.7);outline-offset:5px}.ds-node::before{content:\"\";position:absolute;width:35.6px;height:35.6px;bottom:3.3px;border-radius:50%;background:#6CD6A0}.ds-node::after{content:\"\";position:absolute;left:10.8px;top:6.8px;width:7.2px;height:7.2px;border-radius:50%;background:rgba(255,255,255,.4)}.ds-node-count{position:relative;z-index:1;color:#302A28;font:600 15.3px Quicksand,sans-serif}"
+    },
+    {
+      "name": "Night secondary button — native preview",
+      "kind": "button",
+      "refersTo": "button-secondary-night",
+      "description": "HTML/CSS preview of the Night board, cream label, light outline, and fixed dark depth at W=390, H=844.",
+      "html": "<div class=\"ds-night-button-canvas\"><button class=\"ds-night-secondary\">Settings</button></div>",
+      "css": ".ds-night-button-canvas{padding:12px;background:#1D232B}.ds-night-secondary{font:600 23px Quicksand,sans-serif;color:#F4EFE8;background:#29323D;border:1.64px solid #93A1AF;border-radius:16px;min-height:50.64px;padding:8px 24px;box-shadow:.82px 3.12px 0 #302A28,1.64px 4.68px 0 rgba(48,42,40,.09)}.ds-night-secondary:hover{cursor:pointer}.ds-night-secondary:focus-visible{outline:2px solid #F4EFE8;outline-offset:3.51px}.ds-night-secondary:active{transform:translateY(2.34px);box-shadow:.82px .78px 0 #302A28;background-image:linear-gradient(rgba(48,42,40,.07),rgba(48,42,40,.07))}"
+    },
+    {
+      "name": "Appearance choices — native preview",
+      "kind": "custom",
+      "refersTo": "appearance-night",
+      "description": "HTML/CSS preview of saved Night selection and enabled abstract backgrounds. The browser sample does not operate native preferences.",
+      "html": "<div class=\"ds-appearance\"><div class=\"ds-appearance-options\"><button class=\"ds-appearance-mode\" aria-pressed=\"false\">Day</button><button class=\"ds-appearance-mode ds-appearance-selected\" aria-pressed=\"true\">Night</button></div><label class=\"ds-appearance-check\">Abstract backgrounds<input class=\"ds-appearance-input\" type=\"checkbox\" checked /></label></div>",
+      "css": ".ds-appearance{width:312px;padding:24px 16px;background:#1D232B;color:#F4EFE8;font:600 19px Quicksand,sans-serif}.ds-appearance-options{display:flex;justify-content:space-between;gap:20px;margin-bottom:54px}.ds-appearance-mode{width:136.5px;min-height:63.3px;border:1.64px solid #93A1AF;border-radius:16px;background:#29323D;color:#F4EFE8;font:600 23px Quicksand,sans-serif;box-shadow:.82px 3.12px 0 #302A28}.ds-appearance-selected{background:#FED23F;color:#302A28}.ds-appearance-check{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:59.08px}.ds-appearance-input{width:23.63px;height:23.63px;accent-color:#FED23F}.ds-appearance-mode:hover,.ds-appearance-input:hover{cursor:pointer}.ds-appearance-mode:focus-visible,.ds-appearance-input:focus-visible{outline:2px solid #F4EFE8;outline-offset:3.51px}.ds-appearance-mode:active{transform:translateY(2.34px);box-shadow:.82px .78px 0 #302A28;background-image:linear-gradient(rgba(48,42,40,.07),rgba(48,42,40,.07))}"
+    },
+    {
+      "name": "Speed control — native preview",
+      "kind": "custom",
+      "refersTo": "speed-control",
+      "description": "Static HTML/CSS preview of the native Day speed card at W=390, H=844, showing saved 0.5x. Focus and press styling illustrate canvas feedback; this preview does not change speed or produce haptics.",
+      "html": "<div class=\"ds-speed-card\"><div class=\"ds-speed-rail\"><div class=\"ds-speed-progress\"></div><span class=\"ds-speed-stop ds-speed-filled\" style=\"left:0.0000%\"></span><span class=\"ds-speed-stop ds-speed-filled\" style=\"left:8.3333%\"></span><span class=\"ds-speed-stop ds-speed-filled\" style=\"left:16.6667%\"></span><span class=\"ds-speed-stop ds-speed-filled\" style=\"left:25.0000%\"></span><span class=\"ds-speed-stop ds-speed-filled\" style=\"left:33.3333%\"></span><span class=\"ds-speed-stop\" style=\"left:41.6667%\"></span><span class=\"ds-speed-stop ds-speed-normal\" style=\"left:50.0000%\"></span><span class=\"ds-speed-stop\" style=\"left:58.3333%\"></span><span class=\"ds-speed-stop\" style=\"left:66.6667%\"></span><span class=\"ds-speed-stop\" style=\"left:75.0000%\"></span><span class=\"ds-speed-stop\" style=\"left:83.3333%\"></span><span class=\"ds-speed-stop\" style=\"left:91.6667%\"></span><span class=\"ds-speed-stop\" style=\"left:100.0000%\"></span><button class=\"ds-speed-handle\" aria-label=\"Speed 0.5 times\">0.5x</button></div></div>",
+      "css": ".ds-speed-card{width:366.6px;height:55.704px;display:flex;align-items:center;justify-content:center;border-radius:16px;background:#FCF0ED}.ds-speed-rail{position:relative;width:280.8px;height:6.24px;border-radius:3.12px;background:#302A28}.ds-speed-progress{position:absolute;left:0;top:1.56px;width:33.3333%;height:3.12px;border-radius:1.56px;background:#FED23F}.ds-speed-stop{position:absolute;top:50%;width:5.46px;height:5.46px;transform:translate(-50%,-50%);border-radius:50%;background:#302A28}.ds-speed-stop::after{content:\"\";position:absolute;left:50%;top:50%;width:2.73px;height:2.73px;transform:translate(-50%,-50%);border-radius:50%;background:#FCF0ED}.ds-speed-filled::after{background:#FED23F}.ds-speed-normal{width:8.58px;height:8.58px}.ds-speed-handle{position:absolute;left:33.3333%;top:50%;transform:translate(-50%,-50%);width:78px;height:45.12024px;background:#FED23F;color:#302A28;border:1.56px solid #302A28;border-radius:16px;font:600 19px Quicksand,sans-serif;box-shadow:0 2.532px 0 rgba(48,42,40,.16)}.ds-speed-handle:hover{cursor:grab}.ds-speed-card:focus-within{outline:2px solid #302A28;outline-offset:3.51px}.ds-speed-handle:focus-visible{outline:none}.ds-speed-handle:active{width:81.12px;height:48.46248px;cursor:grabbing}"
+    }
+  ],
+  "narrative": {
+    "northStar": "",
+    "overview": "Warm paper, rounded ink lines, and restrained yellow actions make the strategy easy to read and operate. Night mode keeps the same layout with dark surfaces and cream menu text. Shallow depth makes buttons and nodes feel tangible while the board stays quiet. Fraunces titles give menus character; Quicksand carries choices and numbers.\n\nThis documents the implemented libGDX canvas, scoped to the existing game's interface refinement. Visual reference: [Inkwell Stars](https://inkwellgames.com/games/stars/tutorial).",
+    "keyCharacteristics": [],
+    "rules": [],
+    "dos": [
+      "Do use plain action labels and show costs before a player spends units.",
+      "Do keep the board clear enough to follow routes and read node counts.",
+      "Do preserve language coverage, colorblind textures, and visible keyboard focus.",
+      "Do keep appearance choices saved, with Day and plain backgrounds as the defaults.",
+      "Do check affected states on desktop and phone before release."
+    ],
+    "donts": [
+      "Don't add competing primary menu actions or repeated explanations.",
+      "Don't add perpetual decorative motion or manipulative progression prompts.",
+      "Don't use light menu text on yellow or faction-colored faces.",
+      "Don't replace the native canvas conventions with a generic web or Material interface."
+    ]
+  }
+}

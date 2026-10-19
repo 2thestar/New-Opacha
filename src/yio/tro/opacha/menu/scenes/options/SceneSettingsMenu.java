@@ -33,6 +33,7 @@ public class SceneSettingsMenu extends SceneYio {
     ButtonYio otherLabel;
     private CheckButtonYio chkColorblindMode;
     private CheckButtonYio chkThinBezels;
+    public ButtonYio appearanceButton;
 
 
     @Override
@@ -43,6 +44,13 @@ public class SceneSettingsMenu extends SceneYio {
 
         createBackButton();
         createInfoButton();
+        appearanceButton = uiFactory.getButton().setSize(.46, .055).centerHorizontal().alignTop(.025)
+                .applyText("ui_appearance").setAnimation(AnimationYio.none).setReaction(new Reaction() {
+                    @Override protected void reaction() {
+                        applyValues(); SettingsManager.getInstance().saveValues();
+                        Scenes.appearance.create();
+                    }
+                });
     }
 
 
@@ -130,10 +138,10 @@ public class SceneSettingsMenu extends SceneYio {
     private void createInfoButton() {
         if (YioGdxGame.platformType == PlatformType.ios) return;
         uiFactory.getCircleButton()
-                .setSize(GraphicsYio.convertToWidth(0.09))
+                .setSize(GraphicsYio.convertToWidth(0.052))
                 .alignRight(0.04)
                 .alignTop(0.02)
-                .setTouchOffset(0.05)
+                .setTouchOffset(0.015)
                 .loadTexture("menu/info_icon.png")
                 .setAnimation(AnimationYio.none)
                 .setReaction(new Reaction() {

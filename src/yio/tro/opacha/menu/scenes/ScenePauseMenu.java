@@ -22,11 +22,14 @@ public class ScenePauseMenu extends SceneYio {
     public void initialize() {
         setBackground(GroundIndex.CYAN);
         getGround().setSpawnRule(new GpSrDown());
+        uiFactory.getLabelElement().setSize(.8, .09).centerHorizontal().alignBottom(.72)
+                .setFont(Fonts.titleFont).setString(languagesManager.getString("ui_paused"));
 
         resumeButton = uiFactory.getButton()
                 .setSize(0.8, 0.08)
                 .setPosition(0.1, 0.55)
                 .applyText("resume")
+                .setGroundIndex(GroundIndex.YELLOW)
                 .setReaction(getResumeReaction())
                 .setAnimation(AnimationYio.none);
 

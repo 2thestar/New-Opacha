@@ -24,6 +24,7 @@ import yio.tro.opacha.menu.TextFitParser;
 import yio.tro.opacha.menu.LanguagesManager;
 import yio.tro.opacha.menu.MenuControllerYio;
 import yio.tro.opacha.menu.MenuViewYio;
+import yio.tro.opacha.menu.UiStyle;
 import yio.tro.opacha.menu.elements.ground.GroundIndex;
 import yio.tro.opacha.menu.scenes.SceneYio;
 import yio.tro.opacha.menu.scenes.Scenes;
@@ -297,8 +298,15 @@ public class YioGdxGame extends ApplicationAdapter implements InputProcessor {
 
     private void drawBackground(TextureRegion textureRegion) {
         batch.begin();
-        batch.draw(textureRegion, 0, 0, w, h);
-//        if (isScreenVeryNarrow()) batch.draw(textureRegion, 0, 0.985f * backgroundHeight, w, backgroundHeight);
+        if (textureRegion == defBackground) {
+            Color c = batch.getColor();
+            float r = c.r, g = c.g, b = c.b, a = c.a;
+            batch.setColor(UiStyle.PAPER.r, UiStyle.PAPER.g, UiStyle.PAPER.b, a);
+            batch.draw(UiStyle.get().pixel, 0, 0, w, h);
+            batch.setColor(r, g, b, a);
+        } else {
+            batch.draw(textureRegion, 0, 0, w, h);
+        }
         batch.end();
     }
 
@@ -474,6 +482,7 @@ public class YioGdxGame extends ApplicationAdapter implements InputProcessor {
     @Override
     public void dispose() {
         SoundManager.dispose();
+        yio.tro.opacha.menu.UiStyle.dispose();
         super.dispose();
     }
 
@@ -620,7 +629,8 @@ public class YioGdxGame extends ApplicationAdapter implements InputProcessor {
 
     @Override
     public boolean touchCancelled(int screenX, int screenY, int pointer, int button) {
-        return false;
+        return Scenes.velocityControls != null && Scenes.velocityControls.velocitySliderElement != null
+                && Scenes.velocityControls.velocitySliderElement.cancelTouch(pointer);
     }
 
 
