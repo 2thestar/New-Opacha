@@ -1,0 +1,25 @@
+package io.github.twothestar.newopacha;
+
+import android.os.Bundle;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.backends.android.AndroidApplication;
+import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+import yio.tro.opacha.PlatformType;
+import yio.tro.opacha.YioGdxGame;
+
+public final class AndroidLauncher extends AndroidApplication {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
+        config.useAccelerometer = false;
+        config.useCompass = false;
+        config.useGyroscope = false;
+        config.useImmersiveMode = true;
+        config.renderUnderCutout = false;
+        YioGdxGame.platformType = PlatformType.android;
+        initialize(new YioGdxGame(), config);
+        Gdx.input.setCatchKey(Input.Keys.BACK, true);
+    }
+}

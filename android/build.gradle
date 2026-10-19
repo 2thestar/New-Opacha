@@ -1,0 +1,88 @@
+plugins {
+    id 'com.android.application' version '8.13.2'
+}
+
+android {
+    namespace 'io.github.twothestar.newopacha'
+    compileSdk 36
+    buildToolsVersion '35.0.0'
+
+    defaultConfig {
+        applicationId 'io.github.twothestar.newopacha'
+        minSdk 26
+        // Preserve the original game's fixed viewport and cutout handling.
+        targetSdk 35
+        versionCode 1
+        versionName '0.1.0'
+        ndk {
+            abiFilters 'arm64-v8a', 'x86_64'
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile rootProject.file('.tools/signing/new-opacha-debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
+    sourceSets.main {
+        assets.srcDirs = [rootProject.file('assets')]
+        jniLibs.srcDirs = [layout.buildDirectory.dir('generated/jniLibs')]
+        assets.exclude '**/.DS_Store'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        buildConfig = false
+    }
+}
+
+configurations {
+    arm64Natives
+    x86Natives
+}
+
+dependencies {
+    implementation project(':core')
+    implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+    arm64Natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
+    arm64Natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-arm64-v8a"
+    x86Natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
+    x86Natives "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-x86_64"
+}
+
+def extractNatives = tasks.register('extractNatives') {
+    inputs.files configurations.arm64Natives, configurations.x86Natives
+    outputs.dir layout.buildDirectory.dir('generated/jniLibs')
+    doLast {
+        ['arm64-v8a': configurations.arm64Natives, 'x86_64': configurations.x86Natives].each { abi, nativeFiles ->
+            nativeFiles.files.each { archive ->
+                copy {
+                    from zipTree(archive)
+                    include '*.so'
+                    into layout.buildDirectory.dir("generated/jniLibs/$abi")
+                }
+            }
+        }
+    }
+}
+
+tasks.named('preBuild').configure {
+    dependsOn extractNatives
+}
+
+tasks.register('exportApk', Copy) {
+    group = 'distribution'
+    description = 'Build a signed APK for installing New Opacha on a Pixel 8a or another 64-bit Android device.'
+    dependsOn tasks.named('assembleDebug')
+    from layout.buildDirectory.file('outputs/apk/debug/android-debug.apk')
+    into rootProject.layout.buildDirectory.dir('downloads')
+    rename { 'New-Opacha-0.1.0.apk' }
+}

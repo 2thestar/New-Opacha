@@ -3,7 +3,6 @@ package yio.tro.opacha.menu;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.utils.StringBuilder;
 import yio.tro.opacha.YioGdxGame;
 import yio.tro.opacha.menu.elements.ButtonYio;
 import yio.tro.opacha.stuff.GraphicsYio;

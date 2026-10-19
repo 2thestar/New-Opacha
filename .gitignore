@@ -1,0 +1,12 @@
+.gradle/
+.gradle-user-home/
+.tools/
+**/build/
+.idea/
+*.iml
+.DS_Store
+hs_err_pid*.log
+.opacha-upgraded/
+local.properties
+*.keystore
+*.jks

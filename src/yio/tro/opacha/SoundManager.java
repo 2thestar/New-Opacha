@@ -29,8 +29,26 @@ public class SoundManager {
 
     private static void startThread() {
         soundThreadYio = new SoundThreadYio();
+        soundThreadYio.setDaemon(true);
         soundThreadYio.start();
         soundThreadYio.setPriority(1);
+    }
+
+
+    public static void dispose() {
+        if (soundThreadYio == null) return;
+        soundThreadYio.shutdown();
+        try {
+            soundThreadYio.join();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        soundThreadYio = null;
+
+        Sound[] sounds = {button, backButton, score, fall, testEnded, kbPress};
+        for (Sound sound : sounds) {
+            if (sound != null) sound.dispose();
+        }
     }
 
 

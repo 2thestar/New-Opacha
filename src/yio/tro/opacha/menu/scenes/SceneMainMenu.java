@@ -56,7 +56,9 @@ public class SceneMainMenu extends SceneYio {
                 .setSize(logoWidth, logoHeight)
                 .centerHorizontal()
                 .alignBottom(logoY)
-                .loadTexture("menu/main_menu/mm_logo.png")
+                .applyText("New Opacha")
+                .setBorder(false)
+                .setBackgroundEnabled(false)
                 .setSilentReactionMode(true)
                 .setReaction(new Reaction() {
                     @Override

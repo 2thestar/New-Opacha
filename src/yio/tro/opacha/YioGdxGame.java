@@ -472,6 +472,13 @@ public class YioGdxGame extends ApplicationAdapter implements InputProcessor {
 
 
     @Override
+    public void dispose() {
+        SoundManager.dispose();
+        super.dispose();
+    }
+
+
+    @Override
     public void pause() {
         super.pause();
 
@@ -607,6 +614,12 @@ public class YioGdxGame extends ApplicationAdapter implements InputProcessor {
                 onCatchedException(exception);
             }
         }
+        return false;
+    }
+
+
+    @Override
+    public boolean touchCancelled(int screenX, int screenY, int pointer, int button) {
         return false;
     }
 

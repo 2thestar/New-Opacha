@@ -1,0 +1,61 @@
+plugins {
+    id 'application'
+}
+
+sourceSets {
+    main {
+        resources.srcDirs = [rootProject.file('assets')]
+        resources.exclude '**/.DS_Store'
+    }
+    smokeTest {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+configurations {
+    smokeTestImplementation.extendsFrom implementation
+    smokeTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+application {
+    mainClass = 'yio.tro.opacha.lwjgl3.Lwjgl3Launcher'
+    applicationName = 'new-opacha'
+    if (System.getProperty('os.name').toLowerCase().contains('mac')) {
+        applicationDefaultJvmArgs = ['-XstartOnFirstThread']
+    }
+}
+
+dependencies {
+    implementation project(':core')
+    implementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
+    runtimeOnly "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+    runtimeOnly "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+}
+
+tasks.named('run', JavaExec) {
+    workingDir rootProject.projectDir
+}
+
+['Desktop': [480, 800], 'Phone': [390, 844]].each { label, dimensions ->
+    tasks.register("smoke$label", JavaExec) {
+        group = 'verification'
+        description = "Play through the packaged desktop game at ${dimensions[0]} x ${dimensions[1]}."
+        dependsOn tasks.named('installDist'), tasks.named('smokeTestClasses')
+        timeout = java.time.Duration.ofSeconds(90)
+        // Exercise the shipped JARs, including packaged assets and native libraries.
+        classpath = files(sourceSets.smokeTest.output, fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+        mainClass = 'yio.tro.opacha.lwjgl3.DesktopSmokeTest'
+        workingDir rootProject.projectDir
+        args dimensions[0], dimensions[1], layout.buildDirectory.dir("smoke/$label").get().asFile.absolutePath
+        if (System.getProperty('os.name').toLowerCase().contains('mac')) {
+            jvmArgs '-XstartOnFirstThread'
+        }
+    }
+}
+
+tasks.register('smokeTest') {
+    group = 'verification'
+    description = 'Check native startup, mouse input, rendering, gameplay and keyboard pause at two portrait sizes.'
+    dependsOn tasks.named('smokeDesktop'), tasks.named('smokePhone')
+}

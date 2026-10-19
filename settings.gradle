@@ -1,0 +1,16 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = 'New-Opacha'
+include 'core', 'lwjgl3'
+
+// Desktop builds can run without an Android SDK on a fresh checkout.
+def androidRequested = gradle.startParameter.taskNames.any { it.toLowerCase().contains('android') }
+if (file('local.properties').exists() || System.getenv('ANDROID_HOME') || System.getenv('ANDROID_SDK_ROOT') || androidRequested) {
+    include 'android'
+}

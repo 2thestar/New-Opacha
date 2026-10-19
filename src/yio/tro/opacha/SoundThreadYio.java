@@ -5,9 +5,15 @@ import com.badlogic.gdx.audio.Sound;
 public class SoundThreadYio extends Thread {
 
 
-    Sound currentSound;
-    boolean running;
-    boolean readyToPlaySound;
+    volatile Sound currentSound;
+    volatile boolean running = true;
+    volatile boolean readyToPlaySound;
+
+
+    public void shutdown() {
+        running = false;
+        interrupt();
+    }
 
 
     public void playSound(Sound sound) {
@@ -23,8 +29,6 @@ public class SoundThreadYio extends Thread {
 
     @Override
     public void run() {
-        running = true;
-
         while (running) {
             if (readyToPlaySound) {
                 readyToPlaySound = false;
