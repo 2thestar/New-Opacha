@@ -16,6 +16,7 @@ public class ScenePauseMenu extends SceneYio {
     public ButtonYio restartButton;
     public ButtonYio mainMenuButton;
     public LabelElement labelElement;
+    public ButtonYio hintButton;
 
 
     @Override
@@ -51,11 +52,23 @@ public class ScenePauseMenu extends SceneYio {
                 .tagAsBackButton();
 
         labelElement = uiFactory.getLabelElement()
-                .setSize(0.5, 0.035)
+                .setSize(0.86, 0.045)
                 .alignTop(0.01)
                 .centerHorizontal()
                 .setFont(Fonts.smallFont)
                 .setString("-");
+        hintButton = uiFactory.getButton().setSize(.50,.055).centerHorizontal().alignBottom(.20)
+                .applyText("ui_hint").setAnimation(AnimationYio.none).setReaction(new Reaction() {
+                    @Override protected void reaction() {
+                        yioGdxGame.gameView.appear(); gameController.createMenuOverlay(); yioGdxGame.setGamePaused(false);
+                        Scenes.campaignBrief.useHint = true; Scenes.campaignBrief.create();
+                    }
+                });
+    }
+
+    @Override protected void appearElement(yio.tro.opacha.menu.elements.InterfaceElement element) {
+        if (element == hintButton && yioGdxGame.gameController.gameMode != yio.tro.opacha.game.GameMode.campaign) return;
+        super.appearElement(element);
     }
 
 
@@ -72,7 +85,9 @@ public class ScenePauseMenu extends SceneYio {
             return;
         }
 
-        labelElement.setString(languagesManager.getString("level") + ": " + GameRules.levelIndex);
+        if (yioGdxGame.gameController.gameMode == yio.tro.opacha.game.GameMode.campaign)
+            labelElement.setString((GameRules.levelIndex + 1) + ". " + yio.tro.opacha.game.campaign.CampaignLevels.get(GameRules.levelIndex).title);
+        else labelElement.setString(languagesManager.getString("level") + ": " + GameRules.levelIndex);
     }
 
 

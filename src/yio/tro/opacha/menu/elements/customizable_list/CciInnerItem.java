@@ -62,11 +62,7 @@ public class CciInnerItem {
 
     public void setIndex(int index) {
         this.index = index;
-        title.setString("" + index);
-        if (index == 0) {
-            // tutorial
-            title.setString("?");
-        }
+        title.setString("" + (index + 1));
         title.updateMetrics();
     }
 }

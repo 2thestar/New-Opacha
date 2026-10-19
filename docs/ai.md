@@ -23,6 +23,7 @@ Savvy chooses orders from the visible map. It uses fixed rules and does not lear
 - **Economical captures:** it tries 25%, then 50%, then 100% of a node's whole troops. It chooses the smallest share that can take the target with a small margin.
 - **Travel matters:** the calculation includes target production and shield regeneration during travel, visible friendly waves, defender reinforcements, and enemies travelling toward it on the same link. Growth uses the actual regeneration interval and link movement speed. This is an estimate, since other players can change their orders during flight.
 - **Reserves:** it leaves troops against incoming attacks. Possible attacks from other adjacent enemies lower an order's score, but do not force it to miss a cheap expansion. It may commit everything when taking that risk is worthwhile.
+- In starting-flag games, Savvy also keeps at least eight troops at its original flag. Visible incoming threats can require a larger reserve.
 - **Two-node attacks:** if two neighbours can take a target together, it evaluates their 25/50/100% combinations. Both orders are issued together, cost two commands, and require similar journey lengths to limit isolated arrivals.
 - **Reinforcement:** threatened allies receive help first. Spare rear troops move along owned links toward the nearest frontier. On the frontier, weaker nodes can rally into a stronger neighbouring army. It does not install automatic routes that can send troops back and forth.
 - **Upgrades:** it protects the ten-troop budget for safe economic upgrades before supplying the front. It can fortify a node facing several enemies. Upgrade costs are unchanged; easy disables upgrades.
@@ -36,10 +37,12 @@ The random order picks one of its own nodes with troops, a linked neighbour, and
 
 ## Compatibility and checks
 
-The 2026-10-19 balance check ran twelve seeded two-player maps (six tiny, six small), each twice with starting colours swapped, on hard at the default speed. Savvy won 19, Simple won 5, with no unfinished matches at the 36,000-tick limit. This is a small regression benchmark, not a claim about every map, difficulty or multiplayer matchup. Run `.\opacha.ps1 :lwjgl3:aiMatches` to repeat it.
+The 0.4.0 desktop balance check ran twelve seeded two-player maps (six tiny, six small), each twice with starting colours swapped, on hard at the default 1× speed. Savvy won 16, Simple won 8, with no unfinished matches at the 36,000-tick limit. This is a small regression benchmark, not a claim about every map, difficulty or multiplayer matchup. Run `.\opacha.ps1 :lwjgl3:aiMatches` to repeat it.
 
 That benchmark isolates ordinary troop planning. The [tactical checks](tactics.md#verification-and-future-changes) exercise weapons, digging and diplomacy, including complete mixed-AI matches in each mode.
 
-The optional `ai_types` section in exported maps records colour-to-type assignments. Older maps without it use Simple. Campaign, calendar and original custom levels retain Simple unless a map explicitly records other types. Restarting a skirmish preserves its seeded assignment.
+Campaign playtests added checks against wasteful weapon use and automatic universal alliances. Guns avoid ordinary empty or nearly empty targets, retain enough troops against incoming fleets, and can send half of a large reserve toward a useful foothold. AI preserves economic nodes when choosing where to build guns. A pact needs a credible common rival; AI keeps one simultaneous partner and the strongest rival can refuse. These shared tactical decisions sit above the three ordinary troop-planning personalities. [Balance results](balance.md) describe the larger four-mode test.
+
+The optional `ai_types` section in exported maps records colour-to-type assignments. Older maps without it use Simple. The authored campaign records opponent types explicitly; calendar and older custom maps use Simple unless a map records other types. Restarting a skirmish preserves its seeded assignment.
 
 Run `.\opacha.ps1 :lwjgl3:aiSmokeTest` on Windows for native scenario and UI checks at 480 × 800 and 390 × 844. They exercise capture outcomes for all three troop shares, incoming-threat reserves, combined attacks, redundant-wave avoidance, rear supply, the random-command rate, map round trips, ownership markers, all selector values, AI-only play and pausing. Screenshots are in `lwjgl3/build/ai-smoke/`.

@@ -115,6 +115,7 @@ public class ImportManager {
         GameRules.difficulty = Difficulty.valueOf(split[0]);
         GameRules.playType = split.length > 2 ? PlayType.valueOf(split[2]) : PlayType.conquest;
         GameRules.directionalRoutes = split.length > 3 && Boolean.parseBoolean(split[3]);
+        GameRules.features = split.length > 4 ? Integer.parseInt(split[4]) & RuleFeatures.ALL : RuleFeatures.ALL;
         if (split.length > 1) {
             GameRules.aiOnlyMode = Boolean.valueOf(split[1]);
         }

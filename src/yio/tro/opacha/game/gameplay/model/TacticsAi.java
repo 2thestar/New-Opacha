@@ -27,14 +27,20 @@ final class TacticsAi {
             Planet target = null;
             int enemies = 0;
             for (Planet other : t.layer.planetsManager.planets) {
-                if (other.isNeutral() || t.alliances.friendly(owner, other.fraction)
+                if (other.isNeutral() || other.getFullHp() == 0 || t.alliances.friendly(owner, other.fraction)
                         || node.position.center.distanceTo(other.position.center) > t.artilleryRange()) continue;
+                if (other.type == PlanetType.empty && other.getFullHp() < 12 && other != t.flagPlanet
+                        && !isHomeFlag(t, other)) continue;
                 enemies++;
                 if (target == null || other.getFullHp() < target.getFullHp()) target = other;
             }
             if (node.type == PlanetType.artillery) {
-                if (target != null && node.unitsInside >= 30) t.fire(node, target);
-            } else if (enemies >= 2 && node.unitsInside >= 65 && guns < (type == AiType.savvy ? 2 : 1)) {
+                if (target != null && node.unitsInside >= Math.max(30, t.layer.planetsManager.calculateThreat(node) + 20)) t.fire(node, target);
+                if (node.unitsInside >= 80) releaseGunReserves(t, node);
+            } else if (!node.isEconomic() && enemies >= 2 && node.unitsInside >= 65
+                    && (target == null || !node.isLinkedTo(target) || target.isDefensive()
+                        || node.getLink(target).speedFrom(node) < 1)
+                    && guns < (type == AiType.savvy ? 2 : 1)) {
                 if (t.buildArtillery(node)) guns++;
             }
             if (node.isEconomic() && node.unitsInside >= 45 && t.inventory[owner.ordinal()] < 1) t.buyBomb(node);
@@ -54,6 +60,32 @@ final class TacticsAi {
                 }
             }
         }
+    }
+
+    private static boolean isHomeFlag(TacticsManager t, Planet node) {
+        for (Planet flag : t.homeFlags) if (flag == node) return true;
+        return false;
+    }
+
+    private static void releaseGunReserves(TacticsManager t, Planet gun) {
+        Planet target = null; int best = Integer.MIN_VALUE;
+        for (Link link : gun.adjoinedLinks) {
+            if (link.isBlueprint()) continue;
+            Planet other = link.getOppositePlanet(gun);
+            if (t.alliances.areAllied(gun.fraction, other.fraction)) continue;
+            int score;
+            if (other.fraction == gun.fraction) {
+                int front = other.getNumberOfAdjoinedEnemies() + other.countAdjoinedPlanetsByFraction(FractionType.neutral);
+                int ownFront = gun.getNumberOfAdjoinedEnemies() + gun.countAdjoinedPlanetsByFraction(FractionType.neutral);
+                if (front <= ownFront) continue;
+                score = front;
+            } else {
+                if (gun.unitsInside / 2 < other.getFullHp() + 12) continue;
+                score = 20 + (other == t.flagPlanet || isHomeFlag(t, other) ? 100 : 0);
+            }
+            if (score > best) { best = score; target = other; }
+        }
+        if (target != null) t.layer.planetsManager.sendUnitsPercent(gun, target, 50);
     }
 
     private static void shortcut(TacticsManager t, FractionType owner) {
@@ -84,9 +116,12 @@ final class TacticsAi {
         for (FractionType other : FractionType.values()) {
             if (other == owner || other == FractionType.neutral || !pacts.alive(other) || pacts.isBroken(owner, other)) continue;
             double own = t.power(owner), partner = t.power(other), enemy = 0;
+            int allies = 0;
             for (FractionType outsider : FractionType.values()) {
                 if (outsider == FractionType.neutral || outsider == owner || outsider == other) continue;
-                if (!pacts.areAllied(owner, outsider)) enemy += t.power(outsider);
+                if (pacts.areAllied(owner, outsider)) allies++;
+                if (!pacts.friendly(owner, outsider) && !pacts.friendly(other, outsider))
+                    enemy = Math.max(enemy, t.power(outsider));
             }
             if (pacts.areAllied(owner, other)) {
                 double age = t.elapsed - pacts.formedAt[owner.ordinal()][other.ordinal()];
@@ -98,8 +133,10 @@ final class TacticsAi {
                 pacts.offers[other.ordinal()][owner.ordinal()] = false;
                 continue;
             }
-            boolean useful = enemy > 0 && (type == AiType.simple || enemy > .7 * own);
-            if (type == AiType.silly) useful = random.nextBoolean();
+            // A pact needs a credible common rival. One partner keeps rival coalitions
+            // possible instead of everyone accepting everyone at the first AI tick.
+            boolean useful = allies == 0 && enemy > .7 * own && enemy > .35 * partner;
+            if (type == AiType.silly) useful = useful && random.nextBoolean();
             if (pacts.hasOffer(other, owner)) {
                 if (useful) pacts.offer(owner, other);
                 else pacts.offers[other.ordinal()][owner.ordinal()] = false;

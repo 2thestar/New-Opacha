@@ -103,6 +103,16 @@ public class RenderPlanets extends GameRender{
 
 
     private void renderSinglePlanet(Planet planet) {
+        if (planet.capturePulse > 0) {
+            double radius = planet.viewPosition.radius * (1.1 + .5 * (1 - planet.capturePulse));
+            double x = planet.viewPosition.center.x, y = planet.viewPosition.center.y;
+            for (int i = 0; i < 32; i++) {
+                double a = i * Math.PI / 16, b = (i + 1) * Math.PI / 16;
+                UiStyle.get().line(batchMovable, x + radius * Math.cos(a), y + radius * Math.sin(a),
+                        x + radius * Math.cos(b), y + radius * Math.sin(b),
+                        planet.viewPosition.radius * .09, UiStyle.GOLD, planet.capturePulse * .8f);
+            }
+        }
         renderHighlight(planet);
         renderSelection(planet);
         renderShields(planet);

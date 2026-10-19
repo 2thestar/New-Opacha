@@ -34,6 +34,7 @@ public class SceneSettingsMenu extends SceneYio {
     private CheckButtonYio chkColorblindMode;
     private CheckButtonYio chkThinBezels;
     public ButtonYio appearanceButton;
+    public CheckButtonYio chkHaptics;
 
 
     @Override
@@ -94,7 +95,7 @@ public class SceneSettingsMenu extends SceneYio {
     private void createOtherLabel() {
         otherLabel = uiFactory.getButton()
                 .setParent(scrollableAreaYio)
-                .setSize(0.9, 0.55)
+                .setSize(0.9, 0.61)
                 .alignBottom(mainLabel, 0.06)
                 .centerHorizontal()
                 .applyText(" ")
@@ -228,6 +229,8 @@ public class SceneSettingsMenu extends SceneYio {
                 .setParent(otherLabel)
                 .setName("thin_bezels")
                 .alignBottom(previousElement);
+        chkHaptics = uiFactory.getCheckButton().setParent(otherLabel).setName("ui_haptics")
+                .alignBottom(previousElement);
     }
 
 
@@ -246,6 +249,7 @@ public class SceneSettingsMenu extends SceneYio {
         instance.requestRestartApp = false;
 
         instance.soundEnabled = chkSound.isChecked();
+        instance.hapticsEnabled = chkHaptics.isChecked();
         instance.fullScreenMode = chkFullScreen.isChecked();
         instance.graphicsQuality = graphicsSlider.getValueIndex();
         instance.halvedModeButtonEnabled = chkHalvedMode.isChecked();
@@ -264,6 +268,7 @@ public class SceneSettingsMenu extends SceneYio {
         SettingsManager instance = SettingsManager.getInstance();
 
         chkSound.setChecked(instance.soundEnabled);
+        chkHaptics.setChecked(instance.hapticsEnabled);
         chkFullScreen.setChecked(instance.fullScreenMode);
         graphicsSlider.setValueIndex(instance.graphicsQuality);
         chkHalvedMode.setChecked(instance.halvedModeButtonEnabled);

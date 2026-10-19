@@ -29,6 +29,7 @@ public class CameraController implements TouchableYio {
     PointYio delta, kinetics, actualDragBounds, lastTapPoint;
     boolean locked, slowModeEnabled;
     private float bottomSpecialOffset;
+    private float fittedVerticalPan;
 
 
     public CameraController(GameController gameController) {
@@ -116,7 +117,24 @@ public class CameraController implements TouchableYio {
     public void onEndCreation() {
         initLevels();
         checkToFlyUp();
+        fitTinyBoardBelowControls();
         forceToTargetPosition();
+    }
+
+    private void fitTinyBoardBelowControls() {
+        if (gameController.initialLevelSize != LevelSize.tiny || gameController.objectsLayer.planetsManager.planets.isEmpty()) return;
+        float minX=Float.MAX_VALUE, minY=Float.MAX_VALUE, maxX=-Float.MAX_VALUE, maxY=-Float.MAX_VALUE;
+        for (yio.tro.opacha.game.gameplay.model.Planet node : gameController.objectsLayer.planetsManager.planets) {
+            float margin=1.6f*node.position.radius;
+            minX=Math.min(minX,node.position.center.x-margin); maxX=Math.max(maxX,node.position.center.x+margin);
+            minY=Math.min(minY,node.position.center.y-margin); maxY=Math.max(maxY,node.position.center.y+margin);
+        }
+        float topOnScreen=(maxY-boundHeight/2)/targetZoomLevel+h/2;
+        if (topOnScreen <= .80f*h) return;
+        float zoom=Math.max(1,Math.max((maxX-minX)/(.90f*w),(maxY-minY)/(.70f*h)));
+        setZoomMaximum(Math.max(zoomMaximum,zoom)); setTargetZoomLevel(zoom);
+        focusOnPoint((minX+maxX)/2,(minY+maxY)/2+.05f*h*zoom);
+        fittedVerticalPan=Math.abs(position.y);
     }
 
 
@@ -340,6 +358,7 @@ public class CameraController implements TouchableYio {
         if (actualDragBounds.y < 0) {
             actualDragBounds.y = 0;
         }
+        actualDragBounds.y=Math.max(actualDragBounds.y,fittedVerticalPan);
     }
 
 
@@ -473,6 +492,7 @@ public class CameraController implements TouchableYio {
 
     void defaultValues() {
         viewZoomLevel = 1;
+        fittedVerticalPan = 0;
         position.set(0, 0);
         viewPosition.setBy(position);
     }

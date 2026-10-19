@@ -5,9 +5,19 @@ The original Java source and assets stay in `src/` and `assets/`.
 
 ## Install on a Pixel 8a
 
-Download **New-Opacha-0.3.0-install.zip** from [Releases](https://github.com/2thestar/New-Opacha/releases). Open it in Files by Google, tap **Extract**, then open the extracted APK to install **New Opacha**. Android may ask you to allow Files to install apps. The app has its own package ID and saves, so it can be installed alongside the original game.
+Download **New-Opacha-0.4.0-install.zip** from [Releases](https://github.com/2thestar/New-Opacha/releases). Open it in Files by Google, tap **Extract**, then open the extracted APK to install **New Opacha**. Android may ask you to allow Files to install apps. The app has its own package ID and saves, so it can be installed alongside the original game.
 
 The ZIP avoids Chrome's stalled direct APK downloads and contains the same signed APK. ZIP installation was confirmed on the affected Pixel 8a with version 0.1.0. Install updates over the existing app to keep its saves.
+
+## Campaign and maps
+
+The campaign has 48 fixed maps: 12 each for conquest, neutral flag, starting flags and alliances. Lessons introduce captures, half sends, Grow, Defend, opponent types, directional routes, digging, bombs and artillery before combining them with flag and alliance objectives. New concepts get a short paused briefing. **Menu → Hint** gives a tactical suggestion during a campaign map.
+
+Campaign lessons unlock in order. **Play → Maps** opens every map immediately, with Play and Edit map controls. Edited copies can be saved or exported through the editor; the original library stays available. The editor supports all four modes, route directions and blueprints, flag placement, artillery, garrisons, AI types and bomb stock.
+
+Captures have a brief gold pulse, the existing capture sound, and light Android feedback. **Settings → Haptics** turns vibration off. A fresh install starts at 1×; existing speed preferences are preserved. The new campaign uses separate progress, so old generated-campaign progress does not skip its lessons. Earlier editor saves remain available.
+
+[Balance findings and proposed experiments](docs/balance.md) explain the strategy tests and their limits. Raw results and reproduction commands are included.
 
 ## AI players
 
@@ -44,7 +54,7 @@ Then build the APK:
 
 To also create the ZIP download, run `.\opacha.ps1 :android:exportInstallZip`.
 
-The installable file is `build/downloads/New-Opacha-0.3.0.apk`. It contains ARM64 libraries for the Pixel 8a and x86-64 libraries for emulator testing. The minimum Android version is 8.0. This development build is signed with the local key in `.tools/signing/`; keep that directory to build updates that preserve your installed app and saves. Signing keys and machine-specific SDK paths are excluded from Git.
+The installable file is `build/downloads/New-Opacha-0.4.0.apk`. It contains ARM64 libraries for the Pixel 8a and x86-64 libraries for emulator testing. The minimum Android version is 8.0. This development build is signed with the local key in `.tools/signing/`; keep that directory to build updates that preserve your installed app and saves. Signing keys and machine-specific SDK paths are excluded from Git.
 
 For USB installation with USB debugging enabled:
 

@@ -20,6 +20,8 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
     int unitValues[];
     private SliderYio unitsSlider;
     private LightBottomPanelElement lightBottomPanelElement;
+    public yio.tro.opacha.menu.elements.ButtonYio flagButton, aiButton, stockButton;
+    private boolean loadingValues;
 
 
     @Override
@@ -38,7 +40,7 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
 
     private void createLightBottomPanel() {
         lightBottomPanelElement = uiFactory.getLightBottomPanelElement()
-                .setSize(1, 0.47)
+                .setSize(1, 0.70)
                 .setTitle("planet")
                 .setAnimation(AnimationYio.down);
     }
@@ -79,6 +81,38 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
                 .setValues(0, unitValues.length)
                 .setTitleDownwordsOffset(GraphicsYio.convertToWidth(0.03))
                 .setBehavior(getUnitsSliderBehavior());
+        aiButton = uiFactory.getButton().setParent(lightBottomPanelElement).setSize(.80,.055)
+                .centerHorizontal().alignBottom(.175).setAnimation(AnimationYio.none).applyText("AI")
+                .setReaction(new yio.tro.opacha.menu.reactions.Reaction() {
+                    @Override protected void reaction() {
+                        if (selectedPlanet == null || selectedPlanet.isNeutral()) return;
+                        yio.tro.opacha.game.gameplay.ai.AiType current = yio.tro.opacha.game.GameRules.aiTypes.get(selectedPlanet.fraction);
+                        int next = current == null ? 1 : (current.ordinal() + 1) % 3;
+                        yio.tro.opacha.game.GameRules.aiTypes.put(selectedPlanet.fraction, yio.tro.opacha.game.gameplay.ai.AiType.values()[next]);
+                        updateAiLabel();
+                    }
+                });
+        stockButton = uiFactory.getButton().setParent(lightBottomPanelElement).setSize(.80,.055)
+                .centerHorizontal().alignBottom(.10).setAnimation(AnimationYio.none).applyText("Bombs")
+                .setReaction(new yio.tro.opacha.menu.reactions.Reaction() {
+                    @Override protected void reaction() {
+                        if (selectedPlanet.isNeutral()) return;
+                        int[] inventory = gameController.objectsLayer.tactics.inventory;
+                        int index = selectedPlanet.fraction.ordinal(); inventory[index] = (inventory[index] + 1) % 6; updateAiLabel();
+                    }
+                });
+        flagButton = uiFactory.getButton().setParent(lightBottomPanelElement).setSize(.80,.055)
+                .centerHorizontal().alignBottom(.025).setAnimation(AnimationYio.none).applyText("editor_set_flag")
+                .setReaction(new yio.tro.opacha.menu.reactions.Reaction() {
+                    @Override protected void reaction() { yioGdxGame.gameController.objectsLayer.editorWorker.markFlag(selectedPlanet); }
+                });
+    }
+
+    private void updateAiLabel() {
+        yio.tro.opacha.game.gameplay.ai.AiType type = yio.tro.opacha.game.GameRules.aiTypes.get(selectedPlanet.fraction);
+        aiButton.applyText(selectedPlanet.isNeutral() ? "editor_no_ai" : "AI: " + (type == null ? "simple" : type.toString()));
+        stockButton.applyText(LanguagesManager.getInstance().getString("editor_bombs") + ": "
+                + yioGdxGame.gameController.objectsLayer.tactics.inventory[selectedPlanet.fraction.ordinal()]);
     }
 
 
@@ -134,10 +168,12 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
 
 
     void applyFractionValue() {
+        if (loadingValues) return;
         FractionType fractionType = FractionType.values()[fractionsSlider.getValueIndex()];
         if (selectedPlanet.fraction == fractionType) return;
 
         selectedPlanet.setFraction(fractionType);
+        updateAiLabel();
         EditorWorker editorWorker = yioGdxGame.gameController.objectsLayer.editorWorker;
         editorWorker.onPlanetFractionChanged(selectedPlanet);
         applyTypeValue();
@@ -146,6 +182,7 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
 
 
     void applyTypeValue() {
+        if (loadingValues) return;
         PlanetType planetType = PlanetType.values()[typeSlider.getValueIndex()];
         if (selectedPlanet.type == planetType) return;
 
@@ -155,6 +192,7 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
 
 
     void applyUnitsValue() {
+        if (loadingValues) return;
         selectedPlanet.setUnitsInside(unitValues[unitsSlider.getValueIndex()]);
     }
 
@@ -166,6 +204,14 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
 
 
     void loadValues() {
+        loadingValues = true;
+        initUnitValues();
+        java.util.TreeSet<Integer> choices = new java.util.TreeSet<>();
+        for (int value : unitValues) choices.add(value);
+        choices.add((int) selectedPlanet.unitsInside);
+        unitValues = new int[choices.size()];
+        int position = 0; for (int value : choices) unitValues[position++] = value;
+        unitsSlider.setValues(0,unitValues.length);
         FractionType fraction = selectedPlanet.fraction;
         fractionsSlider.setValueIndex(fraction.ordinal());
 
@@ -179,6 +225,8 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
             unitsSlider.setValueIndex(i);
             break;
         }
+        updateAiLabel();
+        loadingValues = false;
     }
 
 

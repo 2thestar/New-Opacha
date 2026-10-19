@@ -9,6 +9,7 @@ public class SceneChooseGameMode extends SceneYio {
 
 
     public ButtonYio skirmishButton;
+    public ButtonYio mapsButton;
 
 
     @Override
@@ -30,6 +31,11 @@ public class SceneChooseGameMode extends SceneYio {
                 .alignBottom(previousElement, 0.02)
                 .applyText("campaign").setGroundIndex(GroundIndex.BUTTON_WHITE)
                 .setReaction(getCampaignReaction());
+
+        mapsButton = uiFactory.getButton().clone(previousElement).alignBottom(previousElement,.02)
+                .applyText("ui_maps").setReaction(new Reaction() { @Override protected void reaction() {
+                    Scenes.campaign.freePlay = true; Scenes.campaign.create();
+                }});
 
         uiFactory.getButton()
                 .clone(previousElement)
@@ -73,7 +79,7 @@ public class SceneChooseGameMode extends SceneYio {
         return new Reaction() {
             @Override
             protected void reaction() {
-                Scenes.campaign.create();
+                Scenes.campaign.freePlay = false; Scenes.campaign.create();
             }
         };
     }

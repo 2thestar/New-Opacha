@@ -33,6 +33,8 @@ public class Scenes {
     public static SceneConfirmRestart confirmRestart;
     public static SceneKeyboard keyboard;
     public static SceneCampaign campaign;
+    public static SceneCampaignBrief campaignBrief;
+    public static SceneMapDetails mapDetails;
     public static SceneDebugPanel debugPanel;
     public static SceneSpeedControls speedControls;
     public static SceneSelectionOverlay selectionOverlay;
@@ -94,6 +96,8 @@ public class Scenes {
         confirmRestart = new SceneConfirmRestart();
         keyboard = new SceneKeyboard();
         campaign = new SceneCampaign();
+        campaignBrief = new SceneCampaignBrief();
+        mapDetails = new SceneMapDetails();
         debugPanel = new SceneDebugPanel();
         speedControls = new SceneSpeedControls();
         selectionOverlay = new SceneSelectionOverlay();

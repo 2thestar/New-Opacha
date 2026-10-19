@@ -1,196 +1,64 @@
 package yio.tro.opacha.menu.scenes.editor;
 
-import yio.tro.opacha.game.Difficulty;
-import yio.tro.opacha.game.GameRules;
+import yio.tro.opacha.game.*;
 import yio.tro.opacha.game.gameplay.EditorWorker;
-import yio.tro.opacha.game.gameplay.ObjectsLayer;
-import yio.tro.opacha.game.loading.LoadingParameters;
-import yio.tro.opacha.game.loading.LoadingType;
 import yio.tro.opacha.menu.LanguagesManager;
-import yio.tro.opacha.menu.elements.AnimationYio;
-import yio.tro.opacha.menu.elements.CheckButtonYio;
-import yio.tro.opacha.menu.elements.LightBottomPanelElement;
-import yio.tro.opacha.menu.elements.ground.GroundIndex;
-import yio.tro.opacha.menu.elements.slider.SliderBehavior;
-import yio.tro.opacha.menu.elements.slider.SliderYio;
+import yio.tro.opacha.menu.elements.*;
+import yio.tro.opacha.menu.elements.slider.*;
 import yio.tro.opacha.menu.reactions.Reaction;
-import yio.tro.opacha.menu.scenes.ModalSceneYio;
-import yio.tro.opacha.menu.scenes.Scenes;
-import yio.tro.opacha.stuff.GraphicsYio;
-import yio.tro.opacha.stuff.RepeatYio;
+import yio.tro.opacha.menu.scenes.*;
 
-public class SceneEditorOptionsPanel extends ModalSceneYio {
-
-
-    private SliderYio difficultySlider;
-    int rgConfirmCounter;
-    RepeatYio<SceneEditorOptionsPanel> repeatDecreaseConfirmCounter;
-    private LightBottomPanelElement lightBottomPanelElement;
-    private CheckButtonYio chkAiOnly;
-
-
-    public SceneEditorOptionsPanel() {
-        initRepeats();
-    }
-
-
-    private void initRepeats() {
-        repeatDecreaseConfirmCounter = new RepeatYio<SceneEditorOptionsPanel>(this, 60) {
-            @Override
-            public void performAction() {
-                parent.decreaseConfirmCounter();
-            }
-        };
-    }
-
-
-    @Override
-    protected void initialize() {
+public final class SceneEditorOptionsPanel extends ModalSceneYio {
+    public ButtonYio modeButton, routeButton, toolsButton, exportButton, randomButton;
+    private SliderYio difficulty;
+    private CheckButtonYio aiOnly;
+    private LightBottomPanelElement panel;
+    private long generateArmedUntil;
+    @Override protected void initialize() {
         createCloseButton();
-        createLightBottomPanel();
-        createInternals();
+        panel = uiFactory.getLightBottomPanelElement().setSize(1,.76).setTitle("settings").setAnimation(AnimationYio.down);
+        difficulty = uiFactory.getSlider().setParent(panel).setSize(.72).alignTop(.08).centerHorizontal()
+                .setName("difficulty").setValues(0,3).setSegmentsVisible(true).setAnimation(AnimationYio.none)
+                .setBehavior(new SliderBehavior() {
+                    @Override public String getValueString(LanguagesManager language, SliderYio slider) {
+                        return language.getString(Difficulty.values()[slider.getValueIndex()].toString());
+                    }
+                });
+        aiOnly = uiFactory.getCheckButton().setParent(panel).setSize(.80,.06).centerHorizontal().alignBottom(.50).setName("ai_only");
+        modeButton = row(.405, new Reaction() { @Override protected void reaction() {
+            EditorWorker worker = gameController.objectsLayer.editorWorker;
+            worker.setPlayType(PlayType.values()[(GameRules.playType.ordinal()+1)%PlayType.values().length]); refresh();
+        }});
+        routeButton = row(.325, new Reaction() { @Override protected void reaction() {
+            EditorWorker worker = gameController.objectsLayer.editorWorker;
+            worker.nextRouteStyle = (worker.nextRouteStyle + 1) % 4; refresh();
+        }});
+        toolsButton = row(.245, new Reaction() { @Override protected void reaction() { GameRules.features = RuleFeatures.ALL; refresh(); }});
+        exportButton = uiFactory.getButton().setParent(panel).setSize(.37,.06).alignLeft(.10).alignBottom(.095)
+                .applyText("export").setAnimation(AnimationYio.none).setReaction(new Reaction() { @Override protected void reaction() {
+                    apply(); gameController.objectsLayer.exportManager.performToClipboard(); Scenes.notification.show("exported"); destroy();
+                }});
+        randomButton = uiFactory.getButton().setParent(panel).setSize(.37,.06).alignLeft(.53).alignBottom(.095)
+                .applyText("ui_generate").setAnimation(AnimationYio.none).setReaction(new Reaction() { @Override protected void reaction() {
+                    if (System.currentTimeMillis() > generateArmedUntil) {
+                        generateArmedUntil = System.currentTimeMillis() + 4000; Scenes.notification.show("tap_again_to_confirm"); return;
+                    }
+                    apply(); gameController.objectsLayer.editorWorker.onRandomGenerationRequested(); destroy();
+                }});
     }
-
-
-    private void createLightBottomPanel() {
-        lightBottomPanelElement = uiFactory.getLightBottomPanelElement()
-                .setSize(1, 0.5)
-                .setTitle("settings")
-                .setAnimation(AnimationYio.down);
+    private ButtonYio row(double bottom, Reaction reaction) {
+        return uiFactory.getButton().setParent(panel).setSize(.82,.06).centerHorizontal().alignBottom(bottom)
+                .setAnimation(AnimationYio.none).setReaction(reaction);
     }
-
-
-    @Override
-    protected void onAppear() {
-        super.onAppear();
-        yioGdxGame.gameController.resetTouchMode();
-        rgConfirmCounter = 0;
-        loadValues();
+    @Override protected void onAppear() {
+        yioGdxGame.gameController.resetTouchMode(); generateArmedUntil = 0;
+        difficulty.setValueIndex(GameRules.difficulty.ordinal()); aiOnly.setChecked(GameRules.aiOnlyMode); refresh();
     }
-
-
-    private void loadValues() {
-        difficultySlider.setValueIndex(GameRules.difficulty.ordinal());
-        chkAiOnly.setChecked(GameRules.aiOnlyMode);
+    private void refresh() {
+        modeButton.applyText("play_" + GameRules.playType);
+        routeButton.applyText("editor_route_" + yioGdxGame.gameController.objectsLayer.editorWorker.nextRouteStyle);
+        toolsButton.applyText(GameRules.features == RuleFeatures.ALL ? "editor_all_tools" : "editor_unlock_tools");
     }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        applyValues();
-    }
-
-
-    private void applyValues() {
-        GameRules.difficulty = Difficulty.values()[difficultySlider.getValueIndex()];
-        GameRules.aiOnlyMode = chkAiOnly.isChecked();
-    }
-
-
-    private void createInternals() {
-        difficultySlider = uiFactory.getSlider()
-                .setParent(lightBottomPanelElement)
-                .setSize(0.7)
-                .alignTop(0.08)
-                .setAnimation(AnimationYio.none)
-                .centerHorizontal()
-                .setName("difficulty")
-                .setValues(0, Difficulty.values().length)
-                .setSegmentsVisible(true)
-                .setTitleDownwordsOffset(GraphicsYio.convertToWidth(0.03))
-                .setBehavior(getDifficultySliderBehavior());
-
-        chkAiOnly = uiFactory.getCheckButton()
-                .setParent(lightBottomPanelElement)
-                .setWidth(0.8)
-                .centerHorizontal()
-                .alignBottom(previousElement, 0.05)
-                .setName("ai_only");
-
-        uiFactory.getButton()
-                .setParent(lightBottomPanelElement)
-                .setSize(0.7, 0.055)
-                .alignBottom(0.059)
-                .centerHorizontal()
-                .setBackgroundEnabled(true)
-                .setGroundIndex(GroundIndex.BUTTON_WHITE)
-                .setAnimation(AnimationYio.none)
-                .applyText("export")
-                .setReaction(getExportReaction());
-
-        uiFactory.getButton()
-                .clone(previousElement)
-                .alignTop(previousElement, 0.01)
-                .applyText("random_generation")
-                .setReaction(getRandomGenerationReaction());
-    }
-
-
-    private Reaction getExportReaction() {
-        return new Reaction() {
-            @Override
-            protected void reaction() {
-                onExportButtonPressed();
-            }
-        };
-    }
-
-
-    void onExportButtonPressed() {
-        ObjectsLayer objectsLayer = yioGdxGame.gameController.objectsLayer;
-        objectsLayer.exportManager.performToClipboard();
-        Scenes.notification.show("exported");
-        destroy();
-    }
-
-
-    private Reaction getRandomGenerationReaction() {
-        return new Reaction() {
-            @Override
-            protected void reaction() {
-                onRandomGenerationButtonPressed();
-            }
-        };
-    }
-
-
-    @Override
-    public void move() {
-        super.move();
-        repeatDecreaseConfirmCounter.move();
-    }
-
-
-    private void decreaseConfirmCounter() {
-        if (rgConfirmCounter <= 0) return;
-        rgConfirmCounter--;
-    }
-
-
-    void onRandomGenerationButtonPressed() {
-        rgConfirmCounter += 3;
-
-        if (rgConfirmCounter < 4) {
-            Scenes.notification.show("tap_again_to_confirm");
-            return;
-        }
-
-        EditorWorker editorWorker = yioGdxGame.gameController.objectsLayer.editorWorker;
-        editorWorker.onRandomGenerationRequested();
-        Scenes.notification.destroy();
-        destroy();
-        rgConfirmCounter = 0;
-    }
-
-
-    private SliderBehavior getDifficultySliderBehavior() {
-        return new SliderBehavior() {
-            @Override
-            public String getValueString(LanguagesManager languagesManager, SliderYio sliderYio) {
-                Difficulty difficulty = Difficulty.values()[sliderYio.getValueIndex()];
-                return LanguagesManager.getInstance().getString("" + difficulty);
-            }
-        };
-    }
+    private void apply() { GameRules.difficulty = Difficulty.values()[difficulty.getValueIndex()]; GameRules.aiOnlyMode = aiOnly.isChecked(); }
+    @Override protected void onDestroy() { apply(); }
 }

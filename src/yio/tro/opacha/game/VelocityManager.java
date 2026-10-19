@@ -17,7 +17,7 @@ public class VelocityManager {
 
     private void loadValues() {
         Preferences preferences = getPreferences();
-        value = preferences.getFloat("value", 0.5f);
+        value = preferences.getFloat("value", 1f);
     }
 
 

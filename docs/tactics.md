@@ -34,6 +34,14 @@ All personalities can buy bombs, place them ahead of an approaching enemy fleet,
 
 Exported maps preserve mode, directional endpoints, construction progress, bomb stock and positions, artillery reload and shields, original flag locations, and pact state. Original maps without the optional fields load as conquest with normal routes. Map export remains a map feature; it does not save moving fleets.
 
+## Campaign and editor
+
+The 48 fixed boards in `assets/campaign/levels.json` replace the generated campaign. `scripts/build-campaign.py` builds their explicit graphs, objectives, visible starting forces and lesson text. There are twelve maps in each mode. Maps remain available outside campaign progression through Play → Maps.
+
+New lesson tools unlock one at a time. The optional fifth `game_rules` token records a capability mask: half send 1, Grow 2, Defend 4, directional routes 8, construction 16, bombs 32, artillery 64. Older maps default to all 127. The editor's Unlock all tools control removes lesson restrictions from the edited copy.
+
+In editor Settings, cycle the mode and the New route control. Drag between two nodes to create or change a normal, forward, reverse or unfinished route. An unfinished route starts from the first node and requires an owned builder. Tap a node to change its owner, upgrade, exact garrison, AI type or player's bomb stock, or to place a flag. Neutral flag placement sets the required 50 troops. Starting flags must belong to players; deleting or changing their ownership clears stale references. Launch checks for a green player, opponents and a valid objective. Save and export retain the new rules.
+
 ## Verification and future changes
 
 Run `.\opacha.ps1 :lwjgl3:tacticsTest` for deterministic simulation checks and a touch-driven tour at 480 × 800 and 390 × 844. Screenshots are written to `lwjgl3/build/tactics/`. The tour uses an isolated preference directory and slow simulation for reliable moving-fleet targeting. It tests real menu input, both flag selectors, buying and placing a bomb, constructing a route, artillery targeting, pausing, context restoration and pact acceptance/breaking.

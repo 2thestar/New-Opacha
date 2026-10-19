@@ -14,6 +14,7 @@ public class SceneCampaign extends SceneYio{
 
     public CustomizableListYio customizableListYio;
     private ScrollHelperElement scrollHelperElement;
+    public boolean freePlay;
 
 
     @Override
@@ -48,20 +49,20 @@ public class SceneCampaign extends SceneYio{
     private void loadValues() {
         customizableListYio.clearItems();
         SampleListItem sampleListItem = new SampleListItem();
-        sampleListItem.setTitle(LanguagesManager.getInstance().getString("campaign"));
+        sampleListItem.setTitle(LanguagesManager.getInstance().getString(freePlay ? "ui_maps" : "campaign"));
         customizableListYio.addItem(sampleListItem);
 
         int n = 1 + CampaignManager.LAST_LEVEL_INDEX / CampaignCustomItem.ROW;
         for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) {
+                SeparatorListItem chapter = new SeparatorListItem();
+                chapter.setTitle(yio.tro.opacha.game.campaign.CampaignLevels.chapter(i / 2));
+                customizableListYio.addItem(chapter);
+            }
             CampaignCustomItem campaignCustomItem = new CampaignCustomItem();
             campaignCustomItem.set(i * CampaignCustomItem.ROW, Math.min((i + 1) * CampaignCustomItem.ROW - 1, CampaignManager.LAST_LEVEL_INDEX));
             customizableListYio.addItem(campaignCustomItem);
 
-            if (i > 2 && (i + 1) % 5 == 0) {
-                SeparatorListItem separatorListItem = new SeparatorListItem();
-                separatorListItem.setTitle("" + (i + 1) * CampaignCustomItem.ROW);
-                customizableListYio.addItem(separatorListItem);
-            }
         }
     }
 
@@ -71,6 +72,8 @@ public class SceneCampaign extends SceneYio{
         super.onEndCreation();
         scrollToHighestUnlockedLevel();
     }
+
+    @Override protected void onAppear() { loadValues(); }
 
 
     private void scrollToHighestUnlockedLevel() {

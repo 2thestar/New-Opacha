@@ -33,6 +33,7 @@ public class CampaignCustomItem extends AbstractCustomListItem{
             CciInnerItem innerItem = new CciInnerItem(this);
             innerItem.setIndex(index);
             innerItem.setType(CampaignManager.getInstance().getLevelType(index));
+            if (yio.tro.opacha.menu.scenes.Scenes.campaign.freePlay && innerItem.type == CciType.unknown) innerItem.setType(CciType.unlocked);
             items.add(innerItem);
         }
     }
@@ -114,10 +115,9 @@ public class CampaignCustomItem extends AbstractCustomListItem{
         CciType type = touchedItem.type;
         if (type == CciType.unknown && !DebugFlags.unlockLevels) return;
         YioGdxGame yioGdxGame = getGameController().yioGdxGame;
-
-        if (index == 0) {
-            yioGdxGame.loadingManager.startLoading(LoadingType.tutorial, new LoadingParameters());
-            return;
+        if (yio.tro.opacha.menu.scenes.Scenes.campaign.freePlay) {
+            yio.tro.opacha.menu.scenes.Scenes.mapDetails.levelIndex = index;
+            yio.tro.opacha.menu.scenes.Scenes.mapDetails.create(); return;
         }
 
         LoadingParameters loadingParameters = new LoadingParameters();

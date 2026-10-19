@@ -1,80 +1,29 @@
 package yio.tro.opacha.game.loading.loading_processes;
 
 import yio.tro.opacha.YioGdxGame;
-import yio.tro.opacha.game.Difficulty;
-import yio.tro.opacha.game.GameMode;
-import yio.tro.opacha.game.GameRules;
+import yio.tro.opacha.game.*;
+import yio.tro.opacha.game.campaign.CampaignLevels;
 import yio.tro.opacha.game.loading.LoadingManager;
-
+import yio.tro.opacha.menu.scenes.Scenes;
 import java.util.Random;
 
-public class ProcessCampaign extends AbstractLoadingProcess{
-
-    int mapSize;
-    private int index;
-
-
-    public ProcessCampaign(LoadingManager loadingManager) {
-        super(loadingManager);
+public final class ProcessCampaign extends AbstractLoadingProcess {
+    private CampaignLevels.Level level;
+    public ProcessCampaign(LoadingManager manager) { super(manager); }
+    @Override public void prepare() {
+        Scenes.campaign.freePlay = false;
+        level = CampaignLevels.get((int) loadingParameters.getParameter("index"));
+        initGameMode(GameMode.campaign); initLevelSize(LevelSize.tiny);
+        YioGdxGame.predictableRandom = new Random(4001L + level.index);
     }
-
-
-    @Override
-    public void prepare() {
-        initGameMode(GameMode.campaign);
-
-        loadIndexFromParameters();
-        YioGdxGame.predictableRandom = new Random(index);
-        mapSize = YioGdxGame.predictableRandom.nextInt(3);
-        initLevelSize(getLevelSize(mapSize));
+    @Override public void applyGameRules() { GameRules.levelIndex = level.index; }
+    @Override public void loadSavedData(int step) { }
+    @Override public void generateLevel() {
+        getGameController().importManager.perform(level.code);
+        GameRules.levelIndex = level.index;
     }
-
-
-    private void loadIndexFromParameters() {
-        index = (int) loadingParameters.getParameter("index");
-    }
-
-
-    @Override
-    public void applyGameRules() {
-        loadIndexFromParameters();
-        GameRules.difficulty = getDifficultyByIndex(index);
-        GameRules.levelIndex = index;
-    }
-
-
-    private Difficulty getDifficultyByIndex(int index) {
-        if (index < 2) {
-            return Difficulty.easy;
-        }
-
-        if (index % 7 == 0 && index > 25) return Difficulty.hard;
-
-        return Difficulty.normal;
-    }
-
-
-    @Override
-    public void loadSavedData(int step) {
-
-    }
-
-
-    @Override
-    public void generateLevel() {
-        loadIndexFromParameters();
-        getObjectsLayer().mapGenerator.generateLinkedMap(mapSize, getColors());
-    }
-
-
-    private int getColors() {
-        if (index < 4) return 2;
-        return YioGdxGame.predictableRandom.nextInt(3) + 2;
-    }
-
-
-    @Override
-    public void onEndCreation() {
-
+    @Override public void onEndCreation() {
+        Scenes.quickVelocityTutorial.destroy();
+        if (!level.brief.isEmpty()) { Scenes.campaignBrief.useHint = false; Scenes.campaignBrief.create(); }
     }
 }

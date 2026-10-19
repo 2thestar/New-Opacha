@@ -26,6 +26,8 @@ public final class AndroidLauncher extends AndroidApplication {
         UiHaptics.setSpeedTick(() -> runOnUiThread(() -> getWindow().getDecorView().performHapticFeedback(
                 Build.VERSION.SDK_INT >= 34 ? HapticFeedbackConstants.SEGMENT_FREQUENT_TICK
                         : HapticFeedbackConstants.CLOCK_TICK)));
+        UiHaptics.setCaptureTick(() -> runOnUiThread(() -> getWindow().getDecorView().performHapticFeedback(
+                Build.VERSION.SDK_INT >= 30 ? HapticFeedbackConstants.CONFIRM : HapticFeedbackConstants.CLOCK_TICK)));
         Gdx.input.setCatchKey(Input.Keys.BACK, true);
     }
 }

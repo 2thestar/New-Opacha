@@ -36,7 +36,8 @@ public class SceneMainMenu extends SceneYio {
         tutorialButton = uiFactory.getButton().setSize(.74, .060).centerHorizontal().alignBottom(.25)
                 .applyText("ui_how_to_play").setAnimation(AnimationYio.none).setReaction(new Reaction() {
                     @Override protected void reaction() {
-                        yioGdxGame.loadingManager.startLoading(LoadingType.tutorial, new LoadingParameters());
+                        LoadingParameters parameters = new LoadingParameters(); parameters.addParameter("index", 0);
+                        yioGdxGame.loadingManager.startLoading(LoadingType.campaign_create, parameters);
                     }
                 });
         settingsButton = uiFactory.getButton().setSize(.74, .060).centerHorizontal().alignBottom(.17)

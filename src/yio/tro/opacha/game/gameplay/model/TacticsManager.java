@@ -64,7 +64,7 @@ public final class TacticsManager {
     }
 
     public Link createBlueprint(Planet start, Planet target, FractionType owner) {
-        if (start == null || target == null || start == target || start.fraction != owner
+        if (!RuleFeatures.has(RuleFeatures.BUILD) || start == null || target == null || start == target || start.fraction != owner
                 || start.isLinkedTo(target) || owner == FractionType.neutral) return null;
         Link link = layer.linksManager.addLink(start, target);
         link.directional = true;
@@ -76,14 +76,14 @@ public final class TacticsManager {
     }
 
     public boolean buyBomb(Planet node) {
-        if (node == null || !node.isEconomic() || node.isNeutral() || node.unitsInside < BOMB_PRICE) return false;
+        if (!RuleFeatures.has(RuleFeatures.BOMBS) || node == null || !node.isEconomic() || node.isNeutral() || node.unitsInside < BOMB_PRICE) return false;
         node.decreaseUnitsInside(BOMB_PRICE);
         inventory[node.fraction.ordinal()]++;
         return true;
     }
 
     public boolean placeBomb(Unit unit, FractionType owner) {
-        if (unit == null || !unit.isAlive() || unit.fraction != owner || unit.value < BOMB_CREW
+        if (!RuleFeatures.has(RuleFeatures.BOMBS) || unit == null || !unit.isAlive() || unit.fraction != owner || unit.value < BOMB_CREW
                 || inventory[owner.ordinal()] == 0) return false;
         inventory[owner.ordinal()]--;
         bombs.add(new RouteBomb(unit.link, owner, unit.acceleratableFactor.value));
@@ -105,7 +105,7 @@ public final class TacticsManager {
     }
 
     public boolean buildArtillery(Planet node) {
-        if (node == null || node.isNeutral() || node.type == PlanetType.artillery || node.unitsInside < ARTILLERY_PRICE) return false;
+        if (!RuleFeatures.has(RuleFeatures.ARTILLERY) || node == null || node.isNeutral() || node.type == PlanetType.artillery || node.unitsInside < ARTILLERY_PRICE) return false;
         node.decreaseUnitsInside(ARTILLERY_PRICE);
         node.setType(PlanetType.artillery);
         node.setAutoTarget(null);
@@ -116,7 +116,7 @@ public final class TacticsManager {
     public double artilleryRange() { return 3 * normalRouteLength; }
 
     public boolean canFire(Planet gun, Planet target) {
-        return gun != null && target != null && gun.type == PlanetType.artillery && !gun.isNeutral()
+        return RuleFeatures.has(RuleFeatures.ARTILLERY) && gun != null && target != null && gun.type == PlanetType.artillery && !gun.isNeutral()
                 && !target.isNeutral() && !alliances.friendly(gun.fraction, target.fraction)
                 && gun.unitsInside >= SHOT_PRICE && gun.artilleryReload <= .0001f
                 && gun.position.center.distanceTo(target.position.center) <= artilleryRange();

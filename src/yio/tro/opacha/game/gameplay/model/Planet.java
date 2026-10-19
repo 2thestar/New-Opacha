@@ -38,6 +38,7 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
     public RenderableTextYio text;
     public float unitsInside;
     public float artilleryReload;
+    public float capturePulse;
     RepeatYio<Planet> repeatBuildUnits, repeatIncreaseDefense;
     public Planet autoTarget;
     public CircleYio atViewPosition;
@@ -152,6 +153,7 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
         flag = false;
         type = PlanetType.empty;
         artilleryReload = 0;
+        capturePulse = 0;
         holdSelection = false;
         jumpEngineYio.reset();
         viewTypeFactor.reset();
@@ -201,6 +203,7 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
 
     @Override
     public void moveVisually() {
+        capturePulse = Math.max(0, capturePulse - com.badlogic.gdx.Gdx.graphics.getDeltaTime() / .45f);
         applyVisualRotation();
         moveSelection();
         updateSelectionPosition();
@@ -338,6 +341,7 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
 
     private void onFractionChanged(FractionType previousFraction) {
         if (previousFraction == null) return;
+        capturePulse = 0;
 
         setType(PlanetType.empty);
         setAutoTarget(null);
@@ -348,6 +352,11 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
         aiData.reset();
         artilleryReload = 0;
         planetsManager.objectsLayer.tactics.onCaptured(this);
+        if (fraction == FractionType.green && !GameRules.aiOnlyMode
+                && planetsManager.objectsLayer.gameController.gameMode != GameMode.editor) {
+            capturePulse = 1;
+            yio.tro.opacha.menu.UiHaptics.nodeCaptured();
+        }
     }
 
 

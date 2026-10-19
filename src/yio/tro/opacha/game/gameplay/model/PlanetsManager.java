@@ -203,6 +203,7 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
 
 
     public void onLongTappedPlanet(Planet planet) {
+        if (!yio.tro.opacha.game.RuleFeatures.has(yio.tro.opacha.game.RuleFeatures.HALF)) return;
         if (!planet.isControlledByPlayer()) return;
 
         deselect();
@@ -292,6 +293,8 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
 
 
     public void applyUpgrade(Planet planet, PlanetType planetType) {
+        if (planetType == PlanetType.economic && !canBeUpgradedToEconomic(planet)) return;
+        if (planetType == PlanetType.defensive && !canBeUpgradedToDefensive(planet)) return;
         planet.setType(planetType);
         SoundManager.playSound(SoundManager.score);
 
@@ -337,12 +340,14 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
 
 
     public boolean canBeUpgradedToEconomic(Planet planet) {
-        return !planet.isEconomic() && (int) planet.unitsInside >= ECONOMIC_UPGRADE_PRICE;
+        return yio.tro.opacha.game.RuleFeatures.has(yio.tro.opacha.game.RuleFeatures.GROW)
+                && !planet.isEconomic() && (int) planet.unitsInside >= ECONOMIC_UPGRADE_PRICE;
     }
 
 
     public boolean canBeUpgradedToDefensive(Planet planet) {
-        return !planet.isDefensive() && (int) planet.unitsInside >= DEFENSIVE_UPGRADE_PRICE;
+        return yio.tro.opacha.game.RuleFeatures.has(yio.tro.opacha.game.RuleFeatures.DEFEND)
+                && !planet.isDefensive() && (int) planet.unitsInside >= DEFENSIVE_UPGRADE_PRICE;
     }
 
 

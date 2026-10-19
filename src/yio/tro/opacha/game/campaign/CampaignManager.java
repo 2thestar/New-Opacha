@@ -12,9 +12,9 @@ public class CampaignManager {
 
 
     private static CampaignManager instance;
-    public static final int LAST_LEVEL_INDEX = 1517;
-    public static final int LEVELS_PER_CHAPTER = 30;
-    private static final String PREFS = "yio.tro.opacha.campaign";
+    public static final int LAST_LEVEL_INDEX = CampaignLevels.COUNT - 1;
+    public static final int LEVELS_PER_CHAPTER = 12;
+    private static final String PREFS = "yio.tro.opacha.campaign.v2";
     ArrayList<Integer> completedLevels;
     private int visualChapter;
 
@@ -47,14 +47,17 @@ public class CampaignManager {
         completedLevels.clear();
         for (String token : split) {
             if (token.length() < 1) continue;
-            completedLevels.add(Integer.valueOf(token));
+            try {
+                int index = Integer.parseInt(token);
+                if (index >= 0 && index <= LAST_LEVEL_INDEX && !completedLevels.contains(index)) completedLevels.add(index);
+            } catch (NumberFormatException ignored) { }
         }
         visualChapter = chapterOf(getIndexOfHighestUnlockedLevel());
     }
 
 
     public void onLevelCompleted(int index) {
-        if (isLevelCompleted(index)) return;
+        if (index < 0 || index > LAST_LEVEL_INDEX || isLevelCompleted(index)) return;
         completedLevels.add(index);
         visualChapter = chapterOf(getIndexOfHighestUnlockedLevel());
         Scenes.campaign.onLevelMarkedAsCompleted();
@@ -63,17 +66,11 @@ public class CampaignManager {
 
 
     public int getNextLevelIndex(int index) {
-        if (index >= LAST_LEVEL_INDEX) return index;
-
-        int nextIndex = index + 1;
-        while (nextIndex != index && isLevelCompleted(nextIndex)) {
-            nextIndex++;
-            if (nextIndex > LAST_LEVEL_INDEX) {
-                nextIndex = 0;
-            }
+        for (int offset = 1; offset <= CampaignLevels.COUNT; offset++) {
+            int next = (index + offset) % CampaignLevels.COUNT;
+            if (!isLevelCompleted(next)) return next;
         }
-
-        return nextIndex;
+        return index;
     }
 
 
@@ -110,7 +107,7 @@ public class CampaignManager {
 
     public int getIndexOfHighestUnlockedLevel() {
         int result = 0;
-        for (int index = 0; index < LAST_LEVEL_INDEX; index++) {
+        for (int index = 0; index <= LAST_LEVEL_INDEX; index++) {
             if (getLevelType(index) != CciType.unlocked) continue;
             result = index;
         }
@@ -130,7 +127,7 @@ public class CampaignManager {
         if (isLevelCompleted(levelIndex)) {
             return CciType.completed;
         }
-        if (isLevelCompleted(levelIndex - 1) || isLevelCompleted(levelIndex - 2) || isLevelCompleted(levelIndex - 3)) {
+        if (isLevelCompleted(levelIndex - 1)) {
             return CciType.unlocked;
         }
         return CciType.unknown;

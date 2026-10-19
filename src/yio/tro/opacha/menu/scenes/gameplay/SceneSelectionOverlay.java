@@ -63,6 +63,10 @@ public class SceneSelectionOverlay extends ModalSceneYio {
                 .setGroundIndex(selectedPlanet.halvedSelectionMode ? GroundIndex.YELLOW : GroundIndex.BUTTON_WHITE);
     }
     @Override protected void appearElement(InterfaceElement element) {
+        if (element == bEconomic && !yio.tro.opacha.game.RuleFeatures.has(yio.tro.opacha.game.RuleFeatures.GROW)) return;
+        if (element == bDefensive && !yio.tro.opacha.game.RuleFeatures.has(yio.tro.opacha.game.RuleFeatures.DEFEND)) return;
+        if (element == halvedModeButton && !yio.tro.opacha.game.RuleFeatures.has(yio.tro.opacha.game.RuleFeatures.HALF)) return;
+        if (element == actionsButton && (yio.tro.opacha.game.GameRules.features & 112) == 0) return;
         if (selectedPlanet.type == PlanetType.economic && element == bEconomic) return;
         if (selectedPlanet.type == PlanetType.defensive && element == bDefensive) return;
         if (element == halvedModeButton && !SettingsManager.getInstance().halvedModeButtonEnabled) return;

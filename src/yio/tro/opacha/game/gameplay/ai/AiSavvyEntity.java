@@ -166,7 +166,9 @@ public class AiSavvyEntity extends AbstractAiEntity {
     private int reserve(Planet source, Planet attackedTarget) {
         int incomingThreat = hostileIncoming(source) - incoming(source, fractionType);
         int threat = Math.max(0, incomingThreat);
-        return Math.max(0, threat + (threat > 0 ? 2 : 0) - (int) source.currentDefense);
+        int home = yio.tro.opacha.game.GameRules.playType == yio.tro.opacha.game.PlayType.home_flags
+                && objectsLayer.tactics.homeFlags[fractionType.ordinal()] == source ? 8 : 0;
+        return Math.max(home, threat + (threat > 0 ? 2 : 0) - (int) source.currentDefense);
     }
 
     private double exposureCost(Planet source, int troops, Planet attackedTarget) {
@@ -220,12 +222,14 @@ public class AiSavvyEntity extends AbstractAiEntity {
     private Plan upgradePlan(Planet source) {
         if (difficulty == Difficulty.easy || source.unitsInside < 10 + reserve(source, null)) return null;
         int enemies = getPlanetsManager().numberOfAdjoinedEnemyPlanets(source);
-        if (!source.isDefensive() && enemies >= 2 && source.unitsInside >= 20) {
+        if (yio.tro.opacha.game.RuleFeatures.has(yio.tro.opacha.game.RuleFeatures.DEFEND)
+                && !source.isDefensive() && enemies >= 2 && source.unitsInside >= 20) {
             Plan plan = new Plan(source, null, 0, 16);
             plan.upgrade = PlanetType.defensive;
             return plan;
         }
-        if (!source.isEconomic() && enemies == 0 && hostileIncoming(source) == 0) {
+        if (yio.tro.opacha.game.RuleFeatures.has(yio.tro.opacha.game.RuleFeatures.GROW)
+                && !source.isEconomic() && enemies == 0 && hostileIncoming(source) == 0) {
             // Invest early: production doubles permanently for ten troops. Waiting
             // for a larger idle garrison loses the opening economy race.
             Plan plan = new Plan(source, null, 0, 50);

@@ -79,25 +79,25 @@ public final class ThemeSmokeTest extends YioGdxGame {
             case 14: screenshot("11-night-artillery"); click(Scenes.selectionOverlay.actionsButton); break;
             case 15: screenshot("12-night-actions"); key(Input.Keys.ESCAPE); break;
             case 16: click(Scenes.gameOverlay.pauseMenuButton); break;
-            case 17: screenshot("13-night-paused"); load(29); break;
+            case 17: screenshot("13-night-paused"); load(11); break;
             case 18:
                 require(gameController.gameMode == GameMode.campaign && CampaignManager.chapterOf(GameRules.levelIndex) == 0,
-                        "Campaign level 29 has the wrong background chapter");
+                        "Campaign level 12 has the wrong background chapter");
                 screenshot("14-chapter-1-night"); settings.nightMode = false; UiStyle.applyTheme(false); settings.saveValues(); break;
-            case 19: screenshot("15-chapter-1-day"); load(30); break;
+            case 19: screenshot("15-chapter-1-day"); load(12); break;
             case 20:
-                require(CampaignManager.chapterOf(GameRules.levelIndex) == 1, "Level 30 did not change chapter");
-                screenshot("16-chapter-2-day"); load(60); break;
-            case 21: screenshot("17-chapter-3-day"); load(90); break;
-            case 22: screenshot("18-chapter-4-day"); load(120); break;
-            case 23: screenshot("19-chapter-5-day"); load(150); break;
-            case 24: screenshot("20-chapter-6-day"); settings.nightMode = true; UiStyle.applyTheme(true); settings.saveValues(); break;
+                require(CampaignManager.chapterOf(GameRules.levelIndex) == 1, "Level 13 did not change chapter");
+                screenshot("16-chapter-2-day"); load(24); break;
+            case 21: screenshot("17-chapter-3-day"); load(36); break;
+            case 22: screenshot("18-chapter-4-day"); load(47); break;
+            case 23: screenshot("19-final-map-day"); load(46); break;
+            case 24: screenshot("20-final-chapter-day"); settings.nightMode = true; UiStyle.applyTheme(true); settings.saveValues(); break;
             case 25:
                 screenshot("21-chapter-6-night");
                 setGamePaused(true); gameView.destroy(); Scenes.campaign.create(); break;
             case 26:
                 screenshot("22-night-campaign-list");
-                require(CampaignManager.chapterOf(59) == 1 && CampaignManager.chapterOf(60) == 2,
+                require(CampaignManager.chapterOf(23) == 1 && CampaignManager.chapterOf(24) == 2,
                         "Chapter boundary changed incorrectly");
                 LoadingParameters fixture = new LoadingParameters();
                 fixture.addParameter("map_size", 1); fixture.addParameter("colors", 4);
@@ -138,6 +138,7 @@ public final class ThemeSmokeTest extends YioGdxGame {
     private void load(int level) {
         LoadingParameters p = new LoadingParameters(); p.addParameter("index", level);
         loadingManager.startInstantly(LoadingType.campaign_create, p);
+        Scenes.campaignBrief.destroy();
     }
     private void clickWorld(PointYio p) {
         OrthographicCamera c = gameController.cameraController.orthoCam;

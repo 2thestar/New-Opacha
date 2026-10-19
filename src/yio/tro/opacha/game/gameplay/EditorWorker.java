@@ -1,6 +1,8 @@
 package yio.tro.opacha.game.gameplay;
 
 import yio.tro.opacha.game.LevelSize;
+import yio.tro.opacha.game.GameRules;
+import yio.tro.opacha.game.PlayType;
 import yio.tro.opacha.game.gameplay.model.*;
 import yio.tro.opacha.menu.scenes.Scenes;
 import yio.tro.opacha.stuff.CircleYio;
@@ -15,6 +17,7 @@ public class EditorWorker implements IGameplayManager{
     CircleYio tempCircle;
     ArrayList<Link> tempLinkList;
     boolean tagFractions[];
+    public int nextRouteStyle;
 
 
     public EditorWorker(ObjectsLayer objectsLayer) {
@@ -28,7 +31,7 @@ public class EditorWorker implements IGameplayManager{
 
     @Override
     public void defaultValues() {
-
+        nextRouteStyle = 0;
     }
 
 
@@ -39,10 +42,17 @@ public class EditorWorker implements IGameplayManager{
 
 
     public void onLinkAdditionRequested(Planet one, Planet two) {
-        if (one.isLinkedTo(two)) return;
-
         LinksManager linksManager = objectsLayer.linksManager;
-        Link link = linksManager.addLink(one, two);
+        if (nextRouteStyle == 3 && one.isNeutral()) { Scenes.notification.show("editor_blueprint_owner"); return; }
+        Link link = one.getLink(two);
+        if (link == null) link = linksManager.addLink(one, two);
+        link.one = nextRouteStyle == 2 ? two : one;
+        link.two = nextRouteStyle == 2 ? one : two;
+        link.directional = nextRouteStyle != 0;
+        link.builder = nextRouteStyle == 3 ? one.fraction : null;
+        link.constructionCost = nextRouteStyle == 3 ? Math.max(1, (int) Math.ceil(80 * link.distance / objectsLayer.tactics.normalRouteLength)) : 0;
+        link.constructionSpent = 0;
+        syncLinkFraction(link);
         link.initNPoints();
     }
 
@@ -66,10 +76,16 @@ public class EditorWorker implements IGameplayManager{
         }
 
         getPlanetsManager().removePlanet(closestPlanet);
+        if (objectsLayer.tactics.flagPlanet == closestPlanet) objectsLayer.tactics.flagPlanet = null;
+        for (int i = 0; i < objectsLayer.tactics.homeFlags.length; i++)
+            if (objectsLayer.tactics.homeFlags[i] == closestPlanet) objectsLayer.tactics.homeFlags[i] = null;
     }
 
 
     public void onPlanetFractionChanged(Planet planet) {
+        if (objectsLayer.tactics.flagPlanet == planet && !planet.isNeutral()) objectsLayer.tactics.flagPlanet = null;
+        for (int i = 0; i < objectsLayer.tactics.homeFlags.length; i++)
+            if (objectsLayer.tactics.homeFlags[i] == planet && planet.fraction.ordinal() != i) objectsLayer.tactics.homeFlags[i] = null;
         for (Link adjoinedLink : planet.adjoinedLinks) {
             syncLinkFraction(adjoinedLink);
         }
@@ -90,6 +106,8 @@ public class EditorWorker implements IGameplayManager{
         int colors = detectColorsForRandomGeneration();
         int mapSize = getMapSizeByLevelSize(initialLevelSize);
         objectsLayer.mapGenerator.generateLinkedMap(mapSize, colors);
+        objectsLayer.tactics = new TacticsManager(objectsLayer);
+        objectsLayer.tactics.onEndCreation();
         for (Link link : objectsLayer.linksManager.links) {
             link.updateMetrics();
             link.initNPoints();
@@ -170,7 +188,8 @@ public class EditorWorker implements IGameplayManager{
 
 
     public void onLaunchButtonPressed() {
-        if (!isLevelValidForLaunch()) return;
+        if (!isLevelValidForLaunch()) { Scenes.notification.show("editor_invalid_map"); return; }
+        objectsLayer.tactics.onEndCreation();
         Scenes.editorPrepareToLaunch.create();
     }
 
@@ -186,7 +205,37 @@ public class EditorWorker implements IGameplayManager{
             c++;
         }
 
-        return c > 1;
+        if (c < 2 || (!GameRules.aiOnlyMode && !tagFractions[FractionType.green.ordinal()])) return false;
+        if (GameRules.playType == PlayType.alliances && c < 3) return false;
+        if (GameRules.playType == PlayType.capture_flag) {
+            boolean neutral = false;
+            for (Planet planet : planets) if (planet.isNeutral()) neutral = true;
+            if (!neutral) return false;
+        }
+        return true;
+    }
+
+    public void setPlayType(PlayType type) {
+        TacticsManager tactics = objectsLayer.tactics;
+        if (tactics.flagPlanet != null) {
+            tactics.flagPlanet.position.setRadius(getPlanetsManager().getPlanetRadius());
+            tactics.flagPlanet.onPositionChanged();
+        }
+        tactics.flagPlanet = null; tactics.flagWinner = null;
+        java.util.Arrays.fill(tactics.homeFlags, null);
+        GameRules.playType = type;
+        tactics.onEndCreation();
+    }
+
+    public void markFlag(Planet node) {
+        if (GameRules.playType == PlayType.capture_flag && node.isNeutral()) {
+            Planet old = objectsLayer.tactics.flagPlanet;
+            if (old != null) { old.position.setRadius(getPlanetsManager().getPlanetRadius()); old.onPositionChanged(); }
+            objectsLayer.tactics.flagPlanet = node; node.setUnitsInside(50);
+            node.position.setRadius(1.3 * getPlanetsManager().getPlanetRadius()); node.onPositionChanged();
+        } else if (GameRules.playType == PlayType.home_flags && !node.isNeutral()) {
+            objectsLayer.tactics.homeFlags[node.fraction.ordinal()] = node;
+        } else Scenes.notification.show("editor_flag_mode");
     }
 
 

@@ -54,9 +54,11 @@ public final class UiSmokeTest extends YioGdxGame {
                 require(Scenes.mainMenu.isCurrentlyVisible(), "Settings Back did not return home");
                 click(Scenes.mainMenu.tutorialButton); break;
             case 3:
-                require(gameController.gameMode == GameMode.tutorial, "How to play did not load the tutorial");
-                screenshot("03-tutorial"); key(Input.Keys.ESCAPE); break;
+                require(gameController.gameMode == GameMode.campaign && Scenes.campaignBrief.isCurrentlyVisible(), "How to play did not load the first campaign lesson");
+                screenshot("03-tutorial"); click(Scenes.campaignBrief.startButton); break;
             case 4:
+                key(Input.Keys.ESCAPE); step=24; break;
+            case 24:
                 require(gamePaused && Scenes.pauseMenu.isCurrentlyVisible(), "Tutorial Back did not open Pause");
                 click(Scenes.pauseMenu.mainMenuButton); step = 20; break;
             case 5:

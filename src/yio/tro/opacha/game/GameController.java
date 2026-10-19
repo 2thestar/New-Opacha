@@ -141,7 +141,7 @@ public class GameController {
         OneTimeInfo instance = OneTimeInfo.getInstance();
         if (instance.quickVelocityTutorial) return;
         if (!SettingsManager.getInstance().velocitySliderEnabled) return;
-        if (gameMode == GameMode.tutorial) return;
+        if (gameMode == GameMode.tutorial || gameMode == GameMode.editor || gameMode == GameMode.campaign) return;
 
         instance.quickVelocityTutorial = true;
         instance.save();

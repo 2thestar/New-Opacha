@@ -11,6 +11,7 @@ public class SceneOnCampaignLevelCompleted extends SceneYio{
 
     int currentLevelIndex;
     private ButtonYio label;
+    public ButtonYio nextButton;
 
 
     @Override
@@ -23,12 +24,13 @@ public class SceneOnCampaignLevelCompleted extends SceneYio{
 
 
     private void createNextButton() {
-        uiFactory.getButton()
+        nextButton = uiFactory.getButton()
                 .setParent(label)
                 .setSize(0.4, 0.06)
                 .alignBottom(0.01)
                 .alignRight(0.03)
                 .applyText("next")
+                .setGroundIndex(GroundIndex.YELLOW).setBackgroundEnabled(true).setBorder(true)
                 .setReaction(getNextReaction());
     }
 

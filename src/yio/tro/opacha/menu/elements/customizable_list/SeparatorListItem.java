@@ -39,7 +39,7 @@ public class SeparatorListItem extends AbstractCustomListItem{
 
 
     private void updateRightLine() {
-        right.start.x = viewPosition.x + viewPosition.width / 2 + offset;
+        right.start.x = viewPosition.x + viewPosition.width / 2 + Math.max(offset, title.width / 2 + .025f * GraphicsYio.width);
         right.start.y = viewPosition.y + viewPosition.height / 2;
         right.finish.x = viewPosition.x + viewPosition.width - offset;
         right.finish.y = viewPosition.y + viewPosition.height / 2;
@@ -49,7 +49,7 @@ public class SeparatorListItem extends AbstractCustomListItem{
     private void updateLeftLine() {
         left.start.x = viewPosition.x + offset;
         left.start.y = viewPosition.y + viewPosition.height / 2;
-        left.finish.x = viewPosition.x + viewPosition.width / 2 - offset;
+        left.finish.x = viewPosition.x + viewPosition.width / 2 - Math.max(offset, title.width / 2 + .025f * GraphicsYio.width);
         left.finish.y = viewPosition.y + viewPosition.height / 2;
     }
 

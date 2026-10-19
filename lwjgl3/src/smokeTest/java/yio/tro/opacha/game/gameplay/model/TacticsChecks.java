@@ -16,11 +16,12 @@ public final class TacticsChecks {
         float refresh = RefreshRateDetector.getInstance().multiplier;
         VelocityManager.getInstance().value = 1; RefreshRateDetector.getInstance().multiplier = 1;
         try {
-            suite.routes(); suite.bombs(); suite.artillery(); suite.pacts(); suite.flags(); suite.serialization(); suite.aiTools();
+            suite.routes(); suite.bombs(); suite.artillery(); suite.pacts(); suite.flags(); suite.serialization(); suite.aiTools(); suite.aiBalance(); suite.siegeRegeneration();
             System.out.println("TACTICS SCENARIOS PASSED: " + suite.checks + " assertions");
         } finally { VelocityManager.getInstance().value = velocity; RefreshRateDetector.getInstance().multiplier = refresh; }
     }
     private void reset(PlayType mode) {
+        GameRules.features = RuleFeatures.ALL;
         GameRules.playType = mode; GameRules.aiOnlyMode = false; GameRules.difficulty = Difficulty.hard;
         GameRules.aiTypes.clear(); controller.gameMode = GameMode.skirmish; controller.createGameObjects(); layer = controller.objectsLayer;
     }
@@ -210,6 +211,60 @@ public final class TacticsChecks {
         layer.tactics.elapsed = 40; GameRules.aiTypes.put(FractionType.red, yio.tro.opacha.game.gameplay.ai.AiType.savvy);
         TacticsAi.perform(layer.tactics);
         check(layer.tactics.alliances.isBroken(FractionType.green, FractionType.red), "Savvy must be able to break an old pact when its partner becomes vulnerable");
+    }
+    private void aiBalance() {
+        reset(PlayType.conquest);
+        Planet gun = node(FractionType.red,100,.2,.5), vacant=node(FractionType.green,0,.4,.5);
+        Planet foothold=node(FractionType.neutral,3,.2,.7);
+        gun.setType(PlanetType.artillery); layer.linksManager.addLink(gun,foothold);
+        layer.tactics.normalRouteLength=.2*GraphicsYio.width;
+        TacticsAi.perform(layer.tactics);
+        check(gun.artilleryReload==0 && vacant.unitsInside==0,"AI wasted a shell on an ordinary empty node");
+        check(gun.unitsInside==50 && layer.unitManager.units.size()==1,"Gun reserves did not advance toward a capturable foothold");
+
+        reset(PlayType.conquest);
+        Planet economy=node(FractionType.red,100,.2,.5); economy.setType(PlanetType.economic);
+        node(FractionType.green,30,.4,.5); node(FractionType.cyan,35,.4,.7);
+        layer.tactics.normalRouteLength=.2*GraphicsYio.width; TacticsAi.perform(layer.tactics);
+        check(economy.isEconomic(),"AI destroyed its economic node to build a gun");
+
+        reset(PlayType.conquest);
+        gun=node(FractionType.red,70,.2,.5); gun.setType(PlanetType.artillery);
+        Planet enemy=node(FractionType.green,30,.4,.5); enemy.setType(PlanetType.economic);
+        layer.linksManager.addLink(gun,enemy); send(enemy,gun,60);
+        layer.tactics.normalRouteLength=.2*GraphicsYio.width; TacticsAi.perform(layer.tactics);
+        check(gun.unitsInside==70 && gun.artilleryReload==0,"Gun spent its defence against a larger incoming fleet");
+
+        reset(PlayType.alliances);
+        node(FractionType.green,30,.2,.5); node(FractionType.red,40,.4,.5);
+        node(FractionType.yellow,100,.6,.5); node(FractionType.cyan,35,.8,.5);
+        layer.tactics.elapsed=9; layer.tactics.alliances.offer(FractionType.green,FractionType.red);
+        TacticsAi.perform(layer.tactics);
+        check(layer.tactics.alliances.areAllied(FractionType.green,FractionType.red),"Weaker players could not cooperate against a shared rival");
+        layer.tactics.alliances.offer(FractionType.cyan,FractionType.red); TacticsAi.perform(layer.tactics);
+        check(!layer.tactics.alliances.areAllied(FractionType.cyan,FractionType.red),"AI accepted a second simultaneous partner");
+        check(!layer.tactics.alliances.areAllied(FractionType.yellow,FractionType.red),"Strongest rival joined a pointless universal pact");
+    }
+    private void siegeRegeneration() {
+        float[] populations=new float[2];
+        for (int count=1;count<=2;count++) {
+            reset(PlayType.conquest);
+            Planet target=node(FractionType.red,20,.4,.5); target.setType(PlanetType.defensive); target.setCurrentDefense(14);
+            Planet[] guns=new Planet[count];
+            for(int i=0;i<count;i++) { guns[i]=node(FractionType.green,200,.2,.5+i*.2); guns[i].setType(PlanetType.artillery); }
+            layer.tactics.normalRouteLength=.2*GraphicsYio.width;
+            int shots=0;
+            for(int tick=0;tick<1200;tick++) {
+                for(Planet gun:guns) if(layer.tactics.canFire(gun,target) && layer.tactics.fire(gun,target)) shots++;
+                for(Planet planet:layer.planetsManager.planets) planet.moveActually();
+                layer.tactics.moveActually();
+            }
+            populations[count-1]=target.unitsInside;
+            check(shots==count*4,"Unexpected shot count in 20-second regenerating siege");
+            if(count==1) check(target.type==PlanetType.defensive && target.unitsInside>20,"Single-gun regeneration balance changed");
+        }
+        check(populations[1]<20,"Synchronized guns did not damage population through shields");
+        System.out.println("SIEGE REGEN 20s: one gun target population="+populations[0]+", two guns="+populations[1]);
     }
     private void check(boolean value, String message) { checks++; if (!value) throw new AssertionError(message); }
     private void near(double a, double b, String message) { check(Math.abs(a - b) < .001, message + ": " + a + " != " + b); }

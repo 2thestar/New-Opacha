@@ -42,14 +42,24 @@ public class RenderCampaignCustomItem extends AbstractRenderCustomListItem{
 
 
     private void renderSingleInnerItem(CciInnerItem cciInnerItem) {
-        GraphicsYio.drawByRectangle(batch, mapTextures.get(cciInnerItem.type), cciInnerItem.position);
-
-        if (cciInnerItem.type == CciType.unlocked) {
-            cciInnerItem.title.font.setColor(yio.tro.opacha.menu.UiStyle.INK);
-            GraphicsYio.renderTextOptimized(batch, blackPixel, cciInnerItem.title, alpha);
-            cciInnerItem.title.font.setColor(yio.tro.opacha.menu.UiStyle.TEXT);
-            GraphicsYio.setBatchAlpha(batch, alpha);
+        yio.tro.opacha.menu.UiStyle skin = yio.tro.opacha.menu.UiStyle.get();
+        yio.tro.opacha.stuff.RectangleYio r = cciInnerItem.position;
+        boolean done = cciInnerItem.type == CciType.completed;
+        boolean locked = cciInnerItem.type == CciType.unknown;
+        skin.rounded(batch,r.x,r.y,r.width,r.height,yio.tro.opacha.menu.UiStyle.OUTLINE,alpha * (locked ? .35f : 1));
+        float inset = Math.max(1, .004f * w);
+        skin.rounded(batch,r.x+inset,r.y+inset,r.width-2*inset,r.height-2*inset,
+                done ? yio.tro.opacha.menu.UiStyle.GREEN : yio.tro.opacha.menu.UiStyle.BOARD,alpha);
+        cciInnerItem.title.font.setColor(done ? yio.tro.opacha.menu.UiStyle.INK : yio.tro.opacha.menu.UiStyle.TEXT);
+        GraphicsYio.renderTextOptimized(batch,blackPixel,cciInnerItem.title,alpha * (locked ? .55f : 1));
+        cciInnerItem.title.font.setColor(yio.tro.opacha.menu.UiStyle.TEXT);
+        if (done) {
+            skin.line(batch,r.x+r.width*.67,r.y+r.height*.77,r.x+r.width*.74,r.y+r.height*.70,
+                    Math.max(1,w*.003),yio.tro.opacha.menu.UiStyle.INK,alpha);
+            skin.line(batch,r.x+r.width*.74,r.y+r.height*.70,r.x+r.width*.87,r.y+r.height*.86,
+                    Math.max(1,w*.003),yio.tro.opacha.menu.UiStyle.INK,alpha);
         }
+        GraphicsYio.setBatchAlpha(batch,alpha);
 
         if (cciInnerItem.selectionEngineYio.isSelected()) {
             GraphicsYio.setBatchAlpha(batch, cciInnerItem.selectionEngineYio.getAlpha());
