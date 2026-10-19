@@ -44,6 +44,6 @@ Physical Pixel vibration strength and blind-player comprehension still require a
 | File | Bytes | SHA256 |
 | --- | ---: | --- |
 | New-Opacha-0.4.0.apk | 7,759,353 | `f233b426dd3bfc54833ac977828af170e42db3a3b3c8e624ed1f4d625717990f` |
-| New-Opacha-0.4.0-install.zip | 1,072,119 | `bc43888c7f28841fc7162970a31ba7fb23ff92b75f450dd8f2e9674e430119e6` |
+| New-Opacha-0.4.0-install.zip | 6,345,520 | `bc43888c7f28841fc7162970a31ba7fb23ff92b75f450dd8f2e9674e430119e6` |
 
 `scripts/verify-apk.py` checks campaign counts, native load-segment alignment and install ZIP equality. Android SDK `apksigner verify` and `zipalign -c -P 16 -v 4` provide the signing and ZIP-entry checks separately.

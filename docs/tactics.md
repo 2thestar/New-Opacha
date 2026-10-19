@@ -51,3 +51,5 @@ Run `:lwjgl3:tacticsRules` for the combat scenarios, AI tool decisions and eight
 When changing traffic rules, test several opposing fleets on the same route, allied crossings followed by betrayal, and unit removal during collision iteration. When changing digging, test partial funding, two simultaneous crews, final distance rounding, and troop conservation. Generated textures retain their CPU pixels so Android can restore them after graphics context loss. Touch tests must use `getViewPosition()` for controls inside a parent panel.
 
 When multiple chats share a checkout, finish edits before taking a source snapshot, then build and test in that separate directory. Rebuilding the same packaged JAR during a running texture-restoration test can produce an invalid ZIP header when libGDX reopens an asset. Preserve the tested source hashes and publish the APK from that exact snapshot.
+
+Wait for the packaging task to finish before recording file sizes or hashes. A ZIP can already exist while its contents are still being written.
