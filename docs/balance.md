@@ -57,3 +57,18 @@ Bots cannot establish enjoyment, tutorial comprehension or physical vibration st
 Keep policy revisions separate from map revisions when measuring an effect. A headless model pass cannot catch overlapping brief text, hidden controls or an editor slider silently rounding a garrison. Use real native touch tests and inspect both phone and desktop renders, then install the same signed APK as an update in the Pixel profile. Freeze sources and packaged JARs during native tests; texture restoration can reopen the JAR later.
 
 Opening every map does not test a campaign. Exercise first win → Next → defeat, check which lessons stay unlocked, then complete the last map and reach the completion screen. Wait for menu and game-view transitions to settle before clicking result controls; scene creation alone does not mean a button is ready.
+
+## Version 0.5.0 bomb delivery sweep
+
+A separate 112-game regression sweep covers maps 10, 12, 22, 24, 34, 36, 46 and 48 with seven delayed policies and two seeds. The production AI and siege policy use local bomb supplies and actual courier travel. All eight maps retain a winning approach in this sample. There are 68 human-policy wins and four games unfinished at the 300-second stop.
+
+| Mode | Wins / games |
+| --- | ---: |
+| Conquest | 14 / 28 |
+| Neutral flag | 21 / 28 |
+| Starting flags | 20 / 28 |
+| Alliances | 13 / 28 |
+
+Only nine runs used any tool, so these results give little evidence about bomb balance. Focused scenarios check delivery, concealment, hostile and allied crossings, three-bomb capacity, capture casualties and flag wins. The price remains 20, the crew two and the blast 12, as requested. The earlier optional lower-price experiment remains a proposal. Real players should try leaving traps on an exposed node and deciding whether to reinforce or bait a capture.
+
+This is not a controlled before/after comparison: the siege policy changed with the rules. It does not establish human enjoyment. [Raw version 0.5.0 results](playtests/bombs-0.5.0.csv) are separate from the version 0.4.0 campaign sweep.

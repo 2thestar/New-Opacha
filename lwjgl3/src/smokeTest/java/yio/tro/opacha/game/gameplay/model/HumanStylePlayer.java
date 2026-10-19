@@ -118,16 +118,13 @@ public final class HumanStylePlayer {
             if (target != null && node.type == PlanetType.artillery && node.unitsInside >= 30 && t.fire(node, target)) { tools++; return true; }
             if (target != null && target.getFullHp() > 35 && node.unitsInside > 90 && node.type != PlanetType.artillery
                     && t.buildArtillery(node)) { tools++; return true; }
-            if (node.isEconomic() && node.unitsInside > 55 && t.inventory[owner.ordinal()] == 0 && t.buyBomb(node)) { tools++; return true; }
+            if (node.isEconomic() && node.unitsInside > 55 && node.bombStock == 0 && t.buyBomb(node)) { tools++; return true; }
         }
-        if (t.inventory[owner.ordinal()] > 0) for (Unit unit : layer.unitManager.units) {
-            if (!unit.isAlive() || unit.fraction != owner || unit.value < 5) continue;
-            for (Unit other : layer.unitManager.units) {
-                if (!other.isAlive() || other.link != unit.link || t.alliances.friendly(owner, other.fraction)) continue;
-                float a = unit.acceleratableFactor.value, b = other.acceleratableFactor.value;
-                if ((unit.target == unit.link.two && b > a) || (unit.target == unit.link.one && b < a)) {
-                    if (t.placeBomb(unit, owner)) { tools++; return true; }
-                }
+        for (Planet depot : layer.planetsManager.planets) {
+            if (depot.fraction != owner || depot.bombStock == 0) continue;
+            for (Unit enemy : layer.unitManager.units) {
+                if (!enemy.isAlive() || t.alliances.friendly(owner, enemy.fraction) || enemy.target.fraction != owner) continue;
+                if (t.reservedBombs(enemy.target) < 2 && t.sendBomb(depot, enemy.target)) { tools++; return true; }
             }
         }
         return false;

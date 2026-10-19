@@ -20,7 +20,7 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
     int unitValues[];
     private SliderYio unitsSlider;
     private LightBottomPanelElement lightBottomPanelElement;
-    public yio.tro.opacha.menu.elements.ButtonYio flagButton, aiButton, stockButton;
+    public yio.tro.opacha.menu.elements.ButtonYio flagButton, aiButton, stockButton, trapsButton;
     private boolean loadingValues;
 
 
@@ -40,7 +40,7 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
 
     private void createLightBottomPanel() {
         lightBottomPanelElement = uiFactory.getLightBottomPanelElement()
-                .setSize(1, 0.70)
+                .setSize(1, 0.77)
                 .setTitle("planet")
                 .setAnimation(AnimationYio.down);
     }
@@ -82,7 +82,7 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
                 .setTitleDownwordsOffset(GraphicsYio.convertToWidth(0.03))
                 .setBehavior(getUnitsSliderBehavior());
         aiButton = uiFactory.getButton().setParent(lightBottomPanelElement).setSize(.80,.055)
-                .centerHorizontal().alignBottom(.175).setAnimation(AnimationYio.none).applyText("AI")
+                .centerHorizontal().alignBottom(.25).setAnimation(AnimationYio.none).applyText("AI")
                 .setReaction(new yio.tro.opacha.menu.reactions.Reaction() {
                     @Override protected void reaction() {
                         if (selectedPlanet == null || selectedPlanet.isNeutral()) return;
@@ -93,12 +93,19 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
                     }
                 });
         stockButton = uiFactory.getButton().setParent(lightBottomPanelElement).setSize(.80,.055)
-                .centerHorizontal().alignBottom(.10).setAnimation(AnimationYio.none).applyText("Bombs")
+                .centerHorizontal().alignBottom(.175).setAnimation(AnimationYio.none).applyText("Bombs")
                 .setReaction(new yio.tro.opacha.menu.reactions.Reaction() {
                     @Override protected void reaction() {
                         if (selectedPlanet.isNeutral()) return;
-                        int[] inventory = gameController.objectsLayer.tactics.inventory;
-                        int index = selectedPlanet.fraction.ordinal(); inventory[index] = (inventory[index] + 1) % 6; updateAiLabel();
+                        selectedPlanet.bombStock = (selectedPlanet.bombStock + 1) % 6; updateAiLabel();
+                    }
+                });
+        trapsButton = uiFactory.getButton().setParent(lightBottomPanelElement).setSize(.80,.055)
+                .centerHorizontal().alignBottom(.10).setAnimation(AnimationYio.none).applyText("Node bombs")
+                .setReaction(new yio.tro.opacha.menu.reactions.Reaction() {
+                    @Override protected void reaction() {
+                        if (selectedPlanet.isNeutral()) return;
+                        selectedPlanet.nodeBombs = (selectedPlanet.nodeBombs + 1) % 4; updateAiLabel();
                     }
                 });
         flagButton = uiFactory.getButton().setParent(lightBottomPanelElement).setSize(.80,.055)
@@ -112,7 +119,8 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
         yio.tro.opacha.game.gameplay.ai.AiType type = yio.tro.opacha.game.GameRules.aiTypes.get(selectedPlanet.fraction);
         aiButton.applyText(selectedPlanet.isNeutral() ? "editor_no_ai" : "AI: " + (type == null ? "simple" : type.toString()));
         stockButton.applyText(LanguagesManager.getInstance().getString("editor_bombs") + ": "
-                + yioGdxGame.gameController.objectsLayer.tactics.inventory[selectedPlanet.fraction.ordinal()]);
+                + selectedPlanet.bombStock);
+        trapsButton.applyText(LanguagesManager.getInstance().getString("editor_node_bombs") + ": " + selectedPlanet.nodeBombs + "/3");
     }
 
 

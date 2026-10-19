@@ -39,6 +39,7 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
     public float unitsInside;
     public float artilleryReload;
     public float capturePulse;
+    public int bombStock, nodeBombs;
     RepeatYio<Planet> repeatBuildUnits, repeatIncreaseDefense;
     public Planet autoTarget;
     public CircleYio atViewPosition;
@@ -146,6 +147,7 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
 
     @Override
     public void reset() {
+        bombStock = 0; nodeBombs = 0;
         position.reset();
         viewPosition.reset();
         fraction = null;
@@ -328,6 +330,10 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
         return type == PlanetType.economic;
     }
 
+    public int visibleNodeBombs(FractionType viewer) {
+        return viewer == fraction ? nodeBombs : 0;
+    }
+
 
     public void setFraction(FractionType fraction) {
         if (this.fraction == fraction) return;
@@ -342,6 +348,8 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
     private void onFractionChanged(FractionType previousFraction) {
         if (previousFraction == null) return;
         capturePulse = 0;
+        bombStock = 0;
+        nodeBombs = 0;
 
         setType(PlanetType.empty);
         setAutoTarget(null);
@@ -451,10 +459,12 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
         }
 
         int v = unit.value - getFullHp();
+        int traps = nodeBombs;
         setCurrentDefense(0);
         setFraction(unit.fraction);
         setType(PlanetType.empty);
-        setUnitsInside(v);
+        // The capture succeeds first. Traps punish its survivors without returning ownership.
+        setUnitsInside(Math.max(0, v - traps * TacticsManager.BOMB_DAMAGE));
         applyPopEffect();
         spawnExplosionCausedByUnit(unit);
         planetsManager.objectsLayer.linksManager.syncFractions();

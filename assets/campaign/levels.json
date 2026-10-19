@@ -1382,8 +1382,8 @@
       "mode": "conquest",
       "layout": "Tripwire",
       "concept": "Set a bomb",
-      "brief": "Buy a bomb for 20 at a Grow node. Actions > Place bomb, then tap your moving fleet. Two troops set it; the first hostile fleet crossing takes 12 damage.",
-      "hint": "Keep a moving escort where the next enemy wave will arrive.",
+      "brief": "Buy a bomb for 20 at a Grow node. Deliver bomb, then tap a route. A hidden two-troop courier follows your own supply routes. The planted bomb is visible; it hits the next enemy for 12.",
+      "hint": "Send a courier ahead of the next enemy wave. Route bombs become visible only after delivery.",
       "features": 63,
       "difficulty": "normal",
       "nodes": [
@@ -1749,8 +1749,8 @@
       "title": "Crossroads",
       "mode": "conquest",
       "layout": "Crossroads",
-      "concept": "Use the whole board",
-      "brief": "Choose a front, keep a reserve and look for an unguarded flank. Tools open options, but ordinary troop movement still wins ground.",
+      "concept": "Leave a surprise",
+      "brief": "Deliver a bomb to your own node, or use Trap this node at its supply node. Stack up to three. Enemies see neither the courier nor the traps. Each trap hits for 12 after capture; the attacker keeps the node.",
       "hint": "Take one useful junction without abandoning the other front.",
       "features": 127,
       "difficulty": "normal",
@@ -3375,7 +3375,7 @@
       "layout": "Tripwire",
       "concept": "",
       "brief": "",
-      "hint": "Keep a moving escort where the next enemy wave will arrive.",
+      "hint": "Send a courier ahead of the next enemy wave. Route bombs become visible only after delivery.",
       "features": 127,
       "difficulty": "normal",
       "nodes": [
@@ -5359,7 +5359,7 @@
       "layout": "Tripwire",
       "concept": "",
       "brief": "",
-      "hint": "Keep a moving escort where the next enemy wave will arrive.",
+      "hint": "Send a courier ahead of the next enemy wave. Route bombs become visible only after delivery.",
       "features": 127,
       "difficulty": "normal",
       "nodes": [
@@ -7343,7 +7343,7 @@
       "layout": "Tripwire",
       "concept": "",
       "brief": "",
-      "hint": "Keep a moving escort where the next enemy wave will arrive.",
+      "hint": "Send a courier ahead of the next enemy wave. Route bombs become visible only after delivery.",
       "features": 127,
       "difficulty": "normal",
       "nodes": [

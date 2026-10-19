@@ -90,6 +90,7 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
 
 
     public void removePlanet(Planet planet) {
+        if (objectsLayer.tactics != null) objectsLayer.tactics.onNodeRemoved(planet);
         planets.remove(planet);
     }
 

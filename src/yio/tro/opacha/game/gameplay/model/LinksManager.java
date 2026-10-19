@@ -50,6 +50,7 @@ public class LinksManager implements IGameplayManager, SavableYio{
 
 
     public void removeLink(Link link) {
+        if (objectsLayer.tactics != null) objectsLayer.tactics.onLinkRemoved(link);
         link.one.onAdjoinedLinkRemoved(link);
         link.two.onAdjoinedLinkRemoved(link);
         links.remove(link);

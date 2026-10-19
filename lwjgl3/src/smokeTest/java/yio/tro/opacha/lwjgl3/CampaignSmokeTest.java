@@ -68,9 +68,9 @@ public final class CampaignSmokeTest extends YioGdxGame {
                 require(Scenes.editSinglePlanet.isCurrentlyVisible(),"Editor node panel did not open");
                 require(gameController.objectsLayer.planetsManager.planets.get(0).unitsInside==28,"Opening the editor panel altered the exact garrison");
                 screenshot("07-editor-node");
-                click(Scenes.editSinglePlanet.aiButton); click(Scenes.editSinglePlanet.stockButton); break;
+                click(Scenes.editSinglePlanet.aiButton); click(Scenes.editSinglePlanet.stockButton); click(Scenes.editSinglePlanet.trapsButton); break;
             case 9:
-                require(gameController.objectsLayer.tactics.inventory[1]==1,"Editor bomb stock control failed"); screenshot("08-editor-stock"); key(Input.Keys.ESCAPE); break;
+                require(gameController.objectsLayer.planetsManager.planets.get(0).bombStock==1,"Editor bomb stock control failed"); require(gameController.objectsLayer.planetsManager.planets.get(0).nodeBombs==1,"Editor node traps control failed"); screenshot("08-editor-stock"); key(Input.Keys.ESCAPE); break;
             case 10:
                 LoadingParameters p = new LoadingParameters(); p.addParameter("index",0); loadingManager.startInstantly(LoadingType.campaign_create,p); break;
             case 11:

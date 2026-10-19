@@ -16,7 +16,7 @@ public final class TacticsChecks {
         float refresh = RefreshRateDetector.getInstance().multiplier;
         VelocityManager.getInstance().value = 1; RefreshRateDetector.getInstance().multiplier = 1;
         try {
-            suite.routes(); suite.bombs(); suite.artillery(); suite.pacts(); suite.flags(); suite.serialization(); suite.aiTools(); suite.aiBalance(); suite.siegeRegeneration();
+            suite.routes(); suite.bombs(); suite.bombEditor(); suite.artillery(); suite.pacts(); suite.flags(); suite.serialization(); suite.aiTools(); suite.aiBalance(); suite.siegeRegeneration();
             System.out.println("TACTICS SCENARIOS PASSED: " + suite.checks + " assertions");
         } finally { VelocityManager.getInstance().value = velocity; RefreshRateDetector.getInstance().multiplier = refresh; }
     }
@@ -74,24 +74,122 @@ public final class TacticsChecks {
                 "Concurrent crews must share work and finish");
         near(c.unitsInside, 80, "Concurrent building must conserve troops");
     }
+    private void bombWalk(int frames) {
+        for (int i = 0; i < frames; i++) for (BombCourier courier : layer.tactics.couriers) courier.move();
+    }
     private void bombs() {
         reset(PlayType.conquest);
-        Planet a = node(FractionType.green, 45, .2, .5), b = node(FractionType.red, 0, .4, .5);
-        a.setType(PlanetType.economic); Link link = layer.linksManager.addLink(a, b);
-        check(layer.tactics.buyBomb(a) && a.unitsInside == 25, "Bomb purchase must cost 20 at an economy node");
-        check(!layer.tactics.buyBomb(b), "Ordinary node sold a bomb");
-        Unit carrier = send(a, b, 10); carrier.acceleratableFactor.value = .5f;
-        check(layer.tactics.placeBomb(carrier, FractionType.green) && carrier.value == 8, "Placing bomb must use inventory and two troops");
-        check(!layer.tactics.placeBomb(carrier, FractionType.green), "Empty stock allowed another bomb");
-        RouteBomb bomb = layer.tactics.bombs.get(0);
-        layer.tactics.checkBombs(carrier, .4f, .6f);
-        check(bomb.active && carrier.value == 8, "Own fleet triggered its bomb");
-        Unit enemy = send(b, a, 30);
-        layer.tactics.checkBombs(enemy, .6f, .4f);
-        check(!bomb.active && enemy.value == 18, "Bomb must deal exactly 12 to an enemy crossing its position");
-        layer.tactics.checkBombs(enemy, .4f, .6f); check(enemy.value == 18, "Bomb exploded twice");
-        layer.tactics.inventory[1] = 1; carrier.setValue(2);
-        check(layer.tactics.placeBomb(carrier, FractionType.green) && !carrier.isAlive(), "Two-person crew must be fully consumed");
+        Planet a = node(FractionType.green, 100, .2, .5), b = node(FractionType.green, 10, .4, .5);
+        Planet c = node(FractionType.green, 10, .6, .5), enemy = node(FractionType.red, 50, .8, .5);
+        a.setType(PlanetType.economic); Link ab = layer.linksManager.addLink(a,b), bc = layer.linksManager.addLink(b,c);
+        Link front = layer.linksManager.addLink(c,enemy);
+        check(layer.tactics.buyBomb(a) && a.unitsInside == 80 && a.bombStock == 1, "Bomb must cost 20 and stay at the selling node");
+        check(!layer.tactics.buyBomb(b) && !layer.tactics.armNode(b), "Bomb stock teleported to another node");
+        check(layer.tactics.sendBomb(a,c) && a.unitsInside == 78 && a.bombStock == 0 && c.nodeBombs == 0, "Courier must reserve one bomb and two troops without instant delivery");
+        BombCourier courier = layer.tactics.couriers.get(0);
+        check(courier.visibleTo(FractionType.green) && !courier.visibleTo(FractionType.red), "Enemy saw a secret courier");
+        Unit attacker = send(b,a,50); attacker.acceleratableFactor.value=.1f;
+        bombWalk(200); check(attacker.value == 50 && c.nodeBombs == 0 && courier.link == bc, "Courier fought traffic or skipped a supply leg");
+        attacker.setAlive(false); bombWalk(200);
+        check(c.nodeBombs == 1 && !courier.active && c.unitsInside == 10, "Delivery must plant a bomb and consume its crew");
+        a.bombStock=5;
+        check(layer.tactics.sendBomb(a,c) && layer.tactics.sendBomb(a,c) && !layer.tactics.sendBomb(a,c), "Three-bomb cap must include en-route deliveries");
+        bombWalk(500); check(c.nodeBombs==3 && !layer.tactics.sendBomb(a,c), "A fourth node bomb was accepted");
+        check(c.visibleNodeBombs(FractionType.green)==3 && c.visibleNodeBombs(FractionType.red)==0,
+                "Node traps must be hidden from other players");
+        check(layer.tactics.sendBomb(a,front,.5f), "Multi-leg route bomb delivery failed");
+        BombCourier routeCourier=layer.tactics.couriers.get(layer.tactics.couriers.size()-1);
+        check(layer.tactics.bombs.isEmpty(), "Route bomb appeared before its courier arrived");
+        bombWalk(500); RouteBomb bomb=layer.tactics.bombs.get(0);
+        check(!routeCourier.active && bomb.position==.5f && bomb.owner==FractionType.green, "Route bomb planted at the wrong position");
+        Unit hostile=send(enemy,c,30); layer.tactics.checkBombs(hostile,.7f,.3f);
+        check(hostile.value==18 && !bomb.active,"Route bomb must deal exactly 12 to a hostile fleet");
+        layer.tactics.checkBombs(hostile,.7f,.3f); check(hostile.value==18,"Route bomb exploded twice"); hostile.setAlive(false);
+        Unit capture=send(enemy,c,25); capture.setAlive(false); c.onUnitReached(capture);
+        check(c.fraction==FractionType.red && c.unitsInside==0 && c.nodeBombs==0,"Three traps must hit after capture and leave ownership with the attacker");
+        c.setUnitsInside(10); Unit recapture=send(b,c,15); recapture.setAlive(false); c.onUnitReached(recapture);
+        check(c.fraction==FractionType.green && c.unitsInside==5,"Node traps detonated a second time");
+        a.nodeBombs=2; a.bombStock=2; a.setUnitsInside(5);
+        Unit invasion=send(b,a,40); invasion.fraction=FractionType.red; invasion.setAlive(false); a.onUnitReached(invasion);
+        check(a.fraction==FractionType.red && a.unitsInside==11 && a.bombStock==0 && a.nodeBombs==0,"Traps must deal 24 to survivors and destroy captured depot stock");
+
+        reset(PlayType.alliances);
+        a=node(FractionType.green,100,.2,.5); b=node(FractionType.green,10,.4,.5); enemy=node(FractionType.red,10,.6,.5);
+        a.bombStock=4; a.nodeBombs=1; ab=layer.linksManager.addLink(a,b); layer.linksManager.addLink(b,enemy);
+        layer.tactics.alliances.offer(FractionType.green,FractionType.red); layer.tactics.alliances.offer(FractionType.red,FractionType.green);
+        Unit ally=send(b,a,10); ally.fraction=FractionType.red; ally.setAlive(false); a.onUnitReached(ally);
+        near(a.unitsInside,107,"Allied troops must still reinforce 70 percent"); check(a.nodeBombs==1,"Ally triggered a node trap");
+        check(!layer.tactics.sendBomb(a,enemy),"Secret supplies must not cross into an ally's node");
+        check(layer.tactics.sendBomb(a,b),"Owned destination was rejected");
+        BombCourier moving=layer.tactics.couriers.get(0); float pos=moving.progress.value;
+        VelocityManager.getInstance().value=0; bombWalk(100); near(moving.progress.value,pos,"Paused courier moved"); VelocityManager.getInstance().value=1;
+        b.setFraction(FractionType.red); bombWalk(300);
+        check(!moving.active && b.nodeBombs==0 && b.fraction==FractionType.red,"Courier armed a destination lost before arrival");
+        int stock=a.bombStock; float troops=a.unitsInside;
+        check(!layer.tactics.sendBomb(a,b) && a.bombStock==stock && a.unitsInside==troops,"Rejected delivery charged resources");
+        b.setFraction(FractionType.green); layer.tactics.bombs.add(new RouteBomb(ab,FractionType.red,.5f));
+        check(layer.tactics.sendBomb(a,b),"Friendly route-bomb test dispatch failed"); bombWalk(300);
+        check(b.nodeBombs==1 && layer.tactics.bombs.get(0).active,"Allied route bomb hurt the courier");
+        layer.tactics.alliances.breakPact(FractionType.green,FractionType.red);
+        check(layer.tactics.sendBomb(a,b),"Hostile route-bomb test dispatch failed"); bombWalk(300);
+        check(b.nodeBombs==1 && !layer.tactics.bombs.get(0).active,"Hostile mine must consume the courier and its cargo");
+        a.bombStock=1; a.setUnitsInside(1); check(!layer.tactics.armNode(a),"Trap planted without a two-person crew");
+        a.setUnitsInside(2); check(layer.tactics.armNode(a) && a.unitsInside==0,"Exactly two troops must be enough to plant locally");
+        a.bombStock=2; a.setUnitsInside(50); b.nodeBombs=0;
+        ab.directional=true; layer.tactics.sendBomb(a,b); BombCourier fast=layer.tactics.couriers.get(layer.tactics.couriers.size()-1); fast.move(); float forward=fast.progress.value;
+        b.bombStock=1; b.setUnitsInside(50); layer.tactics.sendBomb(b,a); BombCourier reverse=layer.tactics.couriers.get(layer.tactics.couriers.size()-1); reverse.move();
+        near(forward/(1-reverse.progress.value),2/.3,"Courier ignored directional travel speed");
+        check(!layer.tactics.sendBomb(a,ab,Float.NaN) && !layer.tactics.sendBomb(a,ab,1),"Invalid bomb positions accepted");
+        // Save a real in-transit order, including one whose origin fell after departure.
+        a.setFraction(FractionType.red);
+        String saved=layer.exportManager.perform(); controller.createGameObjects(); controller.importManager.perform(saved); layer=controller.objectsLayer;
+        BombCourier resumed=layer.tactics.couriers.get(0);
+        near(resumed.progress.value,forward,"Courier progress lost in map export");
+        check(resumed.active && resumed.owner==FractionType.green,"A departed courier was recalled when its origin fell");
+        bombWalk(300); check(layer.planetsManager.planets.get(1).nodeBombs==1,"Restored courier failed to reach its still-owned destination");
+
+        reset(PlayType.conquest);
+        a=node(FractionType.green,100,.2,.5); b=node(FractionType.green,0,.4,.5); enemy=node(FractionType.red,20,.6,.5);
+        a.bombStock=2; ab=layer.tactics.createBlueprint(a,b,FractionType.green);
+        check(!layer.tactics.sendBomb(a,b) && !layer.tactics.sendBomb(a,ab,.5f) && a.bombStock==2 && a.unitsInside==100,"Courier used an unfinished route or charged a rejected order");
+        String legacy="opacha_level_code#game_rules:hard false#planets:green empty 10 0.2 0.5,green economic 10 0.4 0.5,red empty 10 0.6 0.5,#links:neutral 0.2 0.5 0.4 0.5,#tactics:stock green 2;#";
+        controller.createGameObjects(); controller.importManager.perform(legacy); layer=controller.objectsLayer;
+        check(layer.planetsManager.planets.get(1).bombStock==2 && layer.planetsManager.planets.get(0).bombStock==0,"Legacy stock must migrate to an economic node");
+
+        reset(PlayType.conquest);
+        a=node(FractionType.green,50,.2,.5); b=node(FractionType.green,0,.4,.5); c=node(FractionType.green,0,.3,.6);
+        ab=layer.linksManager.addLink(b,a); ab.directional=true; layer.linksManager.addLink(a,c); layer.linksManager.addLink(c,b); a.bombStock=1;
+        check(layer.tactics.sendBomb(a,b) && layer.tactics.couriers.get(0).path.get(1)==c,
+                "Supply planner must choose the faster detour over a slow reverse route");
+        c.setFraction(FractionType.red); bombWalk(400);
+        check(!layer.tactics.couriers.get(0).active && b.nodeBombs==0,"Lost intermediate supply node must stop delivery");
+
+        reset(PlayType.home_flags);
+        a=node(FractionType.green,5,.2,.5); b=node(FractionType.red,20,.4,.5); layer.linksManager.addLink(a,b); layer.tactics.onEndCreation();
+        a.nodeBombs=3; capture=send(b,a,6); capture.setAlive(false); a.onUnitReached(capture);
+        check(a.fraction==FractionType.red && a.unitsInside==0 && layer.tactics.winner()==FractionType.red,"Flag capture must still win when traps kill its garrison");
+    }
+    private void bombEditor() {
+        reset(PlayType.conquest);
+        Planet a=node(FractionType.green,100,.2,.5), b=node(FractionType.green,10,.4,.5), c=node(FractionType.green,10,.6,.5);
+        node(FractionType.red,10,.8,.5);
+        Link ab=layer.linksManager.addLink(a,b), bc=layer.linksManager.addLink(b,c);
+        a.bombStock=5;
+        check(layer.tactics.sendBomb(a,bc,.3f),"Editor courier fixture failed");
+        layer.tactics.bombs.add(new RouteBomb(ab,FractionType.green,.2f));
+        layer.editorWorker.nextRouteStyle=2; layer.editorWorker.onLinkAdditionRequested(a,b);
+        check(layer.tactics.couriers.isEmpty(),"Editing a supply route left stale courier orders");
+        near(layer.tactics.bombs.get(0).position,.8,"Reversing endpoints moved a planted bomb in world space");
+        layer.tactics.sendBomb(a,c); layer.linksManager.removeLink(bc);
+        check(layer.tactics.couriers.isEmpty(),"Deleting a future supply leg left its courier order");
+        layer.tactics.sendBomb(a,b); layer.editorWorker.onPlanetRemovalRequested(b.position.center);
+        check(layer.tactics.couriers.isEmpty() && layer.tactics.bombs.isEmpty(),"Deleting a node left its mines or courier orders");
+        String code=layer.exportManager.perform(); controller.createGameObjects(); controller.importManager.perform(code); layer=controller.objectsLayer;
+        check(layer.planetsManager.planets.size()==3 && layer.tactics.couriers.isEmpty(),"Edited bomb map failed export/import");
+        a=layer.planetsManager.planets.get(0); c=layer.planetsManager.planets.get(1);
+        ab=layer.linksManager.addLink(a,c); layer.tactics.bombs.add(new RouteBomb(ab,FractionType.green,.5f));
+        layer.editorWorker.nextRouteStyle=3; layer.editorWorker.onLinkAdditionRequested(a,c);
+        check(ab.isBlueprint() && layer.tactics.bombs.isEmpty(),"An unfinished replacement route retained an old mine");
     }
     private void artillery() {
         reset(PlayType.conquest);
@@ -133,7 +231,7 @@ public final class TacticsChecks {
         check(b.fraction == FractionType.red, "Allied reinforcement captured its recipient");
         p.offer(FractionType.red, FractionType.yellow); p.offer(FractionType.yellow, FractionType.red);
         check(!p.areAllied(FractionType.green, FractionType.yellow), "Friendship must not be transitive");
-        layer.tactics.inventory[1] = 1; layer.tactics.placeBomb(up, FractionType.green);
+        layer.tactics.bombs.add(new RouteBomb(link, FractionType.green, .5f)); up.takeDamage(2);
         RouteBomb bomb = layer.tactics.bombs.get(0); layer.tactics.checkBombs(down, .7f, .3f);
         check(bomb.active && down.value == 20, "Allied fleet triggered a bomb");
         check(p.breakPact(FractionType.red, FractionType.green), "Either partner must be able to break a pact");
@@ -163,13 +261,13 @@ public final class TacticsChecks {
         Planet a = node(FractionType.green, 60, .2, .5), b = node(FractionType.red, 25, .4, .5), c = node(FractionType.yellow, 3, .6, .5);
         layer.tactics.normalRouteLength = .2 * GraphicsYio.width;
         Link route = layer.tactics.createBlueprint(a, b, FractionType.green); route.constructionSpent = 23;
-        layer.tactics.inventory[1] = 2; layer.tactics.bombs.add(new RouteBomb(route, FractionType.green, .2f));
+        a.bombStock = 2; a.nodeBombs = 3; layer.tactics.bombs.add(new RouteBomb(route, FractionType.green, .2f));
         layer.tactics.buildArtillery(a); a.artilleryReload = 3.5f; a.setCurrentDefense(2.5f);
         layer.tactics.alliances.offer(FractionType.green, FractionType.red); layer.tactics.alliances.offer(FractionType.red, FractionType.green);
         layer.tactics.alliances.offer(FractionType.green, FractionType.yellow);
         String code = layer.exportManager.perform(); controller.createGameObjects(); controller.importManager.perform(code); layer = controller.objectsLayer;
         check(GameRules.playType == PlayType.alliances && layer.linksManager.links.get(0).constructionSpent == 23, "Mode or route work lost in exported map");
-        check(layer.tactics.inventory[1] == 2 && layer.tactics.bombs.size() == 1, "Bombs lost in exported map");
+        check(layer.planetsManager.planets.get(0).bombStock == 2 && layer.planetsManager.planets.get(0).nodeBombs == 3 && layer.tactics.bombs.size() == 1, "Bombs lost in exported map");
         a = layer.planetsManager.planets.get(0); near(a.artilleryReload, 3.5, "Reload lost in exported map"); near(a.currentDefense, 2.5, "Shields lost in exported map");
         check(layer.tactics.alliances.areAllied(FractionType.green, FractionType.red) && layer.tactics.alliances.hasOffer(FractionType.green, FractionType.yellow), "Pacts lost in exported map");
         controller.createGameObjects(); controller.importManager.perform("opacha_level_code#game_rules:hard false#planets:green empty 10 0.2 0.5,red empty 10 0.4 0.5,#links:neutral 0.2 0.5 0.4 0.5,#");
@@ -190,7 +288,14 @@ public final class TacticsChecks {
         Unit carrier = send(base, enemy, 30), approaching = send(enemy, base, 20);
         carrier.acceleratableFactor.value = .3f; approaching.acceleratableFactor.value = .7f;
         TacticsAi.perform(layer.tactics);
-        check(base.unitsInside == 80 && carrier.value == 28 && layer.tactics.bombs.size() == 1, "AI must buy and place a bomb ahead of an enemy fleet");
+        check(base.unitsInside == 78 && carrier.value == 30 && layer.tactics.couriers.size() == 1 && layer.tactics.bombs.isEmpty(), "AI must buy and dispatch a courier instead of teleporting a bomb");
+
+        reset(PlayType.conquest);
+        base=node(FractionType.red,100,.4,.5); enemy=node(FractionType.green,20,.2,.5); base.setType(PlanetType.economic);
+        Link incoming=layer.linksManager.addLink(enemy,base); incoming.directional=true;
+        approaching=send(enemy,base,20); approaching.acceleratableFactor.value=.3f;
+        TacticsAi.perform(layer.tactics);
+        check(base.nodeBombs==1 && layer.tactics.couriers.isEmpty(),"AI must trap its node when a slow courier cannot get ahead of the attack");
 
         reset(PlayType.conquest);
         base = node(FractionType.red, 200, .2, .5); base.setType(PlanetType.economic);

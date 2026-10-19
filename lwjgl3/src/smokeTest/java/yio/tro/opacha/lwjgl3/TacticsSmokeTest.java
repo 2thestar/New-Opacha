@@ -23,8 +23,10 @@ public final class TacticsSmokeTest extends YioGdxGame {
     private int resultWait;
     private Planet home, routeTarget, enemy;
     private Unit carrier;
+    private Link deliveryRoute;
+    private Planet deliveryTarget;
     private float pausedReload;
-    private final long deadline = System.nanoTime() + 180_000_000_000L;
+    private final long deadline = System.nanoTime() + 260_000_000_000L;
     private TacticsSmokeTest(String directory) { output = new FileHandle(directory); }
     public static void main(String[] args) {
         platformType = PlatformType.pc;
@@ -73,7 +75,7 @@ public final class TacticsSmokeTest extends YioGdxGame {
             case 11:
                 if (!checkedDone) { click(Scenes.nodeActions.doneButton); checkedDone = true; step = 9; break; }
                 screenshot("06-economy-actions"); click(Scenes.nodeActions.buyBombButton); break;
-            case 12: require(t.inventory[1] == 1, "Buy bomb touch failed"); clickWorld(home.viewPosition.center); break;
+            case 12: require(home.bombStock == 1, "Buy bomb touch failed"); clickWorld(home.viewPosition.center); break;
             case 13: click(Scenes.selectionOverlay.actionsButton); break;
             case 14: screenshot("07-bomb-inventory"); click(Scenes.nodeActions.routeButton); break;
             case 15:
@@ -91,10 +93,20 @@ public final class TacticsSmokeTest extends YioGdxGame {
                 screenshot("09-diggers"); home.setUnitsInside(150); clickWorld(home.viewPosition.center); break;
             case 19: click(Scenes.selectionOverlay.actionsButton); break;
             case 20: click(Scenes.nodeActions.placeBombButton); break;
-            case 21: require(t.pending == TacticsManager.Action.bomb, "Place bomb command not selected"); screenshot("09b-bomb-targeting"); clickWorld(carrier.viewPosition.center); break;
+            case 21:
+                require(t.pending == TacticsManager.Action.bomb, "Deliver bomb command not selected");
+                require(new com.badlogic.gdx.graphics.g2d.GlyphLayout(Scenes.notification.notificationElement.font,
+                        Scenes.notification.notificationElement.message).width <= .94*w,"Bomb targeting prompt overflowed the viewport");
+                screenshot("09b-bomb-targeting"); deliveryRoute=home.adjoinedLinks.get(0);
+                clickWorld(new PointYio((deliveryRoute.one.viewPosition.center.x+deliveryRoute.two.viewPosition.center.x)/2,
+                        (deliveryRoute.one.viewPosition.center.y+deliveryRoute.two.viewPosition.center.y)/2)); break;
             case 22:
-                require(t.inventory[1] == 0 && t.bombs.size() == 1, "Bomb placement touch failed");
-                screenshot("10-placed-bomb"); clickWorld(home.viewPosition.center); break;
+                require(home.bombStock == 0 && t.couriers.size() == 1 && t.bombs.isEmpty(), "Courier touch dispatch failed");
+                screenshot("10a-secret-courier");
+                float saved=VelocityManager.getInstance().value; VelocityManager.getInstance().value=1;
+                for(int i=0;i<1000;i++) t.couriers.get(0).move(); VelocityManager.getInstance().value=saved;
+                require(t.bombs.size()==1,"Courier did not plant its route bomb");
+                home.bombStock=4; home.setUnitsInside(150); step=50; break;
             case 23: click(Scenes.selectionOverlay.actionsButton); break;
             case 24: click(Scenes.nodeActions.buildGunButton); break;
             case 25: require(home.type == PlanetType.artillery, "Build artillery touch failed"); clickWorld(home.viewPosition.center); break;
@@ -152,6 +164,27 @@ public final class TacticsSmokeTest extends YioGdxGame {
             case 41:
                 require(Scenes.chooseGameMode.isCurrentlyVisible(), "Continue did not return to game selection");
                 complete = true; exitApp(); break;
+            case 42: click(Scenes.selectionOverlay.actionsButton); break;
+            case 43: screenshot("10b-node-trap-actions"); click(Scenes.nodeActions.armBombButton); break;
+            case 44:
+                require(home.nodeBombs==1 && home.bombStock==3,"Trap this node touch failed");
+                screenshot("10c-hidden-node-bomb"); clickWorld(home.viewPosition.center); break;
+            case 45: click(Scenes.selectionOverlay.actionsButton); break;
+            case 46: click(Scenes.nodeActions.placeBombButton); break;
+            case 47:
+                deliveryTarget=deliveryRoute.getOppositePlanet(home); deliveryTarget.setFraction(FractionType.green);
+                clickWorld(deliveryTarget.viewPosition.center); break;
+            case 48:
+                require(t.reservedBombs(deliveryTarget)==1 && deliveryTarget.nodeBombs==0,"Node delivery touch failed");
+                screenshot("10d-node-delivery");
+                for(BombCourier courier:t.couriers) if(courier.active) {
+                    float speed=VelocityManager.getInstance().value; VelocityManager.getInstance().value=1;
+                    for(int i=0;i<1500;i++) courier.move(); VelocityManager.getInstance().value=speed;
+                }
+                require(deliveryTarget.nodeBombs==1,"Node delivery did not arm the target");
+                step=49; break;
+            case 49: screenshot("10e-delivered-node-bomb"); clickWorld(home.viewPosition.center); step=23; break;
+            case 50: screenshot("10-placed-bomb"); clickWorld(home.viewPosition.center); step=42; break;
             default: break;
         }
     }

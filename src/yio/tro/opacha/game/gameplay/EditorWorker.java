@@ -46,6 +46,7 @@ public class EditorWorker implements IGameplayManager{
         if (nextRouteStyle == 3 && one.isNeutral()) { Scenes.notification.show("editor_blueprint_owner"); return; }
         Link link = one.getLink(two);
         if (link == null) link = linksManager.addLink(one, two);
+        else objectsLayer.tactics.onLinkEdited(link, link.one != (nextRouteStyle == 2 ? two : one), nextRouteStyle == 3);
         link.one = nextRouteStyle == 2 ? two : one;
         link.two = nextRouteStyle == 2 ? one : two;
         link.directional = nextRouteStyle != 0;

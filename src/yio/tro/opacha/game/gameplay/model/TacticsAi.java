@@ -43,21 +43,31 @@ final class TacticsAi {
                     && guns < (type == AiType.savvy ? 2 : 1)) {
                 if (t.buildArtillery(node)) guns++;
             }
-            if (node.isEconomic() && node.unitsInside >= 45 && t.inventory[owner.ordinal()] < 1) t.buyBomb(node);
         }
-        if (t.inventory[owner.ordinal()] == 0) return;
-        for (Unit unit : t.layer.unitManager.units) {
-            if (!unit.isAlive() || unit.fraction != owner || unit.value < 8 || unit.digger) continue;
-            boolean armed = false;
-            for (RouteBomb bomb : t.bombs) if (bomb.active && bomb.link == unit.link && bomb.owner == owner) armed = true;
-            if (armed) continue;
-            for (Unit other : unit.link.getWalkersToTarget(unit.link.getOppositePlanet(unit.target))) {
-                if (!other.isAlive() || t.alliances.friendly(owner, other.fraction)) continue;
-                float a = unit.acceleratableFactor.value, b = other.acceleratableFactor.value;
-                if ((unit.target == unit.link.two && b > a) || (unit.target == unit.link.one && b < a)) {
-                    t.placeBomb(unit, owner);
-                    return;
-                }
+        bombs(t, owner, type);
+    }
+
+    private static void bombs(TacticsManager t, FractionType owner, AiType type) {
+        for (BombCourier courier : t.couriers) if (courier.active && courier.owner == owner) return;
+        for (Planet depot : t.layer.planetsManager.planets) {
+            if (depot.fraction != owner || depot.unitsInside < 2) continue;
+            // Only react to visible incoming attacks. Never read an opponent's hidden stock or orders.
+            for (Unit enemy : t.layer.unitManager.units) {
+                if (!enemy.isAlive() || enemy.value < 12 || t.alliances.friendly(owner, enemy.fraction)
+                        || enemy.target.fraction != owner) continue;
+                Planet front = enemy.target;
+                boolean armed = false;
+                for (RouteBomb bomb : t.bombs) if (bomb.active && bomb.link == enemy.link && bomb.owner == owner) armed = true;
+                if (armed) continue;
+                if (depot.bombStock == 0 && depot.isEconomic() && depot.unitsInside >= 65) t.buyBomb(depot);
+                if (depot.bombStock == 0) continue;
+                // A courier can get ahead of this attack from the defending endpoint.
+                float point = front == enemy.link.one ? .18f : .82f;
+                double remaining = front == enemy.link.one ? enemy.acceleratableFactor.value : 1 - enemy.acceleratableFactor.value;
+                double courierTime = .18 / enemy.link.speedFrom(front);
+                double enemyTime = (remaining - .18) / enemy.link.speedFrom(enemy.link.getOppositePlanet(front));
+                if (depot == front && courierTime < enemyTime && t.sendBomb(depot, enemy.link, point)) return;
+                if (t.reservedBombs(front) < (type == AiType.savvy ? 2 : 1) && t.sendBomb(depot, front)) return;
             }
         }
     }

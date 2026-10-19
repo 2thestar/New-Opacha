@@ -75,8 +75,22 @@ public final class RenderTactics extends GameRender {
             double y = bomb.link.one.viewPosition.center.y + Math.sin(bomb.link.angle) * bomb.link.distance * bomb.position;
             batchMovable.setColor(Color.WHITE); glyph("bomb", x, y, .045 * w);
         }
+        for (BombCourier courier : t.couriers) if (courier.visibleTo(FractionType.green)
+                || (GameRules.aiOnlyMode && courier.active)) {
+            PointYio p = courier.position();
+            batchMovable.setColor(Color.WHITE); glyph("bomb", p.x, p.y, .028 * w);
+            tint(courier.owner, 1); circle(p.x, p.y, .018 * w, 1, false);
+        }
         for (Planet node : getObjectsLayer().planetsManager.planets) {
             float x = node.viewPosition.center.x, y = node.viewPosition.center.y, r = node.viewPosition.radius;
+            int visibleTraps = GameRules.aiOnlyMode || gameController.gameMode == GameMode.editor
+                    ? node.nodeBombs : node.visibleNodeBombs(FractionType.green);
+            if (visibleTraps > 0) {
+                for (int i = 0; i < visibleTraps; i++) {
+                    batchMovable.setColor(Color.WHITE);
+                    glyph("bomb", x - 1.55 * r, y + (i - (visibleTraps - 1) / 2.0) * .8 * r, .75 * r);
+                }
+            }
             if (node.type == PlanetType.artillery) {
                 batchMovable.setColor(UiStyle.TEXT);
                 glyph("gun", x, y - 1.22 * r, 1.1 * r);

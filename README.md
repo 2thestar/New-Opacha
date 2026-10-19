@@ -5,7 +5,7 @@ The original Java source and assets stay in `src/` and `assets/`.
 
 ## Install on a Pixel 8a
 
-Download **New-Opacha-0.4.0-install.zip** from [Releases](https://github.com/2thestar/New-Opacha/releases). Open it in Files by Google, tap **Extract**, then open the extracted APK to install **New Opacha**. Android may ask you to allow Files to install apps. The app has its own package ID and saves, so it can be installed alongside the original game.
+Download **New-Opacha-0.5.0-install.zip** from [Releases](https://github.com/2thestar/New-Opacha/releases). Open it in Files by Google, tap **Extract**, then open the extracted APK to install **New Opacha**. Android may ask you to allow Files to install apps. The app has its own package ID and saves, so it can be installed alongside the original game.
 
 The ZIP avoids Chrome's stalled direct APK downloads and contains the same signed APK. ZIP installation was confirmed on the affected Pixel 8a with version 0.1.0. Install updates over the existing app to keep its saves.
 
@@ -13,11 +13,13 @@ The ZIP avoids Chrome's stalled direct APK downloads and contains the same signe
 
 The campaign has 48 fixed maps: 12 each for conquest, neutral flag, starting flags and alliances. Lessons introduce captures, half sends, Grow, Defend, opponent types, directional routes, digging, bombs and artillery before combining them with flag and alliance objectives. New concepts get a short paused briefing. **Menu → Hint** gives a tactical suggestion during a campaign map.
 
-Campaign lessons unlock in order. **Play → Maps** opens every map immediately, with Play and Edit map controls. Edited copies can be saved or exported through the editor; the original library stays available. The editor supports all four modes, route directions and blueprints, flag placement, artillery, garrisons, AI types and bomb stock.
+Campaign lessons unlock in order. **Play → Maps** opens every map immediately, with Play and Edit map controls. Edited copies can be saved or exported through the editor; the original library stays available. The editor supports all four modes, route directions and blueprints, flag placement, artillery, garrisons, AI types, local bomb stock and hidden node traps.
 
 Captures have a brief gold pulse, the existing capture sound, and light Android feedback. **Settings → Haptics** turns vibration off. A fresh install starts at 1×; existing speed preferences are preserved. The new campaign uses separate progress, so old generated-campaign progress does not skip its lessons. Earlier editor saves remain available.
 
 [Balance findings and proposed experiments](docs/balance.md) explain the strategy tests and their limits. Raw results and reproduction commands are included.
+
+Bombs stay at the economic node that sells them. **Actions > Deliver bomb** sends a hidden two-troop courier to your node or a point on a route. Route bombs become visible once planted. **Trap this node** arms a local bomb; each node holds up to three. They hit invading survivors after capture, while the attacker keeps the node.
 
 ## AI players
 
@@ -33,7 +35,7 @@ Markers follow the current owner of each node. Difficulty controls decision spee
 
 Skirmish setup cycles between **Conquest**, **Flag: neutral supernode**, **Flag: starting nodes**, and **Alliances**. Choose normal routes or a mix that includes directional routes.
 
-Select one of your nodes and tap **Actions** to draw a route, buy or place bombs, or build and fire artillery. In alliance matches, use **Pacts** to offer, accept or break an alliance. [Gameplay rules](docs/tactics.md) list the costs, controls and victory conditions.
+Select one of your nodes and tap **Actions** to draw a route, buy or deliver bombs, or build and fire artillery. In alliance matches, use **Pacts** to offer, accept or break an alliance. [Gameplay rules](docs/tactics.md) list the costs, controls and victory conditions.
 
 The refreshed interface uses labeled controls and raised nodes and buttons. The speed slider has its own wide row, visible stops and a light Android haptic tick when speed changes. **Settings → Appearance** offers Day or Night and optional abstract backgrounds that change with campaign chapters. [DESIGN.md](DESIGN.md) records the visual conventions and font licenses.
 
@@ -123,3 +125,5 @@ iOS is not configured. The desktop window keeps the original portrait layout at 
 > Some essential files are missing from the repository (like android manifest or gradle files). You are supposed to already have some basic experience with libGDX then it should not be a problem.
 >
 > If you have any questions about this project (how to set it up/why it doesn't compile/why it crashes on startup) then email me at yiotro93@gmail.com, I'll help you.
+
+[Version 0.5.0 validation](docs/release-0.5.0-checks.md) records the bomb rules, touch checks, Android update and package hashes.
