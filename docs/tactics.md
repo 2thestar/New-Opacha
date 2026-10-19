@@ -12,7 +12,7 @@ Select your node and tap **Actions**. A targeting command shows a **Cancel** but
 | Completed route | Becomes available to everyone in both directions, with directional speeds. Surviving diggers continue to the destination as ordinary troops. |
 | Bomb purchase | Costs 20 troops at an owned economic node. Stock stays at that node; capture destroys it. |
 | Bomb delivery | At a node with stock, choose Deliver bomb and tap an owned node or a point on a completed route. One bomb and two troops depart as a hidden courier. It follows the fastest existing path through your own nodes, then plants the bomb at the destination. |
-| Node traps | Trap this node uses local stock and two troops immediately. Up to three bombs can be armed on each owned node; deliveries in transit reserve space. Each deals 12 to the invading survivors after hostile capture. The attacker keeps the node even at zero troops. Traps are consumed together. |
+| Node traps | Trap this node uses local stock and two troops immediately. Up to three bombs can be armed on each owned node; deliveries in transit reserve space. Each deals 12 to the invading survivors after hostile capture. The attacker keeps the node even at zero troops. Traps are consumed together. Ordinary attacks that fail to capture, allied arrivals and artillery do not detonate them. |
 | Bomb hit | The first hostile fleet to cross loses up to 12 troops. The bomb is consumed. Own and allied fleets pass safely. Hidden couriers also pass allied bombs, but an enemy bomb destroys the courier and cargo. |
 | Artillery setup | Costs 20 troops and replaces the node's current type. The first shot is ready immediately. |
 | Artillery shot | Costs 20 troops from the gun node, deals 10 damage, and reloads for five game seconds. Damage consumes shields before population. |
@@ -20,7 +20,7 @@ Select your node and tap **Actions**. A targeting command shows a **Cancel** but
 
 The typical route length is the median original route length on that map. New construction does not change it. Reloading pauses with the match and follows velocity and fast-forward settings. Artillery cannot capture a node or damage a neutral node. A hit that exhausts shields and population leaves the same owner with an ordinary, empty node.
 
-Couriers and node traps are visible only to their owner; the editor and AI spectator view show traps for inspection. Planted route bombs are visible to everyone. Couriers do not fight or capture, so hiding one never hides an army. Their two troops are consumed when planting. A courier lost at a captured intermediate or destination node cannot arm that node. It cannot cross an ally's territory or an unfinished blueprint. Its speed follows route direction, pause and game speed. Capturing its origin after departure does not recall it.
+Couriers and node traps are visible only to their owner; the editor and AI spectator view show traps for inspection. Planted route bombs are visible to everyone. Couriers do not fight or capture, so hiding one never hides an army. The bomb and two troops leave the origin on dispatch; the crew does not reinforce the destination. A destroyed courier loses both its cargo and crew. A courier lost at a captured intermediate or destination node cannot arm that node. It cannot cross an ally's territory or an unfinished blueprint. Its speed follows route direction, pause and game speed. Capturing its origin after departure does not recall it.
 
 ## Match modes
 
@@ -36,6 +36,18 @@ Pacts shows incoming offers, pending offers, active alliances and permanently br
 All personalities can buy bombs, place them ahead of an approaching enemy fleet, and operate artillery while keeping troops for defence. Savvy can fund a short new route when a safe, large garrison can cover construction, the destination and a reserve. Ordinary troop planning ignores unfinished routes; the construction decision funds them separately. Savvy includes directional travel speed when sizing attacks and coordinating arrivals.
 
 Exported maps preserve mode, directional endpoints, construction progress, local bomb stock, node traps, couriers in transit and route bomb positions, artillery reload and shields, original flag locations, and pact state. Original maps without the optional fields load as conquest with normal routes. Map export remains a map feature; it does not save ordinary moving fleets. Bomb couriers retain their route and progress so exporting cannot duplicate their stock. Older faction-wide bomb stock is moved to one economic node, or an owned node if none is economic.
+
+### Bomb fields in exported maps
+
+The optional `tactics` section contains semicolon-separated records. Node and route indices are zero-based positions in the preceding map sections.
+
+| Record | Fields |
+| --- | --- |
+| `depot` | `nodeIndex stock armedTraps` |
+| `courier` | `owner targetNodeIndex routeIndex point leg progress pathNodeIndices` |
+| `bomb` | `routeIndex owner point` |
+
+A node delivery uses a target node and route index `-1`; a route delivery uses target node index `-1`. Route points and current progress are measured from `link.one` (0) to `link.two` (1), including reverse travel. The courier path is a comma-separated node list with a trailing comma. Its leg starts at 1 and selects `path[leg-1]` to `path[leg]`; after those legs it travels to the requested route point. Export records only active couriers and route bombs. Node traps load within the limit of three; older `stock owner count` records migrate to local stock. Changing a node's owner in the editor clears its stock and traps without a combat detonation.
 
 ## Campaign and editor
 

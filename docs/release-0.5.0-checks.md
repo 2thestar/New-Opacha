@@ -1,6 +1,8 @@
 # New Opacha 0.5.0 validation
 
-Version 0.5.0, Android version code 5, package `io.github.twothestar.newopacha`. Release sources and assets match the frozen `.tools/release-0.5.0-ship` build. The preview tag identifies the committed source.
+Version 0.5.0, Android version code 5, package `io.github.twothestar.newopacha`. Runtime sources and assets match the frozen `.tools/release-0.5.0-ship` build. The preview tag identifies the committed source.
+
+Published as [v0.5.0-preview](https://github.com/2thestar/New-Opacha/releases/tag/v0.5.0-preview), from source commit `74aacd24c4e128055cff3398ef9be4073990da69`. After publishing, the public tag was checked against that commit. The install ZIP was downloaded anonymously and verified against the SHA-256 below; its extracted APK matches the tested signed APK. Later documentation-only corrections do not change the release tag or package.
 
 ## Checks completed
 

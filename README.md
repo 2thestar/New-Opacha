@@ -56,7 +56,7 @@ Then build the APK:
 
 To also create the ZIP download, run `.\opacha.ps1 :android:exportInstallZip`.
 
-The installable file is `build/downloads/New-Opacha-0.4.0.apk`. It contains ARM64 libraries for the Pixel 8a and x86-64 libraries for emulator testing. The minimum Android version is 8.0. This development build is signed with the local key in `.tools/signing/`; keep that directory to build updates that preserve your installed app and saves. Signing keys and machine-specific SDK paths are excluded from Git.
+The installable file is `build/downloads/New-Opacha-0.5.0.apk`. It contains ARM64 libraries for the Pixel 8a and x86-64 libraries for emulator testing. The minimum Android version is 8.0. This development build is signed with the local key in `.tools/signing/`; keep that directory to build updates that preserve your installed app and saves. Signing keys and machine-specific SDK paths are excluded from Git.
 
 For USB installation with USB debugging enabled:
 
