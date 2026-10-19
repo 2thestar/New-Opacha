@@ -235,11 +235,23 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
 
 
     public void sendUnits(Planet start, Planet target) {
-        int unitsToLaunch = getUnitsToLaunch(start);
-        if (unitsToLaunch == 0) return;
+        sendUnitsAmount(start, target, getUnitsToLaunch(start));
+    }
+
+    /** AI orders use an explicit amount without changing the human's selection state. */
+    public boolean sendUnitsPercent(Planet start, Planet target, int percent) {
+        if (start == null) return false;
+        if (percent != 25 && percent != 50 && percent != 100) return false;
+        return sendUnitsAmount(start, target, (int) start.unitsInside * percent / 100);
+    }
+
+    private boolean sendUnitsAmount(Planet start, Planet target, int unitsToLaunch) {
+        if (start == null || target == null || start == target || !start.isLinkedTo(target)) return false;
+        if (unitsToLaunch <= 0 || unitsToLaunch > (int) start.unitsInside) return false;
         objectsLayer.unitManager.launchUnit(start, target, unitsToLaunch);
         start.decreaseUnitsInside(unitsToLaunch);
         start.applyPopEffect();
+        return true;
     }
 
 

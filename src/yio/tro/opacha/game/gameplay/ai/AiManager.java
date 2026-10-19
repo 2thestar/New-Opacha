@@ -22,7 +22,7 @@ public class AiManager implements IGameplayManager{
 
     @Override
     public void defaultValues() {
-
+        entities.clear();
     }
 
 
@@ -36,6 +36,7 @@ public class AiManager implements IGameplayManager{
 
 
     private void createEntities() {
+        entities.clear();
         for (FractionType fractionType : FractionType.values()) {
             if (fractionType == FractionType.neutral) continue;
             if (!objectsLayer.planetsManager.isFractionAlive(fractionType)) continue;
@@ -46,10 +47,22 @@ public class AiManager implements IGameplayManager{
 
 
     private void addEntity(FractionType fractionType) {
-        AbstractAiEntity aiEntity = new AiCustomEntity(objectsLayer);
+        AbstractAiEntity aiEntity;
+        switch (getType(fractionType)) {
+            case savvy: aiEntity = new AiSavvyEntity(objectsLayer); break;
+            case silly: aiEntity = new AiSillyEntity(objectsLayer); break;
+            default: aiEntity = new AiCustomEntity(objectsLayer); break;
+        }
         aiEntity.setFractionType(fractionType);
         aiEntity.setDifficulty(GameRules.difficulty);
         entities.add(aiEntity);
+    }
+
+    public AiType getType(FractionType fraction) {
+        if (fraction == null || fraction == FractionType.neutral) return null;
+        if (fraction == FractionType.green && !GameRules.aiOnlyMode) return null;
+        AiType type = GameRules.aiTypes.get(fraction);
+        return type == null ? AiType.simple : type;
     }
 
 

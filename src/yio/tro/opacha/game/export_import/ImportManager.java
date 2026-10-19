@@ -2,6 +2,7 @@ package yio.tro.opacha.game.export_import;
 
 import yio.tro.opacha.game.*;
 import yio.tro.opacha.game.gameplay.ObjectsLayer;
+import yio.tro.opacha.game.gameplay.ai.AiType;
 import yio.tro.opacha.game.gameplay.model.*;
 import yio.tro.opacha.stuff.CircleYio;
 import yio.tro.opacha.stuff.GraphicsYio;
@@ -28,6 +29,7 @@ public class ImportManager {
         objectsLayer = gameController.objectsLayer;
 
         applyGameRules();
+        applyAiTypes();
         applyPlanets();
         applyLinks();
 
@@ -108,6 +110,22 @@ public class ImportManager {
 
     private void finish() {
 
+    }
+
+    private void applyAiTypes() {
+        GameRules.aiTypes.clear();
+        String section = getSection("ai_types");
+        if (section == null) return; // Original maps retain the original AI.
+        for (String token : section.split(",")) {
+            String[] pair = token.trim().split("\\s+");
+            if (pair.length != 2) continue;
+            try {
+                FractionType fraction = FractionType.valueOf(pair[0]);
+                if (fraction != FractionType.neutral) GameRules.aiTypes.put(fraction, AiType.valueOf(pair[1]));
+            } catch (IllegalArgumentException ignored) {
+                // An unknown personality in a newer map falls back to Simple.
+            }
+        }
     }
 
 

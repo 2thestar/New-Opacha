@@ -3,6 +3,8 @@ package yio.tro.opacha.game.view.game_renders;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import yio.tro.opacha.game.gameplay.model.*;
+import yio.tro.opacha.game.GameMode;
+import yio.tro.opacha.game.gameplay.ai.AiType;
 import yio.tro.opacha.stuff.GraphicsYio;
 import yio.tro.opacha.stuff.Storage3xTexture;
 
@@ -20,6 +22,7 @@ public class RenderPlanets extends GameRender{
     private Storage3xTexture autoTargetTexture;
     private Storage3xTexture highlightTexture;
     private Storage3xTexture halvedSelectionTexture;
+    private AiMarkerTextures aiMarkers;
 
 
     @Override
@@ -49,6 +52,7 @@ public class RenderPlanets extends GameRender{
         autoTargetTexture = load3xTexture("auto_target");
         highlightTexture = load3xTexture("highlight");
         halvedSelectionTexture = load3xTexture("halved_selection");
+        if (aiMarkers == null) aiMarkers = new AiMarkerTextures();
     }
 
 
@@ -64,7 +68,18 @@ public class RenderPlanets extends GameRender{
         for (Planet planet : planetsManager.planets) {
             if (!planet.isCurrentlyVisible()) continue;
             renderText(planet);
+            renderAiMarker(planet);
         }
+    }
+
+    private void renderAiMarker(Planet planet) {
+        if (gameController.gameMode == GameMode.editor) return;
+        AiType type = getObjectsLayer().aiManager.getType(planet.fraction);
+        if (type == null) return;
+        float r = planet.viewPosition.radius;
+        float size = 1.15f * r;
+        batchMovable.draw(aiMarkers.get(type), planet.viewPosition.center.x - size / 2,
+                planet.viewPosition.center.y + 1.25f * r, size, size);
     }
 
 
@@ -191,6 +206,9 @@ public class RenderPlanets extends GameRender{
 
     @Override
     protected void disposeTextures() {
-
+        if (aiMarkers != null) {
+            aiMarkers.dispose();
+            aiMarkers = null;
+        }
     }
 }

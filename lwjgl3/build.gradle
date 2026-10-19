@@ -59,3 +59,34 @@ tasks.register('smokeTest') {
     description = 'Check native startup, mouse input, rendering, gameplay and keyboard pause at two portrait sizes.'
     dependsOn tasks.named('smokeDesktop'), tasks.named('smokePhone')
 }
+
+['Desktop': [480, 800], 'Phone': [390, 844]].each { label, dimensions ->
+    tasks.register("aiSmoke$label", JavaExec) {
+        group = 'verification'
+        description = 'Check AI behaviour, setup controls and node markers in the native game.'
+        dependsOn tasks.named('installDist'), tasks.named('smokeTestClasses')
+        timeout = java.time.Duration.ofSeconds(120)
+        classpath = files(sourceSets.smokeTest.output, fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+        mainClass = 'yio.tro.opacha.lwjgl3.AiSmokeTest'
+        workingDir rootProject.projectDir
+        args dimensions[0], dimensions[1], layout.buildDirectory.dir("ai-smoke/$label").get().asFile.absolutePath
+        if (System.getProperty('os.name').toLowerCase().contains('mac')) jvmArgs '-XstartOnFirstThread'
+    }
+}
+
+tasks.register('aiSmokeTest') {
+    group = 'verification'
+    dependsOn tasks.named('aiSmokeDesktop'), tasks.named('aiSmokePhone')
+}
+
+tasks.register('aiMatches', JavaExec) {
+    group = 'verification'
+    description = 'Run paired Simple versus Savvy matches for balance tuning.'
+    dependsOn tasks.named('installDist'), tasks.named('smokeTestClasses')
+    timeout = java.time.Duration.ofSeconds(120)
+    classpath = files(sourceSets.smokeTest.output, fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+    mainClass = 'yio.tro.opacha.lwjgl3.AiSmokeTest'
+    workingDir rootProject.projectDir
+    args 480, 800, layout.buildDirectory.dir('ai-matches').get().asFile.absolutePath, 'matches'
+    if (System.getProperty('os.name').toLowerCase().contains('mac')) jvmArgs '-XstartOnFirstThread'
+}

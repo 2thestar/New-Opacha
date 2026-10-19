@@ -3,6 +3,9 @@ package yio.tro.opacha.game;
 import yio.tro.opacha.game.export_import.SavableYio;
 import yio.tro.opacha.game.loading.LoadingParameters;
 import yio.tro.opacha.game.loading.LoadingType;
+import yio.tro.opacha.game.gameplay.ai.AiType;
+import yio.tro.opacha.game.gameplay.model.FractionType;
+import java.util.EnumMap;
 
 public class GameRules {
 
@@ -12,6 +15,7 @@ public class GameRules {
     public static boolean aiOnlyMode;
     public static Difficulty difficulty;
     public static int levelIndex;
+    public static final EnumMap<FractionType, AiType> aiTypes = new EnumMap<>(FractionType.class);
 
 
     public static void bootInit() {
@@ -26,6 +30,7 @@ public class GameRules {
         aiOnlyMode = false;
         difficulty = Difficulty.easy;
         levelIndex = -1;
+        aiTypes.clear();
     }
 
 

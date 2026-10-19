@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.utils.Clipboard;
 import yio.tro.opacha.game.GameRules;
 import yio.tro.opacha.game.gameplay.ObjectsLayer;
+import yio.tro.opacha.game.gameplay.ai.AiType;
+import yio.tro.opacha.game.gameplay.model.FractionType;
 
 public class ExportManager {
 
@@ -32,6 +34,7 @@ public class ExportManager {
         addTitle();
         saveSlotName();
         saveGameRules();
+        saveAiTypes();
         saveGeneralInfo();
         savePlanets();
         saveLinks();
@@ -69,6 +72,14 @@ public class ExportManager {
     private void saveGameRules() {
         startSection("game_rules");
         builder.append(GameRules.saveToString());
+    }
+
+    private void saveAiTypes() {
+        startSection("ai_types");
+        for (FractionType fraction : FractionType.values()) {
+            AiType type = objectsLayer.aiManager.getType(fraction);
+            if (type != null) builder.append(fraction).append(" ").append(type).append(",");
+        }
     }
 
 

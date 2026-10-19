@@ -26,6 +26,7 @@ public class SceneSkirmishMenu extends SceneYio {
     private int colorValues[];
     private SliderYio colorsSlider;
     private CheckButtonYio chkAiOnly;
+    private SliderYio opponentsSlider;
 
 
     @Override
@@ -74,7 +75,7 @@ public class SceneSkirmishMenu extends SceneYio {
     private void createLabel() {
         label = uiFactory.getButton()
                 .setParent(innerParent)
-                .setSize(0.8, 0.55)
+                .setSize(0.8, 0.69)
                 .centerHorizontal()
                 .centerVertical()
                 .applyText(" ")
@@ -124,6 +125,22 @@ public class SceneSkirmishMenu extends SceneYio {
                     @Override
                     public String getValueString(LanguagesManager languagesManager, SliderYio sliderYio) {
                         return "" + colorValues[sliderYio.getValueIndex()];
+                    }
+                })
+                .setVerticalTouchOffset(0.1f * GraphicsYio.width);
+
+        opponentsSlider = uiFactory.getSlider()
+                .clone(previousElement)
+                .alignBottom(previousElement, 0.05)
+                .setName("ai_opponents")
+                .setAnimation(AnimationYio.none)
+                .setValues(0, 4)
+                .setSegmentsVisible(true)
+                .setBehavior(new SliderBehavior() {
+                    @Override
+                    public String getValueString(LanguagesManager manager, SliderYio slider) {
+                        String[] keys = {"ai_mixed", "ai_simple", "ai_savvy", "ai_silly"};
+                        return manager.getString(keys[slider.getValueIndex()]);
                     }
                 })
                 .setVerticalTouchOffset(0.1f * GraphicsYio.width);
@@ -180,6 +197,7 @@ public class SceneSkirmishMenu extends SceneYio {
         difficultySlider.setValueIndex(prefs.getInteger("difficulty", 1));
         colorsSlider.setValueIndex(prefs.getInteger("colors", 0));
         chkAiOnly.setChecked(prefs.getBoolean("ai_only", false));
+        opponentsSlider.setValueIndex(Math.max(0, Math.min(3, prefs.getInteger("opponents", 0))));
     }
 
 
@@ -190,6 +208,7 @@ public class SceneSkirmishMenu extends SceneYio {
         prefs.putInteger("difficulty", difficultySlider.getValueIndex());
         prefs.putInteger("colors", colorsSlider.getValueIndex());
         prefs.putBoolean("ai_only", chkAiOnly.isChecked());
+        prefs.putInteger("opponents", opponentsSlider.getValueIndex());
 
         prefs.flush();
     }
@@ -213,6 +232,7 @@ public class SceneSkirmishMenu extends SceneYio {
                         loadingParameters.addParameter("colors", colorValues[colorsSlider.getValueIndex()]);
                         loadingParameters.addParameter("ai_only", chkAiOnly.isChecked());
                         loadingParameters.addParameter("difficulty", difficultySlider.getValueIndex());
+                        loadingParameters.addParameter("opponents", opponentsSlider.getValueIndex());
                         loadingParameters.addParameter("seed", YioGdxGame.random.nextInt());
                         yioGdxGame.loadingManager.startInstantly(LoadingType.skirmish_create, loadingParameters);
                     }

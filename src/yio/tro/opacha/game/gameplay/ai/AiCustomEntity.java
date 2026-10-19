@@ -86,8 +86,7 @@ public class AiCustomEntity extends AbstractAiEntity {
             if (way == null) continue;
             if (way.size() == 0) continue;
             if (planet.hasAutoTarget() && planet.autoTarget == way.get(0)) continue;
-            planet.setAutoTarget(way.get(0));
-            onActionPerformed();
+            orderAutoTarget(planet, way.get(0));
         }
     }
 
@@ -102,8 +101,7 @@ public class AiCustomEntity extends AbstractAiEntity {
             Planet oppositePlanet = adjoinedLink.getOppositePlanet(target);
             if (isBeyondCommand(oppositePlanet)) continue;
             if (isThreatTooBig(oppositePlanet)) continue;
-            launchUnits(oppositePlanet, target);
-            onActionPerformed();
+            orderLaunch(oppositePlanet, target);
         }
     }
 
@@ -175,8 +173,7 @@ public class AiCustomEntity extends AbstractAiEntity {
         Planet adjoinedPlanet = findAdjoinedPlanetWithImmediateRequest(planet);
         if (adjoinedPlanet == null) return;
         if (adjoinedPlanet.hasAutoTarget() && adjoinedPlanet.autoTarget == planet) return;
-        planet.setAutoTarget(adjoinedPlanet);
-        onActionPerformed();
+        orderAutoTarget(planet, adjoinedPlanet);
     }
 
 
@@ -211,9 +208,7 @@ public class AiCustomEntity extends AbstractAiEntity {
             if (getPlanetsManager().calculatePotentialThreat(planet) + planet.aiData.threat < 0.7 * planet.getFullHp())
                 continue;
             if (!isActionAllowed()) continue;
-            getPlanetsManager().applyUpgrade(planet, PlanetType.defensive);
-            planet.setAutoTarget(null);
-            onActionPerformed();
+            orderUpgrade(planet, PlanetType.defensive);
         }
     }
 
@@ -225,8 +220,7 @@ public class AiCustomEntity extends AbstractAiEntity {
             if (!getPlanetsManager().canBeUpgradedToEconomic(planet)) continue;
             if (!planet.aiData.safe) continue;
             if (!isActionAllowed()) continue;
-            getPlanetsManager().applyUpgrade(planet, PlanetType.economic);
-            onActionPerformed();
+            orderUpgrade(planet, PlanetType.economic);
         }
     }
 
@@ -266,7 +260,29 @@ public class AiCustomEntity extends AbstractAiEntity {
         if (start.fraction == target.fraction) return;
         if ((int) start.unitsInside < target.getFullHp()) return;
         if (!target.isNeutral() && (int) start.unitsInside < target.getFullHp() + 5) return;
+        orderLaunch(start, target);
+    }
+
+    protected boolean replacePlannedMove() {
+        return false;
+    }
+
+    protected void orderLaunch(Planet start, Planet target) {
+        if ((int) start.unitsInside > 0 && replacePlannedMove()) return;
         launchUnits(start, target);
+        onActionPerformed();
+    }
+
+    protected void orderAutoTarget(Planet start, Planet target) {
+        if (start.autoTarget != target && replacePlannedMove()) return;
+        start.setAutoTarget(target);
+        onActionPerformed();
+    }
+
+    protected void orderUpgrade(Planet planet, PlanetType type) {
+        if (replacePlannedMove()) return;
+        getPlanetsManager().applyUpgrade(planet, type);
+        if (type == PlanetType.defensive) planet.setAutoTarget(null);
         onActionPerformed();
     }
 }
