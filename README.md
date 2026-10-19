@@ -7,6 +7,8 @@ The original Java source and assets stay in `src/` and `assets/`.
 
 Download the APK from [Releases](https://github.com/2thestar/New-Opacha/releases) on the phone and open it to install **New Opacha**. Android may ask you to allow the browser to install apps. The app has its own package ID and saves, so it can be installed alongside the original game.
 
+If Chrome stays on "Downloading" at 100% and the APK never appears in Downloads, try the **New-Opacha-0.1.0-install.zip** release asset. Open the ZIP in Files by Google, tap **Extract**, then open the extracted APK to install. It contains the same signed APK. This is an alternative download; completion on the affected physical Pixel has not yet been confirmed.
+
 ## Build the Android APK
 
 On Windows, prepare the local JDK and Android SDK once:
@@ -21,6 +23,8 @@ Then build the APK:
 ```powershell
 .\opacha.ps1 :android:exportApk
 ```
+
+To also create the ZIP download, run `.\opacha.ps1 :android:exportInstallZip`.
 
 The installable file is `build/downloads/New-Opacha-0.1.0.apk`. It contains ARM64 libraries for the Pixel 8a and x86-64 libraries for emulator testing. The minimum Android version is 8.0. This development build is signed with the local key in `.tools/signing/`; keep that directory to build updates that preserve your installed app and saves. Signing keys and machine-specific SDK paths are excluded from Git.
 

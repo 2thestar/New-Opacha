@@ -1,6 +1,7 @@
 .gradle/
 .gradle-user-home/
 .tools/
+.codex-remote-attachments/
 **/build/
 .idea/
 *.iml

@@ -86,3 +86,12 @@ tasks.register('exportApk', Copy) {
     into rootProject.layout.buildDirectory.dir('downloads')
     rename { 'New-Opacha-0.1.0.apk' }
 }
+
+tasks.register('exportInstallZip', Zip) {
+    group = 'distribution'
+    description = 'Package the installable APK in a ZIP for an alternative phone download.'
+    dependsOn tasks.named('exportApk')
+    from rootProject.layout.buildDirectory.file('downloads/New-Opacha-0.1.0.apk')
+    destinationDirectory = rootProject.layout.buildDirectory.dir('downloads')
+    archiveFileName = 'New-Opacha-0.1.0-install.zip'
+}
