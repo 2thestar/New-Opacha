@@ -19,6 +19,7 @@ public class Particle implements ReusableYio, AcceleratableYio{
     float maxRadius;
     public int id;
     public PaViewType viewType;
+    public boolean quietRouteEffect;
     boolean hasAngle;
     double deltaAngle;
 
@@ -51,6 +52,7 @@ public class Particle implements ReusableYio, AcceleratableYio{
         deltaAngle = 0;
         id = 0;
         viewType = null;
+        quietRouteEffect = false;
     }
 
 

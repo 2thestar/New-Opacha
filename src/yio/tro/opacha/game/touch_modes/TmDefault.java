@@ -83,6 +83,7 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
         twoFingerTouchManager.onTouchDown(gameController.currentTouch);
 
         cameraBlocked = false;
+        touchDownPlanet = null;
         checkToBlockCamera();
         checkToHighlightPlanet();
     }
@@ -136,24 +137,29 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
             cameraBlocked = false;
             return;
         }
-        if (twoFingerDetected) return;
-        if (!cameraBlocked) return;
+        Planet targetPlanet = getDragTarget();
         cameraBlocked = false;
-
-        if (System.currentTimeMillis() - touchDownTime > 900) return;
-        float distance = touchDownPlanet.viewPosition.center.distanceTo(gameController.currentTouchConverted);
-        if (distance < 2 * touchDownPlanet.position.radius) return;
-
-        double targetAngle = touchDownPlanet.viewPosition.center.angleTo(gameController.currentTouchConverted);
-        Planet targetPlanet = getPlanetsManager().findAdjoinedPlanetClosestToAngle(touchDownPlanet, targetAngle);
         if (targetPlanet == null) return;
-
-        double a = touchDownPlanet.viewPosition.center.angleTo(targetPlanet.viewPosition.center);
-        if (Yio.distanceBetweenAngles(a, targetAngle) > Math.PI / 4) return;
-
         touchDownPlanet.setAutoTarget(targetPlanet);
         touchDownPlanet.prepareToSendAutoTargetQuickly();
+        yio.tro.opacha.menu.UiHaptics.orderIssued();
     }
+
+    /** Preview and release share one decision, including ownership and route legality. */
+    public Planet getDragTarget() {
+        if (!cameraBlocked || twoFingerDetected || touchDownPlanet == null
+                || !touchDownPlanet.isControlledByPlayer()
+                || gameController.objectsLayer.tactics.pending != yio.tro.opacha.game.gameplay.model.TacticsManager.Action.none) return null;
+        if (touchDownPlanet.viewPosition.center.distanceTo(gameController.currentTouchConverted)
+                < 2 * touchDownPlanet.position.radius) return null;
+        double angle = touchDownPlanet.viewPosition.center.angleTo(gameController.currentTouchConverted);
+        Planet target = getPlanetsManager().findAdjoinedPlanetClosestToAngle(touchDownPlanet, angle);
+        if (target == null || !touchDownPlanet.getLink(target).canUse(touchDownPlanet, touchDownPlanet.fraction)) return null;
+        return Yio.distanceBetweenAngles(touchDownPlanet.viewPosition.center.angleTo(target.viewPosition.center), angle)
+                <= Math.PI / 4 ? target : null;
+    }
+
+    public Planet getDragSource() { return getDragTarget() == null ? null : touchDownPlanet; }
 
 
     @Override

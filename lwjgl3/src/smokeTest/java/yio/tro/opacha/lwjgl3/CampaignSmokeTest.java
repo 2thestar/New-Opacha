@@ -66,7 +66,7 @@ public final class CampaignSmokeTest extends YioGdxGame {
                 clickWorld(gameController.objectsLayer.planetsManager.planets.get(0).position.center); break;
             case 8:
                 require(Scenes.editSinglePlanet.isCurrentlyVisible(),"Editor node panel did not open");
-                require(gameController.objectsLayer.planetsManager.planets.get(0).unitsInside==28,"Opening the editor panel altered the exact garrison");
+                require(gameController.objectsLayer.planetsManager.planets.get(0).unitsInside==0,"Opening the editor panel altered the zero opening");
                 screenshot("07-editor-node");
                 click(Scenes.editSinglePlanet.aiButton); click(Scenes.editSinglePlanet.stockButton); click(Scenes.editSinglePlanet.trapsButton); break;
             case 9:
@@ -78,7 +78,9 @@ public final class CampaignSmokeTest extends YioGdxGame {
                 screenshot("09-first-lesson"); click(Scenes.campaignBrief.startButton); break;
             case 12:
                 require(gameController.speedManager.getSpeed()==1,"Lesson Play did not restore speed");
-                Planet home=gameController.objectsLayer.planetsManager.planets.get(0); clickWorld(home.position.center); break;
+                Planet home=gameController.objectsLayer.planetsManager.planets.get(0);
+                if(home.unitsInside<12) {step--;return;}
+                clickWorld(home.position.center); break;
             case 13:
                 require(Scenes.selectionOverlay.isCurrentlyVisible(),"First lesson node did not select");
                 require(!Scenes.selectionOverlay.actionsButton.isVisible() && !Scenes.selectionOverlay.bEconomic.isVisible(),"Unintroduced tools appeared in first lesson");

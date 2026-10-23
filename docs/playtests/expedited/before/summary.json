@@ -1,0 +1,10 @@
+{
+  "matches": 672,
+  "wins": 429,
+  "timeouts": 15,
+  "maps_without_win": [
+    28
+  ],
+  "wall_seconds": 12.156,
+  "source_sha256": "1a9312ebcad7866a931f045682c44d4b0299028a1146de0ac31941c4615dae3a"
+}

@@ -7,7 +7,8 @@ import yio.tro.opacha.YioGdxGame;
 public abstract class RepeatYio<ProviderType> {
 
     protected ProviderType parent;
-    int frequency, countDown;
+    int frequency;
+    double countDown;
     boolean ignoreRefreshRate;
 
 
@@ -20,7 +21,7 @@ public abstract class RepeatYio<ProviderType> {
         this.parent = parent;
         ignoreRefreshRate = false;
         setFrequency(frequency);
-        countDown = applyRefreshRate(defCount);
+        countDown = defCount;
     }
 
 
@@ -32,15 +33,17 @@ public abstract class RepeatYio<ProviderType> {
 
 
     public void move() {
-        if (countDown == 0) {
-            resetCountDown();
+        if (frequency == 0) { performAction(); return; }
+        countDown -= ignoreRefreshRate ? 1 : RefreshRateDetector.getInstance().multiplier;
+        while (countDown < -1e-7) {
+            countDown += frequency + 1;
             performAction();
-        } else countDown--;
+        }
     }
 
 
     public void resetCountDown() {
-        countDown = applyRefreshRate(frequency);
+        countDown = frequency;
     }
 
 
@@ -49,13 +52,6 @@ public abstract class RepeatYio<ProviderType> {
 
     public void setCountDown(int countDown) {
         this.countDown = countDown;
-    }
-
-
-    private int applyRefreshRate(int value) {
-        if (ignoreRefreshRate) return value;
-        if (value <= 1) return value;
-        return (int) (value / RefreshRateDetector.getInstance().multiplier);
     }
 
 

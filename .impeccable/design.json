@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-19T18:12:37.458Z",
+  "generatedAt": "2026-10-22T01:36:16.831Z",
   "title": "Design System: New Opacha",
   "extensions": {
     "colorMeta": {
@@ -90,7 +90,7 @@
       },
       "green": {
         "role": "secondary",
-        "displayName": "Green faction",
+        "displayName": "Menu green",
         "tonalRamp": [
           "oklch(15.00% 0.1265 159.40)",
           "oklch(26.43% 0.1265 159.40)",
@@ -104,7 +104,7 @@
       },
       "red": {
         "role": "secondary",
-        "displayName": "Coral faction",
+        "displayName": "Menu coral",
         "tonalRamp": [
           "oklch(15.00% 0.1192 27.56)",
           "oklch(26.43% 0.1192 27.56)",
@@ -118,7 +118,7 @@
       },
       "cyan": {
         "role": "secondary",
-        "displayName": "Cyan faction",
+        "displayName": "Menu cyan",
         "tonalRamp": [
           "oklch(15.00% 0.0797 218.70)",
           "oklch(26.43% 0.0797 218.70)",
@@ -160,7 +160,7 @@
       },
       "neutral": {
         "role": "neutral",
-        "displayName": "Day neutral node",
+        "displayName": "Day interface neutral",
         "tonalRamp": [
           "oklch(15.00% 0.0017 67.80)",
           "oklch(26.43% 0.0017 67.80)",
@@ -272,7 +272,7 @@
       },
       "night-neutral": {
         "role": "neutral",
-        "displayName": "Night neutral node",
+        "displayName": "Night interface neutral",
         "tonalRamp": [
           "oklch(15.00% 0.0068 233.65)",
           "oklch(26.43% 0.0068 233.65)",
@@ -282,6 +282,342 @@
           "oklch(72.14% 0.0068 233.65)",
           "oklch(83.57% 0.0068 233.65)",
           "oklch(95.00% 0.0068 233.65)"
+        ]
+      },
+      "battlefield-lime": {
+        "role": "secondary",
+        "displayName": "Lime node and troop",
+        "tonalRamp": [
+          "oklch(15.00% 0.1314 133.78)",
+          "oklch(26.43% 0.1314 133.78)",
+          "oklch(37.86% 0.1314 133.78)",
+          "oklch(49.29% 0.1314 133.78)",
+          "oklch(60.71% 0.1314 133.78)",
+          "oklch(72.14% 0.1314 133.78)",
+          "oklch(83.57% 0.1314 133.78)",
+          "oklch(95.00% 0.1314 133.78)"
+        ]
+      },
+      "battlefield-cyan": {
+        "role": "secondary",
+        "displayName": "Cyan node and troop",
+        "tonalRamp": [
+          "oklch(15.00% 0.1025 205.59)",
+          "oklch(26.43% 0.1025 205.59)",
+          "oklch(37.86% 0.1025 205.59)",
+          "oklch(49.29% 0.1025 205.59)",
+          "oklch(60.71% 0.1025 205.59)",
+          "oklch(72.14% 0.1025 205.59)",
+          "oklch(83.57% 0.1025 205.59)",
+          "oklch(95.00% 0.1025 205.59)"
+        ]
+      },
+      "battlefield-rose": {
+        "role": "secondary",
+        "displayName": "Rose node and troop",
+        "tonalRamp": [
+          "oklch(15.00% 0.1034 11.32)",
+          "oklch(26.43% 0.1034 11.32)",
+          "oklch(37.86% 0.1034 11.32)",
+          "oklch(49.29% 0.1034 11.32)",
+          "oklch(60.71% 0.1034 11.32)",
+          "oklch(72.14% 0.1034 11.32)",
+          "oklch(83.57% 0.1034 11.32)",
+          "oklch(95.00% 0.1034 11.32)"
+        ]
+      },
+      "battlefield-yellow": {
+        "role": "secondary",
+        "displayName": "Yellow node and troop",
+        "tonalRamp": [
+          "oklch(15.00% 0.1151 88.60)",
+          "oklch(26.43% 0.1151 88.60)",
+          "oklch(37.86% 0.1151 88.60)",
+          "oklch(49.29% 0.1151 88.60)",
+          "oklch(60.71% 0.1151 88.60)",
+          "oklch(72.14% 0.1151 88.60)",
+          "oklch(83.57% 0.1151 88.60)",
+          "oklch(95.00% 0.1151 88.60)"
+        ]
+      },
+      "battlefield-neutral": {
+        "role": "neutral",
+        "displayName": "Pale node",
+        "tonalRamp": [
+          "oklch(15.00% 0.0074 80.72)",
+          "oklch(26.43% 0.0074 80.72)",
+          "oklch(37.86% 0.0074 80.72)",
+          "oklch(49.29% 0.0074 80.72)",
+          "oklch(60.71% 0.0074 80.72)",
+          "oklch(72.14% 0.0074 80.72)",
+          "oklch(83.57% 0.0074 80.72)",
+          "oklch(95.00% 0.0074 80.72)"
+        ]
+      },
+      "battlefield-number": {
+        "role": "neutral",
+        "displayName": "Battlefield count ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0468 273.39)",
+          "oklch(26.43% 0.0468 273.39)",
+          "oklch(37.86% 0.0468 273.39)",
+          "oklch(49.29% 0.0468 273.39)",
+          "oklch(60.71% 0.0468 273.39)",
+          "oklch(72.14% 0.0468 273.39)",
+          "oklch(83.57% 0.0468 273.39)",
+          "oklch(95.00% 0.0468 273.39)"
+        ]
+      },
+      "vehicle-tread": {
+        "role": "neutral",
+        "displayName": "Soft treads",
+        "tonalRamp": [
+          "oklch(15.00% 0.0301 150.17)",
+          "oklch(26.43% 0.0301 150.17)",
+          "oklch(37.86% 0.0301 150.17)",
+          "oklch(49.29% 0.0301 150.17)",
+          "oklch(60.71% 0.0301 150.17)",
+          "oklch(72.14% 0.0301 150.17)",
+          "oklch(83.57% 0.0301 150.17)",
+          "oklch(95.00% 0.0301 150.17)"
+        ]
+      },
+      "vehicle-butter": {
+        "role": "secondary",
+        "displayName": "Warm rig hull",
+        "tonalRamp": [
+          "oklch(15.00% 0.0680 90.59)",
+          "oklch(26.43% 0.0680 90.59)",
+          "oklch(37.86% 0.0680 90.59)",
+          "oklch(49.29% 0.0680 90.59)",
+          "oklch(60.71% 0.0680 90.59)",
+          "oklch(72.14% 0.0680 90.59)",
+          "oklch(83.57% 0.0680 90.59)",
+          "oklch(95.00% 0.0680 90.59)"
+        ]
+      },
+      "vehicle-sage": {
+        "role": "neutral",
+        "displayName": "Quiet equipment",
+        "tonalRamp": [
+          "oklch(15.00% 0.0263 168.01)",
+          "oklch(26.43% 0.0263 168.01)",
+          "oklch(37.86% 0.0263 168.01)",
+          "oklch(49.29% 0.0263 168.01)",
+          "oklch(60.71% 0.0263 168.01)",
+          "oklch(72.14% 0.0263 168.01)",
+          "oklch(83.57% 0.0263 168.01)",
+          "oklch(95.00% 0.0263 168.01)"
+        ]
+      },
+      "impact-warm": {
+        "role": "secondary",
+        "displayName": "Warm impact",
+        "tonalRamp": [
+          "oklch(15.00% 0.0865 62.08)",
+          "oklch(26.43% 0.0865 62.08)",
+          "oklch(37.86% 0.0865 62.08)",
+          "oklch(49.29% 0.0865 62.08)",
+          "oklch(60.71% 0.0865 62.08)",
+          "oklch(72.14% 0.0865 62.08)",
+          "oklch(83.57% 0.0865 62.08)",
+          "oklch(95.00% 0.0865 62.08)"
+        ]
+      },
+      "battlefield-violet": {
+        "role": "secondary",
+        "displayName": "Colorblind violet",
+        "tonalRamp": [
+          "oklch(15.00% 0.1095 308.41)",
+          "oklch(26.43% 0.1095 308.41)",
+          "oklch(37.86% 0.1095 308.41)",
+          "oklch(49.29% 0.1095 308.41)",
+          "oklch(60.71% 0.1095 308.41)",
+          "oklch(72.14% 0.1095 308.41)",
+          "oklch(83.57% 0.1095 308.41)",
+          "oklch(95.00% 0.1095 308.41)"
+        ]
+      },
+      "node-neutral": {
+        "role": "neutral",
+        "displayName": "Neutral candy face",
+        "tonalRamp": [
+          "oklch(15.00% 0.0074 80.72)",
+          "oklch(26.43% 0.0074 80.72)",
+          "oklch(37.86% 0.0074 80.72)",
+          "oklch(49.29% 0.0074 80.72)",
+          "oklch(60.71% 0.0074 80.72)",
+          "oklch(72.14% 0.0074 80.72)",
+          "oklch(83.57% 0.0074 80.72)",
+          "oklch(95.00% 0.0074 80.72)"
+        ]
+      },
+      "troop-lime": {
+        "role": "secondary",
+        "displayName": "Matte lime troop",
+        "tonalRamp": [
+          "oklch(15.00% 0.0907 132.53)",
+          "oklch(26.43% 0.0907 132.53)",
+          "oklch(37.86% 0.0907 132.53)",
+          "oklch(49.29% 0.0907 132.53)",
+          "oklch(60.71% 0.0907 132.53)",
+          "oklch(72.14% 0.0907 132.53)",
+          "oklch(83.57% 0.0907 132.53)",
+          "oklch(95.00% 0.0907 132.53)"
+        ]
+      },
+      "troop-cyan": {
+        "role": "secondary",
+        "displayName": "Matte cyan troop",
+        "tonalRamp": [
+          "oklch(15.00% 0.0717 205.92)",
+          "oklch(26.43% 0.0717 205.92)",
+          "oklch(37.86% 0.0717 205.92)",
+          "oklch(49.29% 0.0717 205.92)",
+          "oklch(60.71% 0.0717 205.92)",
+          "oklch(72.14% 0.0717 205.92)",
+          "oklch(83.57% 0.0717 205.92)",
+          "oklch(95.00% 0.0717 205.92)"
+        ]
+      },
+      "troop-rose": {
+        "role": "secondary",
+        "displayName": "Matte rose troop",
+        "tonalRamp": [
+          "oklch(15.00% 0.0695 7.39)",
+          "oklch(26.43% 0.0695 7.39)",
+          "oklch(37.86% 0.0695 7.39)",
+          "oklch(49.29% 0.0695 7.39)",
+          "oklch(60.71% 0.0695 7.39)",
+          "oklch(72.14% 0.0695 7.39)",
+          "oklch(83.57% 0.0695 7.39)",
+          "oklch(95.00% 0.0695 7.39)"
+        ]
+      },
+      "troop-yellow": {
+        "role": "secondary",
+        "displayName": "Matte yellow troop",
+        "tonalRamp": [
+          "oklch(15.00% 0.0781 90.47)",
+          "oklch(26.43% 0.0781 90.47)",
+          "oklch(37.86% 0.0781 90.47)",
+          "oklch(49.29% 0.0781 90.47)",
+          "oklch(60.71% 0.0781 90.47)",
+          "oklch(72.14% 0.0781 90.47)",
+          "oklch(83.57% 0.0781 90.47)",
+          "oklch(95.00% 0.0781 90.47)"
+        ]
+      },
+      "troop-edge-lime": {
+        "role": "secondary",
+        "displayName": "Lime troop contour",
+        "tonalRamp": [
+          "oklch(15.00% 0.1133 134.10)",
+          "oklch(26.43% 0.1133 134.10)",
+          "oklch(37.86% 0.1133 134.10)",
+          "oklch(49.29% 0.1133 134.10)",
+          "oklch(60.71% 0.1133 134.10)",
+          "oklch(72.14% 0.1133 134.10)",
+          "oklch(83.57% 0.1133 134.10)",
+          "oklch(95.00% 0.1133 134.10)"
+        ]
+      },
+      "troop-edge-cyan": {
+        "role": "secondary",
+        "displayName": "Cyan troop contour",
+        "tonalRamp": [
+          "oklch(15.00% 0.0854 209.18)",
+          "oklch(26.43% 0.0854 209.18)",
+          "oklch(37.86% 0.0854 209.18)",
+          "oklch(49.29% 0.0854 209.18)",
+          "oklch(60.71% 0.0854 209.18)",
+          "oklch(72.14% 0.0854 209.18)",
+          "oklch(83.57% 0.0854 209.18)",
+          "oklch(95.00% 0.0854 209.18)"
+        ]
+      },
+      "troop-edge-rose": {
+        "role": "secondary",
+        "displayName": "Rose troop contour",
+        "tonalRamp": [
+          "oklch(15.00% 0.0853 5.09)",
+          "oklch(26.43% 0.0853 5.09)",
+          "oklch(37.86% 0.0853 5.09)",
+          "oklch(49.29% 0.0853 5.09)",
+          "oklch(60.71% 0.0853 5.09)",
+          "oklch(72.14% 0.0853 5.09)",
+          "oklch(83.57% 0.0853 5.09)",
+          "oklch(95.00% 0.0853 5.09)"
+        ]
+      },
+      "troop-edge-yellow": {
+        "role": "secondary",
+        "displayName": "Yellow troop contour",
+        "tonalRamp": [
+          "oklch(15.00% 0.0910 87.23)",
+          "oklch(26.43% 0.0910 87.23)",
+          "oklch(37.86% 0.0910 87.23)",
+          "oklch(49.29% 0.0910 87.23)",
+          "oklch(60.71% 0.0910 87.23)",
+          "oklch(72.14% 0.0910 87.23)",
+          "oklch(83.57% 0.0910 87.23)",
+          "oklch(95.00% 0.0910 87.23)"
+        ]
+      },
+      "troop-edge-violet": {
+        "role": "secondary",
+        "displayName": "Violet troop contour",
+        "tonalRamp": [
+          "oklch(15.00% 0.1046 308.60)",
+          "oklch(26.43% 0.1046 308.60)",
+          "oklch(37.86% 0.1046 308.60)",
+          "oklch(49.29% 0.1046 308.60)",
+          "oklch(60.71% 0.1046 308.60)",
+          "oklch(72.14% 0.1046 308.60)",
+          "oklch(83.57% 0.1046 308.60)",
+          "oklch(95.00% 0.1046 308.60)"
+        ]
+      },
+      "shield": {
+        "role": "secondary",
+        "displayName": "Dark cyan shield",
+        "tonalRamp": [
+          "oklch(15.00% 0.0985 225.44)",
+          "oklch(26.43% 0.0985 225.44)",
+          "oklch(37.86% 0.0985 225.44)",
+          "oklch(49.29% 0.0985 225.44)",
+          "oklch(60.71% 0.0985 225.44)",
+          "oklch(72.14% 0.0985 225.44)",
+          "oklch(83.57% 0.0985 225.44)",
+          "oklch(95.00% 0.0985 225.44)"
+        ]
+      },
+      "shield-light": {
+        "role": "secondary",
+        "displayName": "Light cyan shield",
+        "tonalRamp": [
+          "oklch(15.00% 0.0989 207.61)",
+          "oklch(26.43% 0.0989 207.61)",
+          "oklch(37.86% 0.0989 207.61)",
+          "oklch(49.29% 0.0989 207.61)",
+          "oklch(60.71% 0.0989 207.61)",
+          "oklch(72.14% 0.0989 207.61)",
+          "oklch(83.57% 0.0989 207.61)",
+          "oklch(95.00% 0.0989 207.61)"
+        ]
+      },
+      "conveyor-light": {
+        "role": "secondary",
+        "displayName": "Pale conveyor mark",
+        "tonalRamp": [
+          "oklch(15.00% 0.0691 129.67)",
+          "oklch(26.43% 0.0691 129.67)",
+          "oklch(37.86% 0.0691 129.67)",
+          "oklch(49.29% 0.0691 129.67)",
+          "oklch(60.71% 0.0691 129.67)",
+          "oklch(72.14% 0.0691 129.67)",
+          "oklch(83.57% 0.0691 129.67)",
+          "oklch(95.00% 0.0691 129.67)"
         ]
       }
     },
@@ -304,11 +640,11 @@
       },
       "node": {
         "displayName": "Node count",
-        "purpose": "Game-camera text; generated at 2.25B and rendered at 0.3 scale."
+        "purpose": "BattlefieldArt draws upright counts with Fonts.unitFont at 0.70r cap height, fitting within 1.44r. The generated gameFont remains available to other native renderers."
       },
       "unit": {
         "displayName": "Unit count",
-        "purpose": "Game-camera text; generated at 1.4B and rendered at 0.3 scale."
+        "purpose": "BattlefieldArt uses Fonts.unitFont; troop cap height=min(0.0225W,1.32ry), width limit=1.65rx. Rig cap height=0.79size, width limit=1.20size. Shared font scale and color are restored after each label."
       }
     },
     "shadows": [
@@ -319,13 +655,13 @@
       },
       {
         "name": "node-depth",
-        "value": "6% ink disc at (x+0.10r,y-0.20r), radius 1.12r; 13% ink disc at (x+0.07r,y-0.14r), radius r",
-        "purpose": "Depth beneath each visible node."
+        "value": "Approved Canvas shadow: rgba(40,35,31,0.20), blur=0.14r, offset=(+0.035r,+0.09r) in the source Canvas downward y axis; exported with the material.",
+        "purpose": "The tight contact shadow follows the original plain or seven-spike contour. Runtime displays the exported asset upright."
       },
       {
         "name": "node-face",
-        "value": "ink radius r; faction face at (x,y+0.055r), radius 0.89r; 40% white highlight at (x-0.28r,y+0.48r), radius 0.18r",
-        "purpose": "Normal node face; colorblind mode keeps original faction textures."
+        "value": "Original Canvas material, without Java gradient approximation. Rim linear gradient from (-0.35r,-r) to (+0.35r,+r), stops 0/0.50/1. Contour width=max(0.7,0.017r). Face shape scale=0.943, offset=(-0.012r,-0.025r); radial gradient from (-0.39r,-0.47r,0) to (0,0,1.25r), stops 0/0.53/1. Glow clipped to 0.98r: center=(-0.35r,-0.50r), radius=0.48r, white alpha=0.25 to 0. Shine: arc center=(-0.012r,-0.025r), radius=0.84r, angle=1.07pi to 1.57pi, round width=0.067r; linear white-alpha stops 0/0.82/0 at 0/0.35/1 from (-0.85r,-0.35r) to (0,-0.90r).",
+        "purpose": "Source Canvas coordinates have downward y. Exact material is exported into twenty 256px atlas cells, nominal radius 96; runtime cell bounds=8r/3. The source, provenance, and assets govern exact pixels."
       },
       {
         "name": "slider-depth",
@@ -353,6 +689,36 @@
         "name": "speed-handle",
         "value": "While dragging: halfWidth=0.10W+0.004W; height=0.87 × cardHeight. Rest: halfWidth=0.10W; height=0.81 × cardHeight. After drag: x += 0.2 × (snappedX-x).",
         "purpose": "Transient handle growth and native settling toward the displayed nearest stop."
+      },
+      {
+        "name": "economy-conveyor",
+        "value": "Rim phase=tactics.elapsed*0.40 radians; fifteen rounded marks at radius=0.77r, every fifth pale. Reduced motion fixes phase at zero.",
+        "purpose": "Integrated production motion preserves the original candy material and the fixed central count."
+      },
+      {
+        "name": "rig-work",
+        "value": "Cache displayedFront per blueprint link and construction cost. While crew>0 and simulation dt>0: displayedFront+=(max(displayedFront,BattlefieldVisuals.front(link))-displayedFront)*(1-exp(-dt/0.12)). At crew==0 retain the exact last displayed front; do not chase the model target. Simulation-clock dt==0 holds the pose when paused. Visual phase=displayedFront*constructionCost; rendered drum input=0.36*visualPhase. Dust only with crew>0. Reduced motion fixes drum input at zero and removes dust.",
+        "purpose": "Smooth only the displayed rig pose across the existing integer resource front and its catch-up plateaus. No hull shake, bounce, resource-rule change, or continued movement at zero."
+      },
+      {
+        "name": "digger-intake",
+        "value": "Incoming center d=from+progress*(to-from), using ordinary troop travel without a rear-intake clamp. intake=1-smooth(max(0,from+constructionProgress()*(to-from)-d)/(0.046W)); ordinary matte shell sx=rx*(1+0.06*outgoing-0.10*incoming)*(1-0.36*intake), sy=ry*(1-0.26*intake). Numeral height=min(0.0225W,1.32ry) and maximum width=1.65rx keep the original, untapered radii through the actual one-time crew transfer.",
+        "purpose": "The shell narrows into the rear intake while the center keeps moving normally and the full-size count remains upright on the route. The >50 group keeps its existing tank form."
+      },
+      {
+        "name": "troop-transfer",
+        "value": "Actual route progress controls departure and friendly-arrival necks through smoothstep over 0.027W. Each neck uses 32 curved strips. A 20x20 mesh displaces only the contact sector of the same exported node material; maximum lobe=0.24r. Light and texture orientation stay fixed. Friendly contact settles within 0.38s. Reduced motion suppresses necks and mesh deformation.",
+        "purpose": "Upright counts remain separate from shell deformation; dispatch and arrival obey the existing model."
+      },
+      {
+        "name": "enemy-contact",
+        "value": "Contact crescent plus five soft radial-alpha vapor puffs and two tiny hot flecks move outward from the approach rim. Duration=0.56s; alpha=0.72*(1-u)^1.35 for puffs. Reduced motion shows only a static warm arc for age<0.18s.",
+        "purpose": "Finite enemy contact stays outside the centered node count, without map shake or hit-stop."
+      },
+      {
+        "name": "cannon-shot",
+        "value": "Actual shot event: recoil lasts 0.16s, muzzle flash 0.08s, projectile travel 0.22s, then a 0.56s warm target burst. Reload is an internal gold arc. Reduced motion suppresses recoil, flash, and projectile travel and uses the static target mark.",
+        "purpose": "Finite presentation follows firing; damage and action legality remain immediate in the game model."
       }
     ],
     "breakpoints": [],
@@ -373,7 +739,7 @@
         "rule": "{colors.night-rule}",
         "neutral": "{colors.night-neutral}"
       },
-      "behavior": "Changes mutate retained Color objects and recolor fonts immediately. Colored-button labels and node/unit counts retain dark ink."
+      "behavior": "Changes mutate retained UiStyle Color objects and recolor menu fonts immediately. Colored-button labels retain dark ink. BattlefieldArt uses a fixed candy palette and battlefield-number for counts in both themes; routes and AI home names use theme roles."
     },
     "backgrounds": {
       "motifs": [
@@ -421,7 +787,251 @@
         "platform": "Android native View.performHapticFeedback: API 34+ SEGMENT_FREQUENT_TICK, otherwise CLOCK_TICK; respects system haptic settings. Desktop defaults to a no-op.",
         "verification": "Source and automated event behavior can be checked without a device; physical haptic feel is not verified."
       }
-    ]
+    ],
+    "battlefield": {
+      "authority": "The approved variant-C.png establishes the base; later explicit decisions in .impeccable/mocks/battlefield/2026-10-21/DECISIONS.md supersede its composition. Current references: fine-ink-troops.html, cozy-digging-rig.html, liquid-troop-flow.html. The rejected 0.6.0 screenshot is not design authority. This corrective rebuild implements that approved world; it does not request another world choice.",
+      "factions": {
+        "green": "{colors.battlefield-lime}",
+        "cyan": "{colors.battlefield-cyan}",
+        "red": "{colors.battlefield-rose}",
+        "yellow": "{colors.battlefield-yellow}",
+        "neutral": "{colors.node-neutral}"
+      },
+      "colorblind": {
+        "nodes": "Whole candy surface uses the ordinary material palettes except yellow, which uses the violet palette. No original opaque atlas overlay, inset disc, or replacement ring.",
+        "rimNotches": {
+          "count": "FractionType.ordinal(): green=1, red=2, yellow=3, cyan=4; neutral=0",
+          "geometry": "Angle=0.62+(i-(marks-1)/2)*0.14; radial endpoints=0.63r and 0.72r; width=0.04r; white alpha=0.72. Transparent marks lie on the existing candy surface."
+        },
+        "troops": {
+          "green": "{colors.troop-lime}",
+          "cyan": "{colors.troop-cyan}",
+          "red": "{colors.troop-rose}",
+          "yellow": "{colors.battlefield-violet}",
+          "neutral": "{colors.battlefield-neutral}"
+        },
+        "troopEdges": {
+          "green": "{colors.troop-edge-lime}",
+          "cyan": "{colors.troop-edge-cyan}",
+          "red": "{colors.troop-edge-rose}",
+          "yellow": "{colors.troop-edge-violet}"
+        }
+      },
+      "tower": "Original continuous seven-spike Canvas outline: half-angle=0.155rad; shoulders at 1.145r and +/-0.018rad, curved tip control at 1.18r. Fourteen shield slots, two per gap. Native slot center=pi/2-floor(i/2)*2pi/7-pi/7+(i%2===0?0.12:-0.12); arc=center+/-0.072, radius=1.085r. Base dark-cyan width=max(0.0030W,0.057r); light-cyan over-stroke width=max(0.0019W,0.042r), center raised by 0.008r. One segment per shield; no shield numeral or badge.",
+      "economy": "Conveyor rim: track radius=0.77r, width=0.10r, faction troop-edge color at 32% alpha. Fifteen rounded marks at radius=0.77r, dimensions=0.094r x 0.044r, corner=0.02r, angle=phase+i*2pi/15+pi/2. Every fifth mark uses conveyor-light, the others the faction face color. Center count stays fixed.",
+      "routes": "Fine ink: theme-outline stroke=0.0018W. Two-way route is one line at 85% alpha. Directed route is standalone repeated chevrons at 90% alpha; spacing=0.0256W, arm=0.006W, transverse factor=0.86. End boundary=1.20r for a Tower, 1.13r otherwise, plus 0.005W clearance. No faction center, shadow, or fixed five-chevron limit.",
+      "constructionRoute": "Solid completed line at 0.0018W, 85% theme outline; ahead of rig, dots are 0.002W long, spaced 0.012W at 0.0015W width and 45% theme muted.",
+      "troops": "Matte oval: rx=min(0.038W,W*(0.020+sqrt(value)*0.0012)); ry=0.73rx. Fine faction contour=0.0019W; free-travel board separation margin=0.0018W. No bevel, shine, or drop shadow. Count height=min(0.0225W,1.32ry), maximum width=1.65rx. Groups above 50 use the rounded tank at size=0.029W; 32 oval-contour segments leave the contact neck open when attached.",
+      "rig": "One route-centered rounded warm hull with the original top-to-bottom gradient, soft treads, rounded drum, recessed rear intake, and inset count pocket. Size=0.029W; for s=size/22, hull height=26s and corner=10s; drum=12s x 15s, corner=6s at +29s; treads height=8s, corner=4s at +/-12s. Hull uses its 48px NinePatch splits; other boxes use the 16px rounded primitive. Pocket radii=14.2s x 9.2s; count cap height=0.79size, max width=1.20size. Pocket offset is selected forward along the route from 0,0.6,1.2,1.8,2.4size, eased with the existing 0.15s real-frame time constant to clear crossings while leaving the rear intake clear. The hull stretches along the route around it. No leader line, sideways count, body shake, or bounce. RigMotion caches the displayed front and smooths toward max(displayedFront,realFront) with a 0.12 simulation-second time constant only while crew>0. At zero, the displayed front and phase freeze exactly without chasing the model target. A paused simulation clock holds both. Visual phase=displayedFront*constructionCost; drum input=0.36*visualPhase. The integer model front and catch-up plateaus remain unchanged. The rig center maps displayedFront onto the ordinary troop corridor and adds 1.7size so incoming groups can meet its rear intake.",
+      "names": "Only the AI home node carries its name: Simple Joe, Savvy Jane, or Silly Sam. No ordinary-node AI badges or names. Names are omitted in the editor.",
+      "modelBoundary": "Preserve model geometry, camera behavior, troop speeds, arrival and one-time transfer rules, combat, visibility, costs, and immediate artillery damage. Integer resource progress and catch-up plateaus remain unchanged. RigMotion smooths only the displayed front using simulation time; at zero it holds the exact last displayed front and drum phase. Incoming diggers retain uninterrupted ordinary travel until actual model contact.",
+      "renderEvidence": [
+        "lwjgl3/build/battlefield/Phone/{01-day-battlefield,02-night-battlefield,03-three-shields,04-fluid-departure,05-fluid-approach,06-friendly-merge,07-enemy-puff,08-cannon-muzzle,09-cannon-impact,10-zero-rig,11-colorblind,12-colorblind-night,13-reduced-motion}.png",
+        "lwjgl3/build/battlefield/Desktop/{01-day-battlefield,02-night-battlefield,03-three-shields,04-fluid-departure,05-fluid-approach,06-friendly-merge,07-enemy-puff,08-cannon-muzzle,09-cannon-impact,10-zero-rig,11-colorblind,12-colorblind-night,13-reduced-motion}.png",
+        "lwjgl3/build/battlefield/User/{01-day-battlefield,02-night-battlefield,03-three-shields,04-fluid-departure,05-fluid-approach,06-friendly-merge,07-enemy-puff,08-cannon-muzzle,09-cannon-impact,10-zero-rig,11-colorblind,12-colorblind-night,13-reduced-motion}.png (576x1280)",
+        "lwjgl3/build/battlefield-motion/Day/simulation.csv",
+        "lwjgl3/build/battlefield-motion/Night/simulation.csv",
+        ".impeccable/review/phone-061-{day,night,day-colorblind,night-colorblind}.png (installed APK 0.6.1, 576x1280)"
+      ],
+      "preview": "The single static inline SVG battlefield sample transcribes source gradients and geometry. The exported PNG atlas and native renderers govern exact pixels and animation. The SVG is not a separately browser-verified runtime component.",
+      "assetExport": {
+        "script": "scripts/render-battlefield-art.cjs",
+        "reference": ".impeccable/mocks/battlefield/2026-10-21/fine-ink-troops.html",
+        "provenance": "assets/game/battlefield/provenance.json",
+        "nodeAtlas": {
+          "path": "assets/game/battlefield/nodes.png",
+          "width": 1280,
+          "height": 1024,
+          "cell": 256,
+          "nominalRadius": 96,
+          "columns": [
+            "neutral",
+            "green",
+            "red",
+            "yellow",
+            "cyan"
+          ],
+          "rows": [
+            "plain",
+            "tower",
+            "colorblind-plain",
+            "colorblind-tower"
+          ],
+          "variants": 20,
+          "runtimeBounds": "8r/3",
+          "filter": "MipMapLinearLinear minification, Linear magnification"
+        },
+        "primitives": {
+          "rounded": "64x64, 16px rounded corners and NinePatch splits",
+          "rigHull": "256x128, 48px rounded corners and NinePatch splits; top #F6E8BA to bottom #DEC88F",
+          "vapor": "128x128 radial white alpha mask: radius=63px; alpha=1 at 0, 0.88 at 0.4, 0 at 1"
+        },
+        "materialSourceSha256": "cdbb4294e4fcadb57af3fe980457b19dca4d4e418d20790504ed19a03e9d3938"
+      },
+      "material": {
+        "coordinates": "Original Canvas, positive y downward; exported texture displayed upright by native renderers.",
+        "palettes": {
+          "neutral": {
+            "rimStops": [
+              "#faf9f6",
+              "#eeeae5",
+              "#b9b5b0"
+            ],
+            "faceStops": [
+              "#fffefd",
+              "{colors.node-neutral}",
+              "#e9e4dd"
+            ],
+            "contour": "rgba(94,85,77,.19)"
+          },
+          "green": {
+            "rimStops": [
+              "#d4fbb5",
+              "#abe981",
+              "#71b14e"
+            ],
+            "faceStops": [
+              "#d6fcb9",
+              "{colors.battlefield-lime}",
+              "#a7e581"
+            ],
+            "contour": "rgba(78,153,49,.40)"
+          },
+          "red": {
+            "rimStops": [
+              "#ffd1d8",
+              "#f89baa",
+              "#c8697c"
+            ],
+            "faceStops": [
+              "#ffdee3",
+              "{colors.battlefield-rose}",
+              "#ed8c9d"
+            ],
+            "contour": "rgba(163,74,94,.40)"
+          },
+          "yellow": {
+            "rimStops": [
+              "#fff0b4",
+              "#f6d47c",
+              "#c3a14c"
+            ],
+            "faceStops": [
+              "#fff4c8",
+              "{colors.battlefield-yellow}",
+              "#edc36a"
+            ],
+            "contour": "rgba(158,119,47,.40)"
+          },
+          "cyan": {
+            "rimStops": [
+              "#9cf4ff",
+              "#55d7eb",
+              "#259db8"
+            ],
+            "faceStops": [
+              "#a3f4ff",
+              "{colors.battlefield-cyan}",
+              "#51d2e5"
+            ],
+            "contour": "rgba(17,135,160,.48)"
+          },
+          "colorblind-yellow": {
+            "rimStops": [
+              "#e9c9ff",
+              "#b58add",
+              "#8260aa"
+            ],
+            "faceStops": [
+              "#eed7ff",
+              "{colors.battlefield-violet}",
+              "#ae83d2"
+            ],
+            "contour": "rgba(115,77,151,.40)"
+          }
+        },
+        "gradientStops": {
+          "rim": [
+            0,
+            0.5,
+            1
+          ],
+          "face": [
+            0,
+            0.53,
+            1
+          ]
+        },
+        "geometry": "Retain the original towerShape and material functions. See node-face and node-depth extension tokens for the source geometry and light."
+      },
+      "tank": {
+        "geometry": "For s=size/15: board clearance rounded box=40s x 30s, corner=9s; treads=30s x 6s, corner=3s at +/-9s; six ridges per tread; barrel from +9s to +20s with width=4.2s in faction contour. Outer hull=29.5s x 17.5s, corner=6.75s; inner matte hull=28s x 16s, corner=6s; center shifted +1s. Counts stay upright on route.",
+        "tread": "#4B6554",
+        "ridge": "#A0B6A0",
+        "hull": "Uses the ordinary matte troop fill and contour; yellow becomes violet in colorblind mode."
+      },
+      "equipmentColors": {
+        "rigTop": "#C5CBAA",
+        "rigDrum": "#9BB4AC",
+        "rigIntake": "#7FACAE",
+        "drumRidge": "#EDF2D9",
+        "countPocket": "#B0E6E9",
+        "emptyPocket": "#E9E7D9"
+      },
+      "contacts": {
+        "nodeMesh": "20x20 quads, same exported atlas UVs and fixed light; shift=extension*smooth((along-0.55)/0.45)*exp(-(across/0.48)^4).",
+        "neck": "32 strips; minimum waist=min(halfA,halfB)*attachment*0.23; smoothstep taper to and from the waist.",
+        "enemy": "Crescent at 1.03r; five outward radial puffs and two tiny hot flecks; clears in 0.56s.",
+        "day": {
+          "steam": "#D1BBA7",
+          "hot": "#D88D56"
+        },
+        "night": {
+          "steam": "#EAD7BE",
+          "hot": "#FFC18B"
+        },
+        "reducedMotion": "No necks, contour deformation, or moving vapor; short static contact mark only."
+      },
+      "evidenceBoundary": "These paths identify native captures and actual-model output, not an acceptance verdict. Exclude stale 12-reduced-motion.png captures; the current reduced-motion state is 13-reduced-motion.png. Source and asset documentation does not certify motion feel or a separate browser render of the illustrative sidecar.",
+      "rigCorridor": {
+        "referenceBubble": "bubble=size*(0.020+sqrt(12)*0.0012)/0.029; size=0.029W",
+        "start": "sourceRadius+0.82bubble",
+        "end": "linkDistance-targetRadius-0.82bubble",
+        "rigCenterDistance": "start+max(0,end-start)*displayedFront+1.7size",
+        "boundary": "Display placement only; incoming troop centers keep their original ordinary-travel calculation and model contact."
+      },
+      "incomingDiggers": {
+        "center": "Uninterrupted ordinary travel: d=from+progress*(to-from), with no clamp to the rig rear.",
+        "shell": "Smoothstep taper over the final 0.046W before constructionProgress() contact; reduce longitudinal radius by up to 36% and transverse radius by up to 26%.",
+        "count": "Use the original untapered rx and ry to size the upright numeral until actual one-time crew transfer.",
+        "model": "Existing movement, arrival, resource use, and transfer remain authoritative."
+      },
+      "motionEvidence": {
+        "source": "lwjgl3/src/smokeTest/java/yio/tro/opacha/lwjgl3/BattlefieldMotionTest.java",
+        "csvColumns": [
+          "frame",
+          "time",
+          "front",
+          "model_front",
+          "phase",
+          "crew",
+          "incoming",
+          "incoming_distance",
+          "friendly",
+          "enemy"
+        ],
+        "frontMeaning": "front is the displayed cached front; model_front is BattlefieldVisuals.front(link). phase is displayedFront*constructionCost.",
+        "sourceAssertions": [
+          "Displayed front never moves backward beyond 1e-6 tolerance between newly rendered native poses.",
+          "Two consecutive newly rendered positive-crew poses without displayed-front progress fail: delta<1e-7 on two successive newly rendered samples.",
+          "Two consecutive newly rendered approaching-troop poses without travel progress fail: route-distance delta<1e-5 on two successive newly rendered samples.",
+          "Consecutive zero-crew samples from newly rendered poses require displayed front and phase differences below 1e-9.",
+          "The fixture must observe idle, restart, friendly contact, enemy contact, and both ordinary troop arrivals."
+        ],
+        "boundary": "The assertions and CSV schema describe the native source harness. The paths identify generated evidence; they do not state the release-review verdict.",
+        "sampling": "Probe assertions and CSV rows use only newly rendered native poses, identified by a changed route renderIndex. The engine may present cached frames under load; original frame and time values preserve those gaps. These samples do not establish continuous 60 FPS. PNG compression runs off the render thread."
+      }
+    }
   },
   "components": [
     {
@@ -473,12 +1083,12 @@
       "css": ".ds-nav{display:flex;gap:8px;width:367px;padding:8px 0;background:#FCF0ED}.ds-nav-button{font:600 23px Quicksand,sans-serif;color:#302A28;background:#FCFBFA;border:1.64px solid #302A28;border-radius:16px;min-height:43.89px;padding:2px 12px;box-shadow:.82px 3.12px 0 #302A28}.ds-nav-menu{margin-left:auto}.ds-nav-button:hover{cursor:pointer}.ds-nav-button:focus-visible{outline:2px solid #302A28;outline-offset:3.51px}.ds-nav-button:active{transform:translateY(2.34px);box-shadow:.82px .78px 0 #302A28;background-image:linear-gradient(rgba(48,42,40,.07),rgba(48,42,40,.07))}"
     },
     {
-      "name": "Selected node — native preview",
+      "name": "Battlefield pieces - native source preview",
       "kind": "custom",
       "refersTo": "planet",
-      "description": "Day Static HTML/CSS preview of a selected green canvas node at r=20px; the actual count scales through the game camera.",
-      "html": "<div class=\"ds-node\" role=\"img\" aria-label=\"Selected green node, 40 units\"><span class=\"ds-node-count\">40</span></div>",
-      "css": ".ds-node{position:relative;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#302A28;box-shadow:1.4px 2.8px 0 rgba(48,42,40,.13),2px 4px 0 2.4px rgba(48,42,40,.06);outline:2px solid rgba(254,210,63,.7);outline-offset:5px}.ds-node::before{content:\"\";position:absolute;width:35.6px;height:35.6px;bottom:3.3px;border-radius:50%;background:#6CD6A0}.ds-node::after{content:\"\";position:absolute;left:10.8px;top:6.8px;width:7.2px;height:7.2px;border-radius:50%;background:rgba(255,255,255,.4)}.ds-node-count{position:relative;z-index:1;color:#302A28;font:600 15.3px Quicksand,sans-serif}"
+      "description": "Static inline SVG transcription of the approved source gradients and current native shapes: fifteen-mark conveyor, continuous Tower with three dual-cyan shields, soft matte troop, rounded tank, and warm rig. The exported atlas and native renderer govern exact pixels. No independent browser render is claimed.",
+      "html": "<svg class=\"ds-battlefield\" viewBox=\"0 0 390 84\" role=\"img\" aria-label=\"Native source illustration: conveyor node, Tower with three shields, matte troop, tank, and digging rig\"><rect width=\"390\" height=\"84\" fill=\"#FCFBFA\"/><defs><linearGradient id=\"ds-economy-rim\" gradientUnits=\"userSpaceOnUse\" x1=\"-7.699999999999999\" y1=\"-22\" x2=\"7.699999999999999\" y2=\"22\"><stop offset=\"0\" stop-color=\"#d4fbb5\"/><stop offset=\"0.5\" stop-color=\"#abe981\"/><stop offset=\"1\" stop-color=\"#71b14e\"/></linearGradient><radialGradient id=\"ds-economy-face\" gradientUnits=\"userSpaceOnUse\" cx=\"0\" cy=\"0\" r=\"27.5\" fx=\"-8.58\" fy=\"-10.34\"><stop offset=\"0\" stop-color=\"#d6fcb9\"/><stop offset=\"0.53\" stop-color=\"#baf196\"/><stop offset=\"1\" stop-color=\"#a7e581\"/></radialGradient><radialGradient id=\"ds-economy-glow\" gradientUnits=\"userSpaceOnUse\" cx=\"-7.699999999999999\" cy=\"-11\" r=\"10.559999999999999\"><stop stop-color=\"#fff\" stop-opacity=\".25\"/><stop offset=\"1\" stop-color=\"#fff\" stop-opacity=\"0\"/></radialGradient><linearGradient id=\"ds-economy-shine\" gradientUnits=\"userSpaceOnUse\" x1=\"-18.7\" y1=\"-7.699999999999999\" x2=\"0\" y2=\"-19.8\"><stop stop-color=\"#fff\" stop-opacity=\"0\"/><stop offset=\".35\" stop-color=\"#fff\" stop-opacity=\".82\"/><stop offset=\"1\" stop-color=\"#fff\" stop-opacity=\"0\"/></linearGradient><filter id=\"ds-economy-shadow\" x=\"-30%\" y=\"-30%\" width=\"160%\" height=\"160%\"><feDropShadow dx=\"0.77\" dy=\"1.98\" stdDeviation=\"1.54\" flood-color=\"#28231f\" flood-opacity=\".20\"/></filter><clipPath id=\"ds-economy-clip\"><path d=\"M 21.56 0 A 21.56 21.56 0 1 0 -21.56 0 A 21.56 21.56 0 1 0 21.56 0 Z\"/></clipPath></defs><g transform=\"translate(42 42)\"><path d=\"M 22 0 A 22 22 0 1 0 -22 0 A 22 22 0 1 0 22 0 Z\" fill=\"url(#ds-economy-rim)\" stroke=\"rgba(78,153,49,.40)\" stroke-width=\".7\" filter=\"url(#ds-economy-shadow)\"/><path d=\"M 20.746 0 A 20.746 20.746 0 1 0 -20.746 0 A 20.746 20.746 0 1 0 20.746 0 Z\" transform=\"translate(-0.264 -0.55)\" fill=\"url(#ds-economy-face)\"/><path d=\"M 21.56 0 A 21.56 21.56 0 1 0 -21.56 0 A 21.56 21.56 0 1 0 21.56 0 Z\" fill=\"url(#ds-economy-glow)\" clip-path=\"url(#ds-economy-clip)\"/><path d=\"M -18.2989 -4.5813 A 18.48 18.48 0 0 1 3.7673 -18.5849\" fill=\"none\" stroke=\"url(#ds-economy-shine)\" stroke-width=\"1.4740000000000002\" stroke-linecap=\"round\"/></g><circle cx=\"42\" cy=\"42\" r=\"16.94\" fill=\"none\" stroke=\"#91BF74\" stroke-opacity=\".32\" stroke-width=\"2.2\"/><rect x=\"-1.034\" y=\"-.484\" width=\"2.068\" height=\".968\" rx=\".44\" fill=\"#E6FFCE\" transform=\"translate(58.94 42) rotate(90)\"/><rect x=\"-1.034\" y=\"-.484\" width=\"2.068\" height=\".968\" rx=\".44\" fill=\"#BAF196\" transform=\"translate(57.4755 48.8901) rotate(114)\"/><rect x=\"-1.034\" y=\"-.484\" width=\"2.068\" height=\".968\" rx=\".44\" fill=\"#BAF196\" transform=\"translate(53.3351 54.5889) rotate(138)\"/><rect x=\"-1.034\" y=\"-.484\" width=\"2.068\" height=\".968\" rx=\".44\" fill=\"#BAF196\" transform=\"translate(47.2347 58.1109) rotate(162)\"/><rect x=\"-1.034\" y=\"-.484\" width=\"2.068\" height=\".968\" rx=\".44\" fill=\"#BAF196\" transform=\"translate(40.2293 58.8472) rotate(186)\"/><rect x=\"-1.034\" y=\"-.484\" width=\"2.068\" height=\".968\" rx=\".44\" fill=\"#E6FFCE\" transform=\"translate(33.53 56.6705) rotate(210)\"/><rect x=\"-1.034\" y=\"-.484\" width=\"2.068\" height=\".968\" rx=\".44\" fill=\"#BAF196\" transform=\"translate(28.2953 51.9571) rotate(234)\"/><rect x=\"-1.034\" y=\"-.484\" width=\"2.068\" height=\".968\" rx=\".44\" fill=\"#BAF196\" transform=\"translate(25.4302 45.522) rotate(258)\"/><rect x=\"-1.034\" y=\"-.484\" width=\"2.068\" height=\".968\" rx=\".44\" fill=\"#BAF196\" transform=\"translate(25.4302 38.478) rotate(282)\"/><rect x=\"-1.034\" y=\"-.484\" width=\"2.068\" height=\".968\" rx=\".44\" fill=\"#BAF196\" transform=\"translate(28.2953 32.0429) rotate(306)\"/><rect x=\"-1.034\" y=\"-.484\" width=\"2.068\" height=\".968\" rx=\".44\" fill=\"#E6FFCE\" transform=\"translate(33.53 27.3295) rotate(330)\"/><rect x=\"-1.034\" y=\"-.484\" width=\"2.068\" height=\".968\" rx=\".44\" fill=\"#BAF196\" transform=\"translate(40.2293 25.1528) rotate(354)\"/><rect x=\"-1.034\" y=\"-.484\" width=\"2.068\" height=\".968\" rx=\".44\" fill=\"#BAF196\" transform=\"translate(47.2347 25.8891) rotate(378)\"/><rect x=\"-1.034\" y=\"-.484\" width=\"2.068\" height=\".968\" rx=\".44\" fill=\"#BAF196\" transform=\"translate(53.3351 29.4111) rotate(402)\"/><rect x=\"-1.034\" y=\"-.484\" width=\"2.068\" height=\".968\" rx=\".44\" fill=\"#BAF196\" transform=\"translate(57.4755 35.1099) rotate(426)\"/><defs><linearGradient id=\"ds-tower-rim\" gradientUnits=\"userSpaceOnUse\" x1=\"-7.699999999999999\" y1=\"-22\" x2=\"7.699999999999999\" y2=\"22\"><stop offset=\"0\" stop-color=\"#9cf4ff\"/><stop offset=\"0.5\" stop-color=\"#55d7eb\"/><stop offset=\"1\" stop-color=\"#259db8\"/></linearGradient><radialGradient id=\"ds-tower-face\" gradientUnits=\"userSpaceOnUse\" cx=\"0\" cy=\"0\" r=\"27.5\" fx=\"-8.58\" fy=\"-10.34\"><stop offset=\"0\" stop-color=\"#a3f4ff\"/><stop offset=\"0.53\" stop-color=\"#77e5f2\"/><stop offset=\"1\" stop-color=\"#51d2e5\"/></radialGradient><radialGradient id=\"ds-tower-glow\" gradientUnits=\"userSpaceOnUse\" cx=\"-7.699999999999999\" cy=\"-11\" r=\"10.559999999999999\"><stop stop-color=\"#fff\" stop-opacity=\".25\"/><stop offset=\"1\" stop-color=\"#fff\" stop-opacity=\"0\"/></radialGradient><linearGradient id=\"ds-tower-shine\" gradientUnits=\"userSpaceOnUse\" x1=\"-18.7\" y1=\"-7.699999999999999\" x2=\"0\" y2=\"-19.8\"><stop stop-color=\"#fff\" stop-opacity=\"0\"/><stop offset=\".35\" stop-color=\"#fff\" stop-opacity=\".82\"/><stop offset=\"1\" stop-color=\"#fff\" stop-opacity=\"0\"/></linearGradient><filter id=\"ds-tower-shadow\" x=\"-30%\" y=\"-30%\" width=\"160%\" height=\"160%\"><feDropShadow dx=\"0.77\" dy=\"1.98\" stdDeviation=\"1.54\" flood-color=\"#28231f\" flood-opacity=\".20\"/></filter><clipPath id=\"ds-tower-clip\"><path d=\"M -3.3284 -21.3015 L -0.4443 -24.6822 Q 0 -25.4408 0.4443 -24.6822 L 3.3284 -21.3015 A 21.56 21.56 0 0 1 14.579 -15.8836 L 14.579 -15.8836 L 19.0203 -15.7365 Q 19.8904 -15.8621 19.5744 -15.0417 L 18.7295 -10.679 A 21.56 21.56 0 0 1 21.5081 1.4951 L 21.5081 1.4951 L 24.1622 5.0591 Q 24.8029 5.6611 23.9645 5.9255 L 20.0268 7.985 A 21.56 21.56 0 0 1 12.2412 17.7479 L 12.2412 17.7479 L 11.1095 22.0451 Q 11.0383 22.9214 10.3089 22.4307 L 6.2436 20.6362 A 21.56 21.56 0 0 1 -6.2436 20.6362 L -6.2436 20.6362 L -10.3089 22.4307 Q -11.0383 22.9214 -11.1095 22.0451 L -12.2412 17.7479 A 21.56 21.56 0 0 1 -20.0268 7.985 L -20.0268 7.985 L -23.9645 5.9255 Q -24.8029 5.6611 -24.1622 5.0591 L -21.5081 1.4951 A 21.56 21.56 0 0 1 -18.7295 -10.679 L -18.7295 -10.679 L -19.5744 -15.0417 Q -19.8904 -15.8621 -19.0203 -15.7365 L -14.579 -15.8836 A 21.56 21.56 0 0 1 -3.3284 -21.3015 Z\"/></clipPath></defs><g transform=\"translate(115 42)\"><path d=\"M -3.3964 -21.7363 L -0.4534 -25.1859 Q 0 -25.96 0.4534 -25.1859 L 3.3964 -21.7363 A 22 22 0 0 1 14.8765 -16.2077 L 14.8765 -16.2077 L 19.4085 -16.0576 Q 20.2963 -16.1858 19.9738 -15.3487 L 19.1117 -10.8969 A 22 22 0 0 1 21.947 1.5256 L 21.947 1.5256 L 24.6553 5.1624 Q 25.3091 5.7766 24.4536 6.0464 L 20.4355 8.148 A 22 22 0 0 1 12.491 18.1101 L 12.491 18.1101 L 11.3363 22.495 Q 11.2636 23.3892 10.5193 22.8885 L 6.371 21.0573 A 22 22 0 0 1 -6.371 21.0573 L -6.371 21.0573 L -10.5193 22.8885 Q -11.2636 23.3892 -11.3363 22.495 L -12.491 18.1101 A 22 22 0 0 1 -20.4355 8.148 L -20.4355 8.148 L -24.4536 6.0464 Q -25.3091 5.7766 -24.6553 5.1624 L -21.947 1.5256 A 22 22 0 0 1 -19.1117 -10.8969 L -19.1117 -10.8969 L -19.9738 -15.3487 Q -20.2963 -16.1858 -19.4085 -16.0576 L -14.8765 -16.2077 A 22 22 0 0 1 -3.3964 -21.7363 Z\" fill=\"url(#ds-tower-rim)\" stroke=\"rgba(17,135,160,.48)\" stroke-width=\".7\" filter=\"url(#ds-tower-shadow)\"/><path d=\"M -3.2028 -20.4973 L -0.4276 -23.7503 Q 0 -24.4803 0.4276 -23.7503 L 3.2028 -20.4973 A 20.746 20.746 0 0 1 14.0285 -15.2839 L 14.0285 -15.2839 L 18.3022 -15.1424 Q 19.1395 -15.2632 18.8353 -14.4738 L 18.0223 -10.2758 A 20.746 20.746 0 0 1 20.6961 1.4386 L 20.6961 1.4386 L 23.25 4.8681 Q 23.8665 5.4474 23.0597 5.7018 L 19.2707 7.6835 A 20.746 20.746 0 0 1 11.779 17.0778 L 11.779 17.0778 L 10.6901 21.2128 Q 10.6216 22.056 9.9197 21.5838 L 6.0078 19.857 A 20.746 20.746 0 0 1 -6.0078 19.857 L -6.0078 19.857 L -9.9197 21.5838 Q -10.6216 22.056 -10.6901 21.2128 L -11.779 17.0778 A 20.746 20.746 0 0 1 -19.2707 7.6835 L -19.2707 7.6835 L -23.0597 5.7018 Q -23.8665 5.4474 -23.25 4.8681 L -20.6961 1.4386 A 20.746 20.746 0 0 1 -18.0223 -10.2758 L -18.0223 -10.2758 L -18.8353 -14.4738 Q -19.1395 -15.2632 -18.3022 -15.1424 L -14.0285 -15.2839 A 20.746 20.746 0 0 1 -3.2028 -20.4973 Z\" transform=\"translate(-0.264 -0.55)\" fill=\"url(#ds-tower-face)\"/><path d=\"M -3.3284 -21.3015 L -0.4443 -24.6822 Q 0 -25.4408 0.4443 -24.6822 L 3.3284 -21.3015 A 21.56 21.56 0 0 1 14.579 -15.8836 L 14.579 -15.8836 L 19.0203 -15.7365 Q 19.8904 -15.8621 19.5744 -15.0417 L 18.7295 -10.679 A 21.56 21.56 0 0 1 21.5081 1.4951 L 21.5081 1.4951 L 24.1622 5.0591 Q 24.8029 5.6611 23.9645 5.9255 L 20.0268 7.985 A 21.56 21.56 0 0 1 12.2412 17.7479 L 12.2412 17.7479 L 11.1095 22.0451 Q 11.0383 22.9214 10.3089 22.4307 L 6.2436 20.6362 A 21.56 21.56 0 0 1 -6.2436 20.6362 L -6.2436 20.6362 L -10.3089 22.4307 Q -11.0383 22.9214 -11.1095 22.0451 L -12.2412 17.7479 A 21.56 21.56 0 0 1 -20.0268 7.985 L -20.0268 7.985 L -23.9645 5.9255 Q -24.8029 5.6611 -24.1622 5.0591 L -21.5081 1.4951 A 21.56 21.56 0 0 1 -18.7295 -10.679 L -18.7295 -10.679 L -19.5744 -15.0417 Q -19.8904 -15.8621 -19.0203 -15.7365 L -14.579 -15.8836 A 21.56 21.56 0 0 1 -3.3284 -21.3015 Z\" fill=\"url(#ds-tower-glow)\" clip-path=\"url(#ds-tower-clip)\"/><path d=\"M -18.2989 -4.5813 A 18.48 18.48 0 0 1 3.7673 -18.5849\" fill=\"none\" stroke=\"url(#ds-tower-shine)\" stroke-width=\"1.4740000000000002\" stroke-linecap=\"round\"/></g><path d=\"M 121.0626 18.9127 A 23.87 23.87 0 0 1 124.313 20.0217\" fill=\"none\" stroke=\"#147B9B\" stroke-width=\"1.254\" stroke-linecap=\"round\"/><path d=\"M 121.0626 18.7367 A 23.87 23.87 0 0 1 124.313 19.8457\" fill=\"none\" stroke=\"#85EDFC\" stroke-width=\".924\" stroke-linecap=\"round\"/><path d=\"M 126.3768 21.0156 A 23.87 23.87 0 0 1 129.2703 22.8654\" fill=\"none\" stroke=\"#147B9B\" stroke-width=\"1.254\" stroke-linecap=\"round\"/><path d=\"M 126.3768 20.8396 A 23.87 23.87 0 0 1 129.2703 22.6894\" fill=\"none\" stroke=\"#85EDFC\" stroke-width=\".924\" stroke-linecap=\"round\"/><path d=\"M 136.8303 32.3453 A 23.87 23.87 0 0 1 137.9899 35.5779\" fill=\"none\" stroke=\"#147B9B\" stroke-width=\"1.254\" stroke-linecap=\"round\"/><path d=\"M 136.8303 32.1693 A 23.87 23.87 0 0 1 137.9899 35.4019\" fill=\"none\" stroke=\"#85EDFC\" stroke-width=\".924\" stroke-linecap=\"round\"/><ellipse cx=\"184\" cy=\"42\" rx=\"16\" ry=\"11.68\" fill=\"#9AE1EA\" stroke=\"#65BBC9\" stroke-width=\".741\"/><g transform=\"translate(245 42)\"><rect x=\"-20\" y=\"-15\" width=\"40\" height=\"30\" rx=\"9\" fill=\"#FCFBFA\"/><rect x=\"-15\" y=\"-12\" width=\"30\" height=\"6\" rx=\"3\" fill=\"#4B6554\"/><rect x=\"-15\" y=\"6\" width=\"30\" height=\"6\" rx=\"3\" fill=\"#4B6554\"/><path d=\"M -12 -7 V -11\" stroke=\"#A0B6A0\" stroke-width=\"1\" stroke-linecap=\"round\"/><path d=\"M -7.4 -7 V -11\" stroke=\"#A0B6A0\" stroke-width=\"1\" stroke-linecap=\"round\"/><path d=\"M -2.8 -7 V -11\" stroke=\"#A0B6A0\" stroke-width=\"1\" stroke-linecap=\"round\"/><path d=\"M 1.8 -7 V -11\" stroke=\"#A0B6A0\" stroke-width=\"1\" stroke-linecap=\"round\"/><path d=\"M 6.4 -7 V -11\" stroke=\"#A0B6A0\" stroke-width=\"1\" stroke-linecap=\"round\"/><path d=\"M 11 -7 V -11\" stroke=\"#A0B6A0\" stroke-width=\"1\" stroke-linecap=\"round\"/><path d=\"M -12 7 V 11\" stroke=\"#A0B6A0\" stroke-width=\"1\" stroke-linecap=\"round\"/><path d=\"M -7.4 7 V 11\" stroke=\"#A0B6A0\" stroke-width=\"1\" stroke-linecap=\"round\"/><path d=\"M -2.8 7 V 11\" stroke=\"#A0B6A0\" stroke-width=\"1\" stroke-linecap=\"round\"/><path d=\"M 1.8 7 V 11\" stroke=\"#A0B6A0\" stroke-width=\"1\" stroke-linecap=\"round\"/><path d=\"M 6.4 7 V 11\" stroke=\"#A0B6A0\" stroke-width=\"1\" stroke-linecap=\"round\"/><path d=\"M 11 7 V 11\" stroke=\"#A0B6A0\" stroke-width=\"1\" stroke-linecap=\"round\"/><path d=\"M 9 0 H 20\" stroke=\"#91BF74\" stroke-width=\"4.2\" stroke-linecap=\"round\"/><rect x=\"-13.75\" y=\"-8.75\" width=\"29.5\" height=\"17.5\" rx=\"6.75\" fill=\"#91BF74\"/><rect x=\"-13\" y=\"-8\" width=\"28\" height=\"16\" rx=\"6\" fill=\"#C3E7A9\"/></g><defs><linearGradient id=\"ds-rig-hull\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop stop-color=\"#F6E8BA\"/><stop offset=\"1\" stop-color=\"#DEC88F\"/></linearGradient></defs><g transform=\"translate(326 42) scale(.8)\"><rect x=\"-18\" y=\"-16\" width=\"36\" height=\"8\" rx=\"4\" fill=\"#849687\"/><rect x=\"-18\" y=\"8\" width=\"36\" height=\"8\" rx=\"4\" fill=\"#849687\"/><path d=\"M -12 -10.4 V -13.6\" stroke=\"#A0B6A0\" stroke-width=\"1.2\" stroke-linecap=\"round\"/><path d=\"M -6 -10.4 V -13.6\" stroke=\"#A0B6A0\" stroke-width=\"1.2\" stroke-linecap=\"round\"/><path d=\"M 0 -10.4 V -13.6\" stroke=\"#A0B6A0\" stroke-width=\"1.2\" stroke-linecap=\"round\"/><path d=\"M 6 -10.4 V -13.6\" stroke=\"#A0B6A0\" stroke-width=\"1.2\" stroke-linecap=\"round\"/><path d=\"M 12 -10.4 V -13.6\" stroke=\"#A0B6A0\" stroke-width=\"1.2\" stroke-linecap=\"round\"/><path d=\"M -12 10.4 V 13.6\" stroke=\"#A0B6A0\" stroke-width=\"1.2\" stroke-linecap=\"round\"/><path d=\"M -6 10.4 V 13.6\" stroke=\"#A0B6A0\" stroke-width=\"1.2\" stroke-linecap=\"round\"/><path d=\"M 0 10.4 V 13.6\" stroke=\"#A0B6A0\" stroke-width=\"1.2\" stroke-linecap=\"round\"/><path d=\"M 6 10.4 V 13.6\" stroke=\"#A0B6A0\" stroke-width=\"1.2\" stroke-linecap=\"round\"/><path d=\"M 12 10.4 V 13.6\" stroke=\"#A0B6A0\" stroke-width=\"1.2\" stroke-linecap=\"round\"/><rect x=\"-22\" y=\"-13\" width=\"44\" height=\"26\" rx=\"10\" fill=\"url(#ds-rig-hull)\"/><rect x=\"15\" y=\"-9\" width=\"12\" height=\"18\" rx=\"5\" fill=\"#C5CBAA\"/><rect x=\"23\" y=\"-7.5\" width=\"12\" height=\"15\" rx=\"6\" fill=\"#9BB4AC\"/><path d=\"M 29 -6.5 L 27 6.5\" stroke=\"#EDF2D9\" stroke-width=\"1.7\" stroke-opacity=\"0.8\" stroke-linecap=\"round\"/><path d=\"M 32.8 -6.5 L 30.8 6.5\" stroke=\"#EDF2D9\" stroke-width=\"1.7\" stroke-opacity=\"0.45\" stroke-linecap=\"round\"/><path d=\"M 29 -6.5 L 27 6.5\" stroke=\"#EDF2D9\" stroke-width=\"1.7\" stroke-opacity=\"0.1\" stroke-linecap=\"round\"/><path d=\"M 25.2 -6.5 L 23.2 6.5\" stroke=\"#EDF2D9\" stroke-width=\"1.7\" stroke-opacity=\"0.45\" stroke-linecap=\"round\"/><circle cx=\"35\" cy=\"0\" r=\"2.2\" fill=\"#849687\"/><rect x=\"-25\" y=\"-8.5\" width=\"7\" height=\"17\" rx=\"3.5\" fill=\"#7FACAE\"/><rect x=\"-23.5\" y=\"-6.5\" width=\"4.5\" height=\"13\" rx=\"2.2\" fill=\"#9AE1EA\"/><ellipse rx=\"14.2\" ry=\"9.2\" fill=\"#B0E6E9\"/><text class=\"ds-rig-count\" text-anchor=\"middle\" dominant-baseline=\"central\">4</text></g><text class=\"ds-node-count\" x=\"42\" y=\"42\" text-anchor=\"middle\" dominant-baseline=\"central\">40</text><text class=\"ds-node-count\" x=\"115\" y=\"42\" text-anchor=\"middle\" dominant-baseline=\"central\">18</text><text class=\"ds-unit-count\" x=\"184\" y=\"42\" text-anchor=\"middle\" dominant-baseline=\"central\">12</text><text class=\"ds-unit-count\" x=\"245\" y=\"42\" text-anchor=\"middle\" dominant-baseline=\"central\">62</text></svg>",
+      "css": ".ds-battlefield{display:block;width:390px;max-width:100%;height:auto}.ds-node-count{font:600 21px Quicksand,sans-serif;fill:#171C34}.ds-unit-count{font:600 13px Quicksand,sans-serif;fill:#171C34}.ds-rig-count{font:600 23px Quicksand,sans-serif;fill:#171C34}"
     },
     {
       "name": "Night secondary button — native preview",
@@ -506,14 +1116,22 @@
     }
   ],
   "narrative": {
-    "northStar": "",
-    "overview": "Warm paper, rounded ink lines, and restrained yellow actions make the strategy easy to read and operate. Night mode keeps the same layout with dark surfaces and cream menu text. Shallow depth makes buttons and nodes feel tangible while the board stays quiet. Fraunces titles give menus character; Quicksand carries choices and numbers.\n\nThis documents the implemented libGDX canvas, scoped to the existing game's interface refinement. Visual reference: [Inkwell Stars](https://inkwellgames.com/games/stars/tutorial).",
-    "keyCharacteristics": [],
+    "northStar": "Crisp buttons",
+    "overview": "Warm paper, rounded ink lines, and restrained yellow actions make the strategy easy to read and operate. Night mode keeps the same layout with dark surfaces and cream menu text. Bright candy nodes sit above quieter matte troops and fine routes. Fraunces titles give menus character; Quicksand carries choices and numbers.\n\nThis documents the implemented libGDX canvas. Menu styling retains the [Inkwell Stars](https://inkwellgames.com/games/stars/tutorial) reference. Battlefield authority is the approved [Crisp buttons direction and later decisions](.impeccable/mocks/battlefield/2026-10-21/DECISIONS.md), including Fine ink, the cozy digging rig, and liquid troop flow. Later decisions supersede the initial variant-C composition. The rejected 0.6.0 screenshot does not establish a new visual direction. The corrective implementation exports the original approved Canvas material into managed assets; `BattlefieldArt` and the game renderers supply runtime geometry.",
+    "keyCharacteristics": [
+      "Bright candy nodes with a narrow bevel and fixed upper-left light.",
+      "Softer matte troops, fine contours, and fine ink routes.",
+      "Rounded overhead equipment with upright counts inside the body and on the route.",
+      "Brief motion tied to actual troop, construction, and combat events."
+    ],
     "rules": [],
     "dos": [
       "Do use plain action labels and show costs before a player spends units.",
       "Do keep the board clear enough to follow routes and read node counts.",
-      "Do preserve language coverage, colorblind textures, and visible keyboard focus.",
+      "Do preserve language coverage, whole-surface colorblind materials and rim notches, and visible keyboard focus.",
+      "Do preserve the softer matte troop palette, with violet fill and contour for the yellow faction in colorblind mode.",
+      "Do export the original approved node material and retain its provenance when rebuilding assets.",
+      "Do keep every troop and rig count inside its body and centered on its route.",
       "Do keep appearance choices saved, with Day and plain backgrounds as the defaults.",
       "Do check affected states on desktop and phone before release."
     ],
@@ -521,6 +1139,10 @@
       "Don't add competing primary menu actions or repeated explanations.",
       "Don't add perpetual decorative motion or manipulative progression prompts.",
       "Don't use light menu text on yellow or faction-colored faces.",
+      "Don't add shield counters, detached upgrade badges, or AI labels on ordinary nodes.",
+      "Don't give troops the raised candy material reserved for nodes.",
+      "Don't restore opaque colorblind atlas overlays, inset discs, or replacement rings.",
+      "Don't replace the approved gradients, contours, shine, shadows, or rounded vehicle geometry with approximations.",
       "Don't replace the native canvas conventions with a generic web or Material interface."
     ]
   }

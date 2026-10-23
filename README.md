@@ -3,11 +3,25 @@
 A noncommercial mod of [Opacha-mda by yiotro](https://github.com/yiotro/Opacha-mda).
 The original Java source and assets stay in `src/` and `assets/`.
 
+## Fast playtesting
+
+```powershell
+.\playtest.ps1 -Mode Play -Level 28   # jump into a map with separate test saves
+.\playtest.ps1                      # 140 strategy tests
+.\playtest.ps1 -Mode Full            # all 48 maps, 672 tests
+```
+
+In the playtest window: **F5** restarts, **[ / ]** changes map, **F6** saves a screenshot, **F8** toggles a scripted player, and **Space** pauses. The first run builds; later runs reuse a frozen build. Reports, raw matches and build fingerprints go under `build/playtest/`. [Commands, findings and research](docs/fast-playtest.md) describe the test loop and its limits.
+
+The [original-feel revision](docs/original-feel.md) adds zero-troop campaign openings, steady repeating waves, visible order triangles, clear route arrows, segmented shields and tested Android haptics. `./playtest.ps1 -Mode Feel` checks the revised mechanics and saves native previews.
+
 ## Install on a Pixel 8a
 
-Download **New-Opacha-0.5.0-install.zip** from [Releases](https://github.com/2thestar/New-Opacha/releases). Open it in Files by Google, tap **Extract**, then open the extracted APK to install **New Opacha**. Android may ask you to allow Files to install apps. The app has its own package ID and saves, so it can be installed alongside the original game.
+Download **[New-Opacha-0.6.2-install.zip](https://github.com/2thestar/New-Opacha/releases/download/v0.6.2-preview/New-Opacha-0.6.2-install.zip)**. Open it in Files by Google, tap **Extract**, then open the extracted APK to install **New Opacha**. Android may ask you to allow Files to install apps. The app has its own package ID and saves, so it can be installed alongside the original game.
 
 The ZIP avoids Chrome's stalled direct APK downloads and contains the same signed APK. ZIP installation was confirmed on the affected Pixel 8a with version 0.1.0. Install updates over the existing app to keep its saves.
+
+Version 0.6.2 removes repeated game frames, batches battlefield drawing, separates game timing from display frame rate, and fits large maps below the controls. [Performance measurements and test limits](docs/performance.md) document the changes.
 
 ## Campaign and maps
 
@@ -15,7 +29,7 @@ The campaign has 48 fixed maps: 12 each for conquest, neutral flag, starting fla
 
 Campaign lessons unlock in order. **Play → Maps** opens every map immediately, with Play and Edit map controls. Edited copies can be saved or exported through the editor; the original library stays available. The editor supports all four modes, route directions and blueprints, flag placement, artillery, garrisons, AI types, local bomb stock and hidden node traps.
 
-Captures have a brief gold pulse, the existing capture sound, and light Android feedback. **Settings → Haptics** turns vibration off. A fresh install starts at 1×; existing speed preferences are preserved. The new campaign uses separate progress, so old generated-campaign progress does not skip its lessons. Earlier editor saves remain available.
+All factions' owned campaign nodes start with zero troops. Captures have a brief gold pulse, the existing capture sound, and Android feedback. Selection, orders and upgrades also give tactile feedback. **Settings → Haptics** controls vibration; **Test vibration** checks delivery and reports blocked feedback. A fresh install starts at 1×; existing speed preferences are preserved. The new campaign uses separate progress, so old generated-campaign progress does not skip its lessons. Earlier editor saves remain available.
 
 [Balance findings and proposed experiments](docs/balance.md) explain the strategy tests and their limits. Raw results and reproduction commands are included.
 
@@ -25,11 +39,11 @@ Bombs stay at the economic node that sells them. **Actions > Deliver bomb** send
 
 In Skirmish, choose **AI opponents**: Mixed, Simple, Savvy or Silly. A four-colour Mixed game has one opponent of each type.
 
-- **Triangular flag, Simple:** original AI behaviour.
-- **Crown, Savvy:** sizes attacks at 25%, 50% or 100%, keeps reserves, combines attacks and sends rear troops toward the front.
-- **Circle, Silly:** original AI with a 20% chance per planned command of issuing a random legal troop order.
+- **Simple Joe:** original AI behaviour.
+- **Savvy Jane:** sizes attacks at 25%, 50% or 100%, keeps reserves, combines attacks and sends rear troops toward the front.
+- **Silly Sam:** original AI with a 20% chance per planned command of issuing a random legal troop order.
 
-Markers follow the current owner of each node. Difficulty controls decision speed separately. [AI behaviour and the original implementation](docs/ai.md) describe the rules and checks.
+Names appear only at each AI's home node. Difficulty controls decision speed separately. [AI behaviour and the original implementation](docs/ai.md) describe the rules and checks.
 
 ## Routes, weapons and match modes
 
@@ -37,7 +51,7 @@ Skirmish setup cycles between **Conquest**, **Flag: neutral supernode**, **Flag:
 
 Select one of your nodes and tap **Actions** to draw a route, buy or deliver bombs, or build and fire artillery. In alliance matches, use **Pacts** to offer, accept or break an alliance. [Gameplay rules](docs/tactics.md) list the costs, controls and victory conditions.
 
-The refreshed interface uses labeled controls and raised nodes and buttons. The speed slider has its own wide row, visible stops and a light Android haptic tick when speed changes. **Settings → Appearance** offers Day or Night and optional abstract backgrounds that change with campaign chapters. [DESIGN.md](DESIGN.md) records the visual conventions and font licenses.
+The battlefield uses smooth candy nodes, integrated tower spikes and countable shield segments. Troop drops stay flat and numbered on their routes; groups above 50 use a tiny tank. Departures pinch free, friendly arrivals merge, and enemy hits release a short warm puff. A single digging rig shows its working crew, including zero, while reinforcements travel into it. Cannons recoil and show a travelling shell and small target burst. The speed slider has its own wide row, visible stops and a light Android haptic tick when speed changes. **Settings → Appearance** offers Day or Night and optional abstract backgrounds that change with campaign chapters. Android's Remove animations preference suppresses decorative motion. [DESIGN.md](DESIGN.md) records the visual conventions and font licenses.
 
 ## Build the Android APK
 
@@ -56,7 +70,7 @@ Then build the APK:
 
 To also create the ZIP download, run `.\opacha.ps1 :android:exportInstallZip`.
 
-The installable file is `build/downloads/New-Opacha-0.5.0.apk`. It contains ARM64 libraries for the Pixel 8a and x86-64 libraries for emulator testing. The minimum Android version is 8.0. This development build is signed with the local key in `.tools/signing/`; keep that directory to build updates that preserve your installed app and saves. Signing keys and machine-specific SDK paths are excluded from Git.
+The installable file is `build/downloads/New-Opacha-0.6.2.apk`. It contains ARM64 libraries for the Pixel 8a and x86-64 libraries for emulator testing. The minimum Android version is 8.0. This development build is signed with the local key in `.tools/signing/`; keep that directory to build updates that preserve your installed app and saves. Signing keys and machine-specific SDK paths are excluded from Git.
 
 For USB installation with USB debugging enabled:
 

@@ -1,0 +1,20 @@
+{
+  "version": "0.6.2",
+  "version_code": 8,
+  "tag": "v0.6.2-preview",
+  "package": "io.github.twothestar.newopacha",
+  "certificate_sha256": "270631fbbc296fba0e6156cd6a0bda2377b5eb7761665c61b4c714c5b35c461a",
+  "art_unchanged_from_0_6_1": true,
+  "files": [
+    {
+      "name": "New-Opacha-0.6.2.apk",
+      "bytes": 8749839,
+      "sha256": "9a43e4324482487fa04081ecfef3392a9fa8f4b690004164d18b707974543dd2"
+    },
+    {
+      "name": "New-Opacha-0.6.2-install.zip",
+      "bytes": 7326547,
+      "sha256": "9a130dd73ed1823727903b933e3b9b2cc18b186ccf42393f89fb569e49a558fc"
+    }
+  ]
+}

@@ -2,15 +2,17 @@ package yio.tro.opacha.game.gameplay.ai;
 
 import yio.tro.opacha.AdaptiveDifficultyManager;
 import yio.tro.opacha.SettingsManager;
+import yio.tro.opacha.RefreshRateDetector;
+import yio.tro.opacha.YioGdxGame;
 import yio.tro.opacha.game.Difficulty;
 import yio.tro.opacha.game.GameMode;
+import yio.tro.opacha.game.VelocityManager;
 import yio.tro.opacha.game.gameplay.IGameplayManager;
 import yio.tro.opacha.game.gameplay.ObjectsLayer;
 import yio.tro.opacha.game.gameplay.model.FractionType;
 import yio.tro.opacha.game.gameplay.model.PathFinder;
 import yio.tro.opacha.game.gameplay.model.Planet;
 import yio.tro.opacha.game.gameplay.model.PlanetsManager;
-import yio.tro.opacha.stuff.RepeatYio;
 
 import java.util.ArrayList;
 
@@ -19,10 +21,10 @@ public abstract class AbstractAiEntity implements IGameplayManager{
     public static final int APS = 2;
     ObjectsLayer objectsLayer;
     FractionType fractionType;
-    RepeatYio<AbstractAiEntity> repeatPerform;
+    private double decisionCountdown, commandCountdown;
+    private int decisionInterval;
     public Difficulty difficulty;
     int currentAllowedActionCount;
-    RepeatYio<AbstractAiEntity> repeatIncreaseActionCount;
     public float dynamicPower;
 
 
@@ -30,7 +32,9 @@ public abstract class AbstractAiEntity implements IGameplayManager{
         this.objectsLayer = objectsLayer;
         difficulty = Difficulty.easy;
         updateDynamicPower();
-        initRepeats();
+        currentAllowedActionCount = APS;
+        commandCountdown = 60;
+        decisionInterval = 400;
     }
 
 
@@ -44,22 +48,6 @@ public abstract class AbstractAiEntity implements IGameplayManager{
     }
 
 
-    private void initRepeats() {
-        repeatPerform = new RepeatYio<AbstractAiEntity>(this, 6) {
-            @Override
-            public void performAction() {
-                parent.applyPerform();
-            }
-        };
-        repeatIncreaseActionCount = new RepeatYio<AbstractAiEntity>(this, 60) {
-            @Override
-            public void performAction() {
-                parent.increaseActionCount();
-            }
-        };
-    }
-
-
     protected void increaseActionCount() {
         if (currentAllowedActionCount < APS) {
             currentAllowedActionCount = APS;
@@ -69,11 +57,6 @@ public abstract class AbstractAiEntity implements IGameplayManager{
 
     public void setFractionType(FractionType fractionType) {
         this.fractionType = fractionType;
-    }
-
-
-    private void applyPerform() {
-        perform();
     }
 
 
@@ -94,8 +77,17 @@ public abstract class AbstractAiEntity implements IGameplayManager{
 
     @Override
     public void moveActually() {
-        repeatPerform.move();
-        repeatIncreaseActionCount.move();
+        double step = RefreshRateDetector.getInstance().multiplier * VelocityManager.getInstance().value;
+        commandCountdown -= step;
+        if (commandCountdown <= 1e-6) {
+            commandCountdown += 60;
+            increaseActionCount();
+        }
+        decisionCountdown -= step;
+        if (decisionCountdown <= 1e-6) {
+            decisionCountdown += decisionInterval;
+            perform();
+        }
     }
 
 
@@ -163,7 +155,7 @@ public abstract class AbstractAiEntity implements IGameplayManager{
         }
         frequency *= 2 - dynamicPower;
 
-        repeatPerform.setFrequency(frequency);
-        repeatPerform.randomizeCountDown();
+        decisionInterval = frequency;
+        decisionCountdown = YioGdxGame.random.nextInt(Math.max(1, frequency));
     }
 }

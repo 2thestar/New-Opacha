@@ -12,6 +12,10 @@ import yio.tro.opacha.YioGdxGame;
 import yio.tro.opacha.menu.UiHaptics;
 
 public final class AndroidLauncher extends AndroidApplication {
+    @Override public void onResume(){
+        super.onResume();
+        yio.tro.opacha.menu.UiMotion.reduced=!android.animation.ValueAnimator.areAnimatorsEnabled();
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +27,7 @@ public final class AndroidLauncher extends AndroidApplication {
         config.renderUnderCutout = false;
         YioGdxGame.platformType = PlatformType.android;
         initialize(new YioGdxGame(), config);
-        UiHaptics.setSpeedTick(() -> runOnUiThread(() -> getWindow().getDecorView().performHapticFeedback(
-                Build.VERSION.SDK_INT >= 34 ? HapticFeedbackConstants.SEGMENT_FREQUENT_TICK
-                        : HapticFeedbackConstants.CLOCK_TICK)));
-        UiHaptics.setCaptureTick(() -> runOnUiThread(() -> getWindow().getDecorView().performHapticFeedback(
-                Build.VERSION.SDK_INT >= 30 ? HapticFeedbackConstants.CONFIRM : HapticFeedbackConstants.CLOCK_TICK)));
+        new AndroidHaptics(this,graphics.getView()).install();
         Gdx.input.setCatchKey(Input.Keys.BACK, true);
     }
 }

@@ -229,6 +229,7 @@ public final class TacticsManager {
         gun.artilleryReload = RELOAD_SECONDS;
         target.takeArtilleryDamage(SHOT_DAMAGE);
         shotSource = gun; shotTarget = target; shotUntil = elapsed + .35;
+        layer.unitManager.visuals.shot(gun, target);
         return true;
     }
 
@@ -364,20 +365,7 @@ public final class TacticsManager {
     }
 
     private void chooseFlag() {
-        ArrayList<Planet> starts = new ArrayList<>();
-        for (Planet planet : layer.planetsManager.planets) if (!planet.isNeutral()) starts.add(planet);
-        double best = Double.MAX_VALUE;
-        for (Planet candidate : layer.planetsManager.planets) {
-            if (!candidate.isNeutral()) continue;
-            int min = Integer.MAX_VALUE, max = 0, total = 0;
-            for (Planet start : starts) {
-                ArrayList<Planet> way = layer.planetsManager.pathFinder.findWay(start, candidate);
-                int distance = way == null ? 1000 : way.size();
-                min = Math.min(min, distance); max = Math.max(max, distance); total += distance;
-            }
-            double score = 100 * (max - min) + total;
-            if (score < best) { best = score; flagPlanet = candidate; }
-        }
+        flagPlanet = FlagPlacement.choose(layer.planetsManager.planets);
         if (flagPlanet != null) {
             flagPlanet.setUnitsInside(50);
             flagPlanet.position.setRadius(1.3 * layer.planetsManager.getPlanetRadius());

@@ -1,0 +1,18 @@
+{
+  "mode": "Full",
+  "source_sha256": "8bfc3aaf6f261a16f635be31ac637196e268e4e14e7ffeeaab6716b61d72cbab",
+  "git_commit": "2d829e1a2b29d0f2b359da08c2c0a671f6dce20e",
+  "seed_start": 1,
+  "seeds": 2,
+  "levels": "",
+  "styles": "",
+  "difficulty": "authored",
+  "screen": "Phone",
+  "started_utc": "2026-10-19T21:04:30.4968834Z",
+  "policy_sha256": "C6ED56FB2B828EF620C47A38C20B26D8C313BE7D678D37C389AA72DF0D618883",
+  "campaign_sha256": "2CBE2AB7709CAD72FEB12538109333BEF7B26E30E21E647F6E51A472736CA74B",
+  "viewport_width": 480,
+  "viewport_height": 800,
+  "level": null,
+  "total_wall_seconds": 47.976
+}

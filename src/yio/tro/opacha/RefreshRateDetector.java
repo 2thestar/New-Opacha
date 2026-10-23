@@ -54,6 +54,7 @@ public class RefreshRateDetector {
     public void move() {
         checkToUpdate();
         checkToAnalyze();
+        updateMultiplier();
     }
 
 
@@ -108,10 +109,10 @@ public class RefreshRateDetector {
 
 
     private void updateMultiplier() {
-        multiplier = 60f / (float) refreshRate;
-        if (multiplier > 1) {
-            multiplier = 1;
-        }
+        // Saved display-rate guesses must never control game or animation speed.
+        // Simulation overrides this with one for each fixed 60 Hz tick.
+        float seconds = Gdx.graphics == null ? 1f / 60 : Gdx.graphics.getDeltaTime();
+        multiplier = 60 * Math.max(0, Math.min(.1f, seconds));
     }
 
 

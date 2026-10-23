@@ -33,6 +33,7 @@ public class ObjectsLayer implements TouchableYio, AcceleratableYio {
     public EditorWorker editorWorker;
     public ExportManager exportManager;
     public TacticsManager tactics;
+    private final SimulationClock clock = new SimulationClock();
 
 
     public ObjectsLayer(GameController gameController) {
@@ -193,12 +194,27 @@ public class ObjectsLayer implements TouchableYio, AcceleratableYio {
 
 
     public void move() {
-        for (int speed = gameController.speedManager.getSpeed(); speed > 0; speed--) {
-            moveActually();
-        }
+        moveFrame(com.badlogic.gdx.Gdx.graphics.getDeltaTime());
+    }
 
+    public void moveFrame(double seconds) {
+        int speed = gameController.speedManager.getSpeed();
+        if (speed == 0) clock.reset();
+        int ticks = speed == 0 ? 0 : clock.advance(seconds);
+        yio.tro.opacha.RefreshRateDetector refresh = yio.tro.opacha.RefreshRateDetector.getInstance();
+        float presentation = refresh.multiplier;
+        refresh.multiplier = 1;
+        try {
+            for (int tick = 0; tick < ticks; tick++) {
+                for (int step = 0; step < speed; step++) moveActually();
+            }
+        } finally {
+            refresh.multiplier = presentation;
+        }
         moveVisually();
     }
+
+    public void resetClock() { clock.reset(); }
 
 
     public void onClick() {

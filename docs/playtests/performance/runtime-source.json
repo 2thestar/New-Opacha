@@ -1,0 +1,3229 @@
+{
+  "runtime_source_sha256": "b64f472ef071bee85a1154dba8b0ad6b3bc04d37a108da60200360c08e3bc840",
+  "files": [
+    {
+      "path": "android/build.gradle",
+      "sha256": "8af828d19505826c20a2e0b96e2eec622e094e5cf8bcd3f3454e0ea622c5333d"
+    },
+    {
+      "path": "android/src/main/AndroidManifest.xml",
+      "sha256": "796bdc7ab30ac4869c08f5b806e836d1e56b6c489326280769ed23ba8f1d2640"
+    },
+    {
+      "path": "android/src/main/java/io/github/twothestar/newopacha/AndroidHaptics.java",
+      "sha256": "99e7433f0621f179b104681899b6a2176098a30219016c3ed0de8c4a78af14b1"
+    },
+    {
+      "path": "android/src/main/java/io/github/twothestar/newopacha/AndroidLauncher.java",
+      "sha256": "cd601becaa56d1872c521a81b9d47809d5758f06bbfe8e20596284db808f04d0"
+    },
+    {
+      "path": "android/src/main/res/drawable/ic_launcher_foreground.xml",
+      "sha256": "5837f5e0e40338ebeddc1cb5d6c11d152639dda13519ad31b4afcd56bde60dbe"
+    },
+    {
+      "path": "android/src/main/res/mipmap-anydpi/ic_launcher.xml",
+      "sha256": "535e366720a7ac40eb2e1f25432c316863038e41a21368a9517130c090d16ed8"
+    },
+    {
+      "path": "android/src/main/res/values-v28/styles.xml",
+      "sha256": "304c6cca0129e589410a419ec88a47a76324f4266bb4c7078cf5dd1f875d5605"
+    },
+    {
+      "path": "android/src/main/res/values-v35/styles.xml",
+      "sha256": "4cbf65b9721563f98a4eef947101501f0c83f52c7e92a46cbde72f8e9b0f9e17"
+    },
+    {
+      "path": "android/src/main/res/values/strings.xml",
+      "sha256": "80fe56546e4ae33981a37fa99ddf0d394a8ad235bfc3255a984510c66fc3f61c"
+    },
+    {
+      "path": "android/src/main/res/values/styles.xml",
+      "sha256": "20593fcde2f123baae446ab595ea96365aced075fef34d3f3c8bab0bb30cdcde"
+    },
+    {
+      "path": "assets/.DS_Store",
+      "sha256": "1fc697ce2243387f3745e549561249e4bcea2b917855a8afee90149be870b416"
+    },
+    {
+      "path": "assets/campaign/levels.json",
+      "sha256": "16684b4420288c6675f5127ac9a50c4a73843e9f49eb984048319cd6d1761706"
+    },
+    {
+      "path": "assets/font.ttf",
+      "sha256": "436cb479a8f9eff517016868323bdfbca1a053bba4cc55c8753859b64d041c5c"
+    },
+    {
+      "path": "assets/fonts/Fraunces-Bold.ttf",
+      "sha256": "f0a9d39b9f14079c55070189562da36c794f824cbcf514b50a0ad0ef20c69379"
+    },
+    {
+      "path": "assets/fonts/Fraunces-OFL.txt",
+      "sha256": "bdf4c22802eaf804f998195871c6b8938aac2ac14b2d78a8bd66a6f1eced833b"
+    },
+    {
+      "path": "assets/fonts/Quicksand-OFL.txt",
+      "sha256": "14d28541780d90f6577bb7abcc6f005bf6969614294e75c82abb8758a696ad46"
+    },
+    {
+      "path": "assets/fonts/Quicksand-SemiBold.ttf",
+      "sha256": "bbf8f3e2d8eb8434c2b49361ea5712127ce62f0aa3924360cfeeb4740bf08814"
+    },
+    {
+      "path": "assets/game/atlas/AtlasTextureCreator.jar",
+      "sha256": "2fe648cd7fd9cf4f1019ebd4d8178dc5a0a06427158ceefcbab3540bf52fa086"
+    },
+    {
+      "path": "assets/game/atlas/atlas_structure.txt",
+      "sha256": "5079490e77b2c364c3a394f6d8a7b7440237cf603827c213e27aee18a7a89f4d"
+    },
+    {
+      "path": "assets/game/atlas/atlas_texture.png",
+      "sha256": "604e335ac22ce0d40cd62827d9c07cf2b2a4ef129716f10f7ca6914e4abedc8b"
+    },
+    {
+      "path": "assets/game/atlas/auto_target.png",
+      "sha256": "02e5f7dbd7547ca6206e072d211d86cb2071520d042d03f3b55d92db46b33795"
+    },
+    {
+      "path": "assets/game/atlas/auto_target_low.png",
+      "sha256": "272a298d0b6c9545e66dd54cdfeb123a78ba5bb904cc5b9d8727cde25950da2e"
+    },
+    {
+      "path": "assets/game/atlas/auto_target_lowest.png",
+      "sha256": "32df5a3bb7ee35379b2b21ca8890af38e3486cdcd6b525400287f786c0fd1538"
+    },
+    {
+      "path": "assets/game/atlas/halved_selection.png",
+      "sha256": "cd93e96feb3ceb9ee3f365530aef9ab9877e1fc1f8f0cdf92ff132a8520335a2"
+    },
+    {
+      "path": "assets/game/atlas/halved_selection_low.png",
+      "sha256": "86f9b9fa6fb7ea59ffd4b6fca302d039f54315f9101b879199619d98fe401c7d"
+    },
+    {
+      "path": "assets/game/atlas/halved_selection_lowest.png",
+      "sha256": "4571fd904d2bb5346df1a40656f6c3efa71544e656395a57b7b5577db14df23a"
+    },
+    {
+      "path": "assets/game/atlas/highlight.png",
+      "sha256": "39d0ef9bb22dc9c898d0f6963df57d8a0dde2167a51eade78b30088bff5bf6cc"
+    },
+    {
+      "path": "assets/game/atlas/highlight_low.png",
+      "sha256": "85474b28715e3759ecdbccfe9c3047c8595dbbf3464684ff131395dbbd9e4bfe"
+    },
+    {
+      "path": "assets/game/atlas/highlight_lowest.png",
+      "sha256": "d6293ffb0df61a7e60636e4721e2dbdd24577e3723bdf7a0adf56a8798de42f4"
+    },
+    {
+      "path": "assets/game/atlas/link_cyan.png",
+      "sha256": "7a179ac67daae8fb67324e803c6bc8ad33b6e9f85ec96cf9fd30da5d0c7479ca"
+    },
+    {
+      "path": "assets/game/atlas/link_cyan_low.png",
+      "sha256": "9a01046d5dc2c00bf77c90accd71ebd84e0379013e924718586b738c853e3596"
+    },
+    {
+      "path": "assets/game/atlas/link_cyan_lowest.png",
+      "sha256": "5473996aa3a8b5148387c385abd3d6bda2c4580be2c8b495d47a8190154b8a44"
+    },
+    {
+      "path": "assets/game/atlas/link_green.png",
+      "sha256": "1185825e881ba6578fe2a97bd6566dce6a85f6c5afaa2540ba955e915a7e5b3b"
+    },
+    {
+      "path": "assets/game/atlas/link_green_low.png",
+      "sha256": "c3edf69c4a90d4e52afdc69a663c3320d1315c05e7836f083b536e7574bbe445"
+    },
+    {
+      "path": "assets/game/atlas/link_green_lowest.png",
+      "sha256": "e59a6017b33d3d85fa655923961006215af15709201fcbd01cee2247c64a503f"
+    },
+    {
+      "path": "assets/game/atlas/link_neutral.png",
+      "sha256": "e5392af68bc1429eab0a627ba04e93b901c3f4009fcd7ccaf8073e9d567049d7"
+    },
+    {
+      "path": "assets/game/atlas/link_neutral_low.png",
+      "sha256": "69b46f42d430630bc9f82599a7da45ce5feb1e2984aa02153d6238ac8a157955"
+    },
+    {
+      "path": "assets/game/atlas/link_neutral_lowest.png",
+      "sha256": "f94ff94edc1f0e166adf85449cb776c8895f6af066338d206fd4381c33c8c949"
+    },
+    {
+      "path": "assets/game/atlas/link_red.png",
+      "sha256": "510f9890ada7c1a7e2b6853dfe86c1d43b81e6f9c9899226fa7da8fee07f7617"
+    },
+    {
+      "path": "assets/game/atlas/link_red_low.png",
+      "sha256": "7ccac6bff2aa0b1cd507527791500bb08893c6882e2b284b79599a38a43b8254"
+    },
+    {
+      "path": "assets/game/atlas/link_red_lowest.png",
+      "sha256": "19c98aefab3bc59c5bdaf5bc0db0e0b3659a1f008e5cd8e2eba60d20fa75420c"
+    },
+    {
+      "path": "assets/game/atlas/link_shadow.png",
+      "sha256": "a7172c9450882ac7cbe1f2c4c8c6a58f13af8667b2a00ab35bdf585a59f9e474"
+    },
+    {
+      "path": "assets/game/atlas/link_shadow_low.png",
+      "sha256": "0a9e7e3550075b18f8bd3c4263dfa6e6458fa027548368c85c40b2c660ea0a9c"
+    },
+    {
+      "path": "assets/game/atlas/link_shadow_lowest.png",
+      "sha256": "cf13162307c8696b9ea1f816f27e80b91cf831fb2e685c5e04f54b1cf7e79e5d"
+    },
+    {
+      "path": "assets/game/atlas/link_yellow.png",
+      "sha256": "f04352481acdf48849561fe371888fe08388813a2663258f73bc2bf262215146"
+    },
+    {
+      "path": "assets/game/atlas/link_yellow_low.png",
+      "sha256": "69c343e6f8fdd28c6949a574872863af2655bee450dc8ceabde14bfcf4299a92"
+    },
+    {
+      "path": "assets/game/atlas/link_yellow_lowest.png",
+      "sha256": "fc711964400b05247bc7c83a1044715949edb3d9e8db13cfdf99983fe1fd571e"
+    },
+    {
+      "path": "assets/game/atlas/p_blue.png",
+      "sha256": "9452451da9e7a3c9993a562704d5cf4133e1df6c2dc7bc481318f6c13585e0e5"
+    },
+    {
+      "path": "assets/game/atlas/p_blue_low.png",
+      "sha256": "dd9e6550989ef966a226b03ad0c819b2f806664b498562adf6615badb0035948"
+    },
+    {
+      "path": "assets/game/atlas/p_blue_lowest.png",
+      "sha256": "abb549a841fb1bbd1899569def0d9b75ed00645af8fd4d9b093bfb2fe3949f22"
+    },
+    {
+      "path": "assets/game/atlas/p_cyan.png",
+      "sha256": "bbd9df4ec2a37388e326c162c620ea7926680e50e4484cb97a05da45872b7e25"
+    },
+    {
+      "path": "assets/game/atlas/p_cyan_low.png",
+      "sha256": "176dc04e261f32ebf34fb34f1faf752770fd6b4d3e88508c3167af33fee344a8"
+    },
+    {
+      "path": "assets/game/atlas/p_cyan_lowest.png",
+      "sha256": "7e848b343cb0ad98a2e6d76cd91502bf0147073ac099e833e40ddb1985cc6d53"
+    },
+    {
+      "path": "assets/game/atlas/p_explosion1.png",
+      "sha256": "b5c52a8af0bab1ee1ee1df55ca46b209cc14c8e1da82a695b86516b4b67d24b2"
+    },
+    {
+      "path": "assets/game/atlas/p_explosion1_low.png",
+      "sha256": "e051f2fdcc78db51e3040968a1bfc3eff8cef3210ea93347cf02672f0c43e2b1"
+    },
+    {
+      "path": "assets/game/atlas/p_explosion1_lowest.png",
+      "sha256": "058b1326801d5105e2fb02cbb513153f9e3e2a24be0e17dd9642868f64732606"
+    },
+    {
+      "path": "assets/game/atlas/p_explosion2.png",
+      "sha256": "87374bfc575f67d1f301764e407d9386c0cb817a4b0bbd626d10af07c8b443d6"
+    },
+    {
+      "path": "assets/game/atlas/p_explosion2_low.png",
+      "sha256": "2517bfb79d35670926ef52c5841a32fed47f8e59e8e98ead37b98676881ab31c"
+    },
+    {
+      "path": "assets/game/atlas/p_explosion2_lowest.png",
+      "sha256": "c3aba0701044a13432ab1ab9d382c4f10c10d1a9537864c7efc73e83b2bf313e"
+    },
+    {
+      "path": "assets/game/atlas/p_explosion3.png",
+      "sha256": "83d036c56d04e24cf089a50d7713de2c32591b3278ed5b80cf3f2bd666b99e72"
+    },
+    {
+      "path": "assets/game/atlas/p_explosion3_low.png",
+      "sha256": "a9ae6596dc5ed135e0479eb93a41bdfa4844024bf8c6f03594878e7d2aafd85f"
+    },
+    {
+      "path": "assets/game/atlas/p_explosion3_lowest.png",
+      "sha256": "13096f0b4f854064a09efa2cab8437b8d2800a6f7af8d768193d6ec6c5c9650e"
+    },
+    {
+      "path": "assets/game/atlas/p_explosion4.png",
+      "sha256": "633f8d69cd7de092cf791315f4f59a39e665e0401cee70a3cf3f42c2babc2656"
+    },
+    {
+      "path": "assets/game/atlas/p_explosion4_low.png",
+      "sha256": "7c32739221ad04e4a68380e23e5d15a9d00d9fa7b36bb6b6bc1a54bb1305e6cd"
+    },
+    {
+      "path": "assets/game/atlas/p_explosion4_lowest.png",
+      "sha256": "3307a3e0bedddddc64484cd87df524e0d84aaa0c255a9f1adc67511f4433077d"
+    },
+    {
+      "path": "assets/game/atlas/p_green.png",
+      "sha256": "625abebbc5b161b34e4f34c6db82388bba3592e9bfcbe941e1223f2614ae6a82"
+    },
+    {
+      "path": "assets/game/atlas/p_green_low.png",
+      "sha256": "91f4afdfb17c5cea95e4c6c2f20734ce32763a257f0cc7c66524b465d8aeebc2"
+    },
+    {
+      "path": "assets/game/atlas/p_green_lowest.png",
+      "sha256": "0617a88e5ce07c4fbd18b5328f0e3720097f7da2f7b18eb8885a6ba6209fcf5e"
+    },
+    {
+      "path": "assets/game/atlas/p_line_red.png",
+      "sha256": "590a2196e72fc296e41dcc034a06a8603b107abf1f95a3c63da7911c4f2b96ae"
+    },
+    {
+      "path": "assets/game/atlas/p_line_red_low.png",
+      "sha256": "3fefff4836fb2c94f9270c9f9f5237ab3e5f26390f6c7c323e5b2a8f64315be6"
+    },
+    {
+      "path": "assets/game/atlas/p_line_red_lowest.png",
+      "sha256": "5d262dec29ef4e63296ddb3ed04764ce7ffa8c0bec7d7f6ec9fda33ca7247989"
+    },
+    {
+      "path": "assets/game/atlas/p_red.png",
+      "sha256": "5a886f105362998e7dff4ab530ba3b294be43852dac993079679d523cef90a18"
+    },
+    {
+      "path": "assets/game/atlas/p_red_low.png",
+      "sha256": "533b219da188a01d4ef5fb49bc2473f5f3db20ddaf15137de34acff7049a85c7"
+    },
+    {
+      "path": "assets/game/atlas/p_red_lowest.png",
+      "sha256": "45d509fe49c0af9757a2353868ae827bdeb94ca2ce8ddb8e0f9765d1f1244343"
+    },
+    {
+      "path": "assets/game/atlas/p_yellow.png",
+      "sha256": "721e324533ad7d4b6d7f156bb8ae7fc323ee07464a05cb5f840af5fb82896293"
+    },
+    {
+      "path": "assets/game/atlas/p_yellow_low.png",
+      "sha256": "4a2950a5c468223ac67c928fecb9b30ebe691d75c42bf6a68c3fd5041cd434b6"
+    },
+    {
+      "path": "assets/game/atlas/p_yellow_lowest.png",
+      "sha256": "c0c167bb4259227cf622c2766009336734f9387202b8c78787e43d902bf0b953"
+    },
+    {
+      "path": "assets/game/atlas/planet_cyan.png",
+      "sha256": "36c5a60446d91362166427dea0a8f7b66efa51695b3df4daabe726e7c7c75eae"
+    },
+    {
+      "path": "assets/game/atlas/planet_cyan_low.png",
+      "sha256": "fe12aaa56a4fe4481b7af1fbcfd0c6f0f904454e796c41416b0c31332c8912c3"
+    },
+    {
+      "path": "assets/game/atlas/planet_cyan_lowest.png",
+      "sha256": "1a235777a8f0a73538e589b43d023cbeb3b6e566f5615adfe84472627a4fc3cb"
+    },
+    {
+      "path": "assets/game/atlas/planet_green.png",
+      "sha256": "9d608cc863bb6dd12812e7cb7f3c64727742e570ec4a28e8b0735891a16c17d2"
+    },
+    {
+      "path": "assets/game/atlas/planet_green_low.png",
+      "sha256": "f1954137efa3d22eb76491eebf33e8817890d2b1e19e9774811b3cbe23f62b5a"
+    },
+    {
+      "path": "assets/game/atlas/planet_green_lowest.png",
+      "sha256": "72f4265abb771d974e46fefb0b3c5b1ac924015543f0b67c3adf3aee526a99e6"
+    },
+    {
+      "path": "assets/game/atlas/planet_neutral.png",
+      "sha256": "a79482008f4e9dea738bf851d48366ee0f13bdfe94ccde4043651faca6d442af"
+    },
+    {
+      "path": "assets/game/atlas/planet_neutral_low.png",
+      "sha256": "0d7c04023c87da03133495b6b4aaff265024d4fabb5c0a5446476a5539c82a0a"
+    },
+    {
+      "path": "assets/game/atlas/planet_neutral_lowest.png",
+      "sha256": "16ec536d59edaa9d0ea9a0260fa0e4e963f063c66d25f9fffe32e65cc78cc53b"
+    },
+    {
+      "path": "assets/game/atlas/planet_red.png",
+      "sha256": "4e492bb49c6e032e3670125605a605475fe56d5dfc0a41def4f0a3482c006e86"
+    },
+    {
+      "path": "assets/game/atlas/planet_red_low.png",
+      "sha256": "780975f00a2a46447b264aec2696e7b9d73d3253918461d5f6b1d2fd0f0c7a15"
+    },
+    {
+      "path": "assets/game/atlas/planet_red_lowest.png",
+      "sha256": "d23fed9ee8d34f7e2f957079e25cb66a1543fc2d8fc270b605169133fbd1718e"
+    },
+    {
+      "path": "assets/game/atlas/planet_shadow.png",
+      "sha256": "e29f3ad635825f4431a3a58b1a13f440ea24dcc91a81aa86d051448b9f55be72"
+    },
+    {
+      "path": "assets/game/atlas/planet_shadow_low.png",
+      "sha256": "788b0a79ea19d610f30d96594d5c5a6cd4afae0beb388e50414011e00ac3e3d3"
+    },
+    {
+      "path": "assets/game/atlas/planet_shadow_lowest.png",
+      "sha256": "5b9b092b23a2b146b35203171e71e7dba9921b902b0a5911ca7b1e18f27242df"
+    },
+    {
+      "path": "assets/game/atlas/planet_yellow.png",
+      "sha256": "27d71873e636f4064a26efc0382cff4501390a9da6a26268e5e795321ef0a99b"
+    },
+    {
+      "path": "assets/game/atlas/planet_yellow_low.png",
+      "sha256": "b624e58bf043d0b0fd451d1cbf1fa299ab4a969efc29eddf8542529ce33f9219"
+    },
+    {
+      "path": "assets/game/atlas/planet_yellow_lowest.png",
+      "sha256": "04f93a316570064e239e058da35421c06d498c3de789ddb29caef48205e5288e"
+    },
+    {
+      "path": "assets/game/atlas/selection.png",
+      "sha256": "d2e21d36d07d85bdb8f37a3c6f76b0f62986f7f175a534d8c45d1fcbf5765af5"
+    },
+    {
+      "path": "assets/game/atlas/selection_low.png",
+      "sha256": "7ed9b74ca511d4cbe0a6bf19c93352ae52387610b2dbae0988eb5a0e7609d51d"
+    },
+    {
+      "path": "assets/game/atlas/selection_lowest.png",
+      "sha256": "d75dd55a1db963d92cd0cc6d0ac54c941768460acc662a1f8d3a740c56c64ea0"
+    },
+    {
+      "path": "assets/game/atlas/shield_cyan_more.png",
+      "sha256": "fe2fb4e61dbbd9a0f54abdd9f83be8129dfb7f1c3b9c251dcc158df0054ffb17"
+    },
+    {
+      "path": "assets/game/atlas/shield_cyan_more_low.png",
+      "sha256": "1c9b0e0f9a0283654538957ce1f629dffdec41befc2376143e2042b795ea38b8"
+    },
+    {
+      "path": "assets/game/atlas/shield_cyan_more_lowest.png",
+      "sha256": "ecfc4f4a3e10385add2add9997e2764a8ad8907f8555c370cf789328c109aeca"
+    },
+    {
+      "path": "assets/game/atlas/shield_cyan_small.png",
+      "sha256": "814225ac7da979d93e92a61034863c200e58534f7f05d188224a499cd1f5541d"
+    },
+    {
+      "path": "assets/game/atlas/shield_cyan_small_low.png",
+      "sha256": "1b672f1966e4c4cf0a2a482a31a9fa293980f25307d525e7754ac50e45ae7a49"
+    },
+    {
+      "path": "assets/game/atlas/shield_cyan_small_lowest.png",
+      "sha256": "bd7cee11479645c9f934492cf8126c4364edb3f6c6042971a15634f4af60db26"
+    },
+    {
+      "path": "assets/game/atlas/shield_green_more.png",
+      "sha256": "9558085099d440417a6392d27b2d865217445325bd4ca777e67080a849e3e6dd"
+    },
+    {
+      "path": "assets/game/atlas/shield_green_more_low.png",
+      "sha256": "f4bbc744b519ed8231a897dd3e76cff31ad860f928c88fb826b4e636cb1fac4c"
+    },
+    {
+      "path": "assets/game/atlas/shield_green_more_lowest.png",
+      "sha256": "5f85cd062ad8bba43d37e54063e4ed6702f4cf351b4ae50feecda8d666e8ba03"
+    },
+    {
+      "path": "assets/game/atlas/shield_green_small.png",
+      "sha256": "343dd528da755051a86d3d7ce72e2790550770bab92960cc46f855bb2f8df927"
+    },
+    {
+      "path": "assets/game/atlas/shield_green_small_low.png",
+      "sha256": "d04f18377a454532225a4597dd96c25c93c0c958bb9240e4bc414d752fef13dc"
+    },
+    {
+      "path": "assets/game/atlas/shield_green_small_lowest.png",
+      "sha256": "4e771974166340e3d96598631dd9362fd9c67045d955fe1d9740e811ed98bf1a"
+    },
+    {
+      "path": "assets/game/atlas/shield_neutral_more.png",
+      "sha256": "30b0b85e5c88842383c9719d6ea3f1b09c796aa22bb3667c0f997bccbd0ee46d"
+    },
+    {
+      "path": "assets/game/atlas/shield_neutral_more_low.png",
+      "sha256": "be16a07c889c89c62bae3deae729e9037adf34325999244b3da93c05742ee02a"
+    },
+    {
+      "path": "assets/game/atlas/shield_neutral_more_lowest.png",
+      "sha256": "912a6d09ea805873466ebd852e4e47850a43071e0bfef92b46d6cf089e42b99e"
+    },
+    {
+      "path": "assets/game/atlas/shield_neutral_small.png",
+      "sha256": "6ab1c598265b8c4897451eb67d84e35a66309ccdeefed5acf9cf920504973c79"
+    },
+    {
+      "path": "assets/game/atlas/shield_neutral_small_low.png",
+      "sha256": "27d86eb6ed9ac3af07717795e02c9949adcd01120971ab2ce96fadf80c2ebb11"
+    },
+    {
+      "path": "assets/game/atlas/shield_neutral_small_lowest.png",
+      "sha256": "fcecbc605722094e2a62112270a6e5f0201c859069d2f22889aef701c77f5dbf"
+    },
+    {
+      "path": "assets/game/atlas/shield_red_more.png",
+      "sha256": "ed5630f08f131a9bfed0a749afb570a9d4a3838434bd82a3c792b033ba079c13"
+    },
+    {
+      "path": "assets/game/atlas/shield_red_more_low.png",
+      "sha256": "14ae277adb30c35d2379a1829289523d8d32499032b25882adde12f46bb9c66d"
+    },
+    {
+      "path": "assets/game/atlas/shield_red_more_lowest.png",
+      "sha256": "4595a289eb90833c87d96391ff75096b41c6ac205b1b0bd94be703d6be087f61"
+    },
+    {
+      "path": "assets/game/atlas/shield_red_small.png",
+      "sha256": "7fdc3fe803941d15738ca7cf280c3471d3ef765211717b807a19029d89d22569"
+    },
+    {
+      "path": "assets/game/atlas/shield_red_small_low.png",
+      "sha256": "0a427d64c93617f8efe8fd2dc4aee8cb1af5bec3e842fad1c86f00b9585bb17b"
+    },
+    {
+      "path": "assets/game/atlas/shield_red_small_lowest.png",
+      "sha256": "445b7d342e547d300a04e782064c4a7100f10b9bf7eb8ee8d47005907139af0d"
+    },
+    {
+      "path": "assets/game/atlas/shield_yellow_more.png",
+      "sha256": "78fff842ec0ef8adf70ddeb0e40c3098f2a9e5b49940f5c5d50a0288af312234"
+    },
+    {
+      "path": "assets/game/atlas/shield_yellow_more_low.png",
+      "sha256": "8467d79c90aea88a5e8ff57a17782a2b1fbd882d275feabff1a2f2ea8fd46c38"
+    },
+    {
+      "path": "assets/game/atlas/shield_yellow_more_lowest.png",
+      "sha256": "1cdd55b097542986b7802c6809fc4938c48462f5fb61b4575c628fd5afe9b25e"
+    },
+    {
+      "path": "assets/game/atlas/shield_yellow_small.png",
+      "sha256": "3770f1f9af01b18fa37a1ade1b65998a0e1ba2ffa913aba2497612b1b5e46093"
+    },
+    {
+      "path": "assets/game/atlas/shield_yellow_small_low.png",
+      "sha256": "8333bcb9477773feff7331b9d33cc20c52ec88aca5e53701a9e1f09c49b3f8b4"
+    },
+    {
+      "path": "assets/game/atlas/shield_yellow_small_lowest.png",
+      "sha256": "de4c689d127dc435ed798724f8481c694933cfcce32aaf1ece9cd169a2fd2f64"
+    },
+    {
+      "path": "assets/game/atlas/type_defensive.png",
+      "sha256": "18988adbb04aca1e3645cb72e8ef4e38a6d769ff621d64d5fbfc66754d3c062d"
+    },
+    {
+      "path": "assets/game/atlas/type_defensive_low.png",
+      "sha256": "68e46003087a2229fde5c9c0eb8fe7b53e0151127c622d76ef10a9a4be5f2796"
+    },
+    {
+      "path": "assets/game/atlas/type_defensive_lowest.png",
+      "sha256": "61b2aa13b730c33e1d15820250bf849bc354018e35b2e3800a97808a30cb835c"
+    },
+    {
+      "path": "assets/game/atlas/type_economic.png",
+      "sha256": "c69c1acdbf707ee4f7d0108d76018a84fb830cfe7dec9b688a8acc19251d7eb8"
+    },
+    {
+      "path": "assets/game/atlas/type_economic_low.png",
+      "sha256": "18cd66c664fb3585a24a9c117368492a5be6fecfa2e83c0dc5d45bf497d3000c"
+    },
+    {
+      "path": "assets/game/atlas/type_economic_lowest.png",
+      "sha256": "e5dcbadc1ac4af644bc1c7d2090115b109a045823d508eda305f179f7b340453"
+    },
+    {
+      "path": "assets/game/atlas/type_empty.png",
+      "sha256": "f655acd0eda4692b268dca18b1e545a885a60bdc8acbd0ce82db675ae4c94272"
+    },
+    {
+      "path": "assets/game/atlas/type_empty_low.png",
+      "sha256": "c3087446afe87c5da27035fd77db71f3d9911966b3cd33a452f80d731fbf8159"
+    },
+    {
+      "path": "assets/game/atlas/type_empty_lowest.png",
+      "sha256": "c3087446afe87c5da27035fd77db71f3d9911966b3cd33a452f80d731fbf8159"
+    },
+    {
+      "path": "assets/game/atlas/unit_cyan.png",
+      "sha256": "f9dfd4bbe5b06fdfab51b89d25bea8b700736c8eb50c55520fa9d9b81a914ab9"
+    },
+    {
+      "path": "assets/game/atlas/unit_cyan_low.png",
+      "sha256": "8770a93ed4c7c9e4caada9684cb77a048cdc1515c6dd100c1dee53633b5e74c8"
+    },
+    {
+      "path": "assets/game/atlas/unit_cyan_lowest.png",
+      "sha256": "9adbd288727d744b908cc2e35d479153165701f58ba4f814f10846f4c904b449"
+    },
+    {
+      "path": "assets/game/atlas/unit_green.png",
+      "sha256": "8a5bda387ec39101114e228a52fc63726b785c78662b6dd2cd651148dfaf799e"
+    },
+    {
+      "path": "assets/game/atlas/unit_green_low.png",
+      "sha256": "c147854dc98a8af5bdae4973bab61ed9545113dbce59cdbd1782728b41a6f9a2"
+    },
+    {
+      "path": "assets/game/atlas/unit_green_lowest.png",
+      "sha256": "bd9739df70d65a937b924d6e2607565608d9f0e5d89a2f6c8a6dd5b9b91608be"
+    },
+    {
+      "path": "assets/game/atlas/unit_red.png",
+      "sha256": "6301bd1e85975f5bccdfe5d3016bf4ea088d22945572ded06d8d4c653de3d56c"
+    },
+    {
+      "path": "assets/game/atlas/unit_red_low.png",
+      "sha256": "56fc0b3c4d8c7340490c73aeec16979a9ce8b9f1b70b733077fbfbfc7135592b"
+    },
+    {
+      "path": "assets/game/atlas/unit_red_lowest.png",
+      "sha256": "fba7068328ff49200b14e3c493ef2b1b82ffba86e95641dd2c62f0e1e491cbfd"
+    },
+    {
+      "path": "assets/game/atlas/unit_yellow.png",
+      "sha256": "bf146fd221a1e589bcefd4cbacd8f88326cf202fa5bc1e8670df952d7e61d6a9"
+    },
+    {
+      "path": "assets/game/atlas/unit_yellow_low.png",
+      "sha256": "2025200f9e9d993a737df67f69cc3fde0e2313653b1ef20bcb569b8705e1bfeb"
+    },
+    {
+      "path": "assets/game/atlas/unit_yellow_lowest.png",
+      "sha256": "c8ec3f286d5564cab0602725bb32a18b2c8b0e6cf2043b3ff1925ebceafd2937"
+    },
+    {
+      "path": "assets/game/atlas/v_pixel.png",
+      "sha256": "96077bebae786b7356f989a56dbb26429b4c62e9435496e50b799f9ea595d44e"
+    },
+    {
+      "path": "assets/game/atlas/v_pixel_low.png",
+      "sha256": "0310f1963bfcbb4b32fb51d5d1e0fc96acde0ea5f05951665a183855be80014c"
+    },
+    {
+      "path": "assets/game/atlas/v_pixel_lowest.png",
+      "sha256": "0310f1963bfcbb4b32fb51d5d1e0fc96acde0ea5f05951665a183855be80014c"
+    },
+    {
+      "path": "assets/game/background/colorblind.png",
+      "sha256": "7bc3ada434f9e1b45f2e56feac248fb4bcb3de1dbbeeb70dfe4e3bbee56920c8"
+    },
+    {
+      "path": "assets/game/background/main.png",
+      "sha256": "1e89a75dd70c73f40a11526434ebfcf5fe90d32e4d43d647f7747526a38d1fcf"
+    },
+    {
+      "path": "assets/game/background/particle.png",
+      "sha256": "4dbb8d0f49db59995ba7f784ca783821c7ecf7334ecd543ee3ece8a29dfed86d"
+    },
+    {
+      "path": "assets/game/battlefield/nodes.png",
+      "sha256": "b047aa3d71bde5165d3ffbc4b755159bf0734834c390aae80b540216a81b7461"
+    },
+    {
+      "path": "assets/game/battlefield/provenance.json",
+      "sha256": "0d0aaa30c841b3d8b9604abfe94b8c3af7def99d75e431b7cfad01a2dee75729"
+    },
+    {
+      "path": "assets/game/battlefield/rig-hull.png",
+      "sha256": "aad432b5b4ed162fd5bf0cdaa2a0cec02718f85a9407df1f034c60a464358310"
+    },
+    {
+      "path": "assets/game/battlefield/rounded.png",
+      "sha256": "9189e657956ed3f4e6f5bbba873826444ceb5fcaef36abed20751c8b913d9a3d"
+    },
+    {
+      "path": "assets/game/battlefield/vapor.png",
+      "sha256": "5b3924ffeb3bd9279cdc8d1e02b08db65301134a1820fcf200fff41364843cc9"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/AtlasTextureCreator.jar",
+      "sha256": "2fe648cd7fd9cf4f1019ebd4d8178dc5a0a06427158ceefcbab3540bf52fa086"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/atlas_structure.txt",
+      "sha256": "5079490e77b2c364c3a394f6d8a7b7440237cf603827c213e27aee18a7a89f4d"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/atlas_texture.png",
+      "sha256": "c2b3ad2f647229af734c1dbbd2822a59c3d50f64995dd8861fcea15cf4541357"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/auto_target.png",
+      "sha256": "02e5f7dbd7547ca6206e072d211d86cb2071520d042d03f3b55d92db46b33795"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/auto_target_low.png",
+      "sha256": "272a298d0b6c9545e66dd54cdfeb123a78ba5bb904cc5b9d8727cde25950da2e"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/auto_target_lowest.png",
+      "sha256": "32df5a3bb7ee35379b2b21ca8890af38e3486cdcd6b525400287f786c0fd1538"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/halved_selection.png",
+      "sha256": "cd93e96feb3ceb9ee3f365530aef9ab9877e1fc1f8f0cdf92ff132a8520335a2"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/halved_selection_low.png",
+      "sha256": "86f9b9fa6fb7ea59ffd4b6fca302d039f54315f9101b879199619d98fe401c7d"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/halved_selection_lowest.png",
+      "sha256": "4571fd904d2bb5346df1a40656f6c3efa71544e656395a57b7b5577db14df23a"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/highlight.png",
+      "sha256": "39d0ef9bb22dc9c898d0f6963df57d8a0dde2167a51eade78b30088bff5bf6cc"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/highlight_low.png",
+      "sha256": "85474b28715e3759ecdbccfe9c3047c8595dbbf3464684ff131395dbbd9e4bfe"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/highlight_lowest.png",
+      "sha256": "d6293ffb0df61a7e60636e4721e2dbdd24577e3723bdf7a0adf56a8798de42f4"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_cyan.png",
+      "sha256": "059b914355a6b6f7c46e53ddcece0a3c8b69a24729354deb98d73f71984088b4"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_cyan_low.png",
+      "sha256": "2479d8ab5c19458dfc439c0b54e63b717b4d09e9cc650b125586295ca1ede8ec"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_cyan_lowest.png",
+      "sha256": "b9eaa5aa110ba1e18e15d4bc98599ac495a429289a765481489e3c1749590b15"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_green.png",
+      "sha256": "dfce0c9206806a50679fa39ad1680490b758c39bbef2eb55816295563f1ea335"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_green_low.png",
+      "sha256": "6a977652aace79d6c4d70057eb5d58f1590ccfda1cb0757e1aa0c57672f1aa02"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_green_lowest.png",
+      "sha256": "beefd2a042f0ca6004612dd56e40057ee10ea7c9c13c9b4bfb8f567c216ebc21"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_neutral.png",
+      "sha256": "e5392af68bc1429eab0a627ba04e93b901c3f4009fcd7ccaf8073e9d567049d7"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_neutral_low.png",
+      "sha256": "69b46f42d430630bc9f82599a7da45ce5feb1e2984aa02153d6238ac8a157955"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_neutral_lowest.png",
+      "sha256": "f94ff94edc1f0e166adf85449cb776c8895f6af066338d206fd4381c33c8c949"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_red.png",
+      "sha256": "68e4f818448406706895e0ad6c7a557617ddd1a8f5a0f3a4060928f4a19a757d"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_red_low.png",
+      "sha256": "cc9edceb291e6a796f9344a569826e54816b765fdf366670fa6ee5c2766d41bf"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_red_lowest.png",
+      "sha256": "93421f71d5a0f553f987503b6fd2c283dc43b65d402121888aa34e55b6dbbffc"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_shadow.png",
+      "sha256": "a7172c9450882ac7cbe1f2c4c8c6a58f13af8667b2a00ab35bdf585a59f9e474"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_shadow_low.png",
+      "sha256": "0a9e7e3550075b18f8bd3c4263dfa6e6458fa027548368c85c40b2c660ea0a9c"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_shadow_lowest.png",
+      "sha256": "cf13162307c8696b9ea1f816f27e80b91cf831fb2e685c5e04f54b1cf7e79e5d"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_yellow.png",
+      "sha256": "56b0c6cff3ee018ddee9c35cd487a9d622509492f1d2827e6cfe8e3a0fcf03d4"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_yellow_low.png",
+      "sha256": "9e0df6cf6d96899135d405d7dde8f4f370276a3b6069f939cba1eb34606fc293"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/link_yellow_lowest.png",
+      "sha256": "c0b7cf34d668246a4d1375322432609b66d63aa571917d42c6889ab2024af568"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_blue.png",
+      "sha256": "9452451da9e7a3c9993a562704d5cf4133e1df6c2dc7bc481318f6c13585e0e5"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_blue_low.png",
+      "sha256": "dd9e6550989ef966a226b03ad0c819b2f806664b498562adf6615badb0035948"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_blue_lowest.png",
+      "sha256": "abb549a841fb1bbd1899569def0d9b75ed00645af8fd4d9b093bfb2fe3949f22"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_cyan.png",
+      "sha256": "bbd9df4ec2a37388e326c162c620ea7926680e50e4484cb97a05da45872b7e25"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_cyan_low.png",
+      "sha256": "176dc04e261f32ebf34fb34f1faf752770fd6b4d3e88508c3167af33fee344a8"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_cyan_lowest.png",
+      "sha256": "7e848b343cb0ad98a2e6d76cd91502bf0147073ac099e833e40ddb1985cc6d53"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_explosion1.png",
+      "sha256": "b5c52a8af0bab1ee1ee1df55ca46b209cc14c8e1da82a695b86516b4b67d24b2"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_explosion1_low.png",
+      "sha256": "e051f2fdcc78db51e3040968a1bfc3eff8cef3210ea93347cf02672f0c43e2b1"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_explosion1_lowest.png",
+      "sha256": "058b1326801d5105e2fb02cbb513153f9e3e2a24be0e17dd9642868f64732606"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_explosion2.png",
+      "sha256": "87374bfc575f67d1f301764e407d9386c0cb817a4b0bbd626d10af07c8b443d6"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_explosion2_low.png",
+      "sha256": "2517bfb79d35670926ef52c5841a32fed47f8e59e8e98ead37b98676881ab31c"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_explosion2_lowest.png",
+      "sha256": "c3aba0701044a13432ab1ab9d382c4f10c10d1a9537864c7efc73e83b2bf313e"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_explosion3.png",
+      "sha256": "83d036c56d04e24cf089a50d7713de2c32591b3278ed5b80cf3f2bd666b99e72"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_explosion3_low.png",
+      "sha256": "a9ae6596dc5ed135e0479eb93a41bdfa4844024bf8c6f03594878e7d2aafd85f"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_explosion3_lowest.png",
+      "sha256": "13096f0b4f854064a09efa2cab8437b8d2800a6f7af8d768193d6ec6c5c9650e"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_explosion4.png",
+      "sha256": "633f8d69cd7de092cf791315f4f59a39e665e0401cee70a3cf3f42c2babc2656"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_explosion4_low.png",
+      "sha256": "7c32739221ad04e4a68380e23e5d15a9d00d9fa7b36bb6b6bc1a54bb1305e6cd"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_explosion4_lowest.png",
+      "sha256": "3307a3e0bedddddc64484cd87df524e0d84aaa0c255a9f1adc67511f4433077d"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_green.png",
+      "sha256": "8afc22348f5514d62885be310a3720c223cfdaddaace4041a0fc4cb8cf5d742e"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_green_low.png",
+      "sha256": "96e7d3454028fa2f8ce7b2ce9cfa60fda92684a9687ae442e61be67605f36744"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_green_lowest.png",
+      "sha256": "9816b731e919f70d0971ae5ab49a7a53fe69846c4bfd32af8f4e7b8287ed9e95"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_line_red.png",
+      "sha256": "590a2196e72fc296e41dcc034a06a8603b107abf1f95a3c63da7911c4f2b96ae"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_line_red_low.png",
+      "sha256": "3fefff4836fb2c94f9270c9f9f5237ab3e5f26390f6c7c323e5b2a8f64315be6"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_line_red_lowest.png",
+      "sha256": "5d262dec29ef4e63296ddb3ed04764ce7ffa8c0bec7d7f6ec9fda33ca7247989"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_red.png",
+      "sha256": "4313b87751c2dfc3b523a627961fa862494f51ef06001b0ee6fde594dc6b2ccf"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_red_low.png",
+      "sha256": "59071baef2a4575e971cc3ba7851cffb9549909c46523a9df3545ef6ce05238a"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_red_lowest.png",
+      "sha256": "067dd0b66ae4626d45f8e352955af5386631b29c1de74aeae9ae073fc134b81d"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_yellow.png",
+      "sha256": "d81406e2348f80757457d7e5a0484ae62ded2ee4d33a8ca00073ca5365f706dc"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_yellow_low.png",
+      "sha256": "8142907b3fbece77e2f4c7990efaf4ac096f811a0027192f9b01b0b0a76332f9"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/p_yellow_lowest.png",
+      "sha256": "29a442786a4cfed4facb04b4e69bafea246ccdc3280513c03e4f097385bedf04"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_cyan.png",
+      "sha256": "b115b2a7257c5ba9e316aa723501235dff1e54c911471dfdb9c29117847e6354"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_cyan_low.png",
+      "sha256": "a6210f243e47e42a49d9c593162bae8e3fb3886cf61c2f66cf78361e336292e5"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_cyan_lowest.png",
+      "sha256": "d147bd1eccd02a84b96b1363d5405e687a54d2e541c1be1e60282079c1c003ca"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_green.png",
+      "sha256": "3388732d109ab73c0366b7fd872c74f0e9b0a3d16dae46c6c1f0c23711f352b1"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_green_low.png",
+      "sha256": "3e75c781ef36ae2c160feb0f545b2e1364b79d93bbbc48c13473a61793ebc1b9"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_green_lowest.png",
+      "sha256": "2188ffb78012d8409424516fef0fd9c41ff17a25cdd1009f44441785a7726097"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_neutral.png",
+      "sha256": "a79482008f4e9dea738bf851d48366ee0f13bdfe94ccde4043651faca6d442af"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_neutral_low.png",
+      "sha256": "0d7c04023c87da03133495b6b4aaff265024d4fabb5c0a5446476a5539c82a0a"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_neutral_lowest.png",
+      "sha256": "16ec536d59edaa9d0ea9a0260fa0e4e963f063c66d25f9fffe32e65cc78cc53b"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_red.png",
+      "sha256": "03fcb257a2e80305b277ec4d6452d7be485fe368f7741b32df46ac7c484f1347"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_red_low.png",
+      "sha256": "321e080ec3424b4bf01ae4dd111075e842e100c4a9ba1caf88724a42da33f556"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_red_lowest.png",
+      "sha256": "697469bab25cc6f83e16ca911a3afb990c1652d36159a7f5cb9fdaffb6c919d5"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_shadow.png",
+      "sha256": "e29f3ad635825f4431a3a58b1a13f440ea24dcc91a81aa86d051448b9f55be72"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_shadow_low.png",
+      "sha256": "788b0a79ea19d610f30d96594d5c5a6cd4afae0beb388e50414011e00ac3e3d3"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_shadow_lowest.png",
+      "sha256": "5b9b092b23a2b146b35203171e71e7dba9921b902b0a5911ca7b1e18f27242df"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_yellow.png",
+      "sha256": "eb316992649fe8062ed1c62bcfda5d44f2f4d3f21e162c9cd5216089a62b31d5"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_yellow_low.png",
+      "sha256": "e50e48a7afa36641471089454c48cc4571a2ce2929eaea4d5b7d62ceee764922"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/planet_yellow_lowest.png",
+      "sha256": "20133e0fed887c15315819bce6785cb041cd32d0f6d1970cc0566460eb9a58c9"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/selection.png",
+      "sha256": "d2e21d36d07d85bdb8f37a3c6f76b0f62986f7f175a534d8c45d1fcbf5765af5"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/selection_low.png",
+      "sha256": "7ed9b74ca511d4cbe0a6bf19c93352ae52387610b2dbae0988eb5a0e7609d51d"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/selection_lowest.png",
+      "sha256": "d75dd55a1db963d92cd0cc6d0ac54c941768460acc662a1f8d3a740c56c64ea0"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_cyan_more.png",
+      "sha256": "ee0c48e2efa04ed355fcb207858764f0160b796172bd96e369cf1e0df1f967af"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_cyan_more_low.png",
+      "sha256": "7c49c9b6cd95b038e07f36cfc3ea28611311632d0a51bc70a0718c671e7a1a3d"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_cyan_more_lowest.png",
+      "sha256": "d577b3b289022fd2a0a25f4ea0d5a377895abc24025733032330f0a5b03e9f39"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_cyan_small.png",
+      "sha256": "cff1a8c9f2c9a1b14f6b1c6e3af2ae72252c1ea0b4a1cfca10c152b39242061b"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_cyan_small_low.png",
+      "sha256": "d5eb8992514c3acae64f826b6126c3602d822850d0ad195e18753f2155378c43"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_cyan_small_lowest.png",
+      "sha256": "d6868835a96a8bad0ed7800260e529789f7cdf585e2fabd49b24d058b681d1a4"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_green_more.png",
+      "sha256": "1fb077d67f77488e10dbe77d5508c75c08811574157118a44df6b3dd9fa478bf"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_green_more_low.png",
+      "sha256": "af24c9616b3e54f4298d441066ad1b46444929356d6d58909bd61aa4275b2e03"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_green_more_lowest.png",
+      "sha256": "3caea2f9209b45fb649c0775bb393a3e58634439fbe2d5271650d432c6b733e4"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_green_small.png",
+      "sha256": "3593716749749dac41dc900f8aedb3808ca032fd4795addaa5300169d726f442"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_green_small_low.png",
+      "sha256": "19e682d53f2c709c12a5e49ad725334c707af80b96fa72ce06dedad3ea424631"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_green_small_lowest.png",
+      "sha256": "44b045aa4db2c1f4e134d7d5f7289fc8372a7bc518a37faf205a1ecd89928501"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_neutral_more.png",
+      "sha256": "30b0b85e5c88842383c9719d6ea3f1b09c796aa22bb3667c0f997bccbd0ee46d"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_neutral_more_low.png",
+      "sha256": "be16a07c889c89c62bae3deae729e9037adf34325999244b3da93c05742ee02a"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_neutral_more_lowest.png",
+      "sha256": "912a6d09ea805873466ebd852e4e47850a43071e0bfef92b46d6cf089e42b99e"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_neutral_small.png",
+      "sha256": "6ab1c598265b8c4897451eb67d84e35a66309ccdeefed5acf9cf920504973c79"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_neutral_small_low.png",
+      "sha256": "27d86eb6ed9ac3af07717795e02c9949adcd01120971ab2ce96fadf80c2ebb11"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_neutral_small_lowest.png",
+      "sha256": "fcecbc605722094e2a62112270a6e5f0201c859069d2f22889aef701c77f5dbf"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_red_more.png",
+      "sha256": "0f3313ce2e7d2553a8af39b38c6055447da6d5e9fcbbec74dcfdcfcdd95f4f42"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_red_more_low.png",
+      "sha256": "67d8dcd06a3494c024cf610d31cdc3922957e072f298c8c9cccc3d3c82294031"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_red_more_lowest.png",
+      "sha256": "9da4328f435189dc8ed881b53f3b1872d11ffffefa76e104fb4f7a2cc8704f6c"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_red_small.png",
+      "sha256": "be5b2a282c4339fefa44d3fed2630592fd0d6c4558e247548733579d45d467b4"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_red_small_low.png",
+      "sha256": "88293d091f91b9711e1c5d447936532cbdf48b28264a0277a191ba2dcbd61d89"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_red_small_lowest.png",
+      "sha256": "1c04192d21010de31547664be0581be369eea31089b2eec15726a9ecfb3b926a"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_yellow_more.png",
+      "sha256": "5c3a38c86b5a465b311699ac36e92edb9425f63322e7555fd5ab29dd737720a6"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_yellow_more_low.png",
+      "sha256": "8cb0d92b09e8de69463c1bc163bc77d179e2bf89dcb7aeaf4f311ba8ebbb5b31"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_yellow_more_lowest.png",
+      "sha256": "a643b8ae3ceca9190c8f893a9be4d69e54ea726dfa05af08c043cc1ddb175cc8"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_yellow_small.png",
+      "sha256": "8efd6de1de5d8b4f04985f15f3d37718ff913a2442d81eaa98da76c8d550d6c1"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_yellow_small_low.png",
+      "sha256": "fbc376ab7bdbcfc18e72b61673942460dd0226c6348e95ff6a636ea2fc07dc4d"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/shield_yellow_small_lowest.png",
+      "sha256": "a27b47d9bd0672beb3ef12609927ac9aeac4b45b70f989871564b28cb993027f"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/type_defensive.png",
+      "sha256": "18988adbb04aca1e3645cb72e8ef4e38a6d769ff621d64d5fbfc66754d3c062d"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/type_defensive_low.png",
+      "sha256": "68e46003087a2229fde5c9c0eb8fe7b53e0151127c622d76ef10a9a4be5f2796"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/type_defensive_lowest.png",
+      "sha256": "61b2aa13b730c33e1d15820250bf849bc354018e35b2e3800a97808a30cb835c"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/type_economic.png",
+      "sha256": "c69c1acdbf707ee4f7d0108d76018a84fb830cfe7dec9b688a8acc19251d7eb8"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/type_economic_low.png",
+      "sha256": "18cd66c664fb3585a24a9c117368492a5be6fecfa2e83c0dc5d45bf497d3000c"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/type_economic_lowest.png",
+      "sha256": "e5dcbadc1ac4af644bc1c7d2090115b109a045823d508eda305f179f7b340453"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/type_empty.png",
+      "sha256": "f655acd0eda4692b268dca18b1e545a885a60bdc8acbd0ce82db675ae4c94272"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/type_empty_low.png",
+      "sha256": "c3087446afe87c5da27035fd77db71f3d9911966b3cd33a452f80d731fbf8159"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/type_empty_lowest.png",
+      "sha256": "c3087446afe87c5da27035fd77db71f3d9911966b3cd33a452f80d731fbf8159"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/unit_cyan.png",
+      "sha256": "3b781b8640f63d6af1fbb1a8a2e4f326c5bbeb6bcf37c0337c39dfe21a720840"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/unit_cyan_low.png",
+      "sha256": "28b56cb5e437c24745e79b05b7cf51dc09e6dcb668188fd490bbd581125cef29"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/unit_cyan_lowest.png",
+      "sha256": "362514431da0e98a2a40003776387e4bfcdedc59b7b0ae008f275b21f6507431"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/unit_green.png",
+      "sha256": "c5a4f471e48e66891c895d222df4906822e7201e2d9b4b83aa839b30ec333048"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/unit_green_low.png",
+      "sha256": "6384ddd054dbf56cc2be18140c7a650104a180a26d9a68adf5eea5c683dbc77c"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/unit_green_lowest.png",
+      "sha256": "6c49e705eafa8b7e50324cb22d0b08ec3c6999f9f2da855c8f6ee89bacd478ef"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/unit_red.png",
+      "sha256": "e13755b2aa0a0be36ca1d3005a2c2202419150be5152a178dae6cb4bffa89fea"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/unit_red_low.png",
+      "sha256": "00a7ccc9a7e6f50609c3bb057a0a6ae178268471fcf165a607b9926b4a173fdb"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/unit_red_lowest.png",
+      "sha256": "d3f882f996893de34a113a3a380d91487f3916fe79b7b2d034024bdf3481afe7"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/unit_yellow.png",
+      "sha256": "835a9de9fa205d09c67520fc26e47facd3a7b9dc8f48714c15b1178695fbc5d3"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/unit_yellow_low.png",
+      "sha256": "8a33950b23ea215ba8749a2f7162a0453a2486f368a9d537c1adbf1432a8ad16"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/unit_yellow_lowest.png",
+      "sha256": "1f5b379f129bea884e1b50b999ebb9e02f98d7c43165350071aeb9fefed4f5b3"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/v_pixel.png",
+      "sha256": "96077bebae786b7356f989a56dbb26429b4c62e9435496e50b799f9ea595d44e"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/v_pixel_low.png",
+      "sha256": "0310f1963bfcbb4b32fb51d5d1e0fc96acde0ea5f05951665a183855be80014c"
+    },
+    {
+      "path": "assets/game/colorblind_atlas/v_pixel_lowest.png",
+      "sha256": "0310f1963bfcbb4b32fb51d5d1e0fc96acde0ea5f05951665a183855be80014c"
+    },
+    {
+      "path": "assets/game/egg/bck.png",
+      "sha256": "b3de39afb8b1c7abce552f7986ef643398aba212a932e0efefb552b572b6f55c"
+    },
+    {
+      "path": "assets/game/egg/c1.png",
+      "sha256": "4301f57ee4eff8108dbb41c08ef1a4304fb83f17866e9658fc3fbed72f256aaf"
+    },
+    {
+      "path": "assets/game/egg/c2.png",
+      "sha256": "a056dee5ede9b131bfd583295aebd329f38e90b20e719c99d19a616bd74cf514"
+    },
+    {
+      "path": "assets/game/egg/c3.png",
+      "sha256": "51cba86deadd6206f7b61c2c16afd87b55a076df2485897cb40697789bbcf83b"
+    },
+    {
+      "path": "assets/game/egg/c4.png",
+      "sha256": "e7966510ff2c49660ab070cada0102a90ac7b35b2c5fb3786c59f3028c85e6c5"
+    },
+    {
+      "path": "assets/game/egg/c5.png",
+      "sha256": "d5b14920a7875df03c6431e9783a5c038367960f035f7fd082a2bfdb252846de"
+    },
+    {
+      "path": "assets/game/egg/def.png",
+      "sha256": "e52fadc9ec10d3c8089eeb24f874e7203f1a12c7c4d2fe72a5f91af399ca0823"
+    },
+    {
+      "path": "assets/game/fillers/filler_cyan.png",
+      "sha256": "30695daa6a8d1267fcee703eae4b8a64f925a60aa56ace8a9b7ba6edf76ac6a9"
+    },
+    {
+      "path": "assets/game/fillers/filler_green.png",
+      "sha256": "98951ee0df5b8f871199c3f5bac0089aff906d6dcacb55b4a2c9ad438adacd41"
+    },
+    {
+      "path": "assets/game/fillers/filler_red.png",
+      "sha256": "12708ef246def92f365d1195c3b2bf5e32485ab10b0eed10ee8d6cbe7dd69bf2"
+    },
+    {
+      "path": "assets/game/fillers/filler_yellow.png",
+      "sha256": "9d17350246c6d7bee5e134d569d6d80f7f8b1a6dc0b2a2a688a6d7f6d43f1b82"
+    },
+    {
+      "path": "assets/game/speed/fast_forward.png",
+      "sha256": "24a6c75377d411bec422ef1afef3811c0d67eb8a6155f06912c81ce29fc99941"
+    },
+    {
+      "path": "assets/game/speed/pause.png",
+      "sha256": "ee8b7a2bc05fb2ebd4af60716a8e6e9ead0e0da71980da5d67598f642ecdd810"
+    },
+    {
+      "path": "assets/game/speed/play.png",
+      "sha256": "2fbbf0acc9cbb495172c24d72fbf5b342062358d44de76896df75c98faa34c24"
+    },
+    {
+      "path": "assets/game/stuff/fog.png",
+      "sha256": "967f09eb301e48facf4e6761a07722bec1b5292e23bdda0ed31b4678e1358273"
+    },
+    {
+      "path": "assets/game/stuff/gray_circle.png",
+      "sha256": "c67b4f02ad9909ab58aed28c1484ce259d46612cade5afb981121b94ddf7b148"
+    },
+    {
+      "path": "assets/game/stuff/light_circle.png",
+      "sha256": "a7a17649f40163fb63dcd2455a7842a8bede81900f37fb7e635d260079862955"
+    },
+    {
+      "path": "assets/game/stuff/light_circle_glow.png",
+      "sha256": "5ffd7e554a2d25e9802ad128ba389b548454bfe9bdcf620eee5dd1aa2cf4e723"
+    },
+    {
+      "path": "assets/game/stuff/light_icon.png",
+      "sha256": "860297d1ffd43bf63641a5b4372f859901073ffe3b3102b65a197872ea52775e"
+    },
+    {
+      "path": "assets/game/stuff/x.png",
+      "sha256": "06d2d537acc844dea1dece9e4d4ccf11b83b6019d5790c6ada2ebcc8bc2516ce"
+    },
+    {
+      "path": "assets/languages.xml",
+      "sha256": "954f49de455703a061370a5939e92248f37db0a696fbc31c49bae60a80f51ad7"
+    },
+    {
+      "path": "assets/menu/back_icon.png",
+      "sha256": "9eeee54cde3d6065b17bde06072eebc44e999de05c7a8b335c18e6a15049d497"
+    },
+    {
+      "path": "assets/menu/back_simple.png",
+      "sha256": "d912cbedf383db66f5c2ac4e2d211c3f7946dfb9fde1724133c8eefe5a779ee4"
+    },
+    {
+      "path": "assets/menu/calendar/aqua.png",
+      "sha256": "0f79122c65b3cf78a2384cfa57618910ccd45516ba56a4deeef5b471865a805e"
+    },
+    {
+      "path": "assets/menu/calendar/blue.png",
+      "sha256": "9eca5de6b4a3cb5bd5b96d7a9fb9704fd83a11348119fc16c6dd40278a21121c"
+    },
+    {
+      "path": "assets/menu/calendar/brown.png",
+      "sha256": "1e1653680879d1a64932f952bf231b0b2790d5c0e221d4310e45d574e4cc48bd"
+    },
+    {
+      "path": "assets/menu/calendar/calendar_locked.png",
+      "sha256": "dee3e8e09b7079ec6c4ba4c5c74ba93f58b397c70fd836011b6222763b6dea7f"
+    },
+    {
+      "path": "assets/menu/calendar/completed.png",
+      "sha256": "2eb4143c88aafd1bf49322c8f69399e7bed7ba265e4010fb3670ae7ff666544e"
+    },
+    {
+      "path": "assets/menu/calendar/cyan.png",
+      "sha256": "049465bf1507558e17d985cbd679a55c86d7f7624972ae5569230ded665fac5d"
+    },
+    {
+      "path": "assets/menu/calendar/gray.png",
+      "sha256": "044d0a186fc27fc0b49f1d9c9ea75e88d5ede44f6486e9c1b6f656bcba395bfd"
+    },
+    {
+      "path": "assets/menu/calendar/green.png",
+      "sha256": "50e52ea14df3711c4dd66570136c87d105a8b7698525703d65fafeb82434aebe"
+    },
+    {
+      "path": "assets/menu/calendar/purple.png",
+      "sha256": "5412539cabb227d7c9e53101e68ccbbc350b325b19564570e1804c468490d062"
+    },
+    {
+      "path": "assets/menu/calendar/red.png",
+      "sha256": "3af4696a94dfa1315ac99ad39c0c47722040481e12879743b1735cca79b7b5cb"
+    },
+    {
+      "path": "assets/menu/calendar/yellow.png",
+      "sha256": "1a0be7f2ebcce0f9f7b0cd6eec35577477e3371d4b027091089ba9ea976f1ea3"
+    },
+    {
+      "path": "assets/menu/campaign/campaign_completed.png",
+      "sha256": "c80f9fc9469de0113626c6879ebfa85a852b1d579ba6e0465f5daa388ab6ea92"
+    },
+    {
+      "path": "assets/menu/campaign/campaign_unknown.png",
+      "sha256": "ba4176e03fe788c07d41d426aab9ed02159522d5dacde095fbdedad13426df5c"
+    },
+    {
+      "path": "assets/menu/campaign/campaign_unlocked.png",
+      "sha256": "c64bd2587ad9079b446ec5ce0c455d8db92425c275ecd3c4d6f03703868ae2d9"
+    },
+    {
+      "path": "assets/menu/campaign/separator.png",
+      "sha256": "aa34cf421a09b47053f46bef73c3550b59fc2938a51627ac76fe7cb860d9afbe"
+    },
+    {
+      "path": "assets/menu/check_button/chk_active.png",
+      "sha256": "9c015a625b066c52b965ab9d3718af8c2ef272d6bb678e7291f0dbf83aeb4bef"
+    },
+    {
+      "path": "assets/menu/check_button/chk_bck.png",
+      "sha256": "293c3e2e60a0310b36a09c6cffae50b0c9a5fb0e3895aa8a7ec8a51d3b0f8412"
+    },
+    {
+      "path": "assets/menu/close.png",
+      "sha256": "ef64c6d146037abd50d6b123a762c882d96d3b130bd284f5755b01ac003248ad"
+    },
+    {
+      "path": "assets/menu/def_background.png",
+      "sha256": "ba0e9cac55b0fc4cb5f3af9001ca799eaa5349d99b43eee3c07f55469a507271"
+    },
+    {
+      "path": "assets/menu/delete_icon.png",
+      "sha256": "ef64c6d146037abd50d6b123a762c882d96d3b130bd284f5755b01ac003248ad"
+    },
+    {
+      "path": "assets/menu/editor/apply_icon.png",
+      "sha256": "0dbc9366ee623ab83cfb6bb45e4e92bbb211784d77c17b16aea8be2f534192ea"
+    },
+    {
+      "path": "assets/menu/editor/background.png",
+      "sha256": "a2809ae6a0f8030e4619cad9d6929c949e42722408cc01fa4e64976ae9933078"
+    },
+    {
+      "path": "assets/menu/editor/open_icon.png",
+      "sha256": "6772e5808469ef3b7c5541ae9213a63f2ba0722f8bb4c8b50285be811ef4de61"
+    },
+    {
+      "path": "assets/menu/editor/plus_icon.png",
+      "sha256": "3fabcbf8188b039cc36fb1bac8a8a2323cafc0be9a2491f4b009794bfd02279d"
+    },
+    {
+      "path": "assets/menu/editor/remove_icon.png",
+      "sha256": "5ff20f1e0509938c125c930f950382f57e8c06273863705d88b0744b087a362b"
+    },
+    {
+      "path": "assets/menu/forefinger/effect.png",
+      "sha256": "3102434fa42607ac57a47b56f83cb97f3795843a8c5e62d92464aeb3917bd0e5"
+    },
+    {
+      "path": "assets/menu/forefinger/forefinger.png",
+      "sha256": "32b961a81e2708e97466eac225b0e14f0e41d18961e4ffa757517cdeece4fe65"
+    },
+    {
+      "path": "assets/menu/forefinger/forefinger_blackout.png",
+      "sha256": "27d005e18b2f8aa76a5e22cfbc83223ebd265ab3e866576805c223619a447420"
+    },
+    {
+      "path": "assets/menu/forefinger/selection.png",
+      "sha256": "887b61ab384872466be21445a5ce060ee05294bd8c0db83af92c26a73edca862"
+    },
+    {
+      "path": "assets/menu/forward_icon.png",
+      "sha256": "5fdfd9f74d2ee5d6b44c21279d7e49dfaa1e3f5e375cac953f223e03ea39c229"
+    },
+    {
+      "path": "assets/menu/gameplay/b_defensive.png",
+      "sha256": "58b9569fa8d5764cf271bba0f9b15fa64b06b50c639813ff1f84f91c9b8e92ad"
+    },
+    {
+      "path": "assets/menu/gameplay/b_economic.png",
+      "sha256": "19b7783ba1af6ef5d949852b06a938fb9c72a10b7c63bfb620319ca0e6b915ea"
+    },
+    {
+      "path": "assets/menu/gameplay/b_halved_mode.png",
+      "sha256": "6953aff87b5995e2b92c375b5be5673bdd6003283db34dd30b05bce905ecf0dd"
+    },
+    {
+      "path": "assets/menu/gameplay/fast_forward_icon.png",
+      "sha256": "92b19b0a17aad2439c3ee6edcb6601be7bec45e2716fde217f7048b2dba19c31"
+    },
+    {
+      "path": "assets/menu/gameplay/info_icon.png",
+      "sha256": "37e795a0aeba23914e861338c6ee812ab240f2561c8e2fa55d93c81582e67169"
+    },
+    {
+      "path": "assets/menu/gameplay/lock_camera.png",
+      "sha256": "1791f776bb7fd0f269b2bcb394189f55c69a369180a1b3b0a772a698b3d83d46"
+    },
+    {
+      "path": "assets/menu/gameplay/play_icon.png",
+      "sha256": "89beacb4a85bb8ce0f48a8bd678c0b0e999e5ec588e994b81f5fe27ddaedf958"
+    },
+    {
+      "path": "assets/menu/gameplay/price.png",
+      "sha256": "8f022c39fb09ce05d76522b680e516f43dd3809f10a63e7d67ee1ce728a7fdae"
+    },
+    {
+      "path": "assets/menu/gameplay/remove_icon.png",
+      "sha256": "5ff20f1e0509938c125c930f950382f57e8c06273863705d88b0744b087a362b"
+    },
+    {
+      "path": "assets/menu/gameplay/tactical_pause_icon.png",
+      "sha256": "8d8f1a40a0e475ea8ea1a93b562e35b2d8b12403cb796cd7559d306dd46868a8"
+    },
+    {
+      "path": "assets/menu/gameplay/unlock_camera.png",
+      "sha256": "74c4f9545de7ba89c47a7df8baed3b78c0a154b165ddebf86cb82277262f5d63"
+    },
+    {
+      "path": "assets/menu/gameplay/velocity_frame.png",
+      "sha256": "e7030f4e3c387a3488db1daf051bba70fe1d8e2633e169fc7f73e530ad73e6be"
+    },
+    {
+      "path": "assets/menu/gameplay/velocity_line.png",
+      "sha256": "64b81217348e833b5c0ba0ba067aa34f79d1bdd2f83c0ad727352bc3e1f7b1a4"
+    },
+    {
+      "path": "assets/menu/green_selection.png",
+      "sha256": "8fd307cea76b2d49487a95542691c846da6a03a79e2d69e60dd54ac26b7fe15b"
+    },
+    {
+      "path": "assets/menu/ground/ground0.png",
+      "sha256": "830004f230f7ae61b056de1266f705d407dfebb3283c605fc554fa4cd5a90098"
+    },
+    {
+      "path": "assets/menu/ground/ground1.png",
+      "sha256": "7f5c8d83e6be180f733a2be7a6ca0b2232d008c94d2e457b5417b924de0d9ff8"
+    },
+    {
+      "path": "assets/menu/ground/ground2.png",
+      "sha256": "3376ed9d93dc02ff2ed3077621853af950bc2eb5b797838c813a1ff028b9b29f"
+    },
+    {
+      "path": "assets/menu/ground/ground3.png",
+      "sha256": "1058bfbfb6c6d0bd2f8113dadafb591ccc9131557eca481989baf374b28443b9"
+    },
+    {
+      "path": "assets/menu/ground/ground4.png",
+      "sha256": "c70f6088b9759434495ade79a7b3ffd3ea434bda51aa80dfb3f57fcffdbcfb3a"
+    },
+    {
+      "path": "assets/menu/ground/ground5.png",
+      "sha256": "11b45c833be11f9ae3b5ea08f86ba9ad5e8ac423565fded152b5278f9a8196b7"
+    },
+    {
+      "path": "assets/menu/ground/ground6.png",
+      "sha256": "0a7754f2897bbec570f08e37e9a709e80a055a7d48ee9a289dd38c16d6da1eb1"
+    },
+    {
+      "path": "assets/menu/ground/particle1.png",
+      "sha256": "031981f26d8ae152a141f515e3a11d6d60a50971eae12ff47d6d9e8217e086ca"
+    },
+    {
+      "path": "assets/menu/ground/particle2.png",
+      "sha256": "4dbb8d0f49db59995ba7f784ca783821c7ecf7334ecd543ee3ece8a29dfed86d"
+    },
+    {
+      "path": "assets/menu/info_icon.png",
+      "sha256": "345d1944aef10d2654ca6a489c84914807a48944bf6431ea3bc72546a29f2064"
+    },
+    {
+      "path": "assets/menu/keyboard/backspace_icon.png",
+      "sha256": "569a6fe170aca13e63bf381a2ecdd4433a409624d741e4df609761bd7f833167"
+    },
+    {
+      "path": "assets/menu/keyboard/bck_pixel.png",
+      "sha256": "98800d8c1a4e904dbea4e4fba132e5b8644b975dfa2661780459b68ce9cc77e2"
+    },
+    {
+      "path": "assets/menu/keyboard/space_icon.png",
+      "sha256": "a965bcc01ff170053eb8fc355afb7176acee7e4b1d9810c2f19015c53c446d84"
+    },
+    {
+      "path": "assets/menu/loading/background.png",
+      "sha256": "7dbe6e77958ee05f4b1de517cbd6208d567f10628abafe21abe8fe5e778992e5"
+    },
+    {
+      "path": "assets/menu/loading/gray.png",
+      "sha256": "c138f620b569afc50327a56562523921c3cf02f29e34222a74bc20b8318914f0"
+    },
+    {
+      "path": "assets/menu/loading/progress.png",
+      "sha256": "ae5ae4263eefd69eb9d194bf409fabd6ec8dac086c14eb4b6a29a74b06d222bc"
+    },
+    {
+      "path": "assets/menu/main_menu/black_line.png",
+      "sha256": "66ec1090efe78e059a49a53779d36a7eacca6724d692aa0427efb52d52b75946"
+    },
+    {
+      "path": "assets/menu/main_menu/mm_gear.png",
+      "sha256": "4d621054a87a2b6254202586939d950ccbf625b3f8a13e65d6099a2ae5656ba6"
+    },
+    {
+      "path": "assets/menu/main_menu/mm_info_icon.png",
+      "sha256": "9d2dee7bb2d1e66c122c7322331dfd819fa36f41ffc268593e4c51a2579dd31d"
+    },
+    {
+      "path": "assets/menu/main_menu/mm_logo.png",
+      "sha256": "3233ca534099efe0956565e08bf7174e393b6c42a8a2de432f9e7b53415a1c5f"
+    },
+    {
+      "path": "assets/menu/main_menu/play_button.png",
+      "sha256": "dc7981c63e7a7c233b5871da7e98e9667f3b036a7784aef744c8560895f8fdd4"
+    },
+    {
+      "path": "assets/menu/main_menu/quit_icon.png",
+      "sha256": "5bd1bf20172b6260ff46e62554e6b31181d1ec451b882c2ec0f50e22a5d4c5e6"
+    },
+    {
+      "path": "assets/menu/main_menu/settings_icon.png",
+      "sha256": "96a838609a3faf893b8008d22b260b8ea9b72df2d1a7024f97a96a6542f214be"
+    },
+    {
+      "path": "assets/menu/pause_icon.png",
+      "sha256": "611d38bc6c858dc73839b3f3df2b9a0005269a4a2bdaab977192801ae33e2d01"
+    },
+    {
+      "path": "assets/menu/round_border/border_corner.png",
+      "sha256": "e01ebd2f0537685dd93d113bd4f272228baed91d26b6d546822297572e4f0df2"
+    },
+    {
+      "path": "assets/menu/round_border/border_side.png",
+      "sha256": "f674a122e96fb58daffe6ebed757479c387828c124313ba84bfdbdca783ae6a8"
+    },
+    {
+      "path": "assets/menu/round_shape/bg0.png",
+      "sha256": "11c883581a1747e34fa0415dbbbd4b00584c1dbfbc10b07079bb7771a1481b21"
+    },
+    {
+      "path": "assets/menu/round_shape/bg0_corner.png",
+      "sha256": "0c986335e502e662adb9c13506c152448a6270aea8427e805eed8b2d5338fc39"
+    },
+    {
+      "path": "assets/menu/round_shape/bg1.png",
+      "sha256": "ef96055cb921fc65411db6a3bb5ce3514a17122accf121d7ebd9089be67b0ef6"
+    },
+    {
+      "path": "assets/menu/round_shape/bg1_corner.png",
+      "sha256": "2413e3841e4eff3534fb3025a58cd6dcb8492fa7616c087fe33b0fe09b393d5d"
+    },
+    {
+      "path": "assets/menu/round_shape/bg2.png",
+      "sha256": "7e09be9e239ce62519d00e28b812eeaf8dc6f4e45f8f161d5b1d63bd17cc2d91"
+    },
+    {
+      "path": "assets/menu/round_shape/bg2_corner.png",
+      "sha256": "bfd6812f6710cddc39b981fcc72fedd2f88d458931d46c9495ce11aa03588ff7"
+    },
+    {
+      "path": "assets/menu/round_shape/bg3.png",
+      "sha256": "a0eae0fb0d4e134ad85699084dd8e6292a3bb6982aab99b1021744ae9564cda7"
+    },
+    {
+      "path": "assets/menu/round_shape/bg3_corner.png",
+      "sha256": "1b4f8fa3dd72c016056a382114da71cdc230a85e614a53e3b709b42057498b5a"
+    },
+    {
+      "path": "assets/menu/round_shape/bg4.png",
+      "sha256": "e9df5d165ce8cdaa2986950a6c362b23fd9abc68ea4b6fa718a495c26a7a09e6"
+    },
+    {
+      "path": "assets/menu/round_shape/bg4_corner.png",
+      "sha256": "28fd55da4c701d78d8862e55736362b826094736db00afbf625a048e7a6566f8"
+    },
+    {
+      "path": "assets/menu/round_shape/bg5.png",
+      "sha256": "afc20d3fa2921cb931607cd4b845150d213954abbbafe79acd058d54dc8eb434"
+    },
+    {
+      "path": "assets/menu/round_shape/bg5_corner.png",
+      "sha256": "eba5299ee32bb1fb63e9986dbc76922c63cebaada6bf11c35305c4e38abec288"
+    },
+    {
+      "path": "assets/menu/round_shape/black.png",
+      "sha256": "ec7a7186778ab6ecdaec760b362889faac53c54c4b270ce8d7bb691c641866c0"
+    },
+    {
+      "path": "assets/menu/round_shape/black_corner.png",
+      "sha256": "333a37f972ffa8833493560be61d60b34f12aacafd5d8c2f37fbb1d089ba3f43"
+    },
+    {
+      "path": "assets/menu/round_shape/gray.png",
+      "sha256": "d28f72a2ae4df9846753f0e449ac2b8c1820e283599b338614738e2aa1a10444"
+    },
+    {
+      "path": "assets/menu/round_shape/gray_corner.png",
+      "sha256": "3211701f851c818bc635630d99565475f9d9eec2a332191191e6a6413d393dd8"
+    },
+    {
+      "path": "assets/menu/selection.png",
+      "sha256": "0a9851bb16068607b39c02c1668c141004cf68d68bdacfdbb24eb07de4ed628d"
+    },
+    {
+      "path": "assets/menu/selection/question_mark.png",
+      "sha256": "3309ab2f47f8f11dd907159acf84693c3afae2a2fff20d9f42f40b2dee6c92ac"
+    },
+    {
+      "path": "assets/menu/shadow.png",
+      "sha256": "91bf165b01fd6e2e8eb829360d5fbbdd93c8cd7108a03e4d84d4f4f5fd50e5c7"
+    },
+    {
+      "path": "assets/menu/slider/black_circle.png",
+      "sha256": "0bf5eeca75461e891b252b23e360da0153fa09a2eabf28bdd0c48818dda4b1e3"
+    },
+    {
+      "path": "assets/menu/slider/untouchable_slider_value.png",
+      "sha256": "d2e2e347477b66a19a045e1a8fa64c05b2040e811f4172b77749a60402930d8c"
+    },
+    {
+      "path": "assets/menu/slider/w_build.png",
+      "sha256": "dcd5ca91c9305dec0a03ae4bb6dc5a07f0be3bc6aaab7993766dcb428ad2d9b7"
+    },
+    {
+      "path": "assets/menu/slider/w_carry.png",
+      "sha256": "dc1665658cd440bfaac1daab49f657b85881ce2eab681118a084c0fa905d611f"
+    },
+    {
+      "path": "assets/menu/slider/w_defense.png",
+      "sha256": "9dfff93d1d7d5be94efd40e626d19f7cb5d5e561085310b3e2bd7f9ad337c93c"
+    },
+    {
+      "path": "assets/menu/slider/w_idle.png",
+      "sha256": "031981f26d8ae152a141f515e3a11d6d60a50971eae12ff47d6d9e8217e086ca"
+    },
+    {
+      "path": "assets/menu/slider/w_production.png",
+      "sha256": "1f0c8fb968c7a800869ab8495553349e633bef953359f860ee26f199db0a47fd"
+    },
+    {
+      "path": "assets/menu/splash.png",
+      "sha256": "e88f9bc3a584874f179d00238aec17aa8ba8d56d5adec395d5b01b3bd524b4ba"
+    },
+    {
+      "path": "assets/menu/v_icon.png",
+      "sha256": "0b6bbf7a7038a83821793e7d69945a9eb1d2540b14a6d8fc0495ffed6aefe93e"
+    },
+    {
+      "path": "assets/pixels/black.png",
+      "sha256": "bfa2c4afb33401b6cd8d77b0a672b960ec542907b5db32c7b6b99b2393165670"
+    },
+    {
+      "path": "assets/pixels/blue.png",
+      "sha256": "2f5f4fed46a06ac2ca40deffe98d92bd1783c5e5cbf069d028badbf53b92d5af"
+    },
+    {
+      "path": "assets/pixels/button.png",
+      "sha256": "af70c00171f5143022a60d00a608b02e04ccf7edb42bf9275882c40a4511432b"
+    },
+    {
+      "path": "assets/pixels/dark.png",
+      "sha256": "4fc893e235d2e2c7c67923f4647cded238592402b334c523b622dd2f84137c94"
+    },
+    {
+      "path": "assets/pixels/empty.png",
+      "sha256": "366208d1448f314a3e47ece89ef651d64d6df53031d67f13804361557dba455c"
+    },
+    {
+      "path": "assets/pixels/gray.png",
+      "sha256": "1a9f2ebb6c84f5b706ea170ea06ffce9836ba3906b22718af6fa91b249744403"
+    },
+    {
+      "path": "assets/pixels/green.png",
+      "sha256": "4be2784568a3663d8fcf5bb76b55a7f9c742c49d358ffaa4cead61c23c8f3536"
+    },
+    {
+      "path": "assets/pixels/level_selector_background.png",
+      "sha256": "e4ee130a2db49277d73c9e410e340809a8e29cd0320385528cb9cfe619b76352"
+    },
+    {
+      "path": "assets/pixels/neutral.png",
+      "sha256": "3278a15b67a238ea1072e505b94391881d2b85bea9337150ec709de7ee38cec5"
+    },
+    {
+      "path": "assets/pixels/red.png",
+      "sha256": "e5b5acc33bd0dcca0c69836025d9e48b737604d7b708f73c54c2a434451cd250"
+    },
+    {
+      "path": "assets/pixels/save_screen_top_background.png",
+      "sha256": "802f0dc13d5b533af1ba35b7c9f3a20c4a8e837e945930d82feeab55c45bce78"
+    },
+    {
+      "path": "assets/pixels/save_slot_bg.png",
+      "sha256": "a15293862b5cff5ddba37478129d61342f3fcd4a7b18a373eae4dbd893eeb423"
+    },
+    {
+      "path": "assets/pixels/scroller_bg1.png",
+      "sha256": "5a850eeadb31155f90d55fa00d0bf9cb377545c9594a594764594e31fca278a6"
+    },
+    {
+      "path": "assets/pixels/scroller_bg2.png",
+      "sha256": "6c324eaf6fe83dfe9167b73cebc442ef7073c91a62897e54c280cfd8a38eabaf"
+    },
+    {
+      "path": "assets/pixels/slider_accent.png",
+      "sha256": "ecfc582f0142eb3596b188b1002cb41231b027955e57d2a87b3af29991af08cb"
+    },
+    {
+      "path": "assets/pixels/translucent.png",
+      "sha256": "92b46ea38f943cd0d887fd2c08ac4747c666f4ac960c292fab74bf68c9b31f3b"
+    },
+    {
+      "path": "assets/pixels/white.png",
+      "sha256": "603506996b902b8797cbc1dc4bf350440caad5c59feb97c39344fd7648403b5d"
+    },
+    {
+      "path": "assets/sound/.DS_Store",
+      "sha256": "d65165279105ca6773180500688df4bdc69a2c7b771752f0a46ef120b7fd8ec3"
+    },
+    {
+      "path": "assets/sound/back.mp3",
+      "sha256": "d0fb01635ad79e856af6e96251461176182775d390a9572f84ff52fcba6761ac"
+    },
+    {
+      "path": "assets/sound/back.ogg",
+      "sha256": "c4417db5ba239478ebd8e02ca6df8a9c5417c00de2de16a1081857971fc9d6c3"
+    },
+    {
+      "path": "assets/sound/button.mp3",
+      "sha256": "b4a36b9356ab19b137cfcdf1179f6eb4d3e64633e5bfcf829689f7cd852c3346"
+    },
+    {
+      "path": "assets/sound/button.ogg",
+      "sha256": "7cba78242e4917caedacd2bfcbceafb9bf48b67d084fbd291ced688fc7005005"
+    },
+    {
+      "path": "assets/sound/fall1.mp3",
+      "sha256": "c5a217086b85586ffa5b64f73917805497e78aa4d51f5482066de2a6cad0924b"
+    },
+    {
+      "path": "assets/sound/fall1.ogg",
+      "sha256": "58507c386fa6df1e1ae0d56edc51a1804bb0a58a2961147228dbd21172de925c"
+    },
+    {
+      "path": "assets/sound/kb_press.mp3",
+      "sha256": "b65c5f981ff69f402f8bf842bb3401384ae1fe390d863140d743a5cfee834711"
+    },
+    {
+      "path": "assets/sound/kb_press.ogg",
+      "sha256": "18a731a38134102c951cf6d11cb98e04ab903a71cc214dc82d95c28f1283f6da"
+    },
+    {
+      "path": "assets/sound/score.mp3",
+      "sha256": "86a7bdf081ba8c08e66f8eaaeba05a930ad7e34c0389f0a6583565713f537f63"
+    },
+    {
+      "path": "assets/sound/score.ogg",
+      "sha256": "e32e84d90c1bd5d38bb5fe7768aa03a69ede8632110b214bf2ca99b632f9ff51"
+    },
+    {
+      "path": "assets/sound/test_ended.mp3",
+      "sha256": "58e248cba330c1bc84ffeab30ed57bd8c7f6141b509653f0d1d9d288d72e7f0c"
+    },
+    {
+      "path": "assets/sound/test_ended.ogg",
+      "sha256": "f7b3d93a0cecdd20aba778ea5ea479cfaac425c1871ca98f225e4567af6f1025"
+    },
+    {
+      "path": "build.gradle",
+      "sha256": "8dde1db94ef1be727805ff41fe0c1758cdd30a9cef2d83dc6adab4a8e72417ce"
+    },
+    {
+      "path": "core/build.gradle",
+      "sha256": "d178d1fabd7db01cca0aea5b780e49516a83983875ac1b4acc841e130e763104"
+    },
+    {
+      "path": "lwjgl3/build.gradle",
+      "sha256": "3f8c616c0737ee4a3bc4101628c8c667246ab4d2f1cbb88862546b20f0f45be5"
+    },
+    {
+      "path": "lwjgl3/src/main/java/yio/tro/opacha/lwjgl3/Lwjgl3Launcher.java",
+      "sha256": "ec8a5a8e81ca041df7feab874e3e3aa780b1f936baf7e88421433e8b62ccf38e"
+    },
+    {
+      "path": "settings.gradle",
+      "sha256": "e837151ab61d8144b997e5d9e77834336688e101f70cf9f2c7796a335cb92eec"
+    },
+    {
+      "path": "src/.DS_Store",
+      "sha256": "b7744ab28cba7be265d8ff99eb44a48197250d22ab3f9d61fea8c5cb2d3bde8c"
+    },
+    {
+      "path": "src/yio/.DS_Store",
+      "sha256": "c9944851abd6ea429434d7a9c3401b5008e4dd5e57d78d58882cefe20eb6d08e"
+    },
+    {
+      "path": "src/yio/tro/.DS_Store",
+      "sha256": "732dd4f0eb7129df76982a07444b6ec4422cb963172b9ac615d8cbbd99d30926"
+    },
+    {
+      "path": "src/yio/tro/opacha/AdaptiveDifficultyManager.java",
+      "sha256": "df17b308d52a13c256a28bdf3e31da8c05ed2a743e3aab8f69ae661fe7809194"
+    },
+    {
+      "path": "src/yio/tro/opacha/FastXorRandomYio.java",
+      "sha256": "78eee801d34ce8d362f711a2bc97128dce199bf96933f7bf880340c3750ec670"
+    },
+    {
+      "path": "src/yio/tro/opacha/Fonts.java",
+      "sha256": "5f51c8ad086191ad93f514bedc00db72ec4b3bb54f755e447cb9199840cb52b8"
+    },
+    {
+      "path": "src/yio/tro/opacha/MovableController.java",
+      "sha256": "bd3a656442a242a8e32ab79f5a2736df09603759e5a264126010654e701adb66"
+    },
+    {
+      "path": "src/yio/tro/opacha/MovableYio.java",
+      "sha256": "7e1adbf71ac3e562fdeeddb30267d83b605e85b4f0d916e35330e85eebfabf3e"
+    },
+    {
+      "path": "src/yio/tro/opacha/OnKeyReactions.java",
+      "sha256": "d30796a5ecb9c01012191a166b43fde064d014a99e61e03e416302524176903d"
+    },
+    {
+      "path": "src/yio/tro/opacha/OneTimeInfo.java",
+      "sha256": "5afc12586ee97ff7f22c298585073fec4865220b18ccb5c0d3399a4596600a6d"
+    },
+    {
+      "path": "src/yio/tro/opacha/PlatformType.java",
+      "sha256": "601243afbf54eedd1864327e74082301dd67996c914b2e14881bc3b95ed3bd37"
+    },
+    {
+      "path": "src/yio/tro/opacha/RefreshRateDetector.java",
+      "sha256": "7d21fbcbba22c46c59fe9c91e47dff3b01319c6d5fc8d0477da18fa3a53a4ee6"
+    },
+    {
+      "path": "src/yio/tro/opacha/SettingsManager.java",
+      "sha256": "e21d5a0325574f91c91a06d779a2782920e69de0f555c8b1ac5229aa914f9665"
+    },
+    {
+      "path": "src/yio/tro/opacha/SoundManager.java",
+      "sha256": "b3761d64d64e909f4a8ca3ce4150ccd74d628731f793f14d71c65a62a65263bf"
+    },
+    {
+      "path": "src/yio/tro/opacha/SoundThreadYio.java",
+      "sha256": "d9b9a473dcfa37d07fa82885e4b287037b0486a1bf61385dbb5fdab1f3b70a12"
+    },
+    {
+      "path": "src/yio/tro/opacha/TouchListenerYio.java",
+      "sha256": "e20dd9ce280a717d7380fd72fc492e5b504c928f9ea04bf47f9b4024e3b83d50"
+    },
+    {
+      "path": "src/yio/tro/opacha/Yio.java",
+      "sha256": "e6de9b9cc0b6be75e2f4d1bb8267e1f07b5a31cc53c34c3eac78eabff10a0829"
+    },
+    {
+      "path": "src/yio/tro/opacha/YioGdxGame.java",
+      "sha256": "aeee669c8770ca24321e03955fe06686b29114f587d7510356bc5972921ea84c"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/CameraController.java",
+      "sha256": "07e4254b13de49adaf082411494ea7e0d81fe2eddd273d48e096cbc8f1d68acc"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/DebugActionsController.java",
+      "sha256": "5ec23f61ac7b5c812d8eab9fc3a3e12694dc4e7b02e92b756df4d78f3842074f"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/Difficulty.java",
+      "sha256": "2f580aa3f571745513edb0dbeb5648913b7c33a1dc6c688b929c322b8ab2c72c"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/GameController.java",
+      "sha256": "aaf5feba84b8eb72ece91a63c8a9df1b6865842949e65e954ce9fc87faab6483"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/GameMode.java",
+      "sha256": "20ace680e740c5fedb30f1bfd00e064da22feea6cb92ce87828234ba886d3607"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/GameResults.java",
+      "sha256": "9c4543d5ccae961f982e1da7f2ed3e087658bedfdcf9eb716cc122a83256c4db"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/GameRules.java",
+      "sha256": "479f71a49f89977c404b1ccdf8bead7d8df8185fdb7f5886527b342dd8478c38"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/LevelSize.java",
+      "sha256": "fc6027818d538030f6f4068bcb3bd0d3c2526ce4f4bad3654d98b6eed6626fe7"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/PlayType.java",
+      "sha256": "27b3efe8c84c3da04a9381723a352b02bbec83ae37709362e3621e120767ecfc"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/RuleFeatures.java",
+      "sha256": "e51f6eab0a8af8a333bb9daf06122d17d62b1f5717a388f70962085213fabf27"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/SpeedManager.java",
+      "sha256": "8abbb33d388b0b08654dc91958ac600ab12e7bd75278ae4cc74d41d6fb980be3"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/VelocityManager.java",
+      "sha256": "b5977dfda7312492b9b9f038c27d96fe6dcefc179f0795efdaee311a66226482"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/campaign/CampaignLevels.java",
+      "sha256": "7477d7a85f2e6bd882d13c9316d178664c754cbdfa0923215c35e93c1e97c878"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/campaign/CampaignManager.java",
+      "sha256": "65834719a6eea3f8e5ce2c157b1c55ae49c44ba8caccd0358db3cb203b39f781"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/debug/DebugFlags.java",
+      "sha256": "9d14f007398add96968976e998949a69d8902bf3d6aeb79b0f8a9775659e0b15"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/editor/EditorSavesManager.java",
+      "sha256": "e7872904e0b84dd126386c47cb72dd02957ac22d63e045eb236ef94aba5788a9"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/editor/EsmItem.java",
+      "sha256": "547de12ccd3f640f3dd6b8fe8493de6cf71ad436b10cab852e68c11712033dae"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/export_import/ExportManager.java",
+      "sha256": "24b8c8469590d3ece76759e7d8384a5a1da8ab8a923c54585dbdbf33ab3474dc"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/export_import/ImportManager.java",
+      "sha256": "9f7b7344da22754fe8578a19e5d9ed57c066c0ea36148484042a97493f3c49ef"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/export_import/SavableYio.java",
+      "sha256": "15140d081ead945f3dffde4b8a2a06fb23d384b93cf169fe6b00cdd7f291e04f"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/AcceleratableYio.java",
+      "sha256": "988b347c2a15005c8be97869c9892f478a166efd7b608b840b86d2d9eb059f21"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/EditorWorker.java",
+      "sha256": "ff73fb88b8a921de8ace9cca9694e4edf89ec6809cd5b5fa25ffc67f3dcabd1d"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/GameObject.java",
+      "sha256": "edb82c3a6a63da644b11165c3d5136a62e63afbdb91c862e687af3bccc2a2b38"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/IGameplayManager.java",
+      "sha256": "f012f5ac0fd55b9346c093bdac0bca8c2062d61586f71bcccba5f798cf2a34f2"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/ObjectsLayer.java",
+      "sha256": "9a727bd21069f5b3e21016e07aefcd6642323ec18dd58609e4ff9121ffbdb689"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/SimulationClock.java",
+      "sha256": "ae86c76427194bc67409eace8e37d0eee45b88965efb4a6115eda2603a1fed65"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/SpectateManager.java",
+      "sha256": "05b2e6e96e88978bfbc3620b62dbbebec8f8a060e2bcce9306fbc7b69e72a0ee"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/ai/AbstractAiEntity.java",
+      "sha256": "35fd991213eb2b43af99e43cd313d1ddb21e320a83328674db6a826fe79f7866"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/ai/AiCustomEntity.java",
+      "sha256": "d67fa7505d4d83f5df311b0a76105b65116114d44ce6361b231c6cba5ad315ab"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/ai/AiData.java",
+      "sha256": "b87fe2dc60d1afce1ee6357735940b71e2438bd471bdc27b05d6c88d44fcc2c5"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/ai/AiManager.java",
+      "sha256": "5b3756fc8e9b69218c41d8a65df5e3ef63d9841df048055acff5b443e179dda0"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/ai/AiSavvyEntity.java",
+      "sha256": "cea1b114d4c96a9ea4577403d67abb780856fe07386d6dd394834c19812fc8a5"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/ai/AiSillyEntity.java",
+      "sha256": "6e57c7ef1e66b0f7b2f7f936313933827850b44d903a04e5193efe243f2daabc"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/ai/AiType.java",
+      "sha256": "71cd816a233d9379fa141840f870d09245fea50454cfa8da2be0b8b9b88673ad"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/fill/FillManager.java",
+      "sha256": "8871ced453c4fb62494793b16db4be61ccd6439da09ef25f9109a0c029cb800a"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/AcceleratableFactor.java",
+      "sha256": "908b8aea54b6524e15a6a5c84e9975b96c8eceb340ce00b980f791c8f3f99489"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/AllianceManager.java",
+      "sha256": "94ab5056280c64981a5f48f43ae2816b321356373fac10ad7571546a9b926e0a"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/BattlefieldVisuals.java",
+      "sha256": "ba47cf022456a6870fd4b347f0cfcd36f44a2f7e6372d2f7f7d0081c86de7c2e"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/BombCourier.java",
+      "sha256": "2341557c240a5018b771c77dd80388f4bf5b99792293784ab282bae550ebc30c"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/FlagPlacement.java",
+      "sha256": "1cfb40e8f3780ad9ce5335a8bcc3832e2fdd2b05011909d4e2b120f84f6c8000"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/FractionType.java",
+      "sha256": "546d6aa846c377f51bd8fa5688bd7ebde4676617f9b427a875f24f075556de07"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/ImpossibruDetector.java",
+      "sha256": "34d42c8d06e1f868870b26ef5864170799a86249e6cd2919e6652cb7781d3090"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/Link.java",
+      "sha256": "064b8d7c61210221c9e49a40475c1e43c3f06a6924914a31331d99da8021ce50"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/LinkedStatusChecker.java",
+      "sha256": "4bc9a07bf448366c4b50c7811de88813733f79df4385f4b8031d47f8803f23c5"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/LinksManager.java",
+      "sha256": "ede7757f95729c8b810336edcb43e905c4fc25d260740a92f7d1b8d230ab0131"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/MapGenerator.java",
+      "sha256": "dc56da58541ff87015f360f8900875ba0f563cf665fac9b3b4b5823df9fa6817"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/MatchResults.java",
+      "sha256": "6c337e2ab7caf146f65f6b356d9be8bc155a01cab7640c2f733dce5250d7aafa"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/PathFinder.java",
+      "sha256": "70307f8c56eba0eca2024816f701e562e31c5f9ecf1a44c7611e1137390cc1e4"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/Planet.java",
+      "sha256": "ab1252cde46b3cc1e1250d350029871abe21d1dac06f8f888041fd4ffc0fc4b2"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/PlanetType.java",
+      "sha256": "6320ed11266385efd1680860af1160690959c803c988d91fbd807e762631fd39"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/PlanetsManager.java",
+      "sha256": "1dce8aa7e0899381a778af290b87ab0de8b308edb5e3d744229b815ec8449fe2"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/RouteBomb.java",
+      "sha256": "f899a8e4ab542267805dcb4549ef13741b3fae4f8a5320559b479948e390389f"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/Shield.java",
+      "sha256": "0b8af17163703a91599247df85f4bfc511a769dcfb1e2a2ba694dc9b11445daf"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/TacticsAi.java",
+      "sha256": "4aae3733df7021acf60f9159312eb6b37f28d8db2ac50b49c7e8f777358e0f92"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/TacticsManager.java",
+      "sha256": "a245fdbb6d3f47c868273b3879f01b0b09ade061e2755697026a746c8050721d"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/Unit.java",
+      "sha256": "2e201d03a115f78e8e64613d32d74b51786e7176b29e3766b4c438b7bad66955"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/model/UnitManager.java",
+      "sha256": "24a17a57fed8556dd91f7e41bbb6b006c15fdfd9e42c50bb7673fe135edda4ab"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/particles/PaViewType.java",
+      "sha256": "35a880714fd634fa20a5b7a4f1ab5117d2202a310b87bc4c9a0e96789ea17367"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/particles/Particle.java",
+      "sha256": "7a1e4a11b22e95debd988fcf70d29d121acc9d7d6b799099e17775946233503c"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/particles/ParticlesManager.java",
+      "sha256": "04e515c46c0a5dc429b31f2e1285c01aed3d6a8b9a88a548d078998e2c0bf687"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/stars/Star.java",
+      "sha256": "3af39b1f915aee537e5b13781db4dc7af06dc2aed5323d337c6a70dc42b98e67"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/gameplay/stars/StarsManager.java",
+      "sha256": "812b1342f228d3a59857766df4d484099f4ceaa0a899091756c81c8bd86abb7c"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/LoadingListener.java",
+      "sha256": "5a76e414a1c2968fa291af9820112d370ba6324839e19dafbe563992577b5927"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/LoadingManager.java",
+      "sha256": "46d482f2dc90024e81d3e80ac53f513e723732d9ecb778edb0a6d1f54af81caf"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/LoadingParameters.java",
+      "sha256": "2dae2a15e0f859f9f2d469d9a8a7e56ec12ce38939363cef1679d4de91f59713"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/LoadingType.java",
+      "sha256": "1b038d7ba466132909dfe803820a7c315163a9f034bb932c4b618270f013c039"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/ParametersYio.java",
+      "sha256": "d7c34f89e3e264f13d0d3da12cd4ffa084a54d3410341af5f1fd1604e1530311"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/level_generators/EmptyLevelGenerator.java",
+      "sha256": "76916e162f3a7879ba9558ae60a0008e17b460b7e483e2d8afadd13bceab8686"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/level_generators/LevelGenerator.java",
+      "sha256": "f64b19cd8cf64b65eb0dc1dfcdfd9b3458d49347923c7768a53386d0399f3368"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/loading_processes/AbstractLoadingProcess.java",
+      "sha256": "2d13de689a81e4f6a7fa8c71f0d3361cbff499e21dc681e06393d12e29e118b3"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/loading_processes/ProcessCalendar.java",
+      "sha256": "cdf92f4e20f0a8b6084219b0e230b5725c9c2eb5aae6dadbc2f96bbae5a1c723"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/loading_processes/ProcessCampaign.java",
+      "sha256": "5da73167c598aed5cdcd85b6bbd4624068339e718b02b23934e0b5c1fecdc51c"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/loading_processes/ProcessEditorCreate.java",
+      "sha256": "6da513e6c6925decefd390bdcc8b428e1f74d8da06db42127a77ea20e9826a55"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/loading_processes/ProcessEditorLoad.java",
+      "sha256": "6e6d8bef3ed8c8711f2d2bb620617c7266dcdb0c7e6a19064a3b18cefbb414ae"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/loading_processes/ProcessEditorPlay.java",
+      "sha256": "9a2cab70ab1311e7e39b00f18d5cd4f631f47f5daf6932055e697a8525544289"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/loading_processes/ProcessEmpty.java",
+      "sha256": "917c916d0ea7d31d65195461d6fee32423916e934d2df3ff57fd94c8b8134325"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/loading_processes/ProcessSkirmish.java",
+      "sha256": "9b41ed343df60217043e2f6775de65e1d69561f89114be1d52ea9b28cdd20da0"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/loading/loading_processes/ProcessTutorial.java",
+      "sha256": "97073bae9a758bea72aadadb000d068b5883c76241084e3b40ab342a3e42eff3"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/touch_modes/SceneEditSinglePlanet.java",
+      "sha256": "a2e2d375f080c28aa4ba57ee3da7b043d03032161e95ff808e871fa498f5f7cd"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/touch_modes/TmAddition.java",
+      "sha256": "aa955de37cf141f48a86b97ad32bb76d22942607ff2df26d5dca78d6d6458f3e"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/touch_modes/TmDefault.java",
+      "sha256": "1e82968c037830aaf4b1d9bd4ffe5ee31e06b50c9fe72779d3310b6ad51318f7"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/touch_modes/TmDeletion.java",
+      "sha256": "f77abdb787b047feb56f5720a22cc344f7b68c7b4177feb8f6b11f59984cbeb9"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/touch_modes/TmEditor.java",
+      "sha256": "2bc771f0011d072ccd113a2a169f5f369fc1482f8db1c5b2868da27a62ac6443"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/touch_modes/TmMatchEnded.java",
+      "sha256": "9c8bc0681a8e97c6785441c32b5564130b6f981b689ac68b929e9ced61f0a078"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/touch_modes/TouchMode.java",
+      "sha256": "6a831fa462c7105b14b06881f40269390eb1dc726b7dc9b19b9ac0cdd76e08dd"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/tutorial/DelayScriptYio.java",
+      "sha256": "2f1ffe1ec2538ec66790648672e0c8b606fe7334356e4e18d11b9b1db342e08c"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/tutorial/ForefingerScriptYio.java",
+      "sha256": "a3eaa5eb326af155f5fc38da8ee581b054b5884ebb50655b30127b414a1b09e0"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/tutorial/QuickScriptYio.java",
+      "sha256": "39bbfa7d7afaaf6338122f950aea0e14e9739a6c9d32586ec0d1ff3b80549a1c"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/tutorial/ScriptManager.java",
+      "sha256": "2b293257e525041726ba3847aefdc0f05290c2b0dde116a5ce855d321cb1e1bd"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/tutorial/ScriptYio.java",
+      "sha256": "ec22d1d305284d0f563a64a7fcde0060b2a1f89d2054a99272a7b1bdcfce927e"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/tutorial/TutorialManager.java",
+      "sha256": "84b1211ed1a3ceb30f0a4febdbd2b1c9501c505dcee2ba668ccdc0b242dce5cb"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/GameView.java",
+      "sha256": "c9ebad6658e03271ac34f37019ac4300745644c2010899b2327693b9fb765e61"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/AiMarkerTextures.java",
+      "sha256": "dc576433843853dbe7d60d60a740edd7a7a6813c387b5be98661d202a23e16e7"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/BattlefieldArt.java",
+      "sha256": "28b49dfe64d6bdb99c8058d6e827eb5b199e0de29329ff92c6f8988f1b918cc2"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/GameRender.java",
+      "sha256": "ec513918dc6ed6fd2ed435ebb04991d0a0fa6b3e319109e181c939ad1854e0eb"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/GameRendersList.java",
+      "sha256": "932f40f87cbeab9ebacdc211b8fb67985b52ad806ae88e411c0b57a33db7178b"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/RenderFillers.java",
+      "sha256": "0d1de6e2e68e0838aa0401bf965b6fc38b0fa6247aa9fdfd311f7547da13393a"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/RenderLinks.java",
+      "sha256": "339bd718b0ba38baeaa0255c9162bd193f7e5ffb40301f10d981cbe046711c62"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/RenderParticles.java",
+      "sha256": "72f5fa9dfd5e60f2049eca10658fcad91cc87bb3f27a96d2be6b8377a6a794eb"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/RenderPlanets.java",
+      "sha256": "b9801eb7227abf1ecda5dad0194e300a5623c10d9c74bb4e6caa25d749c4dd58"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/RenderStars.java",
+      "sha256": "16cfe315a7965d5cbbea770aa92d4fe0f48142d83dd5f5f9780dc7a75d852ff4"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/RenderTactics.java",
+      "sha256": "465269962313222834734edd97f9bd27217eb20b621fef887d7b2ad566f80b5e"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/RenderUnits.java",
+      "sha256": "23f10f26030b7ce26c395d5643dc659a7d1a4d07169885dd114d6c0adff95513"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/TacticsTextures.java",
+      "sha256": "64dec9729fdcd43d53c41e342777d3da3b92030de3564263909291caa8189862"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/tm_renders/RenderTmAddition.java",
+      "sha256": "2bdba3af333280c64991f5221c2a133439b5225cb0fd0533bd9de38e761b91ec"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/tm_renders/RenderTmDefault.java",
+      "sha256": "04c345c1d0a450011672e85becb1770da54133e743ec982ff8096fe886119c1b"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/tm_renders/RenderTmDeletion.java",
+      "sha256": "1895b247060b68c7d931eeda9a7d860338a2ef57fb285fd12c92dd1754d635e7"
+    },
+    {
+      "path": "src/yio/tro/opacha/game/view/game_renders/tm_renders/RenderTmEditor.java",
+      "sha256": "4a0608d88024f344076517985fe141ba057fb5b02c8ff9199056aaf3a7f4d36d"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/ChapterBackground.java",
+      "sha256": "a64b01038ab7a78302d11a0e61cc393e405a16f32460d3d5c5a4b0430685eadf"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/ClickDetector.java",
+      "sha256": "60be1d0b942a5229c3cb1f805b53d9baa06c5c84621c394c6450a7ccca74b7ad"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/CustomLanguageLoader.java",
+      "sha256": "60648b1849fb15eb7f3d5f0bace6f6720f83abd5d6b1b28eb2d7dc810a84c34d"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/DirectionDetector.java",
+      "sha256": "d10da77734d00ece8695075dc0a4ea4051ef8bd77d5edea2ad1504affcef12cf"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/LanguageChooseItem.java",
+      "sha256": "c4d0ae1d5332a2ca10878ae0301d5102e6d55bb2a0ecaa1dfb1252f09ef8a191"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/LanguagesManager.java",
+      "sha256": "b8394fd0f3be3a8e7d218b48f7e174e9a34b7930335a691700364a6f2f4db609"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/MenuControllerYio.java",
+      "sha256": "010a629ec4340b08ef9532878de2ec4d1441c6e2c6562b9bd9b6b444098659cb"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/MenuKeyboard.java",
+      "sha256": "98611df984b0de43bbb1db3c270894c09654ee0847f5196bf436f5c62bc29d20"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/MenuViewYio.java",
+      "sha256": "b101a69403b7916e3ca006c9dddd959b475360aa7897e76121974d48e1df8324"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/TextFitParser.java",
+      "sha256": "33fb331fde89677ba9698c8988366b2458ce0382166e0ae0f47dc4a09728b79b"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/UiFactory.java",
+      "sha256": "66ce5e4b52277488fb4e10a7f4bf81b4e366e8123c40a2838be12293727709ae"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/UiHaptics.java",
+      "sha256": "3eedbbbc98852febb68336eda4caf68fb65fce3834297ed285f3e08890876878"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/UiMotion.java",
+      "sha256": "02a90d7bb6d4363dc64595fd0bca3f77fd71d0f9f79de399a85330f8d6b1f379"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/UiStyle.java",
+      "sha256": "864bc9914899a0ad5d51a361efdb714cee85d6ee89809ba9cdb447f8f13befe5"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/AnimationYio.java",
+      "sha256": "2fdf1200e118c1f497df2dc33550e06a3ced4b8cf19b8ee481df0a33c81eb460"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/BackgroundYio.java",
+      "sha256": "a5307866e1eeaeeb3d2630b8bddb02efb1d0c6092dec67cfa49b0755f017f6b3"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/ButtonYio.java",
+      "sha256": "a6716dc7869501c5c62ee2fae1725612729d2bf3ffb7e8fdd73565edd1471a0c"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/CheckButtonYio.java",
+      "sha256": "bc89bd27039c1b7da676834c6089bdd99a4296708b3d6ad2fd99df6d8da2132c"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/CircleButtonYio.java",
+      "sha256": "c3a12cc34ed1fff9f707ef872ccb299c1823378433c422f11e3d0c80db737731"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/InterfaceElement.java",
+      "sha256": "13fbe6dd96d4a19a3d9adfa1c48a097f09c22c893bf2dea36e1056d2d42458db"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/LabelElement.java",
+      "sha256": "4b837bed7ccb54b715e485631ef56df3c11278d6225fbcb5c60609a7427a4e54"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/LightBottomPanelElement.java",
+      "sha256": "b68e9092adf31baa21ca2e021e7b033d6bfad14ac0b42fd9f783faa95493d564"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/LoadingScreenView.java",
+      "sha256": "2e709bc28d207eb40ddb4a901a1d40b764b30f16f201f07413604a9600af0cab"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/LockCameraElement.java",
+      "sha256": "304bf0d534b15f98ec84d7412f2282f109229f6596151209e595fd3e6f6e9721"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/NotificationElement.java",
+      "sha256": "1d28c7c77fd0762972a14af76ade314d2944c7eb9ed3107aeda063c28c22a9f5"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/QuickVelocityTutorialElement.java",
+      "sha256": "13664ffbc009ab404c29ffc2a0f4aa97322fced638d1f6adb5a607481f663538"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/ScrollHelperElement.java",
+      "sha256": "2f8cbe805a0e7959323a4feb5a98af999fbfe79a0b23f8430377da2c090d9c78"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/ScrollableAreaYio.java",
+      "sha256": "bec7006b84fee9539098408b05a00bf86dffbcbeb0d35a2bef823fac67436ecb"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/VelocitySliderElement.java",
+      "sha256": "d0c53313d575f46610cdf3e7cb68e36aa8fbe94657a4d352ec9e8cccb1c48a3c"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/calendar/CalendarViewElement.java",
+      "sha256": "93cf0e950ed0f872b02f1f9050040bc09fd6ce90d66e1a19adc2a25cc6695b3d"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/calendar/CveDayButton.java",
+      "sha256": "6b93f1f5915b245cf825b1a943f3673bcaea061170b82e18a1863d787633e7fd"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/calendar/CveDayState.java",
+      "sha256": "b403bba16be74eba650b67245c715acf857fd51ccf2ef907bbddbc1653f10564"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/calendar/CveTab.java",
+      "sha256": "3eb2ac3ad229c0e15818168972ea251f3cde18bc292857b3c7f95a5aabce3653"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/customizable_list/AbstractCustomListItem.java",
+      "sha256": "716487aa05cc3064a857297006bfaef51572cf368ed214cccfc4e506bc613db3"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/customizable_list/AbstractSingleLineItem.java",
+      "sha256": "8003c8da5e0eb25286edf9230bc2bbfd058d55238f4ed20482fbec88d68ce7a0"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/customizable_list/CampaignCustomItem.java",
+      "sha256": "7981bc78a728f15fc608982a7354950dec1b075a60f5c89df6132b932def6ea0"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/customizable_list/CciInnerItem.java",
+      "sha256": "37d8eb8bc049027019ffa38a77eb87581bd2cabcd23fda5b268ec48d2e45e52b"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/customizable_list/CciType.java",
+      "sha256": "94528a9be6010c103a9c60178594a225317b5b78604448516d85028f6ca4982a"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/customizable_list/CustomizableListYio.java",
+      "sha256": "c1026487a4a401a2187f3aa4a56c169c16da156695f45c3d7c58c396c3994fbf"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/customizable_list/SampleListItem.java",
+      "sha256": "7e0648eda48249a140411f321bbe2e736119c5ab7d19f0180c90594b79aee424"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/customizable_list/ScrollListItem.java",
+      "sha256": "e10d883b1546d89b83eb3d2b862464f90a2d2556db56d6f40638e992b5766da0"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/customizable_list/SeparatorListItem.java",
+      "sha256": "a5f6d064cad8acd6ae864cf33f5fb219161677f730476b44e9456f074bec102b"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/customizable_list/SliReaction.java",
+      "sha256": "45bce111522ee091fbe416be3fca33ed923afa0a66fb7202c058ab7be8f02368"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/egg/AeItem.java",
+      "sha256": "6ac1251c7f74bb277efa619e599b073eb261e5572fa5d2d00c7b9555408eabee"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/egg/AnimationEggElement.java",
+      "sha256": "0ad3cda45faa61f3e9ec657bf6311b04e22670f3b3df6b53f8f4c38c15988373"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/gameplay/FollowGameViewElement.java",
+      "sha256": "54c4fa33e40e65a85672786d8cb7098dcf60cf768f2b2079efabe2ac22d219e4"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/gameplay/ViewTouchModeElement.java",
+      "sha256": "ed065529a4932638e4dd6b38318a42c580b6930fe6b59336e76a35e58cfe25e0"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/ground/AbstractGpDeathRule.java",
+      "sha256": "b8a5c0a62ca63bfdac61b6d8519f851c693faa6ab6a67c6267c96e6ba471d06f"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/ground/AbstractGpSpawnRule.java",
+      "sha256": "8c2023dd52f07f0a33ad3989d82a2e620d49ab31e79e54e9e8098eb9164fab3e"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/ground/GeParticle.java",
+      "sha256": "dac1b8df4d948e0b4fd7de03c197fb18c2215c7175ba49e0725b9c49adc9fe2b"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/ground/GpDrDefault.java",
+      "sha256": "e6f6d36526dacf1380699caa1a192d6dd1ee384f0c2a6b2722fd3830e1f27ab2"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/ground/GpSrDefault.java",
+      "sha256": "96e68ddbb7cc746095975d74c2c595a688322762b2593f998597ba2e13dd1cbc"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/ground/GpSrDown.java",
+      "sha256": "40ca661d6e3735690f79fadc0f4f99a36fc2f3ddf815eee7a88599097649fb5f"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/ground/GpSrNone.java",
+      "sha256": "79aa6a99fffa3f735af4045bca504b4defe2412c6de525600c1331346831511c"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/ground/GpSrStay.java",
+      "sha256": "a8ceafda510076535f52fa14490ace9b549e916a8537504478447a3e7b8fdcd7"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/ground/GpSrUp.java",
+      "sha256": "c7d206df79204790b25b3a334ea8b3cb1db72dd76f3e27b80f51711c60168cc6"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/ground/GroundElement.java",
+      "sha256": "5281a540c2d5072c8440b7d1edad89a28edc500623c9681ce7a5f023e3656746"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/ground/GroundIndex.java",
+      "sha256": "d04d5af2eb00ba73431bda54f7c53d01215009c45056b1447ccbc521f2f2cb6f"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/keyboard/AbstractKbReaction.java",
+      "sha256": "7c1a807432858dfe52497e77feeadaa0be48ea0a6e9789f0ca69be6c4999326c"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/keyboard/NativeKeyboardElement.java",
+      "sha256": "46234d8912397b443c223d61eb75b6b481347262dc33c09167ca1153bf72095b"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/scrollable_list/ScrBehavior.java",
+      "sha256": "72eab0c325f045e790cc4ec45564be681d7e5539ba969fa1ba1547bc827a23a7"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/scrollable_list/ScrItem.java",
+      "sha256": "c10ca98dc355c235192e459dc2237ee4dc5b000bd5d7ea5961f497d67c0ba6cc"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/scrollable_list/ScrollableListElement.java",
+      "sha256": "2985871abe60c63760395e430ce5f3d8f38226af291f07f6bc89b6652c50df96"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/slider/SbDefault.java",
+      "sha256": "781a8a513be438fd1b6409ba898a01adc48f0a234d290179b0c22548d5571ecb"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/slider/SbGraphics.java",
+      "sha256": "18eebb2e560cf3c6e11e86fd6e4a4852c9a98cabb840cedde02bdeda74d58cce"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/slider/SbMapSize.java",
+      "sha256": "4b04e28c59f254587e54d331c009d8947cffdd6ac9cdecc6898b3e4e8fbd22b7"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/slider/SbTime.java",
+      "sha256": "96d5c93e45a096df483ac428211690d0aaf16fd018a64c21413bc3d506edc0e9"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/slider/SliderBehavior.java",
+      "sha256": "d12f663da8a20da1f31219dcba19267f48e014a9f7709bd4da26e84e76cc7e70"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/slider/SliderListener.java",
+      "sha256": "0c9001373a76304715b6ad9daa8e95e0806b39baad29538accdfbd571074ced5"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/slider/SliderYio.java",
+      "sha256": "06910e04a305ba48e3bbdfb1091d3cadcf341c9c5f4b310ba6a4b267af6db3d3"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/tutorial/ForefingerElement.java",
+      "sha256": "64275400fbb8f7f6008f245facde7342ca3ee47c58554aee20738188068d0f52"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/tutorial/ForefingerModeType.java",
+      "sha256": "14c53ff6b9bfd192873d4188dce64c7c82d5d275bc8d60fd0ee7fe8236a130df"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/elements/tutorial/GlobalMessageElement.java",
+      "sha256": "228a555403291ac958585516db2a1a1a7896dfaea61d81fc62a9267efcb7a1cd"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/MenuRenders.java",
+      "sha256": "e19127a494f851a00ccb00e4d0844db95df3c814c49d18c46c13ebcd1207e179"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderAnimationEgg.java",
+      "sha256": "dc994a2b2c2d71b5b9c985a784e50b43428d613b75db0a7cae0f9ff3a83bdad7"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderButton.java",
+      "sha256": "ebf93a6327f34707434c098a850bfcecf17a5fb114e24420433d39434013bfa4"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderCalendarViewElement.java",
+      "sha256": "374a717ee433451b5e4acc059e8f54a3117fcd16352f1bf624cbaabed5dadc51"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderCheckButton.java",
+      "sha256": "9b212d6f193d71053462643292eed21c4c5b34c7e81424220eb857e0198b0aa2"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderCircleButton.java",
+      "sha256": "dd0b649f422f56a7dbb25675c2678322c6f40a2402a7c738e9d84b149334d207"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderFollowGameView.java",
+      "sha256": "d20fc22d569633e57b168587c7f34530878cad3344b5b27285f1cc518c128175"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderForefinger.java",
+      "sha256": "87e09bfe42e1f453427406796ecbaa0c79e0895e3a450df994c643561ca059e7"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderGlobalMessageElement.java",
+      "sha256": "2d6521ea18b9370ca7dc3923957f6c4dab189b062d647cc6fd5c8e557403d476"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderGround.java",
+      "sha256": "f412eb0980cc0ce8bc08696a1a3a6c2f744c0524c0adc0520a6743465d201cf3"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderInterfaceElement.java",
+      "sha256": "124cce305178af06ceec336fa82b20505b2a1d020e9cd7cbc7ff6afcac105293"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderLabelElement.java",
+      "sha256": "6c36e848d04bdc7a8e640be3219972202b6505e1895f0302b51c4d90ea081840"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderLightBottomPanel.java",
+      "sha256": "4a92ce124fa779e834013c38ebd2b7c247aff69384a5b5f17422642fee075d0f"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderLoadingScreenView.java",
+      "sha256": "aafd3f84d5f04cd83e2669869c1f5d49f11d31bac40cfabcf84787add1133feb"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderLockCameraElement.java",
+      "sha256": "6a6f3a9d2897607aa85887cae0f4524a0754d0db20d0c589d8dfd39b3eb79b40"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderNativeKeyboard.java",
+      "sha256": "e933c5d10ba6b085fee747201d8cbcac092fb0684de691a57b4f8e255ff771e3"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderNotification.java",
+      "sha256": "462999dc4805ad232f30553a8298b125f50818ed0118b608647523e94f3fa5a5"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderQuickVelocityTutorial.java",
+      "sha256": "e34436203c2cc55bdb0ac5077330df64da9db7d684d48fd823af8f262dee43b2"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderRoundBorder.java",
+      "sha256": "be3fa977690b24447a3c83f318c48fd1376cbb2b8ff852459bcb069c7a486fb0"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderRoundShape.java",
+      "sha256": "751f9aa295a6b93cea228b74fb9fbf1c3a999d66037c7857a4cef4798f59bf3e"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderScrollHelperElement.java",
+      "sha256": "43b7c9f2303c5e844078f6082d5f5d3998bb4b278e4d3110a6cb3a7c1a20e860"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderScrollableArea.java",
+      "sha256": "8e6c08a169ff5b7392a677a45cc573f37b4325ee3ce450245daffc8d85a2d21a"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderScrollableList.java",
+      "sha256": "5b7b15c3f004fdb9a1c5c52207b888b21c18485f2a2e7d9ea71bf35c359a43fc"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderShadow.java",
+      "sha256": "313ccbedb5a386c774d061a647817e476a03a1d7df952ccf3193fe40d9ce4596"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderSlider.java",
+      "sha256": "7ae746287712354c97ad13a141acfab6514f0d1d2dd6506aeb1f33f1753154ee"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderVelocitySlider.java",
+      "sha256": "dac56d64fc3e27272c128b6c5683a43408a1504a4da871a87ee501f7c1aa1595"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/RenderViewTouchMode.java",
+      "sha256": "f518b5f7d588993fda3f31c6e2f21a3f1e984203712e05ec38718db36d16d87a"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/render_custom_list/AbstractRenderCustomListItem.java",
+      "sha256": "fafb65c9100c98a2166bb4afd89b1453cf3627b60384d2fe4671ceff2fef84d7"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/render_custom_list/RenderCampaignCustomItem.java",
+      "sha256": "9af64f880f41a1747404b477fb99b52a9f6ad72b718105c923d44377088914fa"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/render_custom_list/RenderCustomizableList.java",
+      "sha256": "bdcfcf7d116a0cf73bb7536bb5bb68abb781d36b2606e5afbc22bc59f590f6de"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/render_custom_list/RenderSampleListItem.java",
+      "sha256": "7142ea554f469c225d0823825050373def28bf3a97b2ca404746f5ab08136ad0"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/render_custom_list/RenderScrollListItem.java",
+      "sha256": "c524624d974d9af3881d33a22481822cbb5243ca96c33f033f18491204cf5d78"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/menu_renders/render_custom_list/RenderSeparatorListItem.java",
+      "sha256": "33980a62179a210d53af8eda54ba9961cf1025708fe90acc8511be1927e107ba"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/reactions/RbNothing.java",
+      "sha256": "24894a0957720ee249c191019b18c0bdf4fb33f4ae68e188d117a61f3d404ab7"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/reactions/Reaction.java",
+      "sha256": "c90052ab388b0f77be3be93e23b38658c854b069f80abaff9256f62a6d7fd8fe"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/AbstractLoadingSceneYio.java",
+      "sha256": "5220a2db154ddf66b4bf4ffe81423685359558b4692d35d2040bfc80d02209a5"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/ModalSceneYio.java",
+      "sha256": "b733c9df4a7932b22a66572940c54bed03f7020015751a5eb9dc0c3e11de686b"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneAttraction.java",
+      "sha256": "8c8dce5913347fbca6e6cd9748410f600c8ad80b3acdebe9f7cfda292ceee834"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneCalendar.java",
+      "sha256": "72a1fa49b2932b872ad21c90d025511e4702f90bf3018793058d7008421d603d"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneCampaign.java",
+      "sha256": "a0fa4f38a930220932b269f860d4f21c24b86f217fb3718ce7b704782979914b"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneCatchedException.java",
+      "sha256": "53c6fb678ff313959cb5e7d716ac9dbba31a82ed8eb4396c5fb803a50a9bbb6b"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneChooseGameMode.java",
+      "sha256": "62037f0cbf1547d950f1fb99369ba364257603e768b4c1f5cca2f4a96aed3e8e"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneConfirmRestart.java",
+      "sha256": "578324800d06a57be518a3ae5c916ed8e03dc2c4cf0d4e510aad3dd2d8cb449b"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneExceptionReport.java",
+      "sha256": "cd39ae67c10cb1bf95d6e3a86a8ff789a79bd19913bc5543db30e75986ccd9a9"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneKeyboard.java",
+      "sha256": "13a3bd87eabd0d366482c52dee680ced3cc40379e138c16087a15ccab3ebaeb6"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneLoadingScreen.java",
+      "sha256": "baa77ee5455ed9c5f5cce8bc6d22b93b3120d7a77085038c5f697028d200393b"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneMainMenu.java",
+      "sha256": "8807e43f8672772c051702cbe56acc5bb7b1379787e92166bd47af08dd471a2a"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneMapDetails.java",
+      "sha256": "de61c66d6a3257be3bf7fd7e28095d4d4507ab119dd8ea9b27fde3a3e584108a"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneMatchResults.java",
+      "sha256": "c3085d5707f2144d1a859c65a7c2866a8069389f9f71d065487b4cb09cfc0ced"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneMyGamesArticle.java",
+      "sha256": "6f7aeb13c94e3441cd9f3d8e6236432d925632afd204ae61818dd1083c69d90a"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneMyGamesButton.java",
+      "sha256": "1721a9b314c826c741bec17e2444f186759c6699f1dbe6031da687f950d1fe23"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneNotification.java",
+      "sha256": "5bf71c0a79734f40fb2b171bbe41ae75c49a0fbf2d3e06e4047fad4bed061447"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneOnCampaignLevelCompleted.java",
+      "sha256": "e2be9b737818aa085b84c87c435f7e271708276841ca26d59a47e05008aeffa4"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/ScenePauseMenu.java",
+      "sha256": "349947b4303472f4f9b01607b6c388b941aa52ca840ec54af9e4ef339d2e1d2b"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneReward.java",
+      "sha256": "444ffb70ee0e09f2b553aad9899e18b9f0f79ecc84b3bf10ba19ed380f0246a3"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneSecretScreen.java",
+      "sha256": "015026c3ff7075b9d9ef3728ab931b186d6a22fdb726747cafb05fbbeafa2d0c"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/SceneYio.java",
+      "sha256": "27c38331d7529903017a26c2689bece235fbc58011a51a36a2a7ffc5c5b01154"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/Scenes.java",
+      "sha256": "25977f7c271de5716d139813697753a91d449a4a5a60be87584aa1c07054e79a"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/editor/SceneEditorLoad.java",
+      "sha256": "95ca0e76be4cccd589bb40c1c04732172f44e2439bdba10634d1cdc481876c97"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/editor/SceneEditorLobby.java",
+      "sha256": "3650ec79a5a9dfbc0eec380e3522f8ba93cf585030d39d39be897c19ce467877"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/editor/SceneEditorOptionsPanel.java",
+      "sha256": "db90fcaed53d3cdd7351f0cd1234dc1b21153bc293f625bbf7a510fec250b584"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/editor/SceneEditorPauseMenu.java",
+      "sha256": "5fea47e641d6bd8ecf58b041b69eaa1a968264a566b91bf8044df76b9638c0d6"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/editor/SceneEditorPrepareToLaunch.java",
+      "sha256": "f6105c2e8601f52c7c134519cbad935faf8707db7a06730bb904d97f7fe073c2"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/editor/SceneEditorSave.java",
+      "sha256": "2f54476dc9a7dc8c8f80ae5511c93b4e270b6d9af6a727fb9157b00cc55a489d"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/editor/SceneEditorSlotContextActions.java",
+      "sha256": "f174c588c956ffcb59a269d24054fb6bdd3524246f461a215a7c7bc3ee21aa61"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/editor/SceneResetTouchMode.java",
+      "sha256": "fe9e9db75bc917a3368e9956b73397723b9c1d4b0d93391fdf255bc8b87fb7d0"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/gameplay/SceneCampaignBrief.java",
+      "sha256": "4bd846ccc443b6edd23822b8552e6f29d1a48886514b188bf86a03d5a5f29914"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/gameplay/SceneDebugPanel.java",
+      "sha256": "ca9ab8d0cd038cfe6bdbf4d2442a1dabc2bfc57cba2a24f3791fc77a73c8b995"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/gameplay/SceneDiplomacy.java",
+      "sha256": "ae8544b118665cc963fb3018d841e5112b6e2cbbb8cddbd7198f3ac621362773"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/gameplay/SceneEditorOverlay.java",
+      "sha256": "1343f75289b0184050a81d7d1ea9c43fb8e88488b313c7ef78118e104fd567d9"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/gameplay/SceneEndSpectate.java",
+      "sha256": "342a3bd866fe00773e3c2971ac302bdf1e8d47dd501c2bc1793a9c7313e36b05"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/gameplay/SceneForefinger.java",
+      "sha256": "18fed719d9540741e9dda10953ede59528fcc9f9c40b78f6448d3e0d66013024"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/gameplay/SceneGameOverlay.java",
+      "sha256": "deb36b1bfaba4982dab8b0a12c06aacc23eb6d9b7191e172e6dc023cfdad9fef"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/gameplay/SceneGlobalMessage.java",
+      "sha256": "ef3a144d413690797119501922cf7ced318a54257c46ead60e636ad80f983b8a"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/gameplay/SceneLockCamera.java",
+      "sha256": "d9bad528e8b7933c55ce9814644c563ffff4d09bbc7d53c39e55a3e72b22bd83"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/gameplay/SceneNodeActions.java",
+      "sha256": "5caae85fd1ef18805507b209dd246ee02f733f3a07ef99fa68e04b15728d29df"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/gameplay/SceneQuickVelocityTutorial.java",
+      "sha256": "9c4fa0c966e8e485412b21d2f7c1135bc7b79ed89fc7f5f08dd1e7a80ecd5c79"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/gameplay/SceneSelectionOverlay.java",
+      "sha256": "288abe6e7a88cd03382d8cfdb44d785b11c9faeda804d160b3a44485546fb030"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/gameplay/SceneSkirmishMenu.java",
+      "sha256": "5a69692a3d7c0804ca54e57633f1684c7bb59831e75b43eecda6a73909e58bc8"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/gameplay/SceneSpeedControls.java",
+      "sha256": "2837822dd7a7158a6d2efee584691ee2e3b5c97174f2158fc1ff1b25b4cc9752"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/gameplay/SceneVelocityControls.java",
+      "sha256": "68af862f971805ab258d34bebd4e6cd1e7f892af6f675a2caf4ee757dbf3e086"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/info/AbstractInfoScene.java",
+      "sha256": "7a03e298f507fe17222a1118182eda0de6a99e335df5c9894b04d037b19516d6"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/info/SceneAboutGame.java",
+      "sha256": "1a72e521220b2c41573aee7a7301ec6dacac9a07aa82a53fcf91e1c1f0cd1e61"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/info/SceneDebugData.java",
+      "sha256": "de41f0e3a4d05ff7f15137b20681bc517ec56bb27b479d82439839031e3986ea"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/info/SceneSpecialThanks.java",
+      "sha256": "0b0c0a9309978882485639b5642ce132958f3a07b7f7cc660249bd1484d43e85"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/info/help/SceneHelpMenu.java",
+      "sha256": "e252d06d2e555f839cd6296b4eb3491da45348a82da8cd169ebd0e420dd8b4e1"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/options/SceneAppearance.java",
+      "sha256": "02218ae10e8ed253c704eaf625142dc0068226b1f933fd3f2c23867bc18931df"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/options/SceneLanguages.java",
+      "sha256": "3702003e0924ff7d99fbb5063754a0e5dc04cd5deb0e9c9554a645befc9f3343"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/options/SceneSettingsMenu.java",
+      "sha256": "d76c03d335eecfe5e6aecb94c0cd2bee86d9d4d10df1fac583179b501e611efd"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/tutorial/AbstractTutorialScene.java",
+      "sha256": "ec50f60834f8f2d661c8a046232ff12a5ea476af53c13239525e58a97c3e30cc"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/tutorial/SceneTutorialAutoTarget.java",
+      "sha256": "12b2c242d5983cdb39c585bfa3dc265b0c345d8d3fcaf50a51bc2a6981608355"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/tutorial/SceneTutorialBasicControls.java",
+      "sha256": "a42bbbef06d9f08864b180a41ac856c20baa30b0360cc50b896ce0c309ee1e19"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/tutorial/SceneTutorialBegin.java",
+      "sha256": "b6b411b3539209de078b11ab10e7363e0345f590e124707a1223f5b7667f94f1"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/tutorial/SceneTutorialDeselect.java",
+      "sha256": "1fa13cc83e5d00d91f3dca161dbb15103c271f06871c6b5bf8874e6ebb3611c5"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/tutorial/SceneTutorialEnd.java",
+      "sha256": "dff758cd87867de54e2fe1d7bd5a61b136d1d0c8c4a83932574a2cfee24280c1"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/tutorial/SceneTutorialHalvedSelection.java",
+      "sha256": "8e2e8f98c6aadb6381f61584033877b9c0e257a1e1dd338f7d21cda16554b8a6"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/tutorial/SceneTutorialShields.java",
+      "sha256": "e3e68995d1946288d6bb8e460a62e6ac2c961dead31c560d6e8dad0a5307d770"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/tutorial/SceneTutorialUpgradesOne.java",
+      "sha256": "84836b96d9996ff0ba90d5dfafdc8ef03e0889e02d35a6971172c4da574e8935"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/tutorial/SceneTutorialUpgradesTwo.java",
+      "sha256": "028e45863460f1bced8104617f5266a2c9a43a071127875005f47328a58b0377"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/scenes/tutorial/SceneTutorialYourPlanets.java",
+      "sha256": "fcee10b3bb6f1b58cc156086425939c8b2f9eb7857db50ecbaf3442486da3019"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/two_finger_touch/TfPoint.java",
+      "sha256": "42c1934f1bfc06c70c83f013a47b2c333c2c6c6904ee04bdb292881d19cf8df7"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/two_finger_touch/TwoFingerListener.java",
+      "sha256": "bedcde4355c8c02fb5bdfa6aaf50ccab22f3f88701a901485cc336faa29188e0"
+    },
+    {
+      "path": "src/yio/tro/opacha/menu/two_finger_touch/TwoFingerTouchManager.java",
+      "sha256": "4e6957507b77bb93abace20a1ecf41cc2c8597cc672356dfc559f7456bb258c1"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/AtlasLoader.java",
+      "sha256": "7290b30da451aff0e8b8576eb28a36655c66c6b228b3ed5d492236c3a6ad24ae"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/CircleYio.java",
+      "sha256": "3f2b794024eef2903391175737675d3ec6e2b103f144486a6887b33424977936"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/DateYio.java",
+      "sha256": "f59df33116992158c6c456f7ae232f1cb79cdd9ba69b55e09212d4fab3ebc2db"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/DebugDataContainer.java",
+      "sha256": "5db4fe5041909065f5871174596ef6872ff483a1aa07c2cb4b7ea33e747452c1"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/DynamicPositionYio.java",
+      "sha256": "fb1e10a676972816c0bde4767cdc3b6fa9ad102a20b3c5250682f26b63a890ed"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/FakeFbYio.java",
+      "sha256": "5b4a548c72d53fc7894635963f01e99d8c14953623f5160249578dda00d75c02"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/FrameBufferYio.java",
+      "sha256": "899a69e8e08ffa83a02c8877cbf6a5e9a6d2525a7372c94310e5030c13e18829"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/GradualAttractionManager.java",
+      "sha256": "a01acff19085d8195c8770c51bf6d413b242b768f0a49c8090151874a61043ae"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/GraphicsYio.java",
+      "sha256": "ff7e7ca77d1e03521ce7dce1a06ab172ae533ee7e156ba6a37f969f0c4a9e287"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/JumpEngineYio.java",
+      "sha256": "4213bd5ef1c63720cf94933e4f5d2fbb75a93ae3c2ad75905c1e1cb74cf5ac31"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/LineYio.java",
+      "sha256": "7adc97ab79371504499cc04379fb7c72488ac6c7e101fcebb4ea94452946e39c"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/LogCollectorYio.java",
+      "sha256": "9b1fe1728d63ab58b1aa52b9c7cb2ab2b2b559cd0c7f6856fce0ffde0acdb730"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/LongTapDetector.java",
+      "sha256": "5809b7f71cf59b5519dc4fa2947488a64135148faed8ba0b42e47fecf8f11888"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/Masking.java",
+      "sha256": "cee2144d247c23f8037b2c1b2ba20ed9071261381cea389e81202c5e8e6f2239"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/PointYio.java",
+      "sha256": "ca22e573d482965ef41e5ae047be73e2188c3a4754be19cc1f07f05ba03348ab"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/RectangleYio.java",
+      "sha256": "348965e9b145366cc847ac85791073ca7a9b45398ab852865f1442587b2f709c"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/RenderableTextYio.java",
+      "sha256": "37a4703b35a800066ee51bca680af2a437ab49fd2aad1edab19f83dbe5051baa"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/RepeatYio.java",
+      "sha256": "95902b4776ab23726ab44b12b2df1d43f58b1777c571313c370871ea8d07f70f"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/SelectionEngineYio.java",
+      "sha256": "6781d8e6796de98e12a7cdb92e189a6e4e591298ccf5ffa39fda0b264a1b8081"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/Storage3xTexture.java",
+      "sha256": "b87a566e2bd5ed9b24f6a52f69fddfef26ff2c2362c6b0de8827cbdc314a08d7"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/StoreLinksYio.java",
+      "sha256": "13ffb87ac1a597fe7fb01fe173c311f5964f94d196765fcb8675dff36e05bba4"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/TimeMeasureYio.java",
+      "sha256": "ad2f11a065bf0cd95980b84169a86038d09093bbf92228e5f39c0d5911bac5df"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/TouchableYio.java",
+      "sha256": "6e4cd1f3ff635210d65088ef8a185177bd77b359f4d7071eb1aaf55ef6e0e152"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/VisualTextContainer.java",
+      "sha256": "f653fcb4de04f0fe3fb7de068bde017ceb9937e1de6ff0d861c6802e357b0801"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/calendar/CalendarManager.java",
+      "sha256": "86a7cd5a24d6bb624d9899538ac8a186c8b8f897dcf80c4cb564bc6da36b9011"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/calendar/CmmItem.java",
+      "sha256": "ff2010de61101e1f513e08f5eaa39bb48903beed7860a8b6b5e273b3b53399c7"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/calendar/CveColorYio.java",
+      "sha256": "eab5e5f2927bf551d06b18f888ee3e5b1b15f053ae299555c0126d39f0b4822b"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/calendar/CveMonth.java",
+      "sha256": "f6070ea3b42cd74a2a88edcb8db0f06e351d68a7ed154f45ce6c61599b6c2cd5"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/containers/posmap/PmSectorIndex.java",
+      "sha256": "e1e5a995f2c8f7b128ad36f68e148e179ba7cb2b77fa7f0f20a9dca4a69b0a85"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/containers/posmap/PosMapLooper.java",
+      "sha256": "809f01802f4df33695a1eef637c28241616f10382c57d60795004a66b01de993"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/containers/posmap/PosMapObjectYio.java",
+      "sha256": "3cd7928fed9be6c39760ad4f15f3cae30a9c20fa4907efa1da3b6abea2cdfd8d"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/containers/posmap/PosMapYio.java",
+      "sha256": "a10a4555a5d6df3b9d030d15f86dcfc1447a14c9485c56f350e876920c0017a5"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/factor_yio/AbstractMoveBehavior.java",
+      "sha256": "a8d070d2f8db2b0f0206975e92b5e37cb9760c86ebe3b8bb0243453dc0664288"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/factor_yio/FactorYio.java",
+      "sha256": "90615c71cbcafe6ed51d7b391ea3bbdbd40c1f0c24c9636b1b7c6178d3a9220d"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/factor_yio/MbApproach.java",
+      "sha256": "4d7d0747fb35ff5753ceb8ad3ae21c1489e995822084188acc600bc171b32c14"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/factor_yio/MbFactoryYio.java",
+      "sha256": "25ef7351c030958baf33329a0dc8b5669540c3085b048a4fca7b47a7518f5d03"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/factor_yio/MbInertia.java",
+      "sha256": "a2b4c15e4db82efb3fa0795d34b81b7c01b9ad520219e658206bf4a80899048f"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/factor_yio/MbLighty.java",
+      "sha256": "2529460b548581e69834de9d3988bc581aeb2c043b98361cb8faf63fe65edc99"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/factor_yio/MbMaterial.java",
+      "sha256": "dad4884b61a68374922602e951285b3e58c05b857f76de23747c63185b1cde72"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/factor_yio/MbOldApproach.java",
+      "sha256": "589ddf945ba8ffec063a2be46401a609d0beaa279138ee6f29f140dda2ad3fb0"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/factor_yio/MbOldLighty.java",
+      "sha256": "72fc7cf48e4f5e9455b1a58f2a45fa0b05b6ea5231874a45dd4b35d728d2c896"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/factor_yio/MbSimple.java",
+      "sha256": "70007d144253d3188de886375f03fb086598c618f3a4d1ae756949e9a96a4559"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/factor_yio/MbStay.java",
+      "sha256": "cf8d9c48bbc42811dfa78685e63f40464e5b4e2756649e8ff297e698d47b11c0"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/factor_yio/MovementType.java",
+      "sha256": "ef0247af478bed4e148126a3451a8295367f790a113b82129b607a09749e526b"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/name_generator/GroupsAnalyzer.java",
+      "sha256": "9dca200b182292b92670875a2045b31721d17cf8e951fd6188497553fb0223fe"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/name_generator/MasksAnalyzer.java",
+      "sha256": "fafbb0602be0346171c3691756b1357904c2e05e780359006f7cedfbb7c76aa1"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/name_generator/NameGenerator.java",
+      "sha256": "f4300c44e4fb66332a595b184355185f0f3cef8b77b0a269aa2b9fc3e7f90ee6"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/object_pool/ObjectPoolYio.java",
+      "sha256": "187748fd5175dd6adc587fd45a8efd680ac994dcab5144406a66954b0024c648"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/object_pool/ReusableYio.java",
+      "sha256": "ea87e60663992892567650bc7aa88ea072ec1c55807e1f3bb2ea0aea9d2e6dc1"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/scroll_engine/ScrollEngineYio.java",
+      "sha256": "a3562427e696a7fa3e057d5b68085eb359ce99c12c6948c73fc457746d6f7704"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/scroll_engine/SegmentYio.java",
+      "sha256": "a9f28dde863df5aae1fcf051c73a060b408a879906b23026dccfd411db67b096"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/tabs_engine/TabsEngineYio.java",
+      "sha256": "4b52a8dc9c5eaea2507b537c8c392223ddd3b73add90328bb3ce5a454e9dbd81"
+    },
+    {
+      "path": "src/yio/tro/opacha/stuff/tabs_engine/TeMagnet.java",
+      "sha256": "95fbe6d84a1bbe012c4a01ae8f80c8a7dfd52476ec82c56e3ae5e9a1c373c1e6"
+    }
+  ]
+}

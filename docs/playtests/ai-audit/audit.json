@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-21",
+  "baseline_source_sha256": "cfb5608b619440574a02ea66e342ab743a5506d062b0039298861d109e865c24",
+  "final_source_sha256": "f2f7dfe03d1458df21fd198cbbbbc95740c9af2d2bb5d6b574a682e0fe388d75",
+  "policy_sha256": "C6ED56FB2B828EF620C47A38C20B26D8C313BE7D678D37C389AA72DF0D618883",
+  "baseline_core_jar_sha256": "8940AA934A4E3042A85AFEA78453CC07834F928EF1A8FBBE6F254EED7087DF73",
+  "campaign_before_seeds": [
+    1,
+    2
+  ],
+  "campaign_before_policy_sha256": "C6ED56FB2B828EF620C47A38C20B26D8C313BE7D678D37C389AA72DF0D618883",
+  "campaign_before_campaign_sha256": "2CBE2AB7709CAD72FEB12538109333BEF7B26E30E21E647F6E51A472736CA74B",
+  "campaign_changed_maps": [
+    11
+  ],
+  "baseline_regressions": "First eight reproductions all failed against frozen baseline JARs",
+  "final_regressions": "Twelve regression scenarios and 30044 existing assertions passed",
+  "autoskill_outcome": "project-note: docs/ai.md",
+  "final_core_jar_sha256": "4CB25A4924C44D985594A70274304B8A22C36CB83EAA7D5ED96E580D02102CDB",
+  "android_apk_sha256": "0AA3CB24D255A8480E1DFDDA2B4FF5822D7EA419E3DF8735B4296FE35D22D0E0"
+}

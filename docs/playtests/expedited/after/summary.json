@@ -1,0 +1,17 @@
+{
+  "matches": 672,
+  "wins": 439,
+  "timeouts": 16,
+  "maps_without_win": [],
+  "wall_seconds": 13.442,
+  "source_sha256": "2a0ec9d50f6bbbf41276e245e022fcd5554f276a03a717430938ec8bc12cb668",
+  "comparison": {
+    "paired_matches": 672,
+    "gained_wins": 10,
+    "lost_wins": 0,
+    "unpaired_current": 0,
+    "unpaired_previous": 0,
+    "same_policy_and_difficulty": true,
+    "same_campaign_data": false
+  }
+}

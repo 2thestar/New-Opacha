@@ -9,6 +9,7 @@ import yio.tro.opacha.game.gameplay.ObjectsLayer;
 import yio.tro.opacha.game.gameplay.ai.AiType;
 import yio.tro.opacha.game.gameplay.model.*;
 import java.util.*;
+import java.io.*;
 
 /** Reproducible strategy stress tests. Measures proxies, never claims human enjoyment. */
 public final class BalancePlaytest extends YioGdxGame {
@@ -16,6 +17,9 @@ public final class BalancePlaytest extends YioGdxGame {
     private int frames;
     private boolean complete;
     private boolean campaign;
+    private int matches;
+    private double simulatedSeconds;
+    private final long started = System.nanoTime();
     public BalancePlaytest(String path) { output = new FileHandle(path); }
     public static void main(String[] args) {
         platformType = PlatformType.pc;
@@ -29,36 +33,54 @@ public final class BalancePlaytest extends YioGdxGame {
     }
     @Override public void render() {
         super.render();
-        if (gameController == null || splashVisible || ++frames < 45) return;
+        if (gameController == null || splashVisible || ++frames < 2) return;
         if (complete) return;
         SettingsManager.getInstance().soundEnabled = false;
         RefreshRateDetector.getInstance().multiplier = 1;
         VelocityManager.getInstance().value = 1;
         output.mkdirs();
         SettingsManager.getInstance().adaptiveDifficulty = false;
-        StringBuilder csv = new StringBuilder("mode,seed,seat,style,won,winner,seconds,first_capture,captures,recaptures,longest_drought,orders,upgrades,tools,pacts,level\n");
         int firstSeed = Integer.getInteger("labSeedStart", 1);
         int seedCount = Integer.getInteger("labSeeds", campaign ? 2 : 4);
         Set<String> levels = new HashSet<>(Arrays.asList(System.getProperty("labLevels", "").split(",")));
+        Set<String> styles = new HashSet<>(Arrays.asList(System.getProperty("labStyles", "").split(",")));
+        Set<String> modes = new HashSet<>(Arrays.asList(System.getProperty("labModes", "").split(",")));
+        if (seedCount < 1 || seedCount > 1000 || firstSeed < 1) throw new IllegalArgumentException("Invalid seed range");
+        for (String level : levels) if (!level.isEmpty() && (Integer.parseInt(level) < 1 || Integer.parseInt(level) > 48)) throw new IllegalArgumentException("Invalid level: " + level);
+        for (String style : styles) if (!style.isEmpty()) HumanStylePlayer.Style.valueOf(style);
+        for (String mode : modes) if (!mode.isEmpty()) PlayType.valueOf(mode);
+        // Flush one row at a time. A stopped run retains completed matches without quadratic rewrites.
+        try (BufferedWriter csv = new BufferedWriter(new OutputStreamWriter(output.child("matches.csv").write(false), "UTF-8"))) {
+        csv.write("mode,seed,seat,style,won,winner,seconds,first_capture,captures,recaptures,longest_drought,orders,upgrades,tools,pacts,level,status\n");
         if (campaign) {
             for (int level = 0; level < yio.tro.opacha.game.campaign.CampaignLevels.COUNT; level++) {
                 if (!levels.contains("") && !levels.contains(Integer.toString(level+1))) continue;
                 for (int seed = firstSeed; seed < firstSeed+seedCount; seed++) for (HumanStylePlayer.Style style : HumanStylePlayer.Style.values()) {
-                    csv.append(run(PlayType.valueOf(yio.tro.opacha.game.campaign.CampaignLevels.get(level).mode), seed, 0, style, level));
-                    output.child("matches.csv").writeString(csv.toString(), false);
+                    if (!styles.contains("") && !styles.contains(style.name())) continue;
+                    PlayType mode = PlayType.valueOf(yio.tro.opacha.game.campaign.CampaignLevels.get(level).mode);
+                    if (!modes.contains("") && !modes.contains(mode.name())) continue;
+                    csv.write(run(mode, seed, 0, style, level)); csv.flush();
                 }
             }
         } else {
         for (PlayType mode : PlayType.values()) for (int seed = firstSeed; seed < firstSeed+seedCount; seed++)
             for (int seat = 0; seat < 2; seat++) for (HumanStylePlayer.Style style : HumanStylePlayer.Style.values()) {
-                csv.append(run(mode, seed, seat, style, -1));
-                output.child("matches.csv").writeString(csv.toString(), false);
+                if ((!styles.contains("") && !styles.contains(style.name())) || (!modes.contains("") && !modes.contains(mode.name()))) continue;
+                csv.write(run(mode, seed, seat, style, -1)); csv.flush();
             }
         }
+        } catch (IOException e) { throw new RuntimeException("Cannot write playtest results", e); }
+        if (matches == 0) throw new IllegalArgumentException("No matches selected");
+        double wall = (System.nanoTime() - started) / 1e9;
+        output.child("timing.json").writeString(String.format(Locale.ROOT,
+                "{\"matches\":%d,\"wall_seconds\":%.3f,\"game_seconds\":%.3f,\"simulation_speed\":%.1f}\n",
+                matches, wall, simulatedSeconds, simulatedSeconds / wall), false);
+        System.out.printf(Locale.ROOT, "PLAYTEST: %d matches in %.2f s (%.0fx game time)%n", matches, wall, simulatedSeconds / wall);
         complete = true; exitApp();
     }
     private String run(PlayType mode, int seed, int seat, HumanStylePlayer.Style style, int levelIndex) {
-        GameRules.playType = mode; GameRules.aiOnlyMode = false; GameRules.difficulty = Difficulty.hard;
+        GameRules.playType = mode; GameRules.aiOnlyMode = false;
+        GameRules.difficulty = Difficulty.valueOf(System.getProperty("labDifficulty", "hard"));
         GameRules.features = RuleFeatures.ALL;
         GameRules.aiTypes.clear(); gameController.gameMode = GameMode.skirmish;
         loadingManager.initLevelSize(LevelSize.tiny);
@@ -83,7 +105,9 @@ public final class BalancePlaytest extends YioGdxGame {
         for (int i = 0; i < previous.length; i++) previous[i] = layer.planetsManager.planets.get(i).fraction;
         double first = -1, last = 0, longest = 0; int captures = 0, recaptures = 0;
         FractionType winner = null;
-        for (int tick = 0; tick < 18000; tick++) {
+        int seconds = Integer.getInteger("labSeconds", 300);
+        if (seconds < 10 || seconds > 600) throw new IllegalArgumentException("labSeconds must be 10..600");
+        for (int tick = 0; tick < seconds * 60; tick++) {
             player.move(layer); layer.moveActually();
             if (tick % 30 != 0) continue;
             for (int i = 0; i < previous.length; i++) {
@@ -103,10 +127,11 @@ public final class BalancePlaytest extends YioGdxGame {
         boolean won = winner == FractionType.green || (winner != null && mode == PlayType.alliances
                 && layer.tactics.alliances.alive(FractionType.green) && layer.tactics.alliances.peacefulSurvivors());
         longest = Math.max(longest, layer.tactics.elapsed - last);
-        String row = String.format(Locale.ROOT, "%s,%d,%d,%s,%s,%s,%.2f,%.2f,%d,%d,%.2f,%d,%d,%d,%d,%d%n",
+        String status = won ? "won" : winner != null ? "lost" : !layer.tactics.alliances.alive(FractionType.green) ? "eliminated" : "timeout";
+        matches++; simulatedSeconds += layer.tactics.elapsed;
+        String row = String.format(Locale.ROOT, "%s,%d,%d,%s,%s,%s,%.2f,%.2f,%d,%d,%.2f,%d,%d,%d,%d,%d,%s%n",
                 mode, seed, seat, style, won, winner, layer.tactics.elapsed, first, captures, recaptures,
-                longest, player.orders, player.upgrades, player.tools, player.pactActions, levelIndex + 1);
-        if (style == HumanStylePlayer.Style.hesitant) System.out.print(row);
+                longest, player.orders, player.upgrades, player.tools, player.pactActions, levelIndex + 1, status);
         return row;
     }
 }

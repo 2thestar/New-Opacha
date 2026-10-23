@@ -1,0 +1,89 @@
+VibratorManagerService:
+  VibrationSettings:
+    vibrateOn = true
+    keyboardVibrationOn = true, default: true
+    vibrateInputDevices = false
+    batterySaverMode = false
+    ringerMode = normal
+    onWirelessCharger = false
+    processStateCache size = 33
+    VibrationIntensities:
+      UNKNOWN = MEDIUM, default: MEDIUM
+      ALARM = MEDIUM, default: MEDIUM
+      TOUCH = MEDIUM, default: MEDIUM
+      MEDIA = MEDIUM, default: MEDIUM
+      RINGTONE = MEDIUM, default: MEDIUM
+      PHYSICAL_EMULATION = MEDIUM, default: MEDIUM
+      NOTIFICATION = MEDIUM, default: MEDIUM
+      HARDWARE_FEEDBACK = MEDIUM, default: MEDIUM
+      COMMUNICATION_REQUEST = MEDIUM, default: MEDIUM
+      ACCESSIBILITY = MEDIUM, default: MEDIUM
+    VibrationConfig:
+      ignoreVibrationsOnWirelessCharger = false
+      hapticChannelMaxAmplitude = 0.0
+      rampStepDurationMs = 5
+      rampDownDurationMs = 0
+      requestVibrationParamsForUsages = [ALARM, RINGTONE, NOTIFICATION, COMMUNICATION_REQUEST]
+      requestVibrationParamsTimeoutMs = 50
+  
+  VibrationScaler:
+    defaultVibrationAmplitude = 255
+    ScaleLevels:
+      VERY_LOW = ScaleLevel{factor=0.6}
+      LOW = ScaleLevel{factor=0.8}
+      NONE = ScaleLevel{factor=1.0}
+      HIGH = ScaleLevel{factor=1.2}
+      VERY_HIGH = ScaleLevel{factor=1.4}
+    AdaptiveHapticsScales:
+  
+  Vibrators:
+    Vibrator (id=1):
+      isVibrating = false
+      isUnderExternalControl = false
+      currentAmplitude = 0.0
+      vibratorInfoLoadSuccessful = true
+      vibratorStateListener size = 0
+      VibratorInfo:
+        id = 1
+        capabilities = [ON_CALLBACK, PERFORM_CALLBACK, COMPOSE_EFFECTS, COMPOSE_PWLE_EFFECTS, ALWAYS_ON_CONTROL, AMPLITUDE_CONTROL, FREQUENCY_CONTROL, EXTERNAL_CONTROL, EXTERNAL_AMPLITUDE_CONTROL]
+        capabilitiesFlags = 11111111111
+        supportedEffects = [CLICK, TICK]
+        supportedPrimitives = [NOOP(0ms), CLICK(100ms), THUD(100ms), SPIN(100ms), QUICK_RISE(100ms), SLOW_RISE(100ms), QUICK_FALL(100ms), TICK(100ms), LOW_TICK(100ms)]
+        supportedBraking = [NONE, CLAB]
+        primitiveDelayMax = 1000
+        compositionSizeMax = 256
+        pwlePrimitiveDurationMax = 16383
+        pwleSizeMax = 126
+        q-factor = 11.0
+        frequencyProfile = FrequencyProfile{mFrequencyRange=[140.0, 160.0], mMinFrequency=140.0, mResonantFrequency=150.0, mFrequencyResolution=1.0, mMaxAmplitudes count=21}
+  
+  CurrentVibration:
+    null
+  
+  NextVibration:
+    null
+  
+  CurrentExternalVibration:
+    null
+  
+  
+  Recent vibrations:
+    TOUCH:
+      10-19 22:05:19.327 |   effect |             finished | duration:    62ms | start: 22:05:19.345 | end: 22:05:19.389 | scale:     NONE (adaptive=1.00) | flags:    0 | usage: TOUCH | audioUsage=USAGE_ASSISTANCE_SONIFICATION | io.github.twothestar.newopacha (uid=10148, deviceId=0) | reason: null | played: Prebaked=HEAVY_CLICK(MEDIUM, with fallback) | original: null
+      10-19 22:08:03.527 |   effect |             finished | duration:   109ms | start: 22:08:03.529 | end: 22:08:03.636 | scale:     NONE (adaptive=1.00) | flags:    0 | usage: TOUCH | audioUsage=USAGE_ASSISTANCE_SONIFICATION | io.github.twothestar.newopacha (uid=10148, deviceId=0) | reason: null | played: Prebaked=CLICK(MEDIUM, with fallback) | original: null
+      10-19 22:08:15.977 |   effect |             finished | duration:   107ms | start: 22:08:15.980 | end: 22:08:16.084 | scale:     NONE (adaptive=1.00) | flags:    0 | usage: TOUCH | audioUsage=USAGE_ASSISTANCE_SONIFICATION | io.github.twothestar.newopacha (uid=10148, deviceId=0) | reason: null | played: Prebaked=TICK(MEDIUM, with fallback) | original: null
+      10-19 22:08:49.463 |   effect |             finished | duration:   108ms | start: 22:08:49.467 | end: 22:08:49.571 | scale:     NONE (adaptive=1.00) | flags:    0 | usage: TOUCH | audioUsage=USAGE_ASSISTANCE_SONIFICATION | io.github.twothestar.newopacha (uid=10148, deviceId=0) | reason: null | played: Prebaked=CLICK(MEDIUM, with fallback) | original: null
+      10-19 22:11:31.557 |   effect |             finished | duration:    41ms | start: 22:11:31.559 | end: 22:11:31.598 | scale:     NONE (adaptive=1.00) | flags:    0 | usage: TOUCH | audioUsage=USAGE_ASSISTANCE_SONIFICATION | io.github.twothestar.newopacha (uid=10148, deviceId=0) | reason: null | played: Prebaked=HEAVY_CLICK(MEDIUM, with fallback) | original: null
+      10-19 22:13:16.437 |   effect |             finished | duration:    50ms | start: 22:13:16.446 | end: 22:13:16.487 | scale:     NONE (adaptive=1.00) | flags:    0 | usage: TOUCH | audioUsage=USAGE_ASSISTANCE_SONIFICATION | io.github.twothestar.newopacha (uid=10148, deviceId=0) | reason: null | played: Prebaked=HEAVY_CLICK(MEDIUM, with fallback) | original: null
+      10-19 22:13:16.553 |   effect |             finished | duration:    40ms | start: 22:13:16.555 | end: 22:13:16.593 | scale:     NONE (adaptive=1.00) | flags:    0 | usage: TOUCH | audioUsage=USAGE_ASSISTANCE_SONIFICATION | io.github.twothestar.newopacha (uid=10148, deviceId=0) | reason: null | played: Prebaked=HEAVY_CLICK(MEDIUM, with fallback) | original: null
+    
+  
+  
+  Aggregated vibration history:
+  
+  
+  VibratorControlService:
+    isVibratorControllerRegistered = false
+    hasPendingVibrationParamsRequest = false
+    
+    Vibration parameters update history:

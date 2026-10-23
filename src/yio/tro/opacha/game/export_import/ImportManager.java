@@ -58,9 +58,9 @@ public class ImportManager {
 
         PlanetsManager planetsManager = objectsLayer.planetsManager;
         tempPoint.set(rx1 * GraphicsYio.width, ry1 * GraphicsYio.width);
-        Planet one = planetsManager.findTouchedPlanet(tempPoint);
+        Planet one = findEndpoint(planetsManager, tempPoint);
         tempPoint.set(rx2 * GraphicsYio.width, ry2 * GraphicsYio.width);
-        Planet two = planetsManager.findTouchedPlanet(tempPoint);
+        Planet two = findEndpoint(planetsManager, tempPoint);
 
         Link link = objectsLayer.linksManager.addLink(one, two);
         link.setFractionType(fractionType);
@@ -70,6 +70,14 @@ public class ImportManager {
             link.constructionCost = Integer.parseInt(split[7]);
             link.constructionSpent = Integer.parseInt(split[8]);
         }
+    }
+
+    /** Saved coordinates are model data; a finger target must never change map import. */
+    private Planet findEndpoint(PlanetsManager manager, PointYio point) {
+        Planet result = manager.findClosestPlanet(point, null);
+        if (result == null || result.position.center.distanceTo(point) > .002 * GraphicsYio.width)
+            throw new IllegalArgumentException("Route endpoint does not match a saved node");
+        return result;
     }
 
 

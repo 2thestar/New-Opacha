@@ -45,7 +45,6 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
     public CircleYio atViewPosition;
     public FactorYio atFactor;
     double atAngle;
-    RepeatYio<Planet> repeatAutoTarget;
     public SelectionEngineYio highlightEngine;
     public boolean holdHighlight;
     public CircleYio highlightViewPosition;
@@ -53,7 +52,9 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
     public AiData aiData;
     public Planet algoPointer;
     public FractionType algoFraction;
-    private float atAccumulator; // auto target
+    public static final double AUTO_SEND_SECONDS = 1.8;
+    private double autoSendClock;
+    public float dispatchPulse;
 
 
     public Planet(PlanetsManager planetsManager) {
@@ -80,7 +81,7 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
         aiData = new AiData();
         algoPointer = null;
         algoFraction = null;
-        atAccumulator = 0;
+        autoSendClock = 0;
 
         setUnitsInside(3);
         initPools();
@@ -102,24 +103,15 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
                 parent.checkToIncreaseCurrentDefense();
             }
         };
-        repeatAutoTarget = new RepeatYio<Planet>(this, 9) {
-            @Override
-            public void performAction() {
-                parent.checkToApplyAutoTarget();
-            }
-        };
     }
 
 
     private void checkToApplyAutoTarget() {
         if (autoTarget == null) return;
-
-        if (atAccumulator < 1) {
-            atAccumulator += 0.1f * VelocityManager.getInstance().value;
-            return;
-        }
-
-        atAccumulator -= 1;
+        autoSendClock += yio.tro.opacha.RefreshRateDetector.getInstance().multiplier
+                * VelocityManager.getInstance().value / 60.0;
+        if (autoSendClock + 1e-8 < AUTO_SEND_SECONDS) return;
+        autoSendClock -= AUTO_SEND_SECONDS;
         planetsManager.sendUnits(this, autoTarget);
     }
 
@@ -156,6 +148,7 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
         type = PlanetType.empty;
         artilleryReload = 0;
         capturePulse = 0;
+        dispatchPulse = 0;
         holdSelection = false;
         jumpEngineYio.reset();
         viewTypeFactor.reset();
@@ -199,13 +192,14 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
     public void moveActually() {
         repeatBuildUnits.move();
         repeatIncreaseDefense.move();
-        repeatAutoTarget.move();
+        checkToApplyAutoTarget();
     }
 
 
     @Override
     public void moveVisually() {
         capturePulse = Math.max(0, capturePulse - com.badlogic.gdx.Gdx.graphics.getDeltaTime() / .45f);
+        dispatchPulse = Math.max(0, dispatchPulse - com.badlogic.gdx.Gdx.graphics.getDeltaTime() / .25f);
         applyVisualRotation();
         moveSelection();
         updateSelectionPosition();
@@ -258,7 +252,7 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
     private void updateViewRadius() {
         if (!jumpEngineYio.hasToMove()) return;
         jumpEngineYio.move();
-        viewPosition.radius = (1 + 0.2f * jumpEngineYio.getValue()) * position.radius;
+        viewPosition.radius = (1 + (yio.tro.opacha.menu.UiMotion.reduced ? 0 : 0.035f) * jumpEngineYio.getValue()) * position.radius;
     }
 
 
@@ -472,7 +466,11 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
 
 
     private void spawnExplosionCausedByUnit(Unit unit) {
-        getParticlesManager().spawnExplosion(viewPosition.center, 2, getParticlesManager().convertFractionIntoPaViewType(unit.fraction));
+        // Preserve the existing particle/RNG bookkeeping; only the new outward plume is drawn.
+        ParticlesManager particles=getParticlesManager();
+        int first=particles.particles.size();
+        particles.spawnExplosion(viewPosition.center,2,particles.convertFractionIntoPaViewType(unit.fraction));
+        for(int i=first;i<particles.particles.size();i++)particles.particles.get(i).quietRouteEffect=true;
     }
 
 
@@ -621,14 +619,14 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
 
         Planet previousAutoTarget = this.autoTarget;
         this.autoTarget = autoTarget;
+        if (previousAutoTarget == null || autoTarget == null) autoSendClock = 0;
 
         onAutoTargetChanged(previousAutoTarget);
     }
 
 
     public void prepareToSendAutoTargetQuickly() {
-        repeatAutoTarget.setCountDown(1);
-        atAccumulator = 1.1f;
+        autoSendClock = AUTO_SEND_SECONDS;
     }
 
 

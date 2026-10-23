@@ -1,6 +1,9 @@
 package yio.tro.opacha.game.gameplay.ai;
 
 import yio.tro.opacha.game.Difficulty;
+import yio.tro.opacha.game.GameRules;
+import yio.tro.opacha.game.PlayType;
+import yio.tro.opacha.game.RuleFeatures;
 import yio.tro.opacha.game.gameplay.ObjectsLayer;
 import yio.tro.opacha.game.gameplay.model.*;
 import java.util.*;
@@ -9,11 +12,28 @@ import java.util.*;
 public class AiSavvyEntity extends AbstractAiEntity {
     private static final int[] PERCENTAGES = {25, 50, 100};
     private final Set<Planet> usedSources = new HashSet<>();
-    private final Map<Planet, Integer> frontDistance = new HashMap<>();
+    private final Map<Planet, Double> frontDistance = new HashMap<>();
 
     public AiSavvyEntity(ObjectsLayer layer) {
         super(layer);
     }
+
+    protected int[] attackPercentages() { return PERCENTAGES; }
+
+    protected boolean replacePlannedMove() { return false; }
+
+    protected boolean issueOrder(Planet source, Planet target, int percent) {
+        if (!isActionAllowed() || source == null || target == null || source.fraction != fractionType
+                || source.type == PlanetType.artillery || source.getLink(target) == null
+                || source.getLink(target).isBlueprint() || amount(source, percent) < 1) return false;
+        usedSources.add(source);
+        if (replacePlannedMove()) return true;
+        if (!getPlanetsManager().sendUnitsPercent(source, target, percent)) return false;
+        onActionPerformed();
+        return true;
+    }
+
+    protected void markSourceUsed(Planet source) { usedSources.add(source); }
 
     @Override
     protected void perform() {
@@ -45,7 +65,7 @@ public class AiSavvyEntity extends AbstractAiEntity {
                 }
             }
         }
-        if (currentAllowedActionCount >= 2) {
+        if (difficulty == Difficulty.hard && currentAllowedActionCount >= 2) {
             for (Planet target : getPlanetsList()) {
                 if (objectsLayer.tactics.alliances.friendly(fractionType, target.fraction)) continue;
                 best = better(best, coordinatedPlan(target));
@@ -66,7 +86,7 @@ public class AiSavvyEntity extends AbstractAiEntity {
         Link link = source.getLink(target);
         int required = requiredAttack(target, link);
         if (required <= 0) return null; // A friendly wave is already sufficient.
-        for (int percent : PERCENTAGES) {
+        for (int percent : attackPercentages()) {
             int amount = amount(source, percent);
             if (amount < required || !canSpare(source, amount, target)) continue;
             return new Plan(source, target, percent, attackScore(target, amount, link) - exposureCost(source, amount, target));
@@ -94,10 +114,10 @@ public class AiSavvyEntity extends AbstractAiEntity {
                 int required = requiredAttack(target, slower)
                         + opposingWave(target, la) + opposingWave(target, lb) - opposingWave(target, slower);
                 if (required <= 0) continue;
-                for (int pa : PERCENTAGES) {
+                for (int pa : attackPercentages()) {
                     int va = amount(a, pa);
                     if (va < 1 || !canSpare(a, va, target)) continue;
-                    for (int pb : PERCENTAGES) {
+                    for (int pb : attackPercentages()) {
                         int vb = amount(b, pb);
                         if (vb < 1 || va + vb < required || !canSpare(b, vb, target)) continue;
                         double score = attackScore(target, va + vb, slower) - 6
@@ -114,16 +134,28 @@ public class AiSavvyEntity extends AbstractAiEntity {
     }
 
     private int requiredAttack(Planet target, Link journey) {
-        // Both regeneration timers run every seven normalized simulation steps. Velocity
-        // multiplies movement and regeneration together, so it cancels over a full journey.
-        double steps = 1 / Math.max(0.00001, journey.movementMultiplier * journey.speedFrom(journey.getOppositePlanet(target)));
-        double production = target.isNeutral() ? 0 : steps * 0.1 / 7 * (target.isEconomic() ? 2 : 1);
+        // Match the actual refresh-adjusted RepeatYio interval, including its
+        // countdown's extra step. Movement and regeneration share game speed.
+        double steps = journeySteps(journey, journey.getOppositePlanet(target));
+        double refresh = yio.tro.opacha.RefreshRateDetector.getInstance().multiplier;
+        double regenerationInterval = ((int) (6 / refresh) + 1) * refresh;
+        double production = target.isNeutral() ? 0 : steps * 0.1 / regenerationInterval * (target.isEconomic() ? 2 : 1);
         double defenseGrowth = target.isEconomic() ? 0 : Math.min(
-                Math.max(0, target.maxDefense - target.currentDefense), steps * 0.1 / 7 * (target.isDefensive() ? 3 : 1));
+                Math.max(0, target.maxDefense - target.currentDefense), steps * 0.1 / regenerationInterval * (target.isDefensive() ? 3 : 1));
         int defenders = target.getFullHp() + (int) Math.ceil(production + defenseGrowth);
-        defenders += incoming(target, target.fraction);
+        defenders += incoming(target, target.fraction, steps);
         defenders += opposingWave(target, journey);
-        return defenders + (target.isNeutral() ? 0 : 3) - incoming(target, fractionType);
+        return defenders + (target.isNeutral() && target.unitsInside >= 1 ? 0 : 3)
+                - incoming(target, fractionType, steps);
+    }
+
+    private double journeySteps(Link link, Planet from) {
+        return 1 / Math.max(0.00001, link.movementMultiplier * link.speedFrom(from));
+    }
+
+    private double arrivalSteps(Unit unit, Planet target) {
+        double remaining = target == unit.link.two ? 1 - unit.acceleratableFactor.value : unit.acceleratableFactor.value;
+        return remaining * journeySteps(unit.link, unit.link.getOppositePlanet(target));
     }
 
     private int opposingWave(Planet target, Link journey) {
@@ -137,15 +169,19 @@ public class AiSavvyEntity extends AbstractAiEntity {
     private double attackScore(Planet target, int troops, Link link) {
         boolean objective = objectsLayer.tactics.flagPlanet == target;
         for (Planet flag : objectsLayer.tactics.homeFlags) if (flag == target && target.fraction != fractionType) objective = true;
-        return (objective ? 100 : 0) + 35 + (target.isNeutral() ? 0 : 8) + (target.isEconomic() ? 10 : 0)
+        return (objective ? 250 : 0) + 35 + (target.isNeutral() ? 0 : 8) + (target.isEconomic() ? 10 : 0)
                 + 1.5 * target.adjoinedLinks.size() - 0.12 * troops - 0.015 / Math.max(0.00001, link.movementMultiplier);
     }
 
     private int incoming(Planet planet, FractionType owner) {
+        return incoming(planet, owner, Double.POSITIVE_INFINITY);
+    }
+
+    private int incoming(Planet planet, FractionType owner, double before) {
         int value = 0;
         for (Link link : planet.adjoinedLinks) {
             for (Unit unit : link.getWalkersToTarget(planet)) {
-                if (!unit.isAlive()) continue;
+                if (!unit.isAlive() || arrivalSteps(unit, planet) > before) continue;
                 if (unit.fraction == owner) value += unit.value;
                 else if (objectsLayer.tactics.alliances.areAllied(owner, unit.fraction)) value += (int) (.7 * unit.value);
             }
@@ -164,11 +200,37 @@ public class AiSavvyEntity extends AbstractAiEntity {
     }
 
     private int reserve(Planet source, Planet attackedTarget) {
-        int incomingThreat = hostileIncoming(source) - incoming(source, fractionType);
-        int threat = Math.max(0, incomingThreat);
-        int home = yio.tro.opacha.game.GameRules.playType == yio.tro.opacha.game.PlayType.home_flags
+        int home = GameRules.playType == PlayType.home_flags
                 && objectsLayer.tactics.homeFlags[fractionType.ordinal()] == source ? 8 : 0;
-        return Math.max(home, threat + (threat > 0 ? 2 : 0) - (int) source.currentDefense);
+        int needed = home;
+        int balance = (int) source.currentDefense;
+        for (int wave : arrivalWaves(source).values()) {
+            balance += wave;
+            needed = Math.max(needed, 2 - balance);
+        }
+        return needed;
+    }
+
+    private SortedMap<Double, Integer> arrivalWaves(Planet planet) {
+        SortedMap<Double, Integer> waves = new TreeMap<>();
+        for (Link link : planet.adjoinedLinks) for (Unit unit : link.getWalkersToTarget(planet)) {
+            if (!unit.isAlive()) continue;
+            int value = unit.fraction == fractionType ? unit.value
+                    : objectsLayer.tactics.alliances.areAllied(unit.fraction, fractionType)
+                    ? (int) (.7 * unit.value) : -unit.value;
+            double arrival = arrivalSteps(unit, planet);
+            waves.put(arrival, waves.getOrDefault(arrival, 0) + value);
+        }
+        return waves;
+    }
+
+    private double lossDeadline(Planet planet) {
+        int balance = planet.getFullHp();
+        for (Map.Entry<Double, Integer> wave : arrivalWaves(planet).entrySet()) {
+            balance += wave.getValue();
+            if (balance <= 0 && wave.getValue() < 0) return wave.getKey();
+        }
+        return Double.POSITIVE_INFINITY;
     }
 
     private double exposureCost(Planet source, int troops, Planet attackedTarget) {
@@ -193,24 +255,30 @@ public class AiSavvyEntity extends AbstractAiEntity {
     }
 
     private Plan supportPlan(Planet source, Planet target) {
-        int deficit = hostileIncoming(target) + 2 - target.getFullHp() - incoming(target, fractionType);
-        if (deficit > 2) {
+        double deadline = lossDeadline(target);
+        if (!Double.isInfinite(deadline)) {
+            if (journeySteps(source.getLink(target), source) >= deadline) return null;
+            int deficit = reserve(target, null) - (int) target.unitsInside;
+            Plan partial = null;
             for (int percent : PERCENTAGES) {
                 int troops = amount(source, percent);
-                if (troops < deficit || !canSpare(source, troops, null)) continue;
-                return new Plan(source, target, percent, 100 + deficit - 0.1 * troops);
+                if (troops < 1 || !canSpare(source, troops, null)) continue;
+                Plan help = new Plan(source, target, percent, 100 + Math.min(deficit, troops) - 0.1 * troops);
+                if (troops >= deficit) return help;
+                partial = help;
             }
+            if (partial != null) return partial;
         }
-        int sourceDistance = frontDistance.get(source), targetDistance = frontDistance.get(target);
-        if (sourceDistance == Integer.MAX_VALUE || sourceDistance < targetDistance) return null;
-        boolean rally = sourceDistance == targetDistance;
+        double sourceDistance = frontDistance.get(source), targetDistance = frontDistance.get(target);
+        if (Double.isInfinite(sourceDistance) || sourceDistance < targetDistance) return null;
+        boolean rally = Math.abs(sourceDistance - targetDistance) < .01;
         if (rally && (getPlanetsManager().numberOfAdjoinedEnemyPlanets(target) == 0
                 || target.unitsInside + incoming(target, fractionType) <= 1.2 * source.unitsInside)) return null;
         // Move surplus through owned territory only, always closer to the front.
         for (int percent : new int[]{100, 50, 25}) {
             int troops = amount(source, percent);
             if (troops < 4 || !canSpare(source, troops, null)) continue;
-            if (difficulty != Difficulty.easy && !source.isEconomic()
+            if (RuleFeatures.has(RuleFeatures.GROW) && difficulty != Difficulty.easy && !source.isEconomic()
                     && getPlanetsManager().numberOfAdjoinedEnemyPlanets(source) == 0
                     && (int) source.unitsInside - troops < PlanetsManager.ECONOMIC_UPGRADE_PRICE) continue;
             return new Plan(source, target, percent, (rally ? 21 : 12) + Math.min(10, troops * 0.1)
@@ -240,25 +308,34 @@ public class AiSavvyEntity extends AbstractAiEntity {
     }
 
     private void updateFrontDistances() {
+        // Travel distance to the actual rival or objective. Neutral dead ends
+        // must not attract supplies just because they are also frontiers.
         frontDistance.clear();
-        ArrayDeque<Planet> queue = new ArrayDeque<>();
+        Set<Planet> unvisited = new HashSet<>(getPlanetsList());
         for (Planet planet : getPlanetsList()) {
-            if (isBeyondCommand(planet)) continue;
-            boolean border = false;
-            for (Link link : planet.adjoinedLinks) {
-                if (!link.isBlueprint() && !objectsLayer.tactics.alliances.friendly(link.getOppositePlanet(planet).fraction, fractionType)) border = true;
+            boolean goal = !planet.isNeutral() && !objectsLayer.tactics.alliances.friendly(fractionType, planet.fraction);
+            if (GameRules.playType == PlayType.capture_flag) goal = planet == objectsLayer.tactics.flagPlanet;
+            if (GameRules.playType == PlayType.home_flags) {
+                goal = false;
+                for (Planet flag : objectsLayer.tactics.homeFlags)
+                    if (flag == planet && !objectsLayer.tactics.alliances.friendly(fractionType, planet.fraction)) goal = true;
             }
-            frontDistance.put(planet, border ? 0 : Integer.MAX_VALUE);
-            if (border) queue.add(planet);
+            frontDistance.put(planet, goal ? 0.0 : Double.POSITIVE_INFINITY);
         }
-        while (!queue.isEmpty()) {
-            Planet planet = queue.remove();
+        while (!unvisited.isEmpty()) {
+            Planet planet = null;
+            for (Planet candidate : getPlanetsList()) {
+                if (!unvisited.contains(candidate)) continue;
+                if (planet == null || frontDistance.get(candidate) < frontDistance.get(planet)) planet = candidate;
+            }
+            unvisited.remove(planet);
+            if (Double.isInfinite(frontDistance.get(planet))) break;
             for (Link link : planet.adjoinedLinks) {
                 if (link.isBlueprint()) continue;
                 Planet other = link.getOppositePlanet(planet);
-                if (isBeyondCommand(other) || frontDistance.get(other) != Integer.MAX_VALUE) continue;
-                frontDistance.put(other, frontDistance.get(planet) + 1);
-                queue.add(other);
+                if (!unvisited.contains(other)) continue;
+                double distance = frontDistance.get(planet) + journeySteps(link, other);
+                if (distance < frontDistance.get(other)) frontDistance.put(other, distance);
             }
         }
     }
@@ -281,14 +358,15 @@ public class AiSavvyEntity extends AbstractAiEntity {
         void execute() {
             usedSources.add(source);
             if (upgrade != null) {
+                if (replacePlannedMove()) return;
                 getPlanetsManager().applyUpgrade(source, upgrade);
                 onActionPerformed();
                 return;
             }
-            if (getPlanetsManager().sendUnitsPercent(source, target, percent)) onActionPerformed();
+            issueOrder(source, target, percent);
             if (second != null) {
                 usedSources.add(second);
-                if (getPlanetsManager().sendUnitsPercent(second, target, secondPercent)) onActionPerformed();
+                issueOrder(second, target, secondPercent);
             }
         }
     }
