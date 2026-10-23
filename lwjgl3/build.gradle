@@ -91,6 +91,18 @@ tasks.register('aiMatches', JavaExec) {
     if (System.getProperty('os.name').toLowerCase().contains('mac')) jvmArgs '-XstartOnFirstThread'
 }
 
+tasks.register('aiRules', JavaExec) {
+    group = 'verification'
+    description = 'Check AI decisions against regression scenarios and real combat.'
+    dependsOn tasks.named('installDist'), tasks.named('smokeTestClasses')
+    timeout = java.time.Duration.ofSeconds(60)
+    classpath = files(sourceSets.smokeTest.output, fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+    mainClass = 'yio.tro.opacha.lwjgl3.AiSmokeTest'
+    workingDir rootProject.projectDir
+    args 480, 800, layout.buildDirectory.dir('ai-rules').get().asFile.absolutePath, 'rules'
+    if (System.getProperty('os.name').toLowerCase().contains('mac')) jvmArgs '-XstartOnFirstThread'
+}
+
 ['Desktop': [480, 800], 'Phone': [390, 844]].each { label, dimensions ->
     tasks.register("tactics$label", JavaExec) {
         group = 'verification'
@@ -195,7 +207,7 @@ tasks.register('balancePlaytest', JavaExec) {
     workingDir rootProject.projectDir
     args layout.buildDirectory.dir('balance/' + providers.gradleProperty('labName').getOrElse('baseline')).get().asFile.absolutePath
     if (providers.gradleProperty('campaignLab').isPresent()) args 'campaign'
-    ['labLevels','labSeeds','labSeedStart'].each { name ->
+    ['labLevels','labSeeds','labSeedStart','labStyles','labModes','labSeconds','labDifficulty'].each { name ->
         if (providers.gradleProperty(name).isPresent()) systemProperty name, providers.gradleProperty(name).get()
     }
     if (System.getProperty('os.name').toLowerCase().contains('mac')) jvmArgs '-XstartOnFirstThread'
@@ -224,3 +236,48 @@ tasks.register('campaignRules',JavaExec) {
     args 480,800,layout.buildDirectory.dir('campaign/rules').get().asFile.absolutePath,'rules'
 }
 tasks.register('campaignTest') { group='verification'; dependsOn 'campaignRules','campaignDesktop','campaignPhone' }
+
+tasks.register('framePerformance', JavaExec) {
+    group = 'verification'
+    dependsOn 'installDist', 'smokeTestClasses'
+    classpath = files(sourceSets.smokeTest.output, fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+    mainClass = 'yio.tro.opacha.lwjgl3.FramePerformanceTest'
+    workingDir rootProject.projectDir
+    systemProperty 'profileFps', providers.gradleProperty('profileFps').getOrElse('0')
+    systemProperty 'verifyProfile', providers.gradleProperty('verifyProfile').getOrElse('false')
+    args layout.buildDirectory.dir('performance/' + providers.gradleProperty('profileName').getOrElse('current')).get().asFile.absolutePath
+    timeout = java.time.Duration.ofSeconds(120)
+}
+
+tasks.register('timingRules', JavaExec) {
+    group='verification'
+    dependsOn 'installDist','smokeTestClasses'
+    classpath=files(sourceSets.smokeTest.output,fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+    mainClass='yio.tro.opacha.lwjgl3.TimingSmokeTest'
+    workingDir rootProject.projectDir
+    args layout.buildDirectory.dir('performance/timing').get().asFile.absolutePath
+    timeout=java.time.Duration.ofSeconds(90)
+}
+
+['Desktop':[480,800],'Phone':[390,844],'User':[576,1280]].each { label,dimensions ->
+    tasks.register("battlefield$label",JavaExec) {
+        group='verification'
+        dependsOn tasks.named('installDist'),tasks.named('smokeTestClasses')
+        timeout=java.time.Duration.ofSeconds(110)
+        classpath=files(sourceSets.smokeTest.output,fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+        mainClass='yio.tro.opacha.lwjgl3.BattlefieldSmokeTest'
+        workingDir rootProject.projectDir
+        args dimensions[0],dimensions[1],layout.buildDirectory.dir("battlefield/$label").get().asFile.absolutePath
+    }
+}
+['Day':[], 'Night':['night','colorblind']].each { label,options ->
+    tasks.register("battlefieldMotion$label",JavaExec) {
+        group='verification'
+        dependsOn tasks.named('installDist'),tasks.named('smokeTestClasses')
+        timeout=java.time.Duration.ofSeconds(90)
+        classpath=files(sourceSets.smokeTest.output,fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+        mainClass='yio.tro.opacha.lwjgl3.BattlefieldMotionTest'
+        workingDir rootProject.projectDir
+        args([layout.buildDirectory.dir("battlefield-motion/$label").get().asFile.absolutePath]+options)
+    }
+}

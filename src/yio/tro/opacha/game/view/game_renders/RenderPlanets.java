@@ -1,241 +1,114 @@
 package yio.tro.opacha.game.view.game_renders;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import yio.tro.opacha.game.gameplay.model.*;
+import yio.tro.opacha.SettingsManager;
 import yio.tro.opacha.game.GameMode;
 import yio.tro.opacha.game.gameplay.ai.AiType;
-import yio.tro.opacha.stuff.GraphicsYio;
-import yio.tro.opacha.stuff.Storage3xTexture;
-
-import java.util.HashMap;
+import yio.tro.opacha.game.gameplay.model.*;
 import yio.tro.opacha.menu.UiStyle;
-import yio.tro.opacha.SettingsManager;
+import yio.tro.opacha.stuff.*;
 
-public class RenderPlanets extends GameRender{
-
-    HashMap<FractionType, Storage3xTexture> mapMainTextures;
-    private PlanetsManager planetsManager;
-    private Storage3xTexture shadowTexture;
-    HashMap<PlanetType, Storage3xTexture> mapTypeTextures;
-    private Storage3xTexture selectionTexture;
-    HashMap<FractionType, Storage3xTexture> mapShieldSmallTextures;
-    HashMap<FractionType, Storage3xTexture> mapShieldMoreTextures;
-    private Storage3xTexture autoTargetTexture;
-    private Storage3xTexture highlightTexture;
-    private Storage3xTexture halvedSelectionTexture;
-    private AiMarkerTextures aiMarkers;
-
-
-    @Override
-    protected void loadTextures() {
-        mapMainTextures = new HashMap<>();
-        for (FractionType fractionType : FractionType.values()) {
-            mapMainTextures.put(fractionType, load3xTexture("planet_" + fractionType));
-        }
-
-        mapTypeTextures = new HashMap<>();
-        for (PlanetType planetType : PlanetType.values()) {
-            mapTypeTextures.put(planetType, load3xTexture("type_" + (planetType == PlanetType.artillery ? PlanetType.empty : planetType)));
-        }
-
-        mapShieldSmallTextures = new HashMap<>();
-        for (FractionType fractionType : FractionType.values()) {
-            mapShieldSmallTextures.put(fractionType, load3xTexture("shield_" + fractionType + "_small"));
-        }
-
-        mapShieldMoreTextures = new HashMap<>();
-        for (FractionType fractionType : FractionType.values()) {
-            mapShieldMoreTextures.put(fractionType, load3xTexture("shield_" + fractionType + "_more"));
-        }
-
-        shadowTexture = load3xTexture("planet_shadow");
-        selectionTexture = load3xTexture("selection");
-        autoTargetTexture = load3xTexture("auto_target");
-        highlightTexture = load3xTexture("highlight");
-        halvedSelectionTexture = load3xTexture("halved_selection");
-        if (aiMarkers == null) aiMarkers = new AiMarkerTextures();
+public class RenderPlanets extends GameRender {
+    private static final Color CONVEYOR_LIGHT=Color.valueOf("E6FFCE");
+    private Object homesLayer;
+    @Override protected void loadTextures(){
+        BattlefieldArt.get();
     }
-
-
-    @Override
-    public void render() {
-        planetsManager = getObjectsLayer().planetsManager;
-
-        for (Planet planet : planetsManager.planets) {
-            if (!planet.isCurrentlyVisible()) continue;
-            renderSinglePlanet(planet);
+    @Override public void render(){
+        if(homesLayer!=getObjectsLayer()){
+            homesLayer=getObjectsLayer();getObjectsLayer().unitManager.visuals.onEndCreation();
         }
-
-        for (Planet planet : planetsManager.planets) {
-            if (!planet.isCurrentlyVisible()) continue;
-            renderText(planet);
-            renderAiMarker(planet);
+        BattlefieldArt art=BattlefieldArt.get();
+        for(Planet p:getObjectsLayer().planetsManager.planets){
+            if(!p.isCurrentlyVisible())continue;
+            selection(p);node(p);accessibleMark(p);
+            shields(p);economy(p);order(p);
+        }
+        for(Planet p:getObjectsLayer().planetsManager.planets){
+            if(!p.isCurrentlyVisible())continue;
+            float r=p.viewPosition.radius;
+            art.count(batchMovable,p.text.string,p.viewPosition.center.x,p.viewPosition.center.y,r*.70,r*1.44);
+            homeName(p);
+        }
+        batchMovable.setColor(Color.WHITE);
+    }
+    public void renderShadows(){/* Contact shadows are part of the managed candy atlas. */}
+    private void selection(Planet p){
+        double x=p.viewPosition.center.x,y=p.viewPosition.center.y,r=p.viewPosition.radius;
+        if(p.highlightEngine.isSelected())arc(x,y,r*1.32,0,Math.PI*2,w*.0017,UiStyle.GOLD,p.highlightEngine.getAlpha());
+        if(p.selectionEngineYio.isSelected())arc(x,y,r*1.29,-Math.PI/2,p.halvedSelectionMode?Math.PI/2:Math.PI*1.5,w*.0028,UiStyle.GOLD,1);
+        if(p.capturePulse>0)arc(x,y,r*(1.18+.15*(1-p.capturePulse)),0,Math.PI*2,w*.0022,UiStyle.GOLD,p.capturePulse*.65f);
+    }
+    private void shields(Planet p){
+        if(p.isEconomic())return;
+        int count=(int)p.currentDefense;if(count==0)return;
+        double r=p.viewPosition.radius,x=p.viewPosition.center.x,y=p.viewPosition.center.y,step=Math.PI*2/7;
+        for(int i=0;i<count;i++){
+            double a,b;
+            if(p.isDefensive()){int gap=i/2,slot=i%2;double center=Math.PI/2-gap*step-step/2+(slot==0?.12:-.12);a=center-.072;b=center+.072;}
+            else{a=-Math.PI/2+i*step+.20;b=a+.49;}
+            arc(x,y,r*1.085,a,b,Math.max(w*.0030,r*.057),BattlefieldArt.SHIELD,1);
+            arc(x,y+r*.008,r*1.085,a,b,Math.max(w*.0019,r*.042),BattlefieldArt.SHIELD_LIGHT,1);
         }
     }
-
-    private void renderAiMarker(Planet planet) {
-        if (gameController.gameMode == GameMode.editor) return;
-        AiType type = getObjectsLayer().aiManager.getType(planet.fraction);
-        if (type == null) return;
-        float r = planet.viewPosition.radius;
-        float size = .72f * r;
-        batchMovable.draw(aiMarkers.get(type), planet.viewPosition.center.x - size / 2,
-                planet.viewPosition.center.y + 1.02f * r, size, size);
-    }
-
-
-    public void renderShadows() {
-        planetsManager = getObjectsLayer().planetsManager;
-
-        for (Planet planet : planetsManager.planets) {
-            if (!planet.isCurrentlyVisible()) continue;
-            renderShadow(planet);
+    private void economy(Planet p){
+        if(!p.isEconomic())return;
+        double r=p.viewPosition.radius,x=p.viewPosition.center.x,y=p.viewPosition.center.y,phase=yio.tro.opacha.menu.UiMotion.reduced?0:getObjectsLayer().tactics.elapsed*.40;
+        arc(x,y,r*.77,0,Math.PI*2,r*.10,BattlefieldArt.troopEdge(p.fraction),.32f);
+        for(int i=0;i<15;i++){
+            double a=phase+i*Math.PI*2/15;
+            BattlefieldArt.get().smallBox(batchMovable,x+Math.cos(a)*r*.77,y+Math.sin(a)*r*.77,
+                    r*.094,r*.044,r*.02,a+Math.PI/2,i%5==0?CONVEYOR_LIGHT:BattlefieldArt.face(p.fraction));
         }
     }
-
-
-    private void renderShadow(Planet planet) {
-        float r = planet.viewPosition.radius, x = planet.viewPosition.center.x, y = planet.viewPosition.center.y;
-        UiStyle.get().disc(batchMovable, x + r * .10f, y - r * .20f, r * 1.12f, UiStyle.INK, .06f);
-        UiStyle.get().disc(batchMovable, x + r * .07f, y - r * .14f, r, UiStyle.INK, .13f);
+    private void order(Planet p){
+        if(p.atFactor.get()==0)return;
+        double r=p.viewPosition.radius,a=p.atViewPosition.angle,d=r*1.65;
+        UiStyle.get().triangle(batchMovable,p.viewPosition.center.x+Math.cos(a)*d,p.viewPosition.center.y+Math.sin(a)*d,a,r*.25,UiStyle.TEXT,(float)p.atFactor.get());
     }
-
-
-    private void renderSinglePlanet(Planet planet) {
-        if (planet.capturePulse > 0) {
-            double radius = planet.viewPosition.radius * (1.1 + .5 * (1 - planet.capturePulse));
-            double x = planet.viewPosition.center.x, y = planet.viewPosition.center.y;
-            for (int i = 0; i < 32; i++) {
-                double a = i * Math.PI / 16, b = (i + 1) * Math.PI / 16;
-                UiStyle.get().line(batchMovable, x + radius * Math.cos(a), y + radius * Math.sin(a),
-                        x + radius * Math.cos(b), y + radius * Math.sin(b),
-                        planet.viewPosition.radius * .09, UiStyle.GOLD, planet.capturePulse * .8f);
+    private void node(Planet p){
+        double now=getObjectsLayer().tactics.elapsed,extension=0,angle=0,r=p.viewPosition.radius;
+        if(!yio.tro.opacha.menu.UiMotion.reduced){
+            RenderUnits renderer=GameRendersList.getInstance().renderUnits;
+            for(Unit unit:getObjectsLayer().unitManager.units){
+                if(!unit.isAlive()||unit.value>50||BattlefieldVisuals.working(unit))continue;
+                if(unit.getStart()!=p&&unit.getTarget()!=p)continue;
+                RenderUnits.Pose pose=renderer.pose(unit);double strength=0,a=pose.angle;
+                if(pose.start==p)strength=pose.outgoing;
+                else if(pose.target==p){strength=pose.incoming;a+=Math.PI;}
+                if(strength*r*.24>extension){extension=strength*r*.24;angle=a;}
             }
+        for(BattlefieldVisuals.Contact hit:getObjectsLayer().unitManager.visuals.contacts){
+            double age=now-hit.time;if(hit.node!=p||!hit.friendly||age<0||age>.38)continue;
+            double amount=r*.24*(1-BattlefieldArt.smooth(age/.38));if(amount>extension){extension=amount;angle=hit.angle;}
         }
-        renderHighlight(planet);
-        renderSelection(planet);
-        renderShields(planet);
-        renderAutoTarget(planet);
-        renderMainPart(planet);
-        renderViewType(planet);
+        }
+        BattlefieldArt.get().node(batchMovable,p,angle,extension);
     }
-
-
-    private void renderHighlight(Planet planet) {
-        if (!planet.highlightEngine.isSelected()) return;
-
-        GraphicsYio.setBatchAlpha(batchMovable, planet.highlightEngine.getAlpha() / 2);
-        GraphicsYio.drawByCircle(batchMovable, highlightTexture.getTexture(getCurrentZoomQuality()), planet.highlightViewPosition);
-        GraphicsYio.setBatchAlpha(batchMovable, 1);
-    }
-
-
-    private void renderAutoTarget(Planet planet) {
-        if (planet.atFactor.get() == 0) return;
-
-        GraphicsYio.drawByCircle(
-                batchMovable,
-                autoTargetTexture.getTexture(getCurrentZoomQuality()),
-                planet.atViewPosition
-        );
-    }
-
-
-    private void renderText(Planet planet) {
-        GraphicsYio.renderText(batchMovable, planet.text);
-    }
-
-
-    private void renderShields(Planet planet) {
-        for (Shield shield : planet.shields) {
-            if (!shield.isActive()) continue;
-            GraphicsYio.drawByCircle(
-                    batchMovable,
-                    getShieldTexture(planet),
-                    shield.viewPosition
-            );
+    private void accessibleMark(Planet p){
+        if(!SettingsManager.getInstance().colorblindMode||p.fraction==FractionType.neutral)return;
+        // Transparent notches on the same candy surface, never an inset replacement disc.
+        int marks=p.fraction.ordinal();double r=p.viewPosition.radius;
+        for(int i=0;i<marks;i++){
+            double a=.62+(i-(marks-1)/2.0)*.14;
+            UiStyle.get().line(batchMovable,p.viewPosition.center.x+Math.cos(a)*r*.63,p.viewPosition.center.y+Math.sin(a)*r*.63,
+                    p.viewPosition.center.x+Math.cos(a)*r*.72,p.viewPosition.center.y+Math.sin(a)*r*.72,r*.04,Color.WHITE,.72f);
         }
     }
-
-
-    private TextureRegion getShieldTexture(Planet planet) {
-        if (planet.isDefensive()) {
-            return mapShieldMoreTextures.get(planet.fraction).getTexture(getCurrentZoomQuality());
-        }
-
-        return mapShieldSmallTextures.get(planet.fraction).getTexture(getCurrentZoomQuality());
+    private void homeName(Planet p){
+        if(gameController.gameMode==GameMode.editor)return;
+        AiType type=getObjectsLayer().aiManager.getType(p.fraction);
+        if(type==null||getObjectsLayer().unitManager.visuals.homes[p.fraction.ordinal()]!=p)return;
+        String name=type==AiType.savvy?"Savvy Jane":type==AiType.silly?"Silly Sam":"Simple Joe";
+        BattlefieldArt.get().label(batchMovable,name,p.viewPosition.center.x,p.viewPosition.center.y-p.viewPosition.radius*1.62,
+                Math.max(w*.014,p.viewPosition.radius*.29),p.viewPosition.radius*3,UiStyle.TEXT);
     }
-
-
-    private void renderMainPart(Planet planet) {
-        if (!SettingsManager.getInstance().colorblindMode) {
-            float r = planet.viewPosition.radius, x = planet.viewPosition.center.x, y = planet.viewPosition.center.y;
-            UiStyle skin = UiStyle.get();
-            skin.disc(batchMovable, x, y, r, UiStyle.INK, 1);
-            skin.disc(batchMovable, x, y + r * .055f, r * .89f, UiStyle.faction(planet.fraction), 1);
-            skin.disc(batchMovable, x - r * .28f, y + r * .48f, r * .18f, UiStyle.WHITE, .40f);
-            return;
-        }
-        GraphicsYio.drawByCircle(
-                batchMovable,
-                mapMainTextures.get(planet.fraction).getTexture(getCurrentZoomQuality()),
-                planet.viewPosition
-        );
-    }
-
-
-    private void renderViewType(Planet planet) {
-        if (planet.viewTypeFactor.get() < 1) {
-            GraphicsYio.setBatchAlpha(batchMovable, planet.viewTypeFactor.get());
-        }
-
-        GraphicsYio.drawByCircle(
-                batchMovable,
-                mapTypeTextures.get(planet.type).getTexture(getCurrentZoomQuality()),
-                planet.viewPosition
-        );
-
-        if (planet.viewTypeFactor.get() < 1) {
-            GraphicsYio.setBatchAlpha(batchMovable, 1);
+    void arc(double x,double y,double r,double from,double to,double width,Color color,float alpha){
+        int steps=Math.max(2,(int)((to-from)*12));
+        for(int i=0;i<steps;i++){
+            double a=from+(to-from)*i/steps,b=from+(to-from)*(i+1)/steps;
+            UiStyle.get().line(batchMovable,x+r*Math.cos(a),y+r*Math.sin(a),x+r*Math.cos(b),y+r*Math.sin(b),width,color,alpha);
         }
     }
-
-
-    private void renderSelection(Planet planet) {
-        if (!planet.selectionEngineYio.isSelected()) return;
-
-        if (!planet.halvedSelectionMode) {
-            float r = planet.selectionPosition.radius;
-            UiStyle.get().disc(batchMovable, planet.selectionPosition.center.x, planet.selectionPosition.center.y,
-                    r, UiStyle.GOLD, .7f);
-            UiStyle.get().disc(batchMovable, planet.selectionPosition.center.x, planet.selectionPosition.center.y,
-                    r * .90f, UiStyle.BOARD, 1);
-            return;
-        }
-
-        GraphicsYio.drawByCircle(
-                batchMovable,
-                getSelectionTexture(planet),
-                planet.selectionPosition
-        );
-    }
-
-
-    private TextureRegion getSelectionTexture(Planet planet) {
-        if (planet.halvedSelectionMode) {
-            return halvedSelectionTexture.getTexture(getCurrentZoomQuality());
-        }
-
-        return selectionTexture.getTexture(getCurrentZoomQuality());
-    }
-
-
-    @Override
-    protected void disposeTextures() {
-        if (aiMarkers != null) {
-            aiMarkers.dispose();
-            aiMarkers = null;
-        }
-    }
+    @Override protected void disposeTextures(){BattlefieldArt.dispose();}
 }

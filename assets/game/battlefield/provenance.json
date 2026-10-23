@@ -1,0 +1,39 @@
+{
+  "origin": "Authored Canvas geometry exported from the user-approved executable reference; no AI bitmap generation",
+  "reference": ".impeccable/mocks/battlefield/2026-10-21/fine-ink-troops.html",
+  "referenceSha256": "5c76471a9e84178738bca68398bfa41792715ab36ea9b030b6332ae2b1a2ad23",
+  "materialSourceSha256": "cdbb4294e4fcadb57af3fe980457b19dca4d4e418d20790504ed19a03e9d3938",
+  "cell": 256,
+  "radius": 96,
+  "columns": [
+    "neutral",
+    "green",
+    "red",
+    "yellow",
+    "cyan"
+  ],
+  "rows": [
+    "plain",
+    "tower",
+    "colorblind-plain",
+    "colorblind-tower"
+  ],
+  "files": [
+    {
+      "file": "nodes.png",
+      "pngPixelDataSha256": "61a5c0dda6426824fafb72724123e6ea85e3da7bb21f8f31698235f310b07df0"
+    },
+    {
+      "file": "vapor.png",
+      "pngPixelDataSha256": "ab5953806e5ddc1618ff3eaa7440eb863fd65e7406e6dd1ecbcc38eaf459671e"
+    },
+    {
+      "file": "rounded.png",
+      "pngPixelDataSha256": "95cefd92316539088fe998b548ad9a427dab84ad6d640428f94692a1ad9d9c48"
+    },
+    {
+      "file": "rig-hull.png",
+      "pngPixelDataSha256": "ab05904a65b80ea47d94cc5e1e3c9fd2a0d870ff444267a27e2bcd7d625f8602"
+    }
+  ]
+}

@@ -22,6 +22,7 @@ public class Unit implements ReusableYio, AcceleratableYio{
     Planet target;
     public RenderableTextYio title;
     public boolean digger;
+    public boolean workingDigger;
     private double digAccumulator;
     private static int nextJourney;
     int journeyId;
@@ -47,6 +48,7 @@ public class Unit implements ReusableYio, AcceleratableYio{
         setAlive(false);
         target = null;
         digger = false;
+        workingDigger = false;
         digAccumulator = 0;
     }
 
@@ -70,10 +72,11 @@ public class Unit implements ReusableYio, AcceleratableYio{
     }
 
     private void dig(float previous) {
-        if (!link.isBlueprint()) { digger = false; return; }
+        if (!link.isBlueprint()) { digger = false; workingDigger = false; return; }
         float next = acceleratableFactor.value;
         float front = link.constructionProgress();
         if (next <= front) return;
+        workingDigger = true;
         digAccumulator += Math.max(0, next - Math.max(previous, front)) * link.constructionCost;
         int requested = next >= 1 ? link.constructionCost - link.constructionSpent : (int) (digAccumulator + .00001);
         int work = Math.min(value, Math.min(link.constructionCost - link.constructionSpent, requested));
@@ -83,7 +86,7 @@ public class Unit implements ReusableYio, AcceleratableYio{
         acceleratableFactor.value = Math.min(next, link.constructionProgress());
         if (link.isBlueprint()) acceleratableFactor.needsToMove = true;
         if (value == 0) setAlive(false);
-        if (!link.isBlueprint()) digger = false;
+        if (!link.isBlueprint()) { digger = false; workingDigger = false; }
     }
 
 
@@ -92,6 +95,7 @@ public class Unit implements ReusableYio, AcceleratableYio{
         if (!isAlive()) return;
 
         setAlive(false);
+        unitManager.visuals.contact(this, target);
         target.onUnitReached(this);
     }
 
@@ -194,4 +198,8 @@ public class Unit implements ReusableYio, AcceleratableYio{
     public void setFraction(FractionType fraction) {
         this.fraction = fraction;
     }
+
+    public Planet getTarget(){return target;}
+    public Planet getStart(){return link.getOppositePlanet(target);}
+    public double digFraction(){return Math.max(0,Math.min(1,digAccumulator));}
 }

@@ -1,0 +1,23 @@
+PASS: Simple counts real commands
+PASS: Simple waits for a winning force
+PASS: Simple avoids duplicate attacks
+PASS: Supplies work when Grow is disabled
+PASS: Late waves cannot defend an earlier attack
+PASS: Partial reinforcement saves a threatened node
+PASS: Supply follows the battle rather than a dead end
+PASS: AI timing follows game speed and refresh rate
+PASS: Late friendly supplies do not erase an immediate threat
+PASS: Rescue orders must arrive before the node falls
+PASS: A winning flag capture comes before ordinary expansion
+PASS: Simple can expand while keeping its starting flag reserve
+AI REGRESSIONS: 12 passed, 0 failed
+AI SCENARIOS PASSED: 30044 assertions
+AI SMOKE PASSED: 480 x 800
+AI SCENARIOS PASSED: 30044 assertions
+Hard, six tiny and six small maps, each starting colour swapped: Savvy 10, Simple 12, unresolved 2
+AI SMOKE PASSED: 480 x 800
+AI SCENARIOS PASSED: 30044 assertions
+AI SMOKE PASSED: 390 x 844
+TACTICS SCENARIOS PASSED: 119 assertions
+CAMPAIGN DATA PASSED: 3871 assertions across 48 maps
+BUILD SUCCESSFUL in 1m 20s

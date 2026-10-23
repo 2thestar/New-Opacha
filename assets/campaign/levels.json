@@ -14,7 +14,7 @@
       "mode": "conquest",
       "layout": "First steps",
       "concept": "Capture",
-      "brief": "Tap your green node, then a linked node to send troops. Match the troops and shields to capture it. Take the red nodes to win.",
+      "brief": "Tap your green node, then a linked node to send troops. Send more than its troops and shields to capture it. Take the red nodes to win.",
       "hint": "Secure the first foothold before splitting your army.",
       "features": 0,
       "difficulty": "easy",
@@ -22,7 +22,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 28,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.22
@@ -30,7 +30,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.32,
           "y": 0.5
@@ -38,7 +38,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.65,
           "y": 0.77
@@ -46,7 +46,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.4,
           "y": 1.03
@@ -54,7 +54,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 8,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.37
@@ -83,7 +83,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:First steps#game_rules:easy false conquest false 0#ai_types:red simple#general:tiny#planets:green empty 28 0.5 0.22 0 0,neutral empty 2 0.32 0.5 0 0,neutral empty 2 0.65 0.77 0 0,neutral empty 2 0.4 1.03 0 0,red empty 8 0.5 1.37 0 0#links:neutral 0.5 0.22 0.32 0.5 false none 0 0,neutral 0.32 0.5 0.65 0.77 false none 0 0,neutral 0.65 0.77 0.4 1.03 false none 0 0,neutral 0.4 1.03 0.5 1.37 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:First steps#game_rules:easy false conquest false 0#ai_types:red simple#general:tiny#planets:green empty 0 0.5 0.22 0 0,neutral empty 3 0.32 0.5 0 0,neutral empty 3 0.65 0.77 0 0,neutral empty 3 0.4 1.03 0 0,red empty 0 0.5 1.37 0 0#links:neutral 0.5 0.22 0.32 0.5 false none 0 0,neutral 0.32 0.5 0.65 0.77 false none 0 0,neutral 0.65 0.77 0.4 1.03 false none 0 0,neutral 0.4 1.03 0.5 1.37 false none 0 0#tactics:#"
     },
     {
       "index": 1,
@@ -100,7 +100,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 30,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.2
@@ -108,7 +108,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.23,
           "y": 0.47
@@ -116,7 +116,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.77,
           "y": 0.47
@@ -124,7 +124,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.76
@@ -132,7 +132,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.23,
           "y": 1.05
@@ -140,7 +140,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.77,
           "y": 1.05
@@ -148,7 +148,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 10,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.37
@@ -197,7 +197,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Fork#game_rules:easy false conquest false 1#ai_types:red simple#general:tiny#planets:green empty 30 0.5 0.2 0 0,neutral empty 2 0.23 0.47 0 0,neutral empty 2 0.77 0.47 0 0,neutral empty 2 0.5 0.76 0 0,neutral empty 2 0.23 1.05 0 0,neutral empty 2 0.77 1.05 0 0,red empty 10 0.5 1.37 0 0#links:neutral 0.5 0.2 0.23 0.47 false none 0 0,neutral 0.5 0.2 0.77 0.47 false none 0 0,neutral 0.23 0.47 0.5 0.76 false none 0 0,neutral 0.77 0.47 0.5 0.76 false none 0 0,neutral 0.5 0.76 0.23 1.05 false none 0 0,neutral 0.5 0.76 0.77 1.05 false none 0 0,neutral 0.23 1.05 0.5 1.37 false none 0 0,neutral 0.77 1.05 0.5 1.37 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Fork#game_rules:easy false conquest false 1#ai_types:red simple#general:tiny#planets:green empty 0 0.5 0.2 0 0,neutral empty 3 0.23 0.47 0 0,neutral empty 3 0.77 0.47 0 0,neutral empty 3 0.5 0.76 0 0,neutral empty 3 0.23 1.05 0 0,neutral empty 3 0.77 1.05 0 0,red empty 0 0.5 1.37 0 0#links:neutral 0.5 0.2 0.23 0.47 false none 0 0,neutral 0.5 0.2 0.77 0.47 false none 0 0,neutral 0.23 0.47 0.5 0.76 false none 0 0,neutral 0.77 0.47 0.5 0.76 false none 0 0,neutral 0.5 0.76 0.23 1.05 false none 0 0,neutral 0.5 0.76 0.77 1.05 false none 0 0,neutral 0.23 1.05 0.5 1.37 false none 0 0,neutral 0.77 1.05 0.5 1.37 false none 0 0#tactics:#"
     },
     {
       "index": 2,
@@ -214,7 +214,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 34,
+          "troops": 0,
           "shield": 0,
           "x": 0.25,
           "y": 0.2
@@ -222,7 +222,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.22,
           "y": 0.52
@@ -230,7 +230,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.73,
           "y": 0.42
@@ -238,7 +238,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.3,
           "y": 0.83
@@ -246,7 +246,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.74,
           "y": 0.77
@@ -254,7 +254,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.22,
           "y": 1.12
@@ -262,7 +262,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.76,
           "y": 1.13
@@ -270,7 +270,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 12,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.4
@@ -324,7 +324,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Two banks#game_rules:easy false conquest false 3#ai_types:red simple#general:tiny#planets:green empty 34 0.25 0.2 0 0,neutral empty 2 0.22 0.52 0 0,neutral empty 2 0.73 0.42 0 0,neutral empty 2 0.3 0.83 0 0,neutral empty 2 0.74 0.77 0 0,neutral empty 2 0.22 1.12 0 0,neutral empty 2 0.76 1.13 0 0,red empty 12 0.5 1.4 0 0#links:neutral 0.25 0.2 0.22 0.52 false none 0 0,neutral 0.25 0.2 0.73 0.42 false none 0 0,neutral 0.22 0.52 0.3 0.83 false none 0 0,neutral 0.73 0.42 0.74 0.77 false none 0 0,neutral 0.3 0.83 0.74 0.77 false none 0 0,neutral 0.3 0.83 0.22 1.12 false none 0 0,neutral 0.74 0.77 0.76 1.13 false none 0 0,neutral 0.22 1.12 0.5 1.4 false none 0 0,neutral 0.76 1.13 0.5 1.4 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Two banks#game_rules:easy false conquest false 3#ai_types:red simple#general:tiny#planets:green empty 0 0.25 0.2 0 0,neutral empty 3 0.22 0.52 0 0,neutral empty 3 0.73 0.42 0 0,neutral empty 3 0.3 0.83 0 0,neutral empty 3 0.74 0.77 0 0,neutral empty 3 0.22 1.12 0 0,neutral empty 3 0.76 1.13 0 0,red empty 0 0.5 1.4 0 0#links:neutral 0.25 0.2 0.22 0.52 false none 0 0,neutral 0.25 0.2 0.73 0.42 false none 0 0,neutral 0.22 0.52 0.3 0.83 false none 0 0,neutral 0.73 0.42 0.74 0.77 false none 0 0,neutral 0.3 0.83 0.74 0.77 false none 0 0,neutral 0.3 0.83 0.22 1.12 false none 0 0,neutral 0.74 0.77 0.76 1.13 false none 0 0,neutral 0.22 1.12 0.5 1.4 false none 0 0,neutral 0.76 1.13 0.5 1.4 false none 0 0#tactics:#"
     },
     {
       "index": 3,
@@ -341,7 +341,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 40,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.18
@@ -349,7 +349,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.2,
           "y": 0.43
@@ -357,7 +357,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 0.43
@@ -365,7 +365,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.64
@@ -373,7 +373,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.24,
           "y": 0.86
@@ -381,7 +381,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.76,
           "y": 0.86
@@ -389,7 +389,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 1.08
@@ -397,7 +397,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.2,
           "y": 1.29
@@ -405,7 +405,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 1.29
@@ -413,7 +413,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 14,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.46
@@ -482,7 +482,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Bridge#game_rules:easy false conquest false 7#ai_types:red simple#general:tiny#planets:green empty 40 0.5 0.18 0 0,neutral empty 2 0.2 0.43 0 0,neutral empty 2 0.8 0.43 0 0,neutral empty 2 0.5 0.64 0 0,neutral empty 2 0.24 0.86 0 0,neutral empty 2 0.76 0.86 0 0,neutral empty 2 0.5 1.08 0 0,neutral empty 2 0.2 1.29 0 0,neutral empty 2 0.8 1.29 0 0,red empty 14 0.5 1.46 0 0#links:neutral 0.5 0.18 0.2 0.43 false none 0 0,neutral 0.5 0.18 0.8 0.43 false none 0 0,neutral 0.2 0.43 0.5 0.64 false none 0 0,neutral 0.8 0.43 0.5 0.64 false none 0 0,neutral 0.5 0.64 0.24 0.86 false none 0 0,neutral 0.5 0.64 0.76 0.86 false none 0 0,neutral 0.24 0.86 0.5 1.08 false none 0 0,neutral 0.76 0.86 0.5 1.08 false none 0 0,neutral 0.5 1.08 0.2 1.29 false none 0 0,neutral 0.5 1.08 0.8 1.29 false none 0 0,neutral 0.2 1.29 0.5 1.46 false none 0 0,neutral 0.8 1.29 0.5 1.46 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Bridge#game_rules:easy false conquest false 7#ai_types:red simple#general:tiny#planets:green empty 0 0.5 0.18 0 0,neutral empty 3 0.2 0.43 0 0,neutral empty 3 0.8 0.43 0 0,neutral empty 3 0.5 0.64 0 0,neutral empty 3 0.24 0.86 0 0,neutral empty 3 0.76 0.86 0 0,neutral empty 3 0.5 1.08 0 0,neutral empty 3 0.2 1.29 0 0,neutral empty 3 0.8 1.29 0 0,red empty 0 0.5 1.46 0 0#links:neutral 0.5 0.18 0.2 0.43 false none 0 0,neutral 0.5 0.18 0.8 0.43 false none 0 0,neutral 0.2 0.43 0.5 0.64 false none 0 0,neutral 0.8 0.43 0.5 0.64 false none 0 0,neutral 0.5 0.64 0.24 0.86 false none 0 0,neutral 0.5 0.64 0.76 0.86 false none 0 0,neutral 0.24 0.86 0.5 1.08 false none 0 0,neutral 0.76 0.86 0.5 1.08 false none 0 0,neutral 0.5 1.08 0.2 1.29 false none 0 0,neutral 0.5 1.08 0.8 1.29 false none 0 0,neutral 0.2 1.29 0.5 1.46 false none 0 0,neutral 0.8 1.29 0.5 1.46 false none 0 0#tactics:#"
     },
     {
       "index": 4,
@@ -499,7 +499,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 42,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.17
@@ -555,7 +555,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 16,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.45
@@ -645,7 +645,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Loop#game_rules:easy false conquest false 7#ai_types:red simple#general:tiny#planets:green empty 42 0.5 0.17 0 0,neutral empty 3 0.2 0.36 0 0,neutral empty 3 0.8 0.36 0 0,neutral empty 3 0.16 0.69 0 0,neutral empty 3 0.84 0.69 0 0,neutral empty 3 0.22 1.03 0 0,neutral empty 3 0.78 1.03 0 0,red empty 16 0.5 1.45 0 0,neutral empty 3 0.5 0.64 0 0,neutral empty 3 0.5 1.12 0 0#links:neutral 0.5 0.17 0.2 0.36 false none 0 0,neutral 0.5 0.17 0.8 0.36 false none 0 0,neutral 0.2 0.36 0.16 0.69 false none 0 0,neutral 0.8 0.36 0.84 0.69 false none 0 0,neutral 0.16 0.69 0.22 1.03 false none 0 0,neutral 0.84 0.69 0.78 1.03 false none 0 0,neutral 0.22 1.03 0.5 1.45 false none 0 0,neutral 0.78 1.03 0.5 1.45 false none 0 0,neutral 0.16 0.69 0.5 0.64 false none 0 0,neutral 0.84 0.69 0.5 0.64 false none 0 0,neutral 0.22 1.03 0.5 1.12 false none 0 0,neutral 0.78 1.03 0.5 1.12 false none 0 0,neutral 0.5 0.64 0.5 1.12 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Loop#game_rules:easy false conquest false 7#ai_types:red simple#general:tiny#planets:green empty 0 0.5 0.17 0 0,neutral empty 3 0.2 0.36 0 0,neutral empty 3 0.8 0.36 0 0,neutral empty 3 0.16 0.69 0 0,neutral empty 3 0.84 0.69 0 0,neutral empty 3 0.22 1.03 0 0,neutral empty 3 0.78 1.03 0 0,red empty 0 0.5 1.45 0 0,neutral empty 3 0.5 0.64 0 0,neutral empty 3 0.5 1.12 0 0#links:neutral 0.5 0.17 0.2 0.36 false none 0 0,neutral 0.5 0.17 0.8 0.36 false none 0 0,neutral 0.2 0.36 0.16 0.69 false none 0 0,neutral 0.8 0.36 0.84 0.69 false none 0 0,neutral 0.16 0.69 0.22 1.03 false none 0 0,neutral 0.84 0.69 0.78 1.03 false none 0 0,neutral 0.22 1.03 0.5 1.45 false none 0 0,neutral 0.78 1.03 0.5 1.45 false none 0 0,neutral 0.16 0.69 0.5 0.64 false none 0 0,neutral 0.84 0.69 0.5 0.64 false none 0 0,neutral 0.22 1.03 0.5 1.12 false none 0 0,neutral 0.78 1.03 0.5 1.12 false none 0 0,neutral 0.5 0.64 0.5 1.12 false none 0 0#tactics:#"
     },
     {
       "index": 5,
@@ -662,7 +662,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 60,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.18
@@ -670,7 +670,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.2,
           "y": 0.4
@@ -702,7 +702,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 29,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.84
@@ -742,7 +742,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 18,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.46
@@ -821,7 +821,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Pincer#game_rules:normal false conquest false 7#ai_types:red savvy,yellow silly#general:tiny#planets:green empty 60 0.5 0.18 0 0,green economic 20 0.2 0.4 0 0,neutral empty 3 0.8 0.4 0 0,neutral empty 3 0.25 0.68 0 0,neutral empty 3 0.75 0.68 0 0,yellow empty 29 0.5 0.84 0 0,neutral empty 3 0.2 1.0 0 0,neutral empty 3 0.8 1.0 0 0,neutral empty 3 0.25 1.27 0 0,neutral empty 3 0.75 1.27 0 0,red empty 18 0.5 1.46 0 0#links:neutral 0.5 0.18 0.2 0.4 false none 0 0,neutral 0.5 0.18 0.8 0.4 false none 0 0,neutral 0.2 0.4 0.25 0.68 false none 0 0,neutral 0.8 0.4 0.75 0.68 false none 0 0,neutral 0.25 0.68 0.5 0.84 false none 0 0,neutral 0.75 0.68 0.5 0.84 false none 0 0,neutral 0.25 0.68 0.2 1.0 false none 0 0,neutral 0.75 0.68 0.8 1.0 false none 0 0,neutral 0.5 0.84 0.2 1.0 false none 0 0,neutral 0.5 0.84 0.8 1.0 false none 0 0,neutral 0.2 1.0 0.25 1.27 false none 0 0,neutral 0.8 1.0 0.75 1.27 false none 0 0,neutral 0.25 1.27 0.5 1.46 false none 0 0,neutral 0.75 1.27 0.5 1.46 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Pincer#game_rules:normal false conquest false 7#ai_types:red savvy,yellow silly#general:tiny#planets:green empty 0 0.5 0.18 0 0,green economic 0 0.2 0.4 0 0,neutral empty 3 0.8 0.4 0 0,neutral empty 3 0.25 0.68 0 0,neutral empty 3 0.75 0.68 0 0,yellow empty 0 0.5 0.84 0 0,neutral empty 3 0.2 1.0 0 0,neutral empty 3 0.8 1.0 0 0,neutral empty 3 0.25 1.27 0 0,neutral empty 3 0.75 1.27 0 0,red empty 0 0.5 1.46 0 0#links:neutral 0.5 0.18 0.2 0.4 false none 0 0,neutral 0.5 0.18 0.8 0.4 false none 0 0,neutral 0.2 0.4 0.25 0.68 false none 0 0,neutral 0.8 0.4 0.75 0.68 false none 0 0,neutral 0.25 0.68 0.5 0.84 false none 0 0,neutral 0.75 0.68 0.5 0.84 false none 0 0,neutral 0.25 0.68 0.2 1.0 false none 0 0,neutral 0.75 0.68 0.8 1.0 false none 0 0,neutral 0.5 0.84 0.2 1.0 false none 0 0,neutral 0.5 0.84 0.8 1.0 false none 0 0,neutral 0.2 1.0 0.25 1.27 false none 0 0,neutral 0.8 1.0 0.75 1.27 false none 0 0,neutral 0.25 1.27 0.5 1.46 false none 0 0,neutral 0.75 1.27 0.5 1.46 false none 0 0#tactics:#"
     },
     {
       "index": 6,
@@ -838,7 +838,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 60,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.17
@@ -878,7 +878,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 30,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.78
@@ -918,7 +918,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.45
@@ -997,7 +997,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Windward#game_rules:normal false conquest true 15#ai_types:red savvy,yellow silly#general:tiny#planets:green empty 60 0.5 0.17 0 0,neutral empty 3 0.2 0.37 0 0,neutral empty 3 0.8 0.37 0 0,neutral empty 3 0.2 0.65 0 0,neutral empty 3 0.8 0.65 0 0,yellow empty 30 0.5 0.78 0 0,neutral empty 3 0.2 0.94 0 0,neutral empty 3 0.8 0.94 0 0,neutral empty 3 0.2 1.23 0 0,neutral empty 3 0.8 1.23 0 0,red empty 20 0.5 1.45 0 0#links:neutral 0.5 0.17 0.2 0.37 false none 0 0,neutral 0.5 0.17 0.8 0.37 false none 0 0,neutral 0.2 0.37 0.2 0.65 true none 0 0,neutral 0.8 0.37 0.8 0.65 false none 0 0,neutral 0.2 0.65 0.5 0.78 false none 0 0,neutral 0.8 0.65 0.5 0.78 false none 0 0,neutral 0.2 0.94 0.2 0.65 true none 0 0,neutral 0.8 0.65 0.8 0.94 false none 0 0,neutral 0.5 0.78 0.2 0.94 false none 0 0,neutral 0.5 0.78 0.8 0.94 false none 0 0,neutral 0.2 0.94 0.2 1.23 true none 0 0,neutral 0.8 0.94 0.8 1.23 false none 0 0,neutral 0.2 1.23 0.5 1.45 false none 0 0,neutral 0.8 1.23 0.5 1.45 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Windward#game_rules:normal false conquest true 15#ai_types:red savvy,yellow silly#general:tiny#planets:green empty 0 0.5 0.17 0 0,neutral empty 3 0.2 0.37 0 0,neutral empty 3 0.8 0.37 0 0,neutral empty 3 0.2 0.65 0 0,neutral empty 3 0.8 0.65 0 0,yellow empty 0 0.5 0.78 0 0,neutral empty 3 0.2 0.94 0 0,neutral empty 3 0.8 0.94 0 0,neutral empty 3 0.2 1.23 0 0,neutral empty 3 0.8 1.23 0 0,red empty 0 0.5 1.45 0 0#links:neutral 0.5 0.17 0.2 0.37 false none 0 0,neutral 0.5 0.17 0.8 0.37 false none 0 0,neutral 0.2 0.37 0.2 0.65 true none 0 0,neutral 0.8 0.37 0.8 0.65 false none 0 0,neutral 0.2 0.65 0.5 0.78 false none 0 0,neutral 0.8 0.65 0.5 0.78 false none 0 0,neutral 0.2 0.94 0.2 0.65 true none 0 0,neutral 0.8 0.65 0.8 0.94 false none 0 0,neutral 0.5 0.78 0.2 0.94 false none 0 0,neutral 0.5 0.78 0.8 0.94 false none 0 0,neutral 0.2 0.94 0.2 1.23 true none 0 0,neutral 0.8 0.94 0.8 1.23 false none 0 0,neutral 0.2 1.23 0.5 1.45 false none 0 0,neutral 0.8 1.23 0.5 1.45 false none 0 0#tactics:#"
     },
     {
       "index": 7,
@@ -1014,15 +1014,15 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 66,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.17
         },
         {
-          "owner": "neutral",
-          "type": "empty",
-          "troops": 3,
+          "owner": "green",
+          "type": "economic",
+          "troops": 0,
           "shield": 0,
           "x": 0.19,
           "y": 0.37
@@ -1046,7 +1046,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 31,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.61
@@ -1110,7 +1110,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 22,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.45
@@ -1199,7 +1199,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Switchback#game_rules:normal false conquest true 15#ai_types:red savvy,yellow silly#general:tiny#planets:green empty 66 0.5 0.17 0 0,neutral empty 3 0.19 0.37 0 0,neutral empty 3 0.81 0.37 0 0,neutral empty 3 0.19 0.66 0 0,yellow empty 31 0.5 0.61 0 0,neutral empty 3 0.81 0.66 0 0,neutral empty 3 0.19 0.96 0 0,neutral empty 3 0.5 0.88 0 0,neutral empty 3 0.81 0.96 0 0,neutral empty 3 0.19 1.25 0 0,neutral empty 3 0.5 1.16 0 0,neutral empty 3 0.81 1.25 0 0,red empty 22 0.5 1.45 0 0#links:neutral 0.5 0.17 0.19 0.37 false none 0 0,neutral 0.5 0.17 0.81 0.37 true none 0 0,neutral 0.19 0.37 0.19 0.66 false none 0 0,neutral 0.81 0.37 0.81 0.66 false none 0 0,neutral 0.19 0.66 0.5 0.61 false none 0 0,neutral 0.81 0.66 0.5 0.61 true none 0 0,neutral 0.19 0.66 0.19 0.96 false none 0 0,neutral 0.81 0.66 0.81 0.96 false none 0 0,neutral 0.19 0.96 0.5 0.88 false none 0 0,neutral 0.5 0.88 0.81 0.96 true none 0 0,neutral 0.19 0.96 0.19 1.25 false none 0 0,neutral 0.81 0.96 0.81 1.25 false none 0 0,neutral 0.19 1.25 0.5 1.16 false none 0 0,neutral 0.5 1.16 0.81 1.25 true none 0 0,neutral 0.19 1.25 0.5 1.45 false none 0 0,neutral 0.81 1.25 0.5 1.45 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Switchback#game_rules:normal false conquest true 15#ai_types:red savvy,yellow silly#general:tiny#planets:green empty 0 0.5 0.17 0 0,green economic 0 0.19 0.37 0 0,neutral empty 3 0.81 0.37 0 0,neutral empty 3 0.19 0.66 0 0,yellow empty 0 0.5 0.61 0 0,neutral empty 3 0.81 0.66 0 0,neutral empty 3 0.19 0.96 0 0,neutral empty 3 0.5 0.88 0 0,neutral empty 3 0.81 0.96 0 0,neutral empty 3 0.19 1.25 0 0,neutral empty 3 0.5 1.16 0 0,neutral empty 3 0.81 1.25 0 0,red empty 0 0.5 1.45 0 0#links:neutral 0.5 0.17 0.19 0.37 false none 0 0,neutral 0.5 0.17 0.81 0.37 true none 0 0,neutral 0.19 0.37 0.19 0.66 false none 0 0,neutral 0.81 0.37 0.81 0.66 false none 0 0,neutral 0.19 0.66 0.5 0.61 false none 0 0,neutral 0.81 0.66 0.5 0.61 true none 0 0,neutral 0.19 0.66 0.19 0.96 false none 0 0,neutral 0.81 0.66 0.81 0.96 false none 0 0,neutral 0.19 0.96 0.5 0.88 false none 0 0,neutral 0.5 0.88 0.81 0.96 true none 0 0,neutral 0.19 0.96 0.19 1.25 false none 0 0,neutral 0.81 0.96 0.81 1.25 false none 0 0,neutral 0.19 1.25 0.5 1.16 false none 0 0,neutral 0.5 1.16 0.81 1.25 true none 0 0,neutral 0.19 1.25 0.5 1.45 false none 0 0,neutral 0.81 1.25 0.5 1.45 false none 0 0#tactics:#"
     },
     {
       "index": 8,
@@ -1216,7 +1216,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 170,
+          "troops": 0,
           "shield": 0,
           "x": 0.22,
           "y": 0.2
@@ -1224,7 +1224,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.53,
           "y": 0.21
@@ -1232,7 +1232,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 0.43
@@ -1240,7 +1240,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.51,
           "y": 0.58
@@ -1248,7 +1248,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.2,
           "y": 0.56
@@ -1256,7 +1256,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 32,
+          "troops": 0,
           "shield": 0,
           "x": 0.2,
           "y": 0.89
@@ -1264,7 +1264,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.91
@@ -1272,7 +1272,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 0.81
@@ -1280,7 +1280,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 1.14
@@ -1288,7 +1288,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 1.23
@@ -1296,7 +1296,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 1.24
@@ -1304,7 +1304,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 24,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.46
@@ -1373,7 +1373,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Shortcut#game_rules:normal false conquest true 31#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 170 0.22 0.2 0 0,green economic 20 0.53 0.21 0 0,neutral empty 4 0.8 0.43 0 0,neutral empty 4 0.51 0.58 0 0,neutral empty 4 0.2 0.56 0 0,yellow empty 32 0.2 0.89 0 0,neutral empty 4 0.5 0.91 0 0,neutral empty 4 0.8 0.81 0 0,neutral empty 4 0.8 1.14 0 0,neutral empty 4 0.5 1.23 0 0,neutral empty 4 0.21 1.24 0 0,red empty 24 0.5 1.46 0 0#links:neutral 0.22 0.2 0.53 0.21 true none 0 0,neutral 0.53 0.21 0.8 0.43 false none 0 0,neutral 0.8 0.43 0.51 0.58 false none 0 0,neutral 0.51 0.58 0.2 0.56 false none 0 0,neutral 0.2 0.89 0.2 0.56 true none 0 0,neutral 0.2 0.89 0.5 0.91 false none 0 0,neutral 0.5 0.91 0.8 0.81 false none 0 0,neutral 0.8 0.81 0.8 1.14 false none 0 0,neutral 0.8 1.14 0.5 1.23 true none 0 0,neutral 0.5 1.23 0.21 1.24 false none 0 0,neutral 0.5 1.23 0.5 1.46 false none 0 0,neutral 0.21 1.24 0.5 1.46 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Shortcut#game_rules:normal false conquest true 31#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.22 0.2 0 0,green economic 0 0.53 0.21 0 0,neutral empty 3 0.8 0.43 0 0,neutral empty 3 0.51 0.58 0 0,neutral empty 3 0.2 0.56 0 0,yellow empty 0 0.2 0.89 0 0,neutral empty 3 0.5 0.91 0 0,neutral empty 3 0.8 0.81 0 0,neutral empty 3 0.8 1.14 0 0,neutral empty 3 0.5 1.23 0 0,neutral empty 3 0.21 1.24 0 0,red empty 0 0.5 1.46 0 0#links:neutral 0.22 0.2 0.53 0.21 true none 0 0,neutral 0.53 0.21 0.8 0.43 false none 0 0,neutral 0.8 0.43 0.51 0.58 false none 0 0,neutral 0.51 0.58 0.2 0.56 false none 0 0,neutral 0.2 0.89 0.2 0.56 true none 0 0,neutral 0.2 0.89 0.5 0.91 false none 0 0,neutral 0.5 0.91 0.8 0.81 false none 0 0,neutral 0.8 0.81 0.8 1.14 false none 0 0,neutral 0.8 1.14 0.5 1.23 true none 0 0,neutral 0.5 1.23 0.21 1.24 false none 0 0,neutral 0.5 1.23 0.5 1.46 false none 0 0,neutral 0.21 1.24 0.5 1.46 false none 0 0#tactics:#"
     },
     {
       "index": 9,
@@ -1390,7 +1390,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 77,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.17
@@ -1398,7 +1398,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 0.39
@@ -1406,7 +1406,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.79,
           "y": 0.39
@@ -1414,7 +1414,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 0.7
@@ -1422,7 +1422,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.79,
           "y": 0.7
@@ -1430,7 +1430,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 33,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.85
@@ -1438,7 +1438,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 1.02
@@ -1446,7 +1446,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.79,
           "y": 1.02
@@ -1454,7 +1454,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 1.27
@@ -1462,7 +1462,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.79,
           "y": 1.27
@@ -1470,7 +1470,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 26,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.46
@@ -1539,7 +1539,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Tripwire#game_rules:normal false conquest true 63#ai_types:red savvy,yellow simple#general:tiny#planets:green economic 77 0.5 0.17 0 0,neutral empty 4 0.21 0.39 0 0,neutral empty 4 0.79 0.39 0 0,neutral empty 4 0.21 0.7 0 0,neutral empty 4 0.79 0.7 0 0,yellow empty 33 0.5 0.85 0 0,neutral empty 4 0.21 1.02 0 0,neutral empty 4 0.79 1.02 0 0,neutral empty 4 0.21 1.27 0 0,neutral empty 4 0.79 1.27 0 0,red empty 26 0.5 1.46 0 0#links:neutral 0.5 0.17 0.21 0.39 false none 0 0,neutral 0.5 0.17 0.79 0.39 false none 0 0,neutral 0.21 0.39 0.21 0.7 false none 0 0,neutral 0.79 0.7 0.79 0.39 true none 0 0,neutral 0.21 0.7 0.5 0.85 false none 0 0,neutral 0.79 0.7 0.5 0.85 false none 0 0,neutral 0.5 0.85 0.21 1.02 false none 0 0,neutral 0.5 0.85 0.79 1.02 true none 0 0,neutral 0.21 1.02 0.21 1.27 false none 0 0,neutral 0.79 1.02 0.79 1.27 false none 0 0,neutral 0.21 1.27 0.5 1.46 false none 0 0,neutral 0.79 1.27 0.5 1.46 true none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Tripwire#game_rules:normal false conquest true 63#ai_types:red savvy,yellow simple#general:tiny#planets:green economic 0 0.5 0.17 0 0,neutral empty 3 0.21 0.39 0 0,neutral empty 3 0.79 0.39 0 0,neutral empty 3 0.21 0.7 0 0,neutral empty 3 0.79 0.7 0 0,yellow empty 0 0.5 0.85 0 0,neutral empty 3 0.21 1.02 0 0,neutral empty 3 0.79 1.02 0 0,neutral empty 3 0.21 1.27 0 0,neutral empty 3 0.79 1.27 0 0,red empty 0 0.5 1.46 0 0#links:neutral 0.5 0.17 0.21 0.39 false none 0 0,neutral 0.5 0.17 0.79 0.39 false none 0 0,neutral 0.21 0.39 0.21 0.7 false none 0 0,neutral 0.79 0.7 0.79 0.39 true none 0 0,neutral 0.21 0.7 0.5 0.85 false none 0 0,neutral 0.79 0.7 0.5 0.85 false none 0 0,neutral 0.5 0.85 0.21 1.02 false none 0 0,neutral 0.5 0.85 0.79 1.02 true none 0 0,neutral 0.21 1.02 0.21 1.27 false none 0 0,neutral 0.79 1.02 0.79 1.27 false none 0 0,neutral 0.21 1.27 0.5 1.46 false none 0 0,neutral 0.79 1.27 0.5 1.46 true none 0 0#tactics:#"
     },
     {
       "index": 10,
@@ -1549,14 +1549,14 @@
       "layout": "High ground",
       "concept": "Artillery",
       "brief": "Actions > Artillery costs 20 and replaces the node's upgrade. Fire within three usual route lengths: a shot costs 20, deals 10 damage and reloads in 5 game seconds. Guns never capture.",
-      "hint": "Convert the forward 60-troop node to artillery. Fire at the weak yellow Grow node across the gap to strip its upgrade. Send troops around the links to capture it.",
+      "hint": "Save 20 troops at the forward node to build artillery, then 20 for a shot. Disable yellow's Grow upgrade across the gap. Capture it along the links.",
       "features": 127,
       "difficulty": "normal",
       "nodes": [
         {
           "owner": "green",
           "type": "empty",
-          "troops": 144,
+          "troops": 0,
           "shield": 0,
           "x": 0.2,
           "y": 0.19
@@ -1564,7 +1564,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.52,
           "y": 0.2
@@ -1572,7 +1572,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.81,
           "y": 0.36
@@ -1580,7 +1580,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.22,
           "y": 0.53
@@ -1588,7 +1588,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.55,
           "y": 0.55
@@ -1596,15 +1596,15 @@
         {
           "owner": "yellow",
           "type": "economic",
-          "troops": 8,
+          "troops": 0,
           "shield": 0,
           "x": 0.82,
           "y": 0.72
         },
         {
           "owner": "green",
-          "type": "empty",
-          "troops": 60,
+          "type": "economic",
+          "troops": 0,
           "shield": 0,
           "x": 0.2,
           "y": 0.87
@@ -1612,7 +1612,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.51,
           "y": 0.86
@@ -1620,7 +1620,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.23,
           "y": 1.2
@@ -1628,7 +1628,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 1.08
@@ -1636,7 +1636,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.52,
           "y": 1.17
@@ -1644,7 +1644,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.81,
           "y": 1.4
@@ -1652,7 +1652,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 28,
+          "troops": 0,
           "shield": 0,
           "x": 0.42,
           "y": 1.45
@@ -1741,7 +1741,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:High ground#game_rules:normal false conquest true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 144 0.2 0.19 0 0,neutral empty 4 0.52 0.2 0 0,neutral empty 4 0.81 0.36 0 0,neutral empty 4 0.22 0.53 0 0,neutral empty 4 0.55 0.55 0 0,yellow economic 8 0.82 0.72 0 0,green empty 60 0.2 0.87 0 0,neutral empty 4 0.51 0.86 0 0,neutral empty 4 0.23 1.2 0 0,neutral empty 4 0.8 1.08 0 0,neutral empty 4 0.52 1.17 0 0,neutral empty 4 0.81 1.4 0 0,red defensive 28 0.42 1.45 0 0#links:neutral 0.2 0.19 0.52 0.2 false none 0 0,neutral 0.2 0.19 0.22 0.53 false none 0 0,neutral 0.81 0.36 0.52 0.2 true none 0 0,neutral 0.52 0.2 0.55 0.55 false none 0 0,neutral 0.81 0.36 0.82 0.72 false none 0 0,neutral 0.22 0.53 0.55 0.55 false none 0 0,neutral 0.22 0.53 0.2 0.87 true none 0 0,neutral 0.55 0.55 0.51 0.86 false none 0 0,neutral 0.82 0.72 0.51 0.86 false none 0 0,neutral 0.82 0.72 0.8 1.08 false none 0 0,neutral 0.2 0.87 0.23 1.2 true none 0 0,neutral 0.51 0.86 0.52 1.17 false none 0 0,neutral 0.23 1.2 0.52 1.17 false none 0 0,neutral 0.8 1.08 0.81 1.4 false none 0 0,neutral 0.81 1.4 0.52 1.17 true none 0 0,neutral 0.52 1.17 0.42 1.45 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:High ground#game_rules:normal false conquest true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.2 0.19 0 0,neutral empty 3 0.52 0.2 0 0,neutral empty 3 0.81 0.36 0 0,neutral empty 3 0.22 0.53 0 0,neutral empty 3 0.55 0.55 0 0,yellow economic 0 0.82 0.72 0 0,green economic 0 0.2 0.87 0 0,neutral empty 3 0.51 0.86 0 0,neutral empty 3 0.23 1.2 0 0,neutral empty 3 0.8 1.08 0 0,neutral empty 3 0.52 1.17 0 0,neutral empty 3 0.81 1.4 0 0,red defensive 0 0.42 1.45 0 0#links:neutral 0.2 0.19 0.52 0.2 false none 0 0,neutral 0.2 0.19 0.22 0.53 false none 0 0,neutral 0.81 0.36 0.52 0.2 true none 0 0,neutral 0.52 0.2 0.55 0.55 false none 0 0,neutral 0.81 0.36 0.82 0.72 false none 0 0,neutral 0.22 0.53 0.55 0.55 false none 0 0,neutral 0.22 0.53 0.2 0.87 true none 0 0,neutral 0.55 0.55 0.51 0.86 false none 0 0,neutral 0.82 0.72 0.51 0.86 false none 0 0,neutral 0.82 0.72 0.8 1.08 false none 0 0,neutral 0.2 0.87 0.23 1.2 true none 0 0,neutral 0.51 0.86 0.52 1.17 false none 0 0,neutral 0.23 1.2 0.52 1.17 false none 0 0,neutral 0.8 1.08 0.81 1.4 false none 0 0,neutral 0.81 1.4 0.52 1.17 true none 0 0,neutral 0.52 1.17 0.42 1.45 false none 0 0#tactics:#"
     },
     {
       "index": 11,
@@ -1758,7 +1758,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 109,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.16
@@ -1766,7 +1766,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 40,
+          "troops": 0,
           "shield": 0,
           "x": 0.18,
           "y": 0.33
@@ -1774,7 +1774,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.82,
           "y": 0.33
@@ -1782,7 +1782,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 0.6
@@ -1790,7 +1790,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.5
@@ -1798,7 +1798,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.82,
           "y": 0.6
@@ -1806,7 +1806,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 0.87
@@ -1814,7 +1814,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.78
@@ -1822,7 +1822,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 35,
+          "troops": 0,
           "shield": 0,
           "x": 0.82,
           "y": 0.87
@@ -1830,7 +1830,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 1.14
@@ -1838,7 +1838,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 1.05
@@ -1846,7 +1846,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.82,
           "y": 1.14
@@ -1854,7 +1854,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 1.41
@@ -1862,7 +1862,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 30,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.45
@@ -1870,7 +1870,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.82,
           "y": 1.41
@@ -1989,7 +1989,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Crossroads#game_rules:normal false conquest true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 109 0.5 0.16 0 0,green economic 40 0.18 0.33 0 0,neutral empty 4 0.82 0.33 0 0,neutral empty 4 0.18 0.6 0 0,neutral empty 4 0.5 0.5 0 0,neutral empty 4 0.82 0.6 0 0,neutral empty 4 0.18 0.87 0 0,neutral empty 4 0.5 0.78 0 0,yellow empty 35 0.82 0.87 0 0,neutral empty 4 0.18 1.14 0 0,neutral empty 4 0.5 1.05 0 0,neutral empty 4 0.82 1.14 0 0,neutral empty 4 0.18 1.41 0 0,red defensive 30 0.5 1.45 0 0,neutral empty 4 0.82 1.41 0 0#links:neutral 0.5 0.16 0.18 0.33 false none 0 0,neutral 0.82 0.33 0.5 0.16 true none 0 0,neutral 0.5 0.16 0.5 0.5 false none 0 0,neutral 0.18 0.33 0.18 0.6 false none 0 0,neutral 0.82 0.33 0.82 0.6 false none 0 0,neutral 0.18 0.6 0.5 0.5 true none 0 0,neutral 0.5 0.5 0.82 0.6 false none 0 0,neutral 0.18 0.6 0.18 0.87 false none 0 0,neutral 0.5 0.5 0.5 0.78 false none 0 0,neutral 0.82 0.6 0.82 0.87 true none 0 0,neutral 0.18 0.87 0.5 0.78 false none 0 0,neutral 0.5 0.78 0.82 0.87 false none 0 0,neutral 0.18 0.87 0.18 1.14 false none 0 0,neutral 0.5 1.05 0.5 0.78 true none 0 0,neutral 0.82 0.87 0.82 1.14 false none 0 0,neutral 0.18 1.14 0.5 1.05 false none 0 0,neutral 0.5 1.05 0.82 1.14 false none 0 0,neutral 0.18 1.14 0.18 1.41 true none 0 0,neutral 0.5 1.05 0.5 1.45 false none 0 0,neutral 0.82 1.14 0.82 1.41 false none 0 0,neutral 0.18 1.41 0.5 1.45 false none 0 0,neutral 0.5 1.45 0.82 1.41 true none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Crossroads#game_rules:normal false conquest true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.5 0.16 0 0,green economic 0 0.18 0.33 0 0,neutral empty 3 0.82 0.33 0 0,neutral empty 3 0.18 0.6 0 0,neutral empty 3 0.5 0.5 0 0,neutral empty 3 0.82 0.6 0 0,neutral empty 3 0.18 0.87 0 0,neutral empty 3 0.5 0.78 0 0,yellow empty 0 0.82 0.87 0 0,neutral empty 3 0.18 1.14 0 0,neutral empty 3 0.5 1.05 0 0,neutral empty 3 0.82 1.14 0 0,neutral empty 3 0.18 1.41 0 0,red defensive 0 0.5 1.45 0 0,neutral empty 3 0.82 1.41 0 0#links:neutral 0.5 0.16 0.18 0.33 false none 0 0,neutral 0.82 0.33 0.5 0.16 true none 0 0,neutral 0.5 0.16 0.5 0.5 false none 0 0,neutral 0.18 0.33 0.18 0.6 false none 0 0,neutral 0.82 0.33 0.82 0.6 false none 0 0,neutral 0.18 0.6 0.5 0.5 true none 0 0,neutral 0.5 0.5 0.82 0.6 false none 0 0,neutral 0.18 0.6 0.18 0.87 false none 0 0,neutral 0.5 0.5 0.5 0.78 false none 0 0,neutral 0.82 0.6 0.82 0.87 true none 0 0,neutral 0.18 0.87 0.5 0.78 false none 0 0,neutral 0.5 0.78 0.82 0.87 false none 0 0,neutral 0.18 0.87 0.18 1.14 false none 0 0,neutral 0.5 1.05 0.5 0.78 true none 0 0,neutral 0.82 0.87 0.82 1.14 false none 0 0,neutral 0.18 1.14 0.5 1.05 false none 0 0,neutral 0.5 1.05 0.82 1.14 false none 0 0,neutral 0.18 1.14 0.18 1.41 true none 0 0,neutral 0.5 1.05 0.5 1.45 false none 0 0,neutral 0.82 1.14 0.82 1.41 false none 0 0,neutral 0.18 1.41 0.5 1.45 false none 0 0,neutral 0.5 1.45 0.82 1.41 true none 0 0#tactics:#"
     },
     {
       "index": 12,
@@ -2006,7 +2006,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 30,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.22
@@ -2014,7 +2014,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.68,
           "y": 0.5
@@ -2030,7 +2030,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.6,
           "y": 1.03
@@ -2038,7 +2038,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 22,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.37
@@ -2067,7 +2067,7 @@
         }
       ],
       "flag": 2,
-      "code": "opacha_level_code#map_name:Beacon First steps#game_rules:easy false capture_flag true 127#ai_types:red simple#general:tiny#planets:green empty 30 0.5 0.22 0 0,neutral empty 2 0.68 0.5 0 0,neutral empty 50 0.35 0.77 0 0,neutral empty 2 0.6 1.03 0 0,red empty 22 0.5 1.37 0 0#links:neutral 0.5 0.22 0.68 0.5 false none 0 0,neutral 0.68 0.5 0.35 0.77 false none 0 0,neutral 0.35 0.77 0.6 1.03 false none 0 0,neutral 0.5 1.37 0.6 1.03 true none 0 0#tactics:flag 2 none;#"
+      "code": "opacha_level_code#map_name:Beacon First steps#game_rules:easy false capture_flag true 127#ai_types:red simple#general:tiny#planets:green empty 0 0.5 0.22 0 0,neutral empty 3 0.68 0.5 0 0,neutral empty 50 0.35 0.77 0 0,neutral empty 3 0.6 1.03 0 0,red empty 0 0.5 1.37 0 0#links:neutral 0.5 0.22 0.68 0.5 false none 0 0,neutral 0.68 0.5 0.35 0.77 false none 0 0,neutral 0.35 0.77 0.6 1.03 false none 0 0,neutral 0.5 1.37 0.6 1.03 true none 0 0#tactics:flag 2 none;#"
     },
     {
       "index": 13,
@@ -2084,7 +2084,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 32,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.2
@@ -2092,7 +2092,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.77,
           "y": 0.47
@@ -2100,7 +2100,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.23,
           "y": 0.47
@@ -2116,7 +2116,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.77,
           "y": 1.05
@@ -2124,7 +2124,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.23,
           "y": 1.05
@@ -2132,7 +2132,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 25,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.37
@@ -2181,7 +2181,7 @@
         }
       ],
       "flag": 3,
-      "code": "opacha_level_code#map_name:Beacon Fork#game_rules:easy false capture_flag true 127#ai_types:red simple#general:tiny#planets:green empty 32 0.5 0.2 0 0,neutral empty 2 0.77 0.47 0 0,neutral empty 2 0.23 0.47 0 0,neutral empty 50 0.5 0.76 0 0,neutral empty 2 0.77 1.05 0 0,neutral empty 2 0.23 1.05 0 0,red empty 25 0.5 1.37 0 0#links:neutral 0.5 0.2 0.77 0.47 false none 0 0,neutral 0.5 0.2 0.23 0.47 false none 0 0,neutral 0.77 0.47 0.5 0.76 true none 0 0,neutral 0.23 0.47 0.5 0.76 false none 0 0,neutral 0.5 0.76 0.77 1.05 false none 0 0,neutral 0.5 0.76 0.23 1.05 false none 0 0,neutral 0.5 1.37 0.77 1.05 true none 0 0,neutral 0.23 1.05 0.5 1.37 false none 0 0#tactics:flag 3 none;#"
+      "code": "opacha_level_code#map_name:Beacon Fork#game_rules:easy false capture_flag true 127#ai_types:red simple#general:tiny#planets:green empty 0 0.5 0.2 0 0,neutral empty 3 0.77 0.47 0 0,neutral empty 3 0.23 0.47 0 0,neutral empty 50 0.5 0.76 0 0,neutral empty 3 0.77 1.05 0 0,neutral empty 3 0.23 1.05 0 0,red empty 0 0.5 1.37 0 0#links:neutral 0.5 0.2 0.77 0.47 false none 0 0,neutral 0.5 0.2 0.23 0.47 false none 0 0,neutral 0.77 0.47 0.5 0.76 true none 0 0,neutral 0.23 0.47 0.5 0.76 false none 0 0,neutral 0.5 0.76 0.77 1.05 false none 0 0,neutral 0.5 0.76 0.23 1.05 false none 0 0,neutral 0.5 1.37 0.77 1.05 true none 0 0,neutral 0.23 1.05 0.5 1.37 false none 0 0#tactics:flag 3 none;#"
     },
     {
       "index": 14,
@@ -2198,7 +2198,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 34,
+          "troops": 0,
           "shield": 0,
           "x": 0.75,
           "y": 0.2
@@ -2206,7 +2206,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.78,
           "y": 0.52
@@ -2214,7 +2214,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.27,
           "y": 0.42
@@ -2230,7 +2230,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.26,
           "y": 0.77
@@ -2238,7 +2238,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.78,
           "y": 1.12
@@ -2246,7 +2246,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.24,
           "y": 1.13
@@ -2254,7 +2254,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 28,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.4
@@ -2308,7 +2308,7 @@
         }
       ],
       "flag": 3,
-      "code": "opacha_level_code#map_name:Beacon Two banks#game_rules:easy false capture_flag true 127#ai_types:red simple#general:tiny#planets:green empty 34 0.75 0.2 0 0,neutral empty 2 0.78 0.52 0 0,neutral empty 2 0.27 0.42 0 0,neutral empty 50 0.7 0.83 0 0,neutral empty 2 0.26 0.77 0 0,neutral empty 2 0.78 1.12 0 0,neutral empty 2 0.24 1.13 0 0,red empty 28 0.5 1.4 0 0#links:neutral 0.75 0.2 0.78 0.52 false none 0 0,neutral 0.75 0.2 0.27 0.42 true none 0 0,neutral 0.78 0.52 0.7 0.83 false none 0 0,neutral 0.27 0.42 0.26 0.77 false none 0 0,neutral 0.7 0.83 0.26 0.77 false none 0 0,neutral 0.78 1.12 0.7 0.83 true none 0 0,neutral 0.26 0.77 0.24 1.13 false none 0 0,neutral 0.78 1.12 0.5 1.4 false none 0 0,neutral 0.24 1.13 0.5 1.4 false none 0 0#tactics:flag 3 none;#"
+      "code": "opacha_level_code#map_name:Beacon Two banks#game_rules:easy false capture_flag true 127#ai_types:red simple#general:tiny#planets:green empty 0 0.75 0.2 0 0,neutral empty 3 0.78 0.52 0 0,neutral empty 3 0.27 0.42 0 0,neutral empty 50 0.7 0.83 0 0,neutral empty 3 0.26 0.77 0 0,neutral empty 3 0.78 1.12 0 0,neutral empty 3 0.24 1.13 0 0,red empty 0 0.5 1.4 0 0#links:neutral 0.75 0.2 0.78 0.52 false none 0 0,neutral 0.75 0.2 0.27 0.42 true none 0 0,neutral 0.78 0.52 0.7 0.83 false none 0 0,neutral 0.27 0.42 0.26 0.77 false none 0 0,neutral 0.7 0.83 0.26 0.77 false none 0 0,neutral 0.78 1.12 0.7 0.83 true none 0 0,neutral 0.26 0.77 0.24 1.13 false none 0 0,neutral 0.78 1.12 0.5 1.4 false none 0 0,neutral 0.24 1.13 0.5 1.4 false none 0 0#tactics:flag 3 none;#"
     },
     {
       "index": 15,
@@ -2325,7 +2325,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 36,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.18
@@ -2333,7 +2333,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.8,
           "y": 0.43
@@ -2341,7 +2341,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.2,
           "y": 0.43
@@ -2349,7 +2349,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.64
@@ -2365,7 +2365,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.24,
           "y": 0.86
@@ -2373,7 +2373,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 1.08
@@ -2381,7 +2381,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 1.29
@@ -2389,7 +2389,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.2,
           "y": 1.29
@@ -2397,7 +2397,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 31,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.46
@@ -2466,7 +2466,7 @@
         }
       ],
       "flag": 4,
-      "code": "opacha_level_code#map_name:Beacon Bridge#game_rules:normal false capture_flag true 127#ai_types:red simple#general:tiny#planets:green empty 36 0.5 0.18 0 0,green economic 20 0.8 0.43 0 0,neutral empty 2 0.2 0.43 0 0,neutral empty 2 0.5 0.64 0 0,neutral empty 50 0.76 0.86 0 0,neutral empty 2 0.24 0.86 0 0,neutral empty 2 0.5 1.08 0 0,neutral empty 2 0.8 1.29 0 0,neutral empty 2 0.2 1.29 0 0,red empty 31 0.5 1.46 0 0#links:neutral 0.5 0.18 0.8 0.43 true none 0 0,neutral 0.5 0.18 0.2 0.43 false none 0 0,neutral 0.8 0.43 0.5 0.64 false none 0 0,neutral 0.2 0.43 0.5 0.64 false none 0 0,neutral 0.5 0.64 0.76 0.86 true none 0 0,neutral 0.5 0.64 0.24 0.86 false none 0 0,neutral 0.76 0.86 0.5 1.08 false none 0 0,neutral 0.24 0.86 0.5 1.08 false none 0 0,neutral 0.8 1.29 0.5 1.08 true none 0 0,neutral 0.5 1.08 0.2 1.29 false none 0 0,neutral 0.8 1.29 0.5 1.46 false none 0 0,neutral 0.2 1.29 0.5 1.46 false none 0 0#tactics:flag 4 none;#"
+      "code": "opacha_level_code#map_name:Beacon Bridge#game_rules:normal false capture_flag true 127#ai_types:red simple#general:tiny#planets:green empty 0 0.5 0.18 0 0,green economic 0 0.8 0.43 0 0,neutral empty 3 0.2 0.43 0 0,neutral empty 3 0.5 0.64 0 0,neutral empty 50 0.76 0.86 0 0,neutral empty 3 0.24 0.86 0 0,neutral empty 3 0.5 1.08 0 0,neutral empty 3 0.8 1.29 0 0,neutral empty 3 0.2 1.29 0 0,red empty 0 0.5 1.46 0 0#links:neutral 0.5 0.18 0.8 0.43 true none 0 0,neutral 0.5 0.18 0.2 0.43 false none 0 0,neutral 0.8 0.43 0.5 0.64 false none 0 0,neutral 0.2 0.43 0.5 0.64 false none 0 0,neutral 0.5 0.64 0.76 0.86 true none 0 0,neutral 0.5 0.64 0.24 0.86 false none 0 0,neutral 0.76 0.86 0.5 1.08 false none 0 0,neutral 0.24 0.86 0.5 1.08 false none 0 0,neutral 0.8 1.29 0.5 1.08 true none 0 0,neutral 0.5 1.08 0.2 1.29 false none 0 0,neutral 0.8 1.29 0.5 1.46 false none 0 0,neutral 0.2 1.29 0.5 1.46 false none 0 0#tactics:flag 4 none;#"
     },
     {
       "index": 16,
@@ -2483,7 +2483,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 38,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.17
@@ -2539,7 +2539,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 34,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.45
@@ -2629,7 +2629,7 @@
         }
       ],
       "flag": 3,
-      "code": "opacha_level_code#map_name:Beacon Loop#game_rules:normal false capture_flag true 127#ai_types:red simple#general:tiny#planets:green empty 38 0.5 0.17 0 0,neutral empty 3 0.8 0.36 0 0,neutral empty 3 0.2 0.36 0 0,neutral empty 50 0.84 0.69 0 0,neutral empty 3 0.16 0.69 0 0,neutral empty 3 0.78 1.03 0 0,neutral empty 3 0.22 1.03 0 0,red empty 34 0.5 1.45 0 0,neutral empty 3 0.5 0.64 0 0,neutral empty 3 0.5 1.12 0 0#links:neutral 0.5 0.17 0.8 0.36 false none 0 0,neutral 0.5 0.17 0.2 0.36 false none 0 0,neutral 0.8 0.36 0.84 0.69 false none 0 0,neutral 0.2 0.36 0.16 0.69 true none 0 0,neutral 0.84 0.69 0.78 1.03 false none 0 0,neutral 0.16 0.69 0.22 1.03 false none 0 0,neutral 0.78 1.03 0.5 1.45 false none 0 0,neutral 0.22 1.03 0.5 1.45 true none 0 0,neutral 0.84 0.69 0.5 0.64 false none 0 0,neutral 0.16 0.69 0.5 0.64 false none 0 0,neutral 0.78 1.03 0.5 1.12 false none 0 0,neutral 0.22 1.03 0.5 1.12 true none 0 0,neutral 0.5 0.64 0.5 1.12 false none 0 0#tactics:flag 3 none;#"
+      "code": "opacha_level_code#map_name:Beacon Loop#game_rules:normal false capture_flag true 127#ai_types:red simple#general:tiny#planets:green empty 0 0.5 0.17 0 0,neutral empty 3 0.8 0.36 0 0,neutral empty 3 0.2 0.36 0 0,neutral empty 50 0.84 0.69 0 0,neutral empty 3 0.16 0.69 0 0,neutral empty 3 0.78 1.03 0 0,neutral empty 3 0.22 1.03 0 0,red empty 0 0.5 1.45 0 0,neutral empty 3 0.5 0.64 0 0,neutral empty 3 0.5 1.12 0 0#links:neutral 0.5 0.17 0.8 0.36 false none 0 0,neutral 0.5 0.17 0.2 0.36 false none 0 0,neutral 0.8 0.36 0.84 0.69 false none 0 0,neutral 0.2 0.36 0.16 0.69 true none 0 0,neutral 0.84 0.69 0.78 1.03 false none 0 0,neutral 0.16 0.69 0.22 1.03 false none 0 0,neutral 0.78 1.03 0.5 1.45 false none 0 0,neutral 0.22 1.03 0.5 1.45 true none 0 0,neutral 0.84 0.69 0.5 0.64 false none 0 0,neutral 0.16 0.69 0.5 0.64 false none 0 0,neutral 0.78 1.03 0.5 1.12 false none 0 0,neutral 0.22 1.03 0.5 1.12 true none 0 0,neutral 0.5 0.64 0.5 1.12 false none 0 0#tactics:flag 3 none;#"
     },
     {
       "index": 17,
@@ -2646,7 +2646,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 40,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.18
@@ -2726,7 +2726,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 37,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.46
@@ -2805,7 +2805,7 @@
         }
       ],
       "flag": 5,
-      "code": "opacha_level_code#map_name:Beacon Pincer#game_rules:normal false capture_flag true 127#ai_types:red savvy#general:tiny#planets:green empty 40 0.5 0.18 0 0,neutral empty 3 0.8 0.4 0 0,neutral empty 3 0.2 0.4 0 0,neutral empty 3 0.75 0.68 0 0,neutral empty 3 0.25 0.68 0 0,neutral empty 50 0.5 0.84 0 0,neutral empty 3 0.8 1.0 0 0,neutral empty 3 0.2 1.0 0 0,neutral empty 3 0.75 1.27 0 0,neutral empty 3 0.25 1.27 0 0,red empty 37 0.5 1.46 0 0#links:neutral 0.5 0.18 0.8 0.4 false none 0 0,neutral 0.5 0.18 0.2 0.4 false none 0 0,neutral 0.8 0.4 0.75 0.68 true none 0 0,neutral 0.2 0.4 0.25 0.68 false none 0 0,neutral 0.75 0.68 0.5 0.84 false none 0 0,neutral 0.25 0.68 0.5 0.84 false none 0 0,neutral 0.75 0.68 0.8 1.0 true none 0 0,neutral 0.25 0.68 0.2 1.0 false none 0 0,neutral 0.5 0.84 0.8 1.0 false none 0 0,neutral 0.5 0.84 0.2 1.0 false none 0 0,neutral 0.75 1.27 0.8 1.0 true none 0 0,neutral 0.2 1.0 0.25 1.27 false none 0 0,neutral 0.75 1.27 0.5 1.46 false none 0 0,neutral 0.25 1.27 0.5 1.46 false none 0 0#tactics:flag 5 none;#"
+      "code": "opacha_level_code#map_name:Beacon Pincer#game_rules:normal false capture_flag true 127#ai_types:red savvy#general:tiny#planets:green empty 0 0.5 0.18 0 0,neutral empty 3 0.8 0.4 0 0,neutral empty 3 0.2 0.4 0 0,neutral empty 3 0.75 0.68 0 0,neutral empty 3 0.25 0.68 0 0,neutral empty 50 0.5 0.84 0 0,neutral empty 3 0.8 1.0 0 0,neutral empty 3 0.2 1.0 0 0,neutral empty 3 0.75 1.27 0 0,neutral empty 3 0.25 1.27 0 0,red empty 0 0.5 1.46 0 0#links:neutral 0.5 0.18 0.8 0.4 false none 0 0,neutral 0.5 0.18 0.2 0.4 false none 0 0,neutral 0.8 0.4 0.75 0.68 true none 0 0,neutral 0.2 0.4 0.25 0.68 false none 0 0,neutral 0.75 0.68 0.5 0.84 false none 0 0,neutral 0.25 0.68 0.5 0.84 false none 0 0,neutral 0.75 0.68 0.8 1.0 true none 0 0,neutral 0.25 0.68 0.2 1.0 false none 0 0,neutral 0.5 0.84 0.8 1.0 false none 0 0,neutral 0.5 0.84 0.2 1.0 false none 0 0,neutral 0.75 1.27 0.8 1.0 true none 0 0,neutral 0.2 1.0 0.25 1.27 false none 0 0,neutral 0.75 1.27 0.5 1.46 false none 0 0,neutral 0.25 1.27 0.5 1.46 false none 0 0#tactics:flag 5 none;#"
     },
     {
       "index": 18,
@@ -2822,7 +2822,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 42,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.17
@@ -2830,7 +2830,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.8,
           "y": 0.37
@@ -2862,7 +2862,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 30,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.78
@@ -2902,7 +2902,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 40,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.45
@@ -2981,7 +2981,7 @@
         }
       ],
       "flag": 6,
-      "code": "opacha_level_code#map_name:Beacon Windward#game_rules:normal false capture_flag true 127#ai_types:red savvy,yellow silly#general:tiny#planets:green empty 42 0.5 0.17 0 0,green economic 20 0.8 0.37 0 0,neutral empty 3 0.2 0.37 0 0,neutral empty 3 0.8 0.65 0 0,neutral empty 3 0.2 0.65 0 0,yellow empty 30 0.5 0.78 0 0,neutral empty 50 0.8 0.94 0 0,neutral empty 3 0.2 0.94 0 0,neutral empty 3 0.8 1.23 0 0,neutral empty 3 0.2 1.23 0 0,red empty 40 0.5 1.45 0 0#links:neutral 0.5 0.17 0.8 0.37 false none 0 0,neutral 0.5 0.17 0.2 0.37 true none 0 0,neutral 0.8 0.37 0.8 0.65 false none 0 0,neutral 0.2 0.37 0.2 0.65 false none 0 0,neutral 0.8 0.65 0.5 0.78 false none 0 0,neutral 0.2 0.65 0.5 0.78 true none 0 0,neutral 0.8 0.65 0.8 0.94 false none 0 0,neutral 0.2 0.65 0.2 0.94 false none 0 0,neutral 0.5 0.78 0.8 0.94 false none 0 0,neutral 0.2 0.94 0.5 0.78 true none 0 0,neutral 0.8 0.94 0.8 1.23 false none 0 0,neutral 0.2 0.94 0.2 1.23 false none 0 0,neutral 0.8 1.23 0.5 1.45 false none 0 0,neutral 0.2 1.23 0.5 1.45 true none 0 0#tactics:flag 6 none;#"
+      "code": "opacha_level_code#map_name:Beacon Windward#game_rules:normal false capture_flag true 127#ai_types:red savvy,yellow silly#general:tiny#planets:green empty 0 0.5 0.17 0 0,green economic 0 0.8 0.37 0 0,neutral empty 3 0.2 0.37 0 0,neutral empty 3 0.8 0.65 0 0,neutral empty 3 0.2 0.65 0 0,yellow empty 0 0.5 0.78 0 0,neutral empty 50 0.8 0.94 0 0,neutral empty 3 0.2 0.94 0 0,neutral empty 3 0.8 1.23 0 0,neutral empty 3 0.2 1.23 0 0,red empty 0 0.5 1.45 0 0#links:neutral 0.5 0.17 0.8 0.37 false none 0 0,neutral 0.5 0.17 0.2 0.37 true none 0 0,neutral 0.8 0.37 0.8 0.65 false none 0 0,neutral 0.2 0.37 0.2 0.65 false none 0 0,neutral 0.8 0.65 0.5 0.78 false none 0 0,neutral 0.2 0.65 0.5 0.78 true none 0 0,neutral 0.8 0.65 0.8 0.94 false none 0 0,neutral 0.2 0.65 0.2 0.94 false none 0 0,neutral 0.5 0.78 0.8 0.94 false none 0 0,neutral 0.2 0.94 0.5 0.78 true none 0 0,neutral 0.8 0.94 0.8 1.23 false none 0 0,neutral 0.2 0.94 0.2 1.23 false none 0 0,neutral 0.8 1.23 0.5 1.45 false none 0 0,neutral 0.2 1.23 0.5 1.45 true none 0 0#tactics:flag 6 none;#"
     },
     {
       "index": 19,
@@ -2998,7 +2998,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 42,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.17
@@ -3006,7 +3006,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.81,
           "y": 0.37
@@ -3030,7 +3030,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 31,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.61
@@ -3094,7 +3094,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 43,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.45
@@ -3183,7 +3183,7 @@
         }
       ],
       "flag": 6,
-      "code": "opacha_level_code#map_name:Beacon Switchback#game_rules:normal false capture_flag true 127#ai_types:red savvy,yellow silly#general:tiny#planets:green empty 42 0.5 0.17 0 0,green economic 20 0.81 0.37 0 0,neutral empty 3 0.19 0.37 0 0,neutral empty 3 0.81 0.66 0 0,yellow empty 31 0.5 0.61 0 0,neutral empty 3 0.19 0.66 0 0,neutral empty 50 0.81 0.96 0 0,neutral empty 3 0.5 0.88 0 0,neutral empty 3 0.19 0.96 0 0,neutral empty 3 0.81 1.25 0 0,neutral empty 3 0.5 1.16 0 0,neutral empty 3 0.19 1.25 0 0,red empty 43 0.5 1.45 0 0#links:neutral 0.5 0.17 0.81 0.37 true none 0 0,neutral 0.5 0.17 0.19 0.37 false none 0 0,neutral 0.81 0.37 0.81 0.66 false none 0 0,neutral 0.19 0.37 0.19 0.66 false none 0 0,neutral 0.5 0.61 0.81 0.66 true none 0 0,neutral 0.5 0.61 0.19 0.66 false none 0 0,neutral 0.81 0.66 0.81 0.96 false none 0 0,neutral 0.19 0.66 0.19 0.96 false none 0 0,neutral 0.5 0.88 0.81 0.96 true none 0 0,neutral 0.5 0.88 0.19 0.96 false none 0 0,neutral 0.81 0.96 0.81 1.25 false none 0 0,neutral 0.19 0.96 0.19 1.25 false none 0 0,neutral 0.5 1.16 0.81 1.25 true none 0 0,neutral 0.5 1.16 0.19 1.25 false none 0 0,neutral 0.81 1.25 0.5 1.45 false none 0 0,neutral 0.19 1.25 0.5 1.45 false none 0 0#tactics:flag 6 none;#"
+      "code": "opacha_level_code#map_name:Beacon Switchback#game_rules:normal false capture_flag true 127#ai_types:red savvy,yellow silly#general:tiny#planets:green empty 0 0.5 0.17 0 0,green economic 0 0.81 0.37 0 0,neutral empty 3 0.19 0.37 0 0,neutral empty 3 0.81 0.66 0 0,yellow empty 0 0.5 0.61 0 0,neutral empty 3 0.19 0.66 0 0,neutral empty 50 0.81 0.96 0 0,neutral empty 3 0.5 0.88 0 0,neutral empty 3 0.19 0.96 0 0,neutral empty 3 0.81 1.25 0 0,neutral empty 3 0.5 1.16 0 0,neutral empty 3 0.19 1.25 0 0,red empty 0 0.5 1.45 0 0#links:neutral 0.5 0.17 0.81 0.37 true none 0 0,neutral 0.5 0.17 0.19 0.37 false none 0 0,neutral 0.81 0.37 0.81 0.66 false none 0 0,neutral 0.19 0.37 0.19 0.66 false none 0 0,neutral 0.5 0.61 0.81 0.66 true none 0 0,neutral 0.5 0.61 0.19 0.66 false none 0 0,neutral 0.81 0.66 0.81 0.96 false none 0 0,neutral 0.19 0.66 0.19 0.96 false none 0 0,neutral 0.5 0.88 0.81 0.96 true none 0 0,neutral 0.5 0.88 0.19 0.96 false none 0 0,neutral 0.81 0.96 0.81 1.25 false none 0 0,neutral 0.19 0.96 0.19 1.25 false none 0 0,neutral 0.5 1.16 0.81 1.25 true none 0 0,neutral 0.5 1.16 0.19 1.25 false none 0 0,neutral 0.81 1.25 0.5 1.45 false none 0 0,neutral 0.19 1.25 0.5 1.45 false none 0 0#tactics:flag 6 none;#"
     },
     {
       "index": 20,
@@ -3193,14 +3193,14 @@
       "layout": "Shortcut",
       "concept": "",
       "brief": "",
-      "hint": "The route needs 80 more diggers. Combine your two armies to finish it and beat the flag's 50 troops. Half your starting army will not finish the route.",
+      "hint": "The route needs 80 more diggers. Grow both starting nodes, then combine their production to finish it and beat the flag's 50 troops.",
       "features": 127,
       "difficulty": "normal",
       "nodes": [
         {
           "owner": "green",
           "type": "economic",
-          "troops": 125,
+          "troops": 0,
           "shield": 0,
           "x": 0.78,
           "y": 0.2
@@ -3208,7 +3208,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.47,
           "y": 0.21
@@ -3216,7 +3216,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.2,
           "y": 0.43
@@ -3224,7 +3224,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.49,
           "y": 0.58
@@ -3232,7 +3232,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 0.56
@@ -3240,7 +3240,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 32,
+          "troops": 0,
           "shield": 0,
           "x": 0.8,
           "y": 0.89
@@ -3248,7 +3248,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.91
@@ -3264,7 +3264,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.2,
           "y": 1.14
@@ -3272,7 +3272,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 1.23
@@ -3280,7 +3280,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.79,
           "y": 1.24
@@ -3288,7 +3288,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 46,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.46
@@ -3365,7 +3365,7 @@
         }
       ],
       "flag": 7,
-      "code": "opacha_level_code#map_name:Unfinished crossing#game_rules:normal false capture_flag true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green economic 125 0.78 0.2 0 0,green economic 20 0.47 0.21 0 0,neutral empty 4 0.2 0.43 0 0,neutral empty 4 0.49 0.58 0 0,neutral empty 4 0.8 0.56 0 0,yellow empty 32 0.8 0.89 0 0,neutral empty 4 0.5 0.91 0 0,neutral empty 50 0.2 0.81 0 0,neutral empty 4 0.2 1.14 0 0,neutral empty 4 0.5 1.23 0 0,neutral empty 4 0.79 1.24 0 0,red defensive 46 0.5 1.46 0 0#links:neutral 0.78 0.2 0.47 0.21 false none 0 0,neutral 0.47 0.21 0.2 0.43 false none 0 0,neutral 0.2 0.43 0.49 0.58 false none 0 0,neutral 0.49 0.58 0.8 0.56 true none 0 0,neutral 0.8 0.56 0.8 0.89 false none 0 0,neutral 0.8 0.89 0.5 0.91 false none 0 0,neutral 0.5 0.91 0.2 0.81 false none 0 0,neutral 0.2 1.14 0.2 0.81 true none 0 0,neutral 0.2 1.14 0.5 1.23 false none 0 0,neutral 0.5 1.23 0.79 1.24 false none 0 0,neutral 0.5 1.23 0.5 1.46 false none 0 0,neutral 0.79 1.24 0.5 1.46 true none 0 0,neutral 0.78 0.2 0.2 0.81 true green 213 133#tactics:flag 7 none;#"
+      "code": "opacha_level_code#map_name:Unfinished crossing#game_rules:normal false capture_flag true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green economic 0 0.78 0.2 0 0,green economic 0 0.47 0.21 0 0,neutral empty 3 0.2 0.43 0 0,neutral empty 3 0.49 0.58 0 0,neutral empty 3 0.8 0.56 0 0,yellow empty 0 0.8 0.89 0 0,neutral empty 3 0.5 0.91 0 0,neutral empty 50 0.2 0.81 0 0,neutral empty 3 0.2 1.14 0 0,neutral empty 3 0.5 1.23 0 0,neutral empty 3 0.79 1.24 0 0,red defensive 0 0.5 1.46 0 0#links:neutral 0.78 0.2 0.47 0.21 false none 0 0,neutral 0.47 0.21 0.2 0.43 false none 0 0,neutral 0.2 0.43 0.49 0.58 false none 0 0,neutral 0.49 0.58 0.8 0.56 true none 0 0,neutral 0.8 0.56 0.8 0.89 false none 0 0,neutral 0.8 0.89 0.5 0.91 false none 0 0,neutral 0.5 0.91 0.2 0.81 false none 0 0,neutral 0.2 1.14 0.2 0.81 true none 0 0,neutral 0.2 1.14 0.5 1.23 false none 0 0,neutral 0.5 1.23 0.79 1.24 false none 0 0,neutral 0.5 1.23 0.5 1.46 false none 0 0,neutral 0.79 1.24 0.5 1.46 true none 0 0,neutral 0.78 0.2 0.2 0.81 true green 213 133#tactics:flag 7 none;#"
     },
     {
       "index": 21,
@@ -3382,7 +3382,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 42,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.17
@@ -3390,7 +3390,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.79,
           "y": 0.39
@@ -3398,7 +3398,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 0.39
@@ -3414,7 +3414,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 0.7
@@ -3422,7 +3422,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 33,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.85
@@ -3430,7 +3430,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.79,
           "y": 1.02
@@ -3438,7 +3438,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 1.02
@@ -3446,7 +3446,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.79,
           "y": 1.27
@@ -3454,7 +3454,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 1.27
@@ -3462,7 +3462,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 49,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.46
@@ -3531,7 +3531,7 @@
         }
       ],
       "flag": 3,
-      "code": "opacha_level_code#map_name:Beacon Tripwire#game_rules:normal false capture_flag true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 42 0.5 0.17 0 0,green economic 20 0.79 0.39 0 0,neutral empty 4 0.21 0.39 0 0,neutral empty 50 0.79 0.7 0 0,neutral empty 4 0.21 0.7 0 0,yellow empty 33 0.5 0.85 0 0,neutral empty 4 0.79 1.02 0 0,neutral empty 4 0.21 1.02 0 0,neutral empty 4 0.79 1.27 0 0,neutral empty 4 0.21 1.27 0 0,red defensive 49 0.5 1.46 0 0#links:neutral 0.5 0.17 0.79 0.39 false none 0 0,neutral 0.5 0.17 0.21 0.39 false none 0 0,neutral 0.79 0.39 0.79 0.7 true none 0 0,neutral 0.21 0.39 0.21 0.7 false none 0 0,neutral 0.79 0.7 0.5 0.85 false none 0 0,neutral 0.21 0.7 0.5 0.85 false none 0 0,neutral 0.79 1.02 0.5 0.85 true none 0 0,neutral 0.5 0.85 0.21 1.02 false none 0 0,neutral 0.79 1.02 0.79 1.27 false none 0 0,neutral 0.21 1.02 0.21 1.27 false none 0 0,neutral 0.5 1.46 0.79 1.27 true none 0 0,neutral 0.21 1.27 0.5 1.46 false none 0 0#tactics:flag 3 none;#"
+      "code": "opacha_level_code#map_name:Beacon Tripwire#game_rules:normal false capture_flag true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.5 0.17 0 0,green economic 0 0.79 0.39 0 0,neutral empty 3 0.21 0.39 0 0,neutral empty 50 0.79 0.7 0 0,neutral empty 3 0.21 0.7 0 0,yellow empty 0 0.5 0.85 0 0,neutral empty 3 0.79 1.02 0 0,neutral empty 3 0.21 1.02 0 0,neutral empty 3 0.79 1.27 0 0,neutral empty 3 0.21 1.27 0 0,red defensive 0 0.5 1.46 0 0#links:neutral 0.5 0.17 0.79 0.39 false none 0 0,neutral 0.5 0.17 0.21 0.39 false none 0 0,neutral 0.79 0.39 0.79 0.7 true none 0 0,neutral 0.21 0.39 0.21 0.7 false none 0 0,neutral 0.79 0.7 0.5 0.85 false none 0 0,neutral 0.21 0.7 0.5 0.85 false none 0 0,neutral 0.79 1.02 0.5 0.85 true none 0 0,neutral 0.5 0.85 0.21 1.02 false none 0 0,neutral 0.79 1.02 0.79 1.27 false none 0 0,neutral 0.21 1.02 0.21 1.27 false none 0 0,neutral 0.5 1.46 0.79 1.27 true none 0 0,neutral 0.21 1.27 0.5 1.46 false none 0 0#tactics:flag 3 none;#"
     },
     {
       "index": 22,
@@ -3548,7 +3548,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 42,
+          "troops": 0,
           "shield": 0,
           "x": 0.8,
           "y": 0.19
@@ -3556,7 +3556,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.48,
           "y": 0.2
@@ -3564,7 +3564,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.19,
           "y": 0.36
@@ -3572,7 +3572,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.78,
           "y": 0.53
@@ -3580,7 +3580,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.45,
           "y": 0.55
@@ -3588,7 +3588,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 0.72
@@ -3596,7 +3596,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 0.87
@@ -3612,7 +3612,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.77,
           "y": 1.2
@@ -3620,7 +3620,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 34,
+          "troops": 0,
           "shield": 0,
           "x": 0.2,
           "y": 1.08
@@ -3628,7 +3628,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.48,
           "y": 1.17
@@ -3636,7 +3636,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.19,
           "y": 1.4
@@ -3644,7 +3644,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 52,
+          "troops": 0,
           "shield": 0,
           "x": 0.58,
           "y": 1.45
@@ -3733,7 +3733,7 @@
         }
       ],
       "flag": 7,
-      "code": "opacha_level_code#map_name:Beacon High ground#game_rules:normal false capture_flag true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 42 0.8 0.19 0 0,green economic 20 0.48 0.2 0 0,neutral empty 4 0.19 0.36 0 0,neutral empty 4 0.78 0.53 0 0,neutral empty 4 0.45 0.55 0 0,neutral empty 4 0.18 0.72 0 0,neutral empty 4 0.8 0.87 0 0,neutral empty 50 0.49 0.86 0 0,neutral empty 4 0.77 1.2 0 0,yellow empty 34 0.2 1.08 0 0,neutral empty 4 0.48 1.17 0 0,neutral empty 4 0.19 1.4 0 0,red defensive 52 0.58 1.45 0 0#links:neutral 0.8 0.19 0.48 0.2 false none 0 0,neutral 0.8 0.19 0.78 0.53 true none 0 0,neutral 0.48 0.2 0.19 0.36 false none 0 0,neutral 0.48 0.2 0.45 0.55 false none 0 0,neutral 0.19 0.36 0.18 0.72 false none 0 0,neutral 0.78 0.53 0.45 0.55 true none 0 0,neutral 0.78 0.53 0.8 0.87 false none 0 0,neutral 0.45 0.55 0.49 0.86 false none 0 0,neutral 0.18 0.72 0.49 0.86 false none 0 0,neutral 0.2 1.08 0.18 0.72 true none 0 0,neutral 0.8 0.87 0.77 1.2 false none 0 0,neutral 0.49 0.86 0.48 1.17 false none 0 0,neutral 0.77 1.2 0.48 1.17 false none 0 0,neutral 0.2 1.08 0.19 1.4 true none 0 0,neutral 0.48 1.17 0.19 1.4 false none 0 0,neutral 0.48 1.17 0.58 1.45 false none 0 0#tactics:flag 7 none;#"
+      "code": "opacha_level_code#map_name:Beacon High ground#game_rules:normal false capture_flag true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.8 0.19 0 0,green economic 0 0.48 0.2 0 0,neutral empty 3 0.19 0.36 0 0,neutral empty 3 0.78 0.53 0 0,neutral empty 3 0.45 0.55 0 0,neutral empty 3 0.18 0.72 0 0,neutral empty 3 0.8 0.87 0 0,neutral empty 50 0.49 0.86 0 0,neutral empty 3 0.77 1.2 0 0,yellow empty 0 0.2 1.08 0 0,neutral empty 3 0.48 1.17 0 0,neutral empty 3 0.19 1.4 0 0,red defensive 0 0.58 1.45 0 0#links:neutral 0.8 0.19 0.48 0.2 false none 0 0,neutral 0.8 0.19 0.78 0.53 true none 0 0,neutral 0.48 0.2 0.19 0.36 false none 0 0,neutral 0.48 0.2 0.45 0.55 false none 0 0,neutral 0.19 0.36 0.18 0.72 false none 0 0,neutral 0.78 0.53 0.45 0.55 true none 0 0,neutral 0.78 0.53 0.8 0.87 false none 0 0,neutral 0.45 0.55 0.49 0.86 false none 0 0,neutral 0.18 0.72 0.49 0.86 false none 0 0,neutral 0.2 1.08 0.18 0.72 true none 0 0,neutral 0.8 0.87 0.77 1.2 false none 0 0,neutral 0.49 0.86 0.48 1.17 false none 0 0,neutral 0.77 1.2 0.48 1.17 false none 0 0,neutral 0.2 1.08 0.19 1.4 true none 0 0,neutral 0.48 1.17 0.19 1.4 false none 0 0,neutral 0.48 1.17 0.58 1.45 false none 0 0#tactics:flag 7 none;#"
     },
     {
       "index": 23,
@@ -3750,7 +3750,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 42,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.16
@@ -3758,7 +3758,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 40,
+          "troops": 0,
           "shield": 0,
           "x": 0.82,
           "y": 0.33
@@ -3766,7 +3766,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 0.33
@@ -3774,7 +3774,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.82,
           "y": 0.6
@@ -3782,7 +3782,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.5
@@ -3790,7 +3790,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 0.6
@@ -3798,7 +3798,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 35,
+          "troops": 0,
           "shield": 0,
           "x": 0.82,
           "y": 0.87
@@ -3806,7 +3806,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.78
@@ -3822,7 +3822,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.82,
           "y": 1.14
@@ -3830,7 +3830,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 1.05
@@ -3838,7 +3838,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 1.14
@@ -3846,7 +3846,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.82,
           "y": 1.41
@@ -3854,7 +3854,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 55,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.45
@@ -3862,7 +3862,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 1.41
@@ -3981,7 +3981,7 @@
         }
       ],
       "flag": 8,
-      "code": "opacha_level_code#map_name:Beacon Crossroads#game_rules:normal false capture_flag true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 42 0.5 0.16 0 0,green economic 40 0.82 0.33 0 0,neutral empty 4 0.18 0.33 0 0,neutral empty 4 0.82 0.6 0 0,neutral empty 4 0.5 0.5 0 0,neutral empty 4 0.18 0.6 0 0,yellow empty 35 0.82 0.87 0 0,neutral empty 4 0.5 0.78 0 0,neutral empty 50 0.18 0.87 0 0,neutral empty 4 0.82 1.14 0 0,neutral empty 4 0.5 1.05 0 0,neutral empty 4 0.18 1.14 0 0,neutral empty 4 0.82 1.41 0 0,red defensive 55 0.5 1.45 0 0,neutral empty 4 0.18 1.41 0 0#links:neutral 0.82 0.33 0.5 0.16 true none 0 0,neutral 0.5 0.16 0.18 0.33 false none 0 0,neutral 0.5 0.16 0.5 0.5 false none 0 0,neutral 0.82 0.33 0.82 0.6 false none 0 0,neutral 0.18 0.33 0.18 0.6 true none 0 0,neutral 0.82 0.6 0.5 0.5 false none 0 0,neutral 0.5 0.5 0.18 0.6 false none 0 0,neutral 0.82 0.6 0.82 0.87 false none 0 0,neutral 0.5 0.5 0.5 0.78 true none 0 0,neutral 0.18 0.6 0.18 0.87 false none 0 0,neutral 0.82 0.87 0.5 0.78 false none 0 0,neutral 0.5 0.78 0.18 0.87 false none 0 0,neutral 0.82 1.14 0.82 0.87 true none 0 0,neutral 0.5 0.78 0.5 1.05 false none 0 0,neutral 0.18 0.87 0.18 1.14 false none 0 0,neutral 0.82 1.14 0.5 1.05 false none 0 0,neutral 0.5 1.05 0.18 1.14 true none 0 0,neutral 0.82 1.14 0.82 1.41 false none 0 0,neutral 0.5 1.05 0.5 1.45 false none 0 0,neutral 0.18 1.14 0.18 1.41 false none 0 0,neutral 0.82 1.41 0.5 1.45 true none 0 0,neutral 0.5 1.45 0.18 1.41 false none 0 0#tactics:flag 8 none;#"
+      "code": "opacha_level_code#map_name:Beacon Crossroads#game_rules:normal false capture_flag true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.5 0.16 0 0,green economic 0 0.82 0.33 0 0,neutral empty 3 0.18 0.33 0 0,neutral empty 3 0.82 0.6 0 0,neutral empty 3 0.5 0.5 0 0,neutral empty 3 0.18 0.6 0 0,yellow empty 0 0.82 0.87 0 0,neutral empty 3 0.5 0.78 0 0,neutral empty 50 0.18 0.87 0 0,neutral empty 3 0.82 1.14 0 0,neutral empty 3 0.5 1.05 0 0,neutral empty 3 0.18 1.14 0 0,neutral empty 3 0.82 1.41 0 0,red defensive 0 0.5 1.45 0 0,neutral empty 3 0.18 1.41 0 0#links:neutral 0.82 0.33 0.5 0.16 true none 0 0,neutral 0.5 0.16 0.18 0.33 false none 0 0,neutral 0.5 0.16 0.5 0.5 false none 0 0,neutral 0.82 0.33 0.82 0.6 false none 0 0,neutral 0.18 0.33 0.18 0.6 true none 0 0,neutral 0.82 0.6 0.5 0.5 false none 0 0,neutral 0.5 0.5 0.18 0.6 false none 0 0,neutral 0.82 0.6 0.82 0.87 false none 0 0,neutral 0.5 0.5 0.5 0.78 true none 0 0,neutral 0.18 0.6 0.18 0.87 false none 0 0,neutral 0.82 0.87 0.5 0.78 false none 0 0,neutral 0.5 0.78 0.18 0.87 false none 0 0,neutral 0.82 1.14 0.82 0.87 true none 0 0,neutral 0.5 0.78 0.5 1.05 false none 0 0,neutral 0.18 0.87 0.18 1.14 false none 0 0,neutral 0.82 1.14 0.5 1.05 false none 0 0,neutral 0.5 1.05 0.18 1.14 true none 0 0,neutral 0.82 1.14 0.82 1.41 false none 0 0,neutral 0.5 1.05 0.5 1.45 false none 0 0,neutral 0.18 1.14 0.18 1.41 false none 0 0,neutral 0.82 1.41 0.5 1.45 true none 0 0,neutral 0.5 1.45 0.18 1.41 false none 0 0#tactics:flag 8 none;#"
     },
     {
       "index": 24,
@@ -3998,7 +3998,7 @@
         {
           "owner": "green",
           "type": "defensive",
-          "troops": 38,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 0.22
@@ -4006,7 +4006,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.32,
           "y": 0.5
@@ -4014,7 +4014,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.65,
           "y": 0.77
@@ -4022,7 +4022,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.4,
           "y": 1.03
@@ -4030,7 +4030,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 22,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 1.37
@@ -4059,7 +4059,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Hold First steps#game_rules:easy false home_flags true 127#ai_types:red simple#general:tiny#planets:green defensive 38 0.5 0.22 0 14,neutral empty 2 0.32 0.5 0 0,neutral empty 2 0.65 0.77 0 0,neutral empty 2 0.4 1.03 0 0,red defensive 22 0.5 1.37 0 14#links:neutral 0.5 0.22 0.32 0.5 false none 0 0,neutral 0.32 0.5 0.65 0.77 false none 0 0,neutral 0.65 0.77 0.4 1.03 true none 0 0,neutral 0.4 1.03 0.5 1.37 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Hold First steps#game_rules:easy false home_flags true 127#ai_types:red simple#general:tiny#planets:green defensive 0 0.5 0.22 0 14,neutral empty 3 0.32 0.5 0 0,neutral empty 3 0.65 0.77 0 0,neutral empty 3 0.4 1.03 0 0,red defensive 0 0.5 1.37 0 14#links:neutral 0.5 0.22 0.32 0.5 false none 0 0,neutral 0.32 0.5 0.65 0.77 false none 0 0,neutral 0.65 0.77 0.4 1.03 true none 0 0,neutral 0.4 1.03 0.5 1.37 false none 0 0#tactics:#"
     },
     {
       "index": 25,
@@ -4076,7 +4076,7 @@
         {
           "owner": "green",
           "type": "defensive",
-          "troops": 41,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 0.2
@@ -4084,7 +4084,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.23,
           "y": 0.47
@@ -4092,7 +4092,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.77,
           "y": 0.47
@@ -4100,7 +4100,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.76
@@ -4108,7 +4108,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.23,
           "y": 1.05
@@ -4116,7 +4116,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.77,
           "y": 1.05
@@ -4124,7 +4124,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 25,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 1.37
@@ -4173,7 +4173,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Hold Fork#game_rules:easy false home_flags true 127#ai_types:red simple#general:tiny#planets:green defensive 41 0.5 0.2 0 14,neutral empty 2 0.23 0.47 0 0,neutral empty 2 0.77 0.47 0 0,neutral empty 2 0.5 0.76 0 0,neutral empty 2 0.23 1.05 0 0,neutral empty 2 0.77 1.05 0 0,red defensive 25 0.5 1.37 0 14#links:neutral 0.5 0.2 0.23 0.47 false none 0 0,neutral 0.5 0.2 0.77 0.47 true none 0 0,neutral 0.23 0.47 0.5 0.76 false none 0 0,neutral 0.77 0.47 0.5 0.76 false none 0 0,neutral 0.5 0.76 0.23 1.05 false none 0 0,neutral 0.77 1.05 0.5 0.76 true none 0 0,neutral 0.23 1.05 0.5 1.37 false none 0 0,neutral 0.77 1.05 0.5 1.37 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Hold Fork#game_rules:easy false home_flags true 127#ai_types:red simple#general:tiny#planets:green defensive 0 0.5 0.2 0 14,neutral empty 3 0.23 0.47 0 0,neutral empty 3 0.77 0.47 0 0,neutral empty 3 0.5 0.76 0 0,neutral empty 3 0.23 1.05 0 0,neutral empty 3 0.77 1.05 0 0,red defensive 0 0.5 1.37 0 14#links:neutral 0.5 0.2 0.23 0.47 false none 0 0,neutral 0.5 0.2 0.77 0.47 true none 0 0,neutral 0.23 0.47 0.5 0.76 false none 0 0,neutral 0.77 0.47 0.5 0.76 false none 0 0,neutral 0.5 0.76 0.23 1.05 false none 0 0,neutral 0.77 1.05 0.5 0.76 true none 0 0,neutral 0.23 1.05 0.5 1.37 false none 0 0,neutral 0.77 1.05 0.5 1.37 false none 0 0#tactics:#"
     },
     {
       "index": 26,
@@ -4190,7 +4190,7 @@
         {
           "owner": "green",
           "type": "defensive",
-          "troops": 44,
+          "troops": 0,
           "shield": 14,
           "x": 0.25,
           "y": 0.2
@@ -4198,7 +4198,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.22,
           "y": 0.52
@@ -4206,7 +4206,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.73,
           "y": 0.42
@@ -4214,7 +4214,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.3,
           "y": 0.83
@@ -4222,7 +4222,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.74,
           "y": 0.77
@@ -4230,7 +4230,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.22,
           "y": 1.12
@@ -4238,7 +4238,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.76,
           "y": 1.13
@@ -4246,7 +4246,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 28,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 1.4
@@ -4300,7 +4300,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Hold Two banks#game_rules:easy false home_flags true 127#ai_types:red simple#general:tiny#planets:green defensive 44 0.25 0.2 0 14,neutral empty 2 0.22 0.52 0 0,green economic 20 0.73 0.42 0 0,neutral empty 2 0.3 0.83 0 0,neutral empty 2 0.74 0.77 0 0,neutral empty 2 0.22 1.12 0 0,neutral empty 2 0.76 1.13 0 0,red defensive 28 0.5 1.4 0 14#links:neutral 0.25 0.2 0.22 0.52 true none 0 0,neutral 0.25 0.2 0.73 0.42 false none 0 0,neutral 0.22 0.52 0.3 0.83 false none 0 0,neutral 0.73 0.42 0.74 0.77 false none 0 0,neutral 0.74 0.77 0.3 0.83 true none 0 0,neutral 0.3 0.83 0.22 1.12 false none 0 0,neutral 0.74 0.77 0.76 1.13 false none 0 0,neutral 0.22 1.12 0.5 1.4 false none 0 0,neutral 0.76 1.13 0.5 1.4 true none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Hold Two banks#game_rules:easy false home_flags true 127#ai_types:red simple#general:tiny#planets:green defensive 0 0.25 0.2 0 14,neutral empty 3 0.22 0.52 0 0,green economic 0 0.73 0.42 0 0,neutral empty 3 0.3 0.83 0 0,neutral empty 3 0.74 0.77 0 0,neutral empty 3 0.22 1.12 0 0,neutral empty 3 0.76 1.13 0 0,red defensive 0 0.5 1.4 0 14#links:neutral 0.25 0.2 0.22 0.52 true none 0 0,neutral 0.25 0.2 0.73 0.42 false none 0 0,neutral 0.22 0.52 0.3 0.83 false none 0 0,neutral 0.73 0.42 0.74 0.77 false none 0 0,neutral 0.74 0.77 0.3 0.83 true none 0 0,neutral 0.3 0.83 0.22 1.12 false none 0 0,neutral 0.74 0.77 0.76 1.13 false none 0 0,neutral 0.22 1.12 0.5 1.4 false none 0 0,neutral 0.76 1.13 0.5 1.4 true none 0 0#tactics:#"
     },
     {
       "index": 27,
@@ -4317,15 +4317,15 @@
         {
           "owner": "green",
           "type": "defensive",
-          "troops": 47,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 0.18
         },
         {
-          "owner": "neutral",
-          "type": "empty",
-          "troops": 2,
+          "owner": "green",
+          "type": "economic",
+          "troops": 0,
           "shield": 0,
           "x": 0.2,
           "y": 0.43
@@ -4333,7 +4333,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 0.43
@@ -4341,7 +4341,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.64
@@ -4349,7 +4349,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.24,
           "y": 0.86
@@ -4357,7 +4357,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.76,
           "y": 0.86
@@ -4365,7 +4365,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 1.08
@@ -4373,7 +4373,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.2,
           "y": 1.29
@@ -4381,7 +4381,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 1.29
@@ -4389,7 +4389,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 31,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 1.46
@@ -4458,7 +4458,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Hold Bridge#game_rules:normal false home_flags true 127#ai_types:red simple#general:tiny#planets:green defensive 47 0.5 0.18 0 14,neutral empty 2 0.2 0.43 0 0,neutral empty 2 0.8 0.43 0 0,neutral empty 2 0.5 0.64 0 0,neutral empty 2 0.24 0.86 0 0,neutral empty 2 0.76 0.86 0 0,neutral empty 2 0.5 1.08 0 0,neutral empty 2 0.2 1.29 0 0,neutral empty 2 0.8 1.29 0 0,red defensive 31 0.5 1.46 0 14#links:neutral 0.5 0.18 0.2 0.43 false none 0 0,neutral 0.5 0.18 0.8 0.43 false none 0 0,neutral 0.2 0.43 0.5 0.64 false none 0 0,neutral 0.5 0.64 0.8 0.43 true none 0 0,neutral 0.5 0.64 0.24 0.86 false none 0 0,neutral 0.5 0.64 0.76 0.86 false none 0 0,neutral 0.24 0.86 0.5 1.08 false none 0 0,neutral 0.76 0.86 0.5 1.08 true none 0 0,neutral 0.5 1.08 0.2 1.29 false none 0 0,neutral 0.5 1.08 0.8 1.29 false none 0 0,neutral 0.2 1.29 0.5 1.46 false none 0 0,neutral 0.8 1.29 0.5 1.46 true none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Hold Bridge#game_rules:normal false home_flags true 127#ai_types:red simple#general:tiny#planets:green defensive 0 0.5 0.18 0 14,green economic 0 0.2 0.43 0 0,neutral empty 3 0.8 0.43 0 0,neutral empty 3 0.5 0.64 0 0,neutral empty 3 0.24 0.86 0 0,neutral empty 3 0.76 0.86 0 0,neutral empty 3 0.5 1.08 0 0,neutral empty 3 0.2 1.29 0 0,neutral empty 3 0.8 1.29 0 0,red defensive 0 0.5 1.46 0 14#links:neutral 0.5 0.18 0.2 0.43 false none 0 0,neutral 0.5 0.18 0.8 0.43 false none 0 0,neutral 0.2 0.43 0.5 0.64 false none 0 0,neutral 0.5 0.64 0.8 0.43 true none 0 0,neutral 0.5 0.64 0.24 0.86 false none 0 0,neutral 0.5 0.64 0.76 0.86 false none 0 0,neutral 0.24 0.86 0.5 1.08 false none 0 0,neutral 0.76 0.86 0.5 1.08 true none 0 0,neutral 0.5 1.08 0.2 1.29 false none 0 0,neutral 0.5 1.08 0.8 1.29 false none 0 0,neutral 0.2 1.29 0.5 1.46 false none 0 0,neutral 0.8 1.29 0.5 1.46 true none 0 0#tactics:#"
     },
     {
       "index": 28,
@@ -4475,7 +4475,7 @@
         {
           "owner": "green",
           "type": "defensive",
-          "troops": 50,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 0.17
@@ -4531,7 +4531,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 34,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 1.45
@@ -4621,7 +4621,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Hold Loop#game_rules:normal false home_flags true 127#ai_types:red simple#general:tiny#planets:green defensive 50 0.5 0.17 0 14,neutral empty 3 0.2 0.36 0 0,neutral empty 3 0.8 0.36 0 0,neutral empty 3 0.16 0.69 0 0,neutral empty 3 0.84 0.69 0 0,neutral empty 3 0.22 1.03 0 0,neutral empty 3 0.78 1.03 0 0,red defensive 34 0.5 1.45 0 14,neutral empty 3 0.5 0.64 0 0,neutral empty 3 0.5 1.12 0 0#links:neutral 0.5 0.17 0.2 0.36 false none 0 0,neutral 0.5 0.17 0.8 0.36 false none 0 0,neutral 0.16 0.69 0.2 0.36 true none 0 0,neutral 0.8 0.36 0.84 0.69 false none 0 0,neutral 0.16 0.69 0.22 1.03 false none 0 0,neutral 0.84 0.69 0.78 1.03 false none 0 0,neutral 0.22 1.03 0.5 1.45 true none 0 0,neutral 0.78 1.03 0.5 1.45 false none 0 0,neutral 0.16 0.69 0.5 0.64 false none 0 0,neutral 0.84 0.69 0.5 0.64 false none 0 0,neutral 0.22 1.03 0.5 1.12 true none 0 0,neutral 0.78 1.03 0.5 1.12 false none 0 0,neutral 0.5 0.64 0.5 1.12 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Hold Loop#game_rules:normal false home_flags true 127#ai_types:red simple#general:tiny#planets:green defensive 0 0.5 0.17 0 14,neutral empty 3 0.2 0.36 0 0,neutral empty 3 0.8 0.36 0 0,neutral empty 3 0.16 0.69 0 0,neutral empty 3 0.84 0.69 0 0,neutral empty 3 0.22 1.03 0 0,neutral empty 3 0.78 1.03 0 0,red defensive 0 0.5 1.45 0 14,neutral empty 3 0.5 0.64 0 0,neutral empty 3 0.5 1.12 0 0#links:neutral 0.5 0.17 0.2 0.36 false none 0 0,neutral 0.5 0.17 0.8 0.36 false none 0 0,neutral 0.16 0.69 0.2 0.36 true none 0 0,neutral 0.8 0.36 0.84 0.69 false none 0 0,neutral 0.16 0.69 0.22 1.03 false none 0 0,neutral 0.84 0.69 0.78 1.03 false none 0 0,neutral 0.22 1.03 0.5 1.45 true none 0 0,neutral 0.78 1.03 0.5 1.45 false none 0 0,neutral 0.16 0.69 0.5 0.64 false none 0 0,neutral 0.84 0.69 0.5 0.64 false none 0 0,neutral 0.22 1.03 0.5 1.12 true none 0 0,neutral 0.78 1.03 0.5 1.12 false none 0 0,neutral 0.5 0.64 0.5 1.12 false none 0 0#tactics:#"
     },
     {
       "index": 29,
@@ -4638,7 +4638,7 @@
         {
           "owner": "green",
           "type": "defensive",
-          "troops": 53,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 0.18
@@ -4646,7 +4646,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.2,
           "y": 0.4
@@ -4718,7 +4718,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 37,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 1.46
@@ -4797,7 +4797,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Hold Pincer#game_rules:normal false home_flags true 127#ai_types:red savvy#general:tiny#planets:green defensive 53 0.5 0.18 0 14,green economic 20 0.2 0.4 0 0,neutral empty 3 0.8 0.4 0 0,neutral empty 3 0.25 0.68 0 0,neutral empty 3 0.75 0.68 0 0,neutral empty 3 0.5 0.84 0 0,neutral empty 3 0.2 1.0 0 0,neutral empty 3 0.8 1.0 0 0,neutral empty 3 0.25 1.27 0 0,neutral empty 3 0.75 1.27 0 0,red defensive 37 0.5 1.46 0 14#links:neutral 0.5 0.18 0.2 0.4 false none 0 0,neutral 0.8 0.4 0.5 0.18 true none 0 0,neutral 0.2 0.4 0.25 0.68 false none 0 0,neutral 0.8 0.4 0.75 0.68 false none 0 0,neutral 0.25 0.68 0.5 0.84 false none 0 0,neutral 0.75 0.68 0.5 0.84 true none 0 0,neutral 0.25 0.68 0.2 1.0 false none 0 0,neutral 0.75 0.68 0.8 1.0 false none 0 0,neutral 0.5 0.84 0.2 1.0 false none 0 0,neutral 0.5 0.84 0.8 1.0 true none 0 0,neutral 0.2 1.0 0.25 1.27 false none 0 0,neutral 0.8 1.0 0.75 1.27 false none 0 0,neutral 0.25 1.27 0.5 1.46 false none 0 0,neutral 0.5 1.46 0.75 1.27 true none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Hold Pincer#game_rules:normal false home_flags true 127#ai_types:red savvy#general:tiny#planets:green defensive 0 0.5 0.18 0 14,green economic 0 0.2 0.4 0 0,neutral empty 3 0.8 0.4 0 0,neutral empty 3 0.25 0.68 0 0,neutral empty 3 0.75 0.68 0 0,neutral empty 3 0.5 0.84 0 0,neutral empty 3 0.2 1.0 0 0,neutral empty 3 0.8 1.0 0 0,neutral empty 3 0.25 1.27 0 0,neutral empty 3 0.75 1.27 0 0,red defensive 0 0.5 1.46 0 14#links:neutral 0.5 0.18 0.2 0.4 false none 0 0,neutral 0.8 0.4 0.5 0.18 true none 0 0,neutral 0.2 0.4 0.25 0.68 false none 0 0,neutral 0.8 0.4 0.75 0.68 false none 0 0,neutral 0.25 0.68 0.5 0.84 false none 0 0,neutral 0.75 0.68 0.5 0.84 true none 0 0,neutral 0.25 0.68 0.2 1.0 false none 0 0,neutral 0.75 0.68 0.8 1.0 false none 0 0,neutral 0.5 0.84 0.2 1.0 false none 0 0,neutral 0.5 0.84 0.8 1.0 true none 0 0,neutral 0.2 1.0 0.25 1.27 false none 0 0,neutral 0.8 1.0 0.75 1.27 false none 0 0,neutral 0.25 1.27 0.5 1.46 false none 0 0,neutral 0.5 1.46 0.75 1.27 true none 0 0#tactics:#"
     },
     {
       "index": 30,
@@ -4814,7 +4814,7 @@
         {
           "owner": "green",
           "type": "defensive",
-          "troops": 56,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 0.17
@@ -4822,7 +4822,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.2,
           "y": 0.37
@@ -4854,7 +4854,7 @@
         {
           "owner": "yellow",
           "type": "defensive",
-          "troops": 30,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 0.78
@@ -4894,7 +4894,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 40,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 1.45
@@ -4973,7 +4973,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Hold Windward#game_rules:normal false home_flags true 127#ai_types:red savvy,yellow silly#general:tiny#planets:green defensive 56 0.5 0.17 0 14,green economic 20 0.2 0.37 0 0,neutral empty 3 0.8 0.37 0 0,neutral empty 3 0.2 0.65 0 0,neutral empty 3 0.8 0.65 0 0,yellow defensive 30 0.5 0.78 0 14,neutral empty 3 0.2 0.94 0 0,neutral empty 3 0.8 0.94 0 0,neutral empty 3 0.2 1.23 0 0,neutral empty 3 0.8 1.23 0 0,red defensive 40 0.5 1.45 0 14#links:neutral 0.2 0.37 0.5 0.17 true none 0 0,neutral 0.5 0.17 0.8 0.37 false none 0 0,neutral 0.2 0.37 0.2 0.65 false none 0 0,neutral 0.8 0.37 0.8 0.65 false none 0 0,neutral 0.2 0.65 0.5 0.78 true none 0 0,neutral 0.8 0.65 0.5 0.78 false none 0 0,neutral 0.2 0.65 0.2 0.94 false none 0 0,neutral 0.8 0.65 0.8 0.94 false none 0 0,neutral 0.5 0.78 0.2 0.94 true none 0 0,neutral 0.5 0.78 0.8 0.94 false none 0 0,neutral 0.2 0.94 0.2 1.23 false none 0 0,neutral 0.8 0.94 0.8 1.23 false none 0 0,neutral 0.5 1.45 0.2 1.23 true none 0 0,neutral 0.8 1.23 0.5 1.45 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Hold Windward#game_rules:normal false home_flags true 127#ai_types:red savvy,yellow silly#general:tiny#planets:green defensive 0 0.5 0.17 0 14,green economic 0 0.2 0.37 0 0,neutral empty 3 0.8 0.37 0 0,neutral empty 3 0.2 0.65 0 0,neutral empty 3 0.8 0.65 0 0,yellow defensive 0 0.5 0.78 0 14,neutral empty 3 0.2 0.94 0 0,neutral empty 3 0.8 0.94 0 0,neutral empty 3 0.2 1.23 0 0,neutral empty 3 0.8 1.23 0 0,red defensive 0 0.5 1.45 0 14#links:neutral 0.2 0.37 0.5 0.17 true none 0 0,neutral 0.5 0.17 0.8 0.37 false none 0 0,neutral 0.2 0.37 0.2 0.65 false none 0 0,neutral 0.8 0.37 0.8 0.65 false none 0 0,neutral 0.2 0.65 0.5 0.78 true none 0 0,neutral 0.8 0.65 0.5 0.78 false none 0 0,neutral 0.2 0.65 0.2 0.94 false none 0 0,neutral 0.8 0.65 0.8 0.94 false none 0 0,neutral 0.5 0.78 0.2 0.94 true none 0 0,neutral 0.5 0.78 0.8 0.94 false none 0 0,neutral 0.2 0.94 0.2 1.23 false none 0 0,neutral 0.8 0.94 0.8 1.23 false none 0 0,neutral 0.5 1.45 0.2 1.23 true none 0 0,neutral 0.8 1.23 0.5 1.45 false none 0 0#tactics:#"
     },
     {
       "index": 31,
@@ -4990,7 +4990,7 @@
         {
           "owner": "green",
           "type": "defensive",
-          "troops": 59,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 0.17
@@ -5022,7 +5022,7 @@
         {
           "owner": "yellow",
           "type": "defensive",
-          "troops": 31,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 0.61
@@ -5086,7 +5086,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 43,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 1.45
@@ -5175,7 +5175,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Hold Switchback#game_rules:normal false home_flags true 127#ai_types:red savvy,yellow silly#general:tiny#planets:green defensive 59 0.5 0.17 0 14,neutral empty 3 0.19 0.37 0 0,neutral empty 3 0.81 0.37 0 0,neutral empty 3 0.19 0.66 0 0,yellow defensive 31 0.5 0.61 0 14,neutral empty 3 0.81 0.66 0 0,neutral empty 3 0.19 0.96 0 0,neutral empty 3 0.5 0.88 0 0,neutral empty 3 0.81 0.96 0 0,neutral empty 3 0.19 1.25 0 0,neutral empty 3 0.5 1.16 0 0,neutral empty 3 0.81 1.25 0 0,red defensive 43 0.5 1.45 0 14#links:neutral 0.5 0.17 0.19 0.37 false none 0 0,neutral 0.5 0.17 0.81 0.37 false none 0 0,neutral 0.19 0.37 0.19 0.66 false none 0 0,neutral 0.81 0.37 0.81 0.66 true none 0 0,neutral 0.19 0.66 0.5 0.61 false none 0 0,neutral 0.5 0.61 0.81 0.66 false none 0 0,neutral 0.19 0.66 0.19 0.96 false none 0 0,neutral 0.81 0.66 0.81 0.96 true none 0 0,neutral 0.19 0.96 0.5 0.88 false none 0 0,neutral 0.5 0.88 0.81 0.96 false none 0 0,neutral 0.19 0.96 0.19 1.25 false none 0 0,neutral 0.81 1.25 0.81 0.96 true none 0 0,neutral 0.19 1.25 0.5 1.16 false none 0 0,neutral 0.5 1.16 0.81 1.25 false none 0 0,neutral 0.19 1.25 0.5 1.45 false none 0 0,neutral 0.81 1.25 0.5 1.45 true none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Hold Switchback#game_rules:normal false home_flags true 127#ai_types:red savvy,yellow silly#general:tiny#planets:green defensive 0 0.5 0.17 0 14,neutral empty 3 0.19 0.37 0 0,neutral empty 3 0.81 0.37 0 0,neutral empty 3 0.19 0.66 0 0,yellow defensive 0 0.5 0.61 0 14,neutral empty 3 0.81 0.66 0 0,neutral empty 3 0.19 0.96 0 0,neutral empty 3 0.5 0.88 0 0,neutral empty 3 0.81 0.96 0 0,neutral empty 3 0.19 1.25 0 0,neutral empty 3 0.5 1.16 0 0,neutral empty 3 0.81 1.25 0 0,red defensive 0 0.5 1.45 0 14#links:neutral 0.5 0.17 0.19 0.37 false none 0 0,neutral 0.5 0.17 0.81 0.37 false none 0 0,neutral 0.19 0.37 0.19 0.66 false none 0 0,neutral 0.81 0.37 0.81 0.66 true none 0 0,neutral 0.19 0.66 0.5 0.61 false none 0 0,neutral 0.5 0.61 0.81 0.66 false none 0 0,neutral 0.19 0.66 0.19 0.96 false none 0 0,neutral 0.81 0.66 0.81 0.96 true none 0 0,neutral 0.19 0.96 0.5 0.88 false none 0 0,neutral 0.5 0.88 0.81 0.96 false none 0 0,neutral 0.19 0.96 0.19 1.25 false none 0 0,neutral 0.81 1.25 0.81 0.96 true none 0 0,neutral 0.19 1.25 0.5 1.16 false none 0 0,neutral 0.5 1.16 0.81 1.25 false none 0 0,neutral 0.19 1.25 0.5 1.45 false none 0 0,neutral 0.81 1.25 0.5 1.45 true none 0 0#tactics:#"
     },
     {
       "index": 32,
@@ -5192,7 +5192,7 @@
         {
           "owner": "green",
           "type": "defensive",
-          "troops": 62,
+          "troops": 0,
           "shield": 14,
           "x": 0.22,
           "y": 0.2
@@ -5200,7 +5200,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.53,
           "y": 0.21
@@ -5208,7 +5208,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 0.43
@@ -5216,7 +5216,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.51,
           "y": 0.58
@@ -5224,7 +5224,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.2,
           "y": 0.56
@@ -5232,7 +5232,7 @@
         {
           "owner": "yellow",
           "type": "defensive",
-          "troops": 32,
+          "troops": 0,
           "shield": 14,
           "x": 0.2,
           "y": 0.89
@@ -5240,7 +5240,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.91
@@ -5248,7 +5248,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 0.81
@@ -5256,7 +5256,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 1.14
@@ -5264,7 +5264,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 1.23
@@ -5272,7 +5272,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 1.24
@@ -5280,7 +5280,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 46,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 1.46
@@ -5349,7 +5349,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Hold Shortcut#game_rules:normal false home_flags true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green defensive 62 0.22 0.2 0 14,neutral empty 4 0.53 0.21 0 0,neutral empty 4 0.8 0.43 0 0,neutral empty 4 0.51 0.58 0 0,neutral empty 4 0.2 0.56 0 0,yellow defensive 32 0.2 0.89 0 14,neutral empty 4 0.5 0.91 0 0,neutral empty 4 0.8 0.81 0 0,neutral empty 4 0.8 1.14 0 0,neutral empty 4 0.5 1.23 0 0,neutral empty 4 0.21 1.24 0 0,red defensive 46 0.5 1.46 0 14#links:neutral 0.22 0.2 0.53 0.21 false none 0 0,neutral 0.53 0.21 0.8 0.43 false none 0 0,neutral 0.8 0.43 0.51 0.58 true none 0 0,neutral 0.51 0.58 0.2 0.56 false none 0 0,neutral 0.2 0.56 0.2 0.89 false none 0 0,neutral 0.2 0.89 0.5 0.91 false none 0 0,neutral 0.5 0.91 0.8 0.81 true none 0 0,neutral 0.8 0.81 0.8 1.14 false none 0 0,neutral 0.8 1.14 0.5 1.23 false none 0 0,neutral 0.5 1.23 0.21 1.24 false none 0 0,neutral 0.5 1.46 0.5 1.23 true none 0 0,neutral 0.21 1.24 0.5 1.46 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Hold Shortcut#game_rules:normal false home_flags true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green defensive 0 0.22 0.2 0 14,neutral empty 3 0.53 0.21 0 0,neutral empty 3 0.8 0.43 0 0,neutral empty 3 0.51 0.58 0 0,neutral empty 3 0.2 0.56 0 0,yellow defensive 0 0.2 0.89 0 14,neutral empty 3 0.5 0.91 0 0,neutral empty 3 0.8 0.81 0 0,neutral empty 3 0.8 1.14 0 0,neutral empty 3 0.5 1.23 0 0,neutral empty 3 0.21 1.24 0 0,red defensive 0 0.5 1.46 0 14#links:neutral 0.22 0.2 0.53 0.21 false none 0 0,neutral 0.53 0.21 0.8 0.43 false none 0 0,neutral 0.8 0.43 0.51 0.58 true none 0 0,neutral 0.51 0.58 0.2 0.56 false none 0 0,neutral 0.2 0.56 0.2 0.89 false none 0 0,neutral 0.2 0.89 0.5 0.91 false none 0 0,neutral 0.5 0.91 0.8 0.81 true none 0 0,neutral 0.8 0.81 0.8 1.14 false none 0 0,neutral 0.8 1.14 0.5 1.23 false none 0 0,neutral 0.5 1.23 0.21 1.24 false none 0 0,neutral 0.5 1.46 0.5 1.23 true none 0 0,neutral 0.21 1.24 0.5 1.46 false none 0 0#tactics:#"
     },
     {
       "index": 33,
@@ -5366,7 +5366,7 @@
         {
           "owner": "green",
           "type": "defensive",
-          "troops": 65,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 0.17
@@ -5374,7 +5374,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 0.39
@@ -5382,7 +5382,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.79,
           "y": 0.39
@@ -5390,7 +5390,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 0.7
@@ -5398,7 +5398,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.79,
           "y": 0.7
@@ -5406,7 +5406,7 @@
         {
           "owner": "yellow",
           "type": "defensive",
-          "troops": 33,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 0.85
@@ -5414,7 +5414,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 1.02
@@ -5422,7 +5422,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.79,
           "y": 1.02
@@ -5430,7 +5430,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 1.27
@@ -5438,7 +5438,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.79,
           "y": 1.27
@@ -5446,7 +5446,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 49,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 1.46
@@ -5515,7 +5515,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Hold Tripwire#game_rules:normal false home_flags true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green defensive 65 0.5 0.17 0 14,neutral empty 4 0.21 0.39 0 0,neutral empty 4 0.79 0.39 0 0,neutral empty 4 0.21 0.7 0 0,neutral empty 4 0.79 0.7 0 0,yellow defensive 33 0.5 0.85 0 14,neutral empty 4 0.21 1.02 0 0,neutral empty 4 0.79 1.02 0 0,neutral empty 4 0.21 1.27 0 0,neutral empty 4 0.79 1.27 0 0,red defensive 49 0.5 1.46 0 14#links:neutral 0.5 0.17 0.21 0.39 false none 0 0,neutral 0.5 0.17 0.79 0.39 true none 0 0,neutral 0.21 0.39 0.21 0.7 false none 0 0,neutral 0.79 0.39 0.79 0.7 false none 0 0,neutral 0.21 0.7 0.5 0.85 false none 0 0,neutral 0.79 0.7 0.5 0.85 true none 0 0,neutral 0.5 0.85 0.21 1.02 false none 0 0,neutral 0.5 0.85 0.79 1.02 false none 0 0,neutral 0.21 1.02 0.21 1.27 false none 0 0,neutral 0.79 1.27 0.79 1.02 true none 0 0,neutral 0.21 1.27 0.5 1.46 false none 0 0,neutral 0.79 1.27 0.5 1.46 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Hold Tripwire#game_rules:normal false home_flags true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green defensive 0 0.5 0.17 0 14,neutral empty 3 0.21 0.39 0 0,neutral empty 3 0.79 0.39 0 0,neutral empty 3 0.21 0.7 0 0,neutral empty 3 0.79 0.7 0 0,yellow defensive 0 0.5 0.85 0 14,neutral empty 3 0.21 1.02 0 0,neutral empty 3 0.79 1.02 0 0,neutral empty 3 0.21 1.27 0 0,neutral empty 3 0.79 1.27 0 0,red defensive 0 0.5 1.46 0 14#links:neutral 0.5 0.17 0.21 0.39 false none 0 0,neutral 0.5 0.17 0.79 0.39 true none 0 0,neutral 0.21 0.39 0.21 0.7 false none 0 0,neutral 0.79 0.39 0.79 0.7 false none 0 0,neutral 0.21 0.7 0.5 0.85 false none 0 0,neutral 0.79 0.7 0.5 0.85 true none 0 0,neutral 0.5 0.85 0.21 1.02 false none 0 0,neutral 0.5 0.85 0.79 1.02 false none 0 0,neutral 0.21 1.02 0.21 1.27 false none 0 0,neutral 0.79 1.27 0.79 1.02 true none 0 0,neutral 0.21 1.27 0.5 1.46 false none 0 0,neutral 0.79 1.27 0.5 1.46 false none 0 0#tactics:#"
     },
     {
       "index": 34,
@@ -5532,7 +5532,7 @@
         {
           "owner": "green",
           "type": "defensive",
-          "troops": 90,
+          "troops": 0,
           "shield": 14,
           "x": 0.2,
           "y": 0.19
@@ -5540,7 +5540,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.52,
           "y": 0.2
@@ -5548,7 +5548,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.81,
           "y": 0.36
@@ -5556,7 +5556,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.22,
           "y": 0.53
@@ -5564,7 +5564,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.55,
           "y": 0.55
@@ -5572,7 +5572,7 @@
         {
           "owner": "yellow",
           "type": "defensive",
-          "troops": 34,
+          "troops": 0,
           "shield": 14,
           "x": 0.82,
           "y": 0.72
@@ -5580,7 +5580,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.2,
           "y": 0.87
@@ -5588,7 +5588,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.51,
           "y": 0.86
@@ -5596,7 +5596,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.23,
           "y": 1.2
@@ -5604,7 +5604,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 1.08
@@ -5612,7 +5612,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.52,
           "y": 1.17
@@ -5620,7 +5620,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.81,
           "y": 1.4
@@ -5628,7 +5628,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 52,
+          "troops": 0,
           "shield": 14,
           "x": 0.42,
           "y": 1.45
@@ -5717,7 +5717,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Hold High ground#game_rules:hard false home_flags true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green defensive 90 0.2 0.19 0 14,neutral empty 4 0.52 0.2 0 0,neutral empty 4 0.81 0.36 0 0,neutral empty 4 0.22 0.53 0 0,neutral empty 4 0.55 0.55 0 0,yellow defensive 34 0.82 0.72 0 14,neutral empty 4 0.2 0.87 0 0,neutral empty 4 0.51 0.86 0 0,neutral empty 4 0.23 1.2 0 0,neutral empty 4 0.8 1.08 0 0,neutral empty 4 0.52 1.17 0 0,neutral empty 4 0.81 1.4 0 0,red defensive 52 0.42 1.45 0 14#links:neutral 0.2 0.19 0.52 0.2 true none 0 0,neutral 0.2 0.19 0.22 0.53 false none 0 0,neutral 0.52 0.2 0.81 0.36 false none 0 0,neutral 0.52 0.2 0.55 0.55 false none 0 0,neutral 0.81 0.36 0.82 0.72 true none 0 0,neutral 0.22 0.53 0.55 0.55 false none 0 0,neutral 0.22 0.53 0.2 0.87 false none 0 0,neutral 0.55 0.55 0.51 0.86 false none 0 0,neutral 0.51 0.86 0.82 0.72 true none 0 0,neutral 0.82 0.72 0.8 1.08 false none 0 0,neutral 0.2 0.87 0.23 1.2 false none 0 0,neutral 0.51 0.86 0.52 1.17 false none 0 0,neutral 0.23 1.2 0.52 1.17 true none 0 0,neutral 0.8 1.08 0.81 1.4 false none 0 0,neutral 0.52 1.17 0.81 1.4 false none 0 0,neutral 0.52 1.17 0.42 1.45 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Hold High ground#game_rules:hard false home_flags true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green defensive 0 0.2 0.19 0 14,neutral empty 3 0.52 0.2 0 0,neutral empty 3 0.81 0.36 0 0,neutral empty 3 0.22 0.53 0 0,neutral empty 3 0.55 0.55 0 0,yellow defensive 0 0.82 0.72 0 14,neutral empty 3 0.2 0.87 0 0,neutral empty 3 0.51 0.86 0 0,neutral empty 3 0.23 1.2 0 0,neutral empty 3 0.8 1.08 0 0,neutral empty 3 0.52 1.17 0 0,neutral empty 3 0.81 1.4 0 0,red defensive 0 0.42 1.45 0 14#links:neutral 0.2 0.19 0.52 0.2 true none 0 0,neutral 0.2 0.19 0.22 0.53 false none 0 0,neutral 0.52 0.2 0.81 0.36 false none 0 0,neutral 0.52 0.2 0.55 0.55 false none 0 0,neutral 0.81 0.36 0.82 0.72 true none 0 0,neutral 0.22 0.53 0.55 0.55 false none 0 0,neutral 0.22 0.53 0.2 0.87 false none 0 0,neutral 0.55 0.55 0.51 0.86 false none 0 0,neutral 0.51 0.86 0.82 0.72 true none 0 0,neutral 0.82 0.72 0.8 1.08 false none 0 0,neutral 0.2 0.87 0.23 1.2 false none 0 0,neutral 0.51 0.86 0.52 1.17 false none 0 0,neutral 0.23 1.2 0.52 1.17 true none 0 0,neutral 0.8 1.08 0.81 1.4 false none 0 0,neutral 0.52 1.17 0.81 1.4 false none 0 0,neutral 0.52 1.17 0.42 1.45 false none 0 0#tactics:#"
     },
     {
       "index": 35,
@@ -5734,7 +5734,7 @@
         {
           "owner": "green",
           "type": "defensive",
-          "troops": 93,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 0.16
@@ -5742,7 +5742,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 0.33
@@ -5750,7 +5750,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.82,
           "y": 0.33
@@ -5758,7 +5758,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 0.6
@@ -5766,7 +5766,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.5
@@ -5774,7 +5774,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.82,
           "y": 0.6
@@ -5782,7 +5782,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 0.87
@@ -5790,7 +5790,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.78
@@ -5798,7 +5798,7 @@
         {
           "owner": "yellow",
           "type": "defensive",
-          "troops": 35,
+          "troops": 0,
           "shield": 14,
           "x": 0.82,
           "y": 0.87
@@ -5806,7 +5806,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 1.14
@@ -5814,7 +5814,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 1.05
@@ -5822,7 +5822,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.82,
           "y": 1.14
@@ -5830,7 +5830,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 1.41
@@ -5838,7 +5838,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 55,
+          "troops": 0,
           "shield": 14,
           "x": 0.5,
           "y": 1.45
@@ -5846,7 +5846,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.82,
           "y": 1.41
@@ -5965,7 +5965,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Hold Crossroads#game_rules:hard false home_flags true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green defensive 93 0.5 0.16 0 14,neutral empty 4 0.18 0.33 0 0,neutral empty 4 0.82 0.33 0 0,neutral empty 4 0.18 0.6 0 0,neutral empty 4 0.5 0.5 0 0,neutral empty 4 0.82 0.6 0 0,neutral empty 4 0.18 0.87 0 0,neutral empty 4 0.5 0.78 0 0,yellow defensive 35 0.82 0.87 0 14,neutral empty 4 0.18 1.14 0 0,neutral empty 4 0.5 1.05 0 0,neutral empty 4 0.82 1.14 0 0,neutral empty 4 0.18 1.41 0 0,red defensive 55 0.5 1.45 0 14,neutral empty 4 0.82 1.41 0 0#links:neutral 0.5 0.16 0.18 0.33 false none 0 0,neutral 0.5 0.16 0.82 0.33 false none 0 0,neutral 0.5 0.16 0.5 0.5 false none 0 0,neutral 0.18 0.33 0.18 0.6 true none 0 0,neutral 0.82 0.33 0.82 0.6 false none 0 0,neutral 0.18 0.6 0.5 0.5 false none 0 0,neutral 0.5 0.5 0.82 0.6 false none 0 0,neutral 0.18 0.87 0.18 0.6 true none 0 0,neutral 0.5 0.5 0.5 0.78 false none 0 0,neutral 0.82 0.6 0.82 0.87 false none 0 0,neutral 0.18 0.87 0.5 0.78 false none 0 0,neutral 0.5 0.78 0.82 0.87 true none 0 0,neutral 0.18 0.87 0.18 1.14 false none 0 0,neutral 0.5 0.78 0.5 1.05 false none 0 0,neutral 0.82 0.87 0.82 1.14 false none 0 0,neutral 0.18 1.14 0.5 1.05 true none 0 0,neutral 0.5 1.05 0.82 1.14 false none 0 0,neutral 0.18 1.14 0.18 1.41 false none 0 0,neutral 0.5 1.05 0.5 1.45 false none 0 0,neutral 0.82 1.41 0.82 1.14 true none 0 0,neutral 0.18 1.41 0.5 1.45 false none 0 0,neutral 0.5 1.45 0.82 1.41 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Hold Crossroads#game_rules:hard false home_flags true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green defensive 0 0.5 0.16 0 14,neutral empty 3 0.18 0.33 0 0,neutral empty 3 0.82 0.33 0 0,neutral empty 3 0.18 0.6 0 0,neutral empty 3 0.5 0.5 0 0,neutral empty 3 0.82 0.6 0 0,neutral empty 3 0.18 0.87 0 0,neutral empty 3 0.5 0.78 0 0,yellow defensive 0 0.82 0.87 0 14,neutral empty 3 0.18 1.14 0 0,neutral empty 3 0.5 1.05 0 0,neutral empty 3 0.82 1.14 0 0,neutral empty 3 0.18 1.41 0 0,red defensive 0 0.5 1.45 0 14,neutral empty 3 0.82 1.41 0 0#links:neutral 0.5 0.16 0.18 0.33 false none 0 0,neutral 0.5 0.16 0.82 0.33 false none 0 0,neutral 0.5 0.16 0.5 0.5 false none 0 0,neutral 0.18 0.33 0.18 0.6 true none 0 0,neutral 0.82 0.33 0.82 0.6 false none 0 0,neutral 0.18 0.6 0.5 0.5 false none 0 0,neutral 0.5 0.5 0.82 0.6 false none 0 0,neutral 0.18 0.87 0.18 0.6 true none 0 0,neutral 0.5 0.5 0.5 0.78 false none 0 0,neutral 0.82 0.6 0.82 0.87 false none 0 0,neutral 0.18 0.87 0.5 0.78 false none 0 0,neutral 0.5 0.78 0.82 0.87 true none 0 0,neutral 0.18 0.87 0.18 1.14 false none 0 0,neutral 0.5 0.78 0.5 1.05 false none 0 0,neutral 0.82 0.87 0.82 1.14 false none 0 0,neutral 0.18 1.14 0.5 1.05 true none 0 0,neutral 0.5 1.05 0.82 1.14 false none 0 0,neutral 0.18 1.14 0.18 1.41 false none 0 0,neutral 0.5 1.05 0.5 1.45 false none 0 0,neutral 0.82 1.41 0.82 1.14 true none 0 0,neutral 0.18 1.41 0.5 1.45 false none 0 0,neutral 0.5 1.45 0.82 1.41 false none 0 0#tactics:#"
     },
     {
       "index": 36,
@@ -5982,7 +5982,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 38,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.22
@@ -5990,7 +5990,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.68,
           "y": 0.5
@@ -5998,7 +5998,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 24,
+          "troops": 0,
           "shield": 0,
           "x": 0.35,
           "y": 0.77
@@ -6006,7 +6006,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.6,
           "y": 1.03
@@ -6014,7 +6014,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 44,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.37
@@ -6043,7 +6043,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Pact First steps#game_rules:easy false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 38 0.5 0.22 0 0,neutral empty 2 0.68 0.5 0 0,yellow empty 24 0.35 0.77 0 0,neutral empty 2 0.6 1.03 0 0,red empty 44 0.5 1.37 0 0#links:neutral 0.5 0.22 0.68 0.5 false none 0 0,neutral 0.68 0.5 0.35 0.77 true none 0 0,neutral 0.35 0.77 0.6 1.03 false none 0 0,neutral 0.6 1.03 0.5 1.37 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Pact First steps#game_rules:easy false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.5 0.22 0 0,neutral empty 3 0.68 0.5 0 0,yellow empty 0 0.35 0.77 0 0,neutral empty 3 0.6 1.03 0 0,red empty 0 0.5 1.37 0 0#links:neutral 0.5 0.22 0.68 0.5 false none 0 0,neutral 0.68 0.5 0.35 0.77 true none 0 0,neutral 0.35 0.77 0.6 1.03 false none 0 0,neutral 0.6 1.03 0.5 1.37 false none 0 0#tactics:#"
     },
     {
       "index": 37,
@@ -6060,7 +6060,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 41,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.2
@@ -6068,7 +6068,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.77,
           "y": 0.47
@@ -6076,7 +6076,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.23,
           "y": 0.47
@@ -6084,7 +6084,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 25,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.76
@@ -6092,7 +6092,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.77,
           "y": 1.05
@@ -6100,7 +6100,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.23,
           "y": 1.05
@@ -6108,7 +6108,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 47,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.37
@@ -6157,7 +6157,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Pact Fork#game_rules:easy false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 41 0.5 0.2 0 0,neutral empty 2 0.77 0.47 0 0,neutral empty 2 0.23 0.47 0 0,yellow empty 25 0.5 0.76 0 0,neutral empty 2 0.77 1.05 0 0,neutral empty 2 0.23 1.05 0 0,red empty 47 0.5 1.37 0 0#links:neutral 0.5 0.2 0.77 0.47 true none 0 0,neutral 0.5 0.2 0.23 0.47 false none 0 0,neutral 0.77 0.47 0.5 0.76 false none 0 0,neutral 0.23 0.47 0.5 0.76 false none 0 0,neutral 0.5 0.76 0.77 1.05 true none 0 0,neutral 0.5 0.76 0.23 1.05 false none 0 0,neutral 0.77 1.05 0.5 1.37 false none 0 0,neutral 0.23 1.05 0.5 1.37 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Pact Fork#game_rules:easy false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.5 0.2 0 0,neutral empty 3 0.77 0.47 0 0,neutral empty 3 0.23 0.47 0 0,yellow empty 0 0.5 0.76 0 0,neutral empty 3 0.77 1.05 0 0,neutral empty 3 0.23 1.05 0 0,red empty 0 0.5 1.37 0 0#links:neutral 0.5 0.2 0.77 0.47 true none 0 0,neutral 0.5 0.2 0.23 0.47 false none 0 0,neutral 0.77 0.47 0.5 0.76 false none 0 0,neutral 0.23 0.47 0.5 0.76 false none 0 0,neutral 0.5 0.76 0.77 1.05 true none 0 0,neutral 0.5 0.76 0.23 1.05 false none 0 0,neutral 0.77 1.05 0.5 1.37 false none 0 0,neutral 0.23 1.05 0.5 1.37 false none 0 0#tactics:#"
     },
     {
       "index": 38,
@@ -6174,7 +6174,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 44,
+          "troops": 0,
           "shield": 0,
           "x": 0.75,
           "y": 0.2
@@ -6182,7 +6182,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.78,
           "y": 0.52
@@ -6190,7 +6190,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.27,
           "y": 0.42
@@ -6198,7 +6198,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 26,
+          "troops": 0,
           "shield": 0,
           "x": 0.7,
           "y": 0.83
@@ -6206,7 +6206,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.26,
           "y": 0.77
@@ -6214,7 +6214,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.78,
           "y": 1.12
@@ -6222,7 +6222,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.24,
           "y": 1.13
@@ -6230,7 +6230,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 50,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.4
@@ -6284,7 +6284,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Pact Two banks#game_rules:easy false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 44 0.75 0.2 0 0,neutral empty 2 0.78 0.52 0 0,neutral empty 2 0.27 0.42 0 0,yellow empty 26 0.7 0.83 0 0,neutral empty 2 0.26 0.77 0 0,neutral empty 2 0.78 1.12 0 0,neutral empty 2 0.24 1.13 0 0,red empty 50 0.5 1.4 0 0#links:neutral 0.75 0.2 0.78 0.52 false none 0 0,neutral 0.75 0.2 0.27 0.42 false none 0 0,neutral 0.78 0.52 0.7 0.83 false none 0 0,neutral 0.27 0.42 0.26 0.77 true none 0 0,neutral 0.7 0.83 0.26 0.77 false none 0 0,neutral 0.7 0.83 0.78 1.12 false none 0 0,neutral 0.26 0.77 0.24 1.13 false none 0 0,neutral 0.5 1.4 0.78 1.12 true none 0 0,neutral 0.24 1.13 0.5 1.4 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Pact Two banks#game_rules:easy false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.75 0.2 0 0,neutral empty 3 0.78 0.52 0 0,neutral empty 3 0.27 0.42 0 0,yellow empty 0 0.7 0.83 0 0,neutral empty 3 0.26 0.77 0 0,neutral empty 3 0.78 1.12 0 0,neutral empty 3 0.24 1.13 0 0,red empty 0 0.5 1.4 0 0#links:neutral 0.75 0.2 0.78 0.52 false none 0 0,neutral 0.75 0.2 0.27 0.42 false none 0 0,neutral 0.78 0.52 0.7 0.83 false none 0 0,neutral 0.27 0.42 0.26 0.77 true none 0 0,neutral 0.7 0.83 0.26 0.77 false none 0 0,neutral 0.7 0.83 0.78 1.12 false none 0 0,neutral 0.26 0.77 0.24 1.13 false none 0 0,neutral 0.5 1.4 0.78 1.12 true none 0 0,neutral 0.24 1.13 0.5 1.4 false none 0 0#tactics:#"
     },
     {
       "index": 39,
@@ -6301,7 +6301,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 47,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.18
@@ -6309,7 +6309,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 0.43
@@ -6317,7 +6317,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.2,
           "y": 0.43
@@ -6325,7 +6325,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.64
@@ -6333,7 +6333,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 27,
+          "troops": 0,
           "shield": 0,
           "x": 0.76,
           "y": 0.86
@@ -6341,7 +6341,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.24,
           "y": 0.86
@@ -6349,7 +6349,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 1.08
@@ -6357,7 +6357,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 1.29
@@ -6365,7 +6365,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 2,
+          "troops": 3,
           "shield": 0,
           "x": 0.2,
           "y": 1.29
@@ -6373,7 +6373,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 53,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.46
@@ -6442,7 +6442,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Pact Bridge#game_rules:normal false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 47 0.5 0.18 0 0,neutral empty 2 0.8 0.43 0 0,neutral empty 2 0.2 0.43 0 0,neutral empty 2 0.5 0.64 0 0,yellow empty 27 0.76 0.86 0 0,neutral empty 2 0.24 0.86 0 0,neutral empty 2 0.5 1.08 0 0,neutral empty 2 0.8 1.29 0 0,neutral empty 2 0.2 1.29 0 0,red empty 53 0.5 1.46 0 0#links:neutral 0.5 0.18 0.8 0.43 false none 0 0,neutral 0.5 0.18 0.2 0.43 false none 0 0,neutral 0.8 0.43 0.5 0.64 true none 0 0,neutral 0.2 0.43 0.5 0.64 false none 0 0,neutral 0.5 0.64 0.76 0.86 false none 0 0,neutral 0.5 0.64 0.24 0.86 false none 0 0,neutral 0.5 1.08 0.76 0.86 true none 0 0,neutral 0.24 0.86 0.5 1.08 false none 0 0,neutral 0.5 1.08 0.8 1.29 false none 0 0,neutral 0.5 1.08 0.2 1.29 false none 0 0,neutral 0.8 1.29 0.5 1.46 true none 0 0,neutral 0.2 1.29 0.5 1.46 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Pact Bridge#game_rules:normal false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.5 0.18 0 0,neutral empty 3 0.8 0.43 0 0,neutral empty 3 0.2 0.43 0 0,neutral empty 3 0.5 0.64 0 0,yellow empty 0 0.76 0.86 0 0,neutral empty 3 0.24 0.86 0 0,neutral empty 3 0.5 1.08 0 0,neutral empty 3 0.8 1.29 0 0,neutral empty 3 0.2 1.29 0 0,red empty 0 0.5 1.46 0 0#links:neutral 0.5 0.18 0.8 0.43 false none 0 0,neutral 0.5 0.18 0.2 0.43 false none 0 0,neutral 0.8 0.43 0.5 0.64 true none 0 0,neutral 0.2 0.43 0.5 0.64 false none 0 0,neutral 0.5 0.64 0.76 0.86 false none 0 0,neutral 0.5 0.64 0.24 0.86 false none 0 0,neutral 0.5 1.08 0.76 0.86 true none 0 0,neutral 0.24 0.86 0.5 1.08 false none 0 0,neutral 0.5 1.08 0.8 1.29 false none 0 0,neutral 0.5 1.08 0.2 1.29 false none 0 0,neutral 0.8 1.29 0.5 1.46 true none 0 0,neutral 0.2 1.29 0.5 1.46 false none 0 0#tactics:#"
     },
     {
       "index": 40,
@@ -6459,7 +6459,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 50,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.17
@@ -6467,7 +6467,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.8,
           "y": 0.36
@@ -6515,7 +6515,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 56,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.45
@@ -6523,7 +6523,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 28,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.64
@@ -6605,7 +6605,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Pact Loop#game_rules:normal false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 50 0.5 0.17 0 0,green economic 20 0.8 0.36 0 0,neutral empty 3 0.2 0.36 0 0,neutral empty 3 0.84 0.69 0 0,neutral empty 3 0.16 0.69 0 0,neutral empty 3 0.78 1.03 0 0,neutral empty 3 0.22 1.03 0 0,red empty 56 0.5 1.45 0 0,yellow empty 28 0.5 0.64 0 0,neutral empty 3 0.5 1.12 0 0#links:neutral 0.5 0.17 0.8 0.36 false none 0 0,neutral 0.5 0.17 0.2 0.36 true none 0 0,neutral 0.8 0.36 0.84 0.69 false none 0 0,neutral 0.2 0.36 0.16 0.69 false none 0 0,neutral 0.84 0.69 0.78 1.03 false none 0 0,neutral 0.22 1.03 0.16 0.69 true none 0 0,neutral 0.78 1.03 0.5 1.45 false none 0 0,neutral 0.22 1.03 0.5 1.45 false none 0 0,neutral 0.84 0.69 0.5 0.64 false none 0 0,neutral 0.16 0.69 0.5 0.64 true none 0 0,neutral 0.78 1.03 0.5 1.12 false none 0 0,neutral 0.22 1.03 0.5 1.12 false none 0 0,neutral 0.5 0.64 0.5 1.12 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Pact Loop#game_rules:normal false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.5 0.17 0 0,green economic 0 0.8 0.36 0 0,neutral empty 3 0.2 0.36 0 0,neutral empty 3 0.84 0.69 0 0,neutral empty 3 0.16 0.69 0 0,neutral empty 3 0.78 1.03 0 0,neutral empty 3 0.22 1.03 0 0,red empty 0 0.5 1.45 0 0,yellow empty 0 0.5 0.64 0 0,neutral empty 3 0.5 1.12 0 0#links:neutral 0.5 0.17 0.8 0.36 false none 0 0,neutral 0.5 0.17 0.2 0.36 true none 0 0,neutral 0.8 0.36 0.84 0.69 false none 0 0,neutral 0.2 0.36 0.16 0.69 false none 0 0,neutral 0.84 0.69 0.78 1.03 false none 0 0,neutral 0.22 1.03 0.16 0.69 true none 0 0,neutral 0.78 1.03 0.5 1.45 false none 0 0,neutral 0.22 1.03 0.5 1.45 false none 0 0,neutral 0.84 0.69 0.5 0.64 false none 0 0,neutral 0.16 0.69 0.5 0.64 true none 0 0,neutral 0.78 1.03 0.5 1.12 false none 0 0,neutral 0.22 1.03 0.5 1.12 false none 0 0,neutral 0.5 0.64 0.5 1.12 false none 0 0#tactics:#"
     },
     {
       "index": 41,
@@ -6622,7 +6622,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 53,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.18
@@ -6630,7 +6630,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.8,
           "y": 0.4
@@ -6662,7 +6662,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 29,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.84
@@ -6702,7 +6702,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 59,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.46
@@ -6781,7 +6781,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Pact Pincer#game_rules:normal false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 53 0.5 0.18 0 0,green economic 20 0.8 0.4 0 0,neutral empty 3 0.2 0.4 0 0,neutral empty 3 0.75 0.68 0 0,neutral empty 3 0.25 0.68 0 0,yellow empty 29 0.5 0.84 0 0,neutral empty 3 0.8 1.0 0 0,neutral empty 3 0.2 1.0 0 0,neutral empty 3 0.75 1.27 0 0,neutral empty 3 0.25 1.27 0 0,red empty 59 0.5 1.46 0 0#links:neutral 0.5 0.18 0.8 0.4 true none 0 0,neutral 0.5 0.18 0.2 0.4 false none 0 0,neutral 0.8 0.4 0.75 0.68 false none 0 0,neutral 0.2 0.4 0.25 0.68 false none 0 0,neutral 0.5 0.84 0.75 0.68 true none 0 0,neutral 0.25 0.68 0.5 0.84 false none 0 0,neutral 0.75 0.68 0.8 1.0 false none 0 0,neutral 0.25 0.68 0.2 1.0 false none 0 0,neutral 0.5 0.84 0.8 1.0 true none 0 0,neutral 0.5 0.84 0.2 1.0 false none 0 0,neutral 0.8 1.0 0.75 1.27 false none 0 0,neutral 0.2 1.0 0.25 1.27 false none 0 0,neutral 0.75 1.27 0.5 1.46 true none 0 0,neutral 0.25 1.27 0.5 1.46 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Pact Pincer#game_rules:normal false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.5 0.18 0 0,green economic 0 0.8 0.4 0 0,neutral empty 3 0.2 0.4 0 0,neutral empty 3 0.75 0.68 0 0,neutral empty 3 0.25 0.68 0 0,yellow empty 0 0.5 0.84 0 0,neutral empty 3 0.8 1.0 0 0,neutral empty 3 0.2 1.0 0 0,neutral empty 3 0.75 1.27 0 0,neutral empty 3 0.25 1.27 0 0,red empty 0 0.5 1.46 0 0#links:neutral 0.5 0.18 0.8 0.4 true none 0 0,neutral 0.5 0.18 0.2 0.4 false none 0 0,neutral 0.8 0.4 0.75 0.68 false none 0 0,neutral 0.2 0.4 0.25 0.68 false none 0 0,neutral 0.5 0.84 0.75 0.68 true none 0 0,neutral 0.25 0.68 0.5 0.84 false none 0 0,neutral 0.75 0.68 0.8 1.0 false none 0 0,neutral 0.25 0.68 0.2 1.0 false none 0 0,neutral 0.5 0.84 0.8 1.0 true none 0 0,neutral 0.5 0.84 0.2 1.0 false none 0 0,neutral 0.8 1.0 0.75 1.27 false none 0 0,neutral 0.2 1.0 0.25 1.27 false none 0 0,neutral 0.75 1.27 0.5 1.46 true none 0 0,neutral 0.25 1.27 0.5 1.46 false none 0 0#tactics:#"
     },
     {
       "index": 42,
@@ -6798,7 +6798,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 56,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.17
@@ -6838,7 +6838,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 30,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.78
@@ -6878,7 +6878,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 62,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.45
@@ -6957,7 +6957,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Pact Windward#game_rules:normal false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 56 0.5 0.17 0 0,neutral empty 3 0.8 0.37 0 0,neutral empty 3 0.2 0.37 0 0,neutral empty 3 0.8 0.65 0 0,neutral empty 3 0.2 0.65 0 0,yellow empty 30 0.5 0.78 0 0,neutral empty 3 0.8 0.94 0 0,neutral empty 3 0.2 0.94 0 0,neutral empty 3 0.8 1.23 0 0,neutral empty 3 0.2 1.23 0 0,red empty 62 0.5 1.45 0 0#links:neutral 0.5 0.17 0.8 0.37 false none 0 0,neutral 0.5 0.17 0.2 0.37 false none 0 0,neutral 0.8 0.37 0.8 0.65 false none 0 0,neutral 0.2 0.65 0.2 0.37 true none 0 0,neutral 0.8 0.65 0.5 0.78 false none 0 0,neutral 0.2 0.65 0.5 0.78 false none 0 0,neutral 0.8 0.65 0.8 0.94 false none 0 0,neutral 0.2 0.65 0.2 0.94 true none 0 0,neutral 0.5 0.78 0.8 0.94 false none 0 0,neutral 0.5 0.78 0.2 0.94 false none 0 0,neutral 0.8 0.94 0.8 1.23 false none 0 0,neutral 0.2 0.94 0.2 1.23 true none 0 0,neutral 0.8 1.23 0.5 1.45 false none 0 0,neutral 0.2 1.23 0.5 1.45 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Pact Windward#game_rules:normal false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.5 0.17 0 0,neutral empty 3 0.8 0.37 0 0,neutral empty 3 0.2 0.37 0 0,neutral empty 3 0.8 0.65 0 0,neutral empty 3 0.2 0.65 0 0,yellow empty 0 0.5 0.78 0 0,neutral empty 3 0.8 0.94 0 0,neutral empty 3 0.2 0.94 0 0,neutral empty 3 0.8 1.23 0 0,neutral empty 3 0.2 1.23 0 0,red empty 0 0.5 1.45 0 0#links:neutral 0.5 0.17 0.8 0.37 false none 0 0,neutral 0.5 0.17 0.2 0.37 false none 0 0,neutral 0.8 0.37 0.8 0.65 false none 0 0,neutral 0.2 0.65 0.2 0.37 true none 0 0,neutral 0.8 0.65 0.5 0.78 false none 0 0,neutral 0.2 0.65 0.5 0.78 false none 0 0,neutral 0.8 0.65 0.8 0.94 false none 0 0,neutral 0.2 0.65 0.2 0.94 true none 0 0,neutral 0.5 0.78 0.8 0.94 false none 0 0,neutral 0.5 0.78 0.2 0.94 false none 0 0,neutral 0.8 0.94 0.8 1.23 false none 0 0,neutral 0.2 0.94 0.2 1.23 true none 0 0,neutral 0.8 1.23 0.5 1.45 false none 0 0,neutral 0.2 1.23 0.5 1.45 false none 0 0#tactics:#"
     },
     {
       "index": 43,
@@ -6974,7 +6974,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 59,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.17
@@ -6982,7 +6982,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.81,
           "y": 0.37
@@ -7006,7 +7006,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 31,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.61
@@ -7070,7 +7070,7 @@
         {
           "owner": "red",
           "type": "empty",
-          "troops": 65,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.45
@@ -7159,7 +7159,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Pact Switchback#game_rules:normal false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 59 0.5 0.17 0 0,green economic 20 0.81 0.37 0 0,neutral empty 3 0.19 0.37 0 0,neutral empty 3 0.81 0.66 0 0,yellow empty 31 0.5 0.61 0 0,neutral empty 3 0.19 0.66 0 0,neutral empty 3 0.81 0.96 0 0,neutral empty 3 0.5 0.88 0 0,neutral empty 3 0.19 0.96 0 0,neutral empty 3 0.81 1.25 0 0,neutral empty 3 0.5 1.16 0 0,neutral empty 3 0.19 1.25 0 0,red empty 65 0.5 1.45 0 0#links:neutral 0.5 0.17 0.81 0.37 false none 0 0,neutral 0.5 0.17 0.19 0.37 false none 0 0,neutral 0.81 0.66 0.81 0.37 true none 0 0,neutral 0.19 0.37 0.19 0.66 false none 0 0,neutral 0.81 0.66 0.5 0.61 false none 0 0,neutral 0.5 0.61 0.19 0.66 false none 0 0,neutral 0.81 0.66 0.81 0.96 true none 0 0,neutral 0.19 0.66 0.19 0.96 false none 0 0,neutral 0.81 0.96 0.5 0.88 false none 0 0,neutral 0.5 0.88 0.19 0.96 false none 0 0,neutral 0.81 0.96 0.81 1.25 true none 0 0,neutral 0.19 0.96 0.19 1.25 false none 0 0,neutral 0.81 1.25 0.5 1.16 false none 0 0,neutral 0.5 1.16 0.19 1.25 false none 0 0,neutral 0.5 1.45 0.81 1.25 true none 0 0,neutral 0.19 1.25 0.5 1.45 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Pact Switchback#game_rules:normal false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.5 0.17 0 0,green economic 0 0.81 0.37 0 0,neutral empty 3 0.19 0.37 0 0,neutral empty 3 0.81 0.66 0 0,yellow empty 0 0.5 0.61 0 0,neutral empty 3 0.19 0.66 0 0,neutral empty 3 0.81 0.96 0 0,neutral empty 3 0.5 0.88 0 0,neutral empty 3 0.19 0.96 0 0,neutral empty 3 0.81 1.25 0 0,neutral empty 3 0.5 1.16 0 0,neutral empty 3 0.19 1.25 0 0,red empty 0 0.5 1.45 0 0#links:neutral 0.5 0.17 0.81 0.37 false none 0 0,neutral 0.5 0.17 0.19 0.37 false none 0 0,neutral 0.81 0.66 0.81 0.37 true none 0 0,neutral 0.19 0.37 0.19 0.66 false none 0 0,neutral 0.81 0.66 0.5 0.61 false none 0 0,neutral 0.5 0.61 0.19 0.66 false none 0 0,neutral 0.81 0.66 0.81 0.96 true none 0 0,neutral 0.19 0.66 0.19 0.96 false none 0 0,neutral 0.81 0.96 0.5 0.88 false none 0 0,neutral 0.5 0.88 0.19 0.96 false none 0 0,neutral 0.81 0.96 0.81 1.25 true none 0 0,neutral 0.19 0.96 0.19 1.25 false none 0 0,neutral 0.81 1.25 0.5 1.16 false none 0 0,neutral 0.5 1.16 0.19 1.25 false none 0 0,neutral 0.5 1.45 0.81 1.25 true none 0 0,neutral 0.19 1.25 0.5 1.45 false none 0 0#tactics:#"
     },
     {
       "index": 44,
@@ -7176,7 +7176,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 62,
+          "troops": 0,
           "shield": 0,
           "x": 0.78,
           "y": 0.2
@@ -7184,7 +7184,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.47,
           "y": 0.21
@@ -7192,7 +7192,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.2,
           "y": 0.43
@@ -7200,7 +7200,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.49,
           "y": 0.58
@@ -7208,7 +7208,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 0.56
@@ -7216,7 +7216,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 32,
+          "troops": 0,
           "shield": 0,
           "x": 0.8,
           "y": 0.89
@@ -7224,7 +7224,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.91
@@ -7232,7 +7232,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.2,
           "y": 0.81
@@ -7240,7 +7240,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.2,
           "y": 1.14
@@ -7248,7 +7248,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 1.23
@@ -7256,7 +7256,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.79,
           "y": 1.24
@@ -7264,7 +7264,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 68,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.46
@@ -7333,7 +7333,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Pact Shortcut#game_rules:normal false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 62 0.78 0.2 0 0,green economic 20 0.47 0.21 0 0,neutral empty 4 0.2 0.43 0 0,neutral empty 4 0.49 0.58 0 0,neutral empty 4 0.8 0.56 0 0,yellow empty 32 0.8 0.89 0 0,neutral empty 4 0.5 0.91 0 0,neutral empty 4 0.2 0.81 0 0,neutral empty 4 0.2 1.14 0 0,neutral empty 4 0.5 1.23 0 0,neutral empty 4 0.79 1.24 0 0,red defensive 68 0.5 1.46 0 0#links:neutral 0.78 0.2 0.47 0.21 false none 0 0,neutral 0.2 0.43 0.47 0.21 true none 0 0,neutral 0.2 0.43 0.49 0.58 false none 0 0,neutral 0.49 0.58 0.8 0.56 false none 0 0,neutral 0.8 0.56 0.8 0.89 false none 0 0,neutral 0.8 0.89 0.5 0.91 true none 0 0,neutral 0.5 0.91 0.2 0.81 false none 0 0,neutral 0.2 0.81 0.2 1.14 false none 0 0,neutral 0.2 1.14 0.5 1.23 false none 0 0,neutral 0.5 1.23 0.79 1.24 true none 0 0,neutral 0.5 1.23 0.5 1.46 false none 0 0,neutral 0.79 1.24 0.5 1.46 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Pact Shortcut#game_rules:normal false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.78 0.2 0 0,green economic 0 0.47 0.21 0 0,neutral empty 3 0.2 0.43 0 0,neutral empty 3 0.49 0.58 0 0,neutral empty 3 0.8 0.56 0 0,yellow empty 0 0.8 0.89 0 0,neutral empty 3 0.5 0.91 0 0,neutral empty 3 0.2 0.81 0 0,neutral empty 3 0.2 1.14 0 0,neutral empty 3 0.5 1.23 0 0,neutral empty 3 0.79 1.24 0 0,red defensive 0 0.5 1.46 0 0#links:neutral 0.78 0.2 0.47 0.21 false none 0 0,neutral 0.2 0.43 0.47 0.21 true none 0 0,neutral 0.2 0.43 0.49 0.58 false none 0 0,neutral 0.49 0.58 0.8 0.56 false none 0 0,neutral 0.8 0.56 0.8 0.89 false none 0 0,neutral 0.8 0.89 0.5 0.91 true none 0 0,neutral 0.5 0.91 0.2 0.81 false none 0 0,neutral 0.2 0.81 0.2 1.14 false none 0 0,neutral 0.2 1.14 0.5 1.23 false none 0 0,neutral 0.5 1.23 0.79 1.24 true none 0 0,neutral 0.5 1.23 0.5 1.46 false none 0 0,neutral 0.79 1.24 0.5 1.46 false none 0 0#tactics:#"
     },
     {
       "index": 45,
@@ -7350,7 +7350,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 65,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.17
@@ -7358,7 +7358,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.79,
           "y": 0.39
@@ -7366,7 +7366,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 0.39
@@ -7374,7 +7374,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.79,
           "y": 0.7
@@ -7382,7 +7382,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 0.7
@@ -7390,7 +7390,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 33,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.85
@@ -7398,7 +7398,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.79,
           "y": 1.02
@@ -7406,7 +7406,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 1.02
@@ -7414,7 +7414,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.79,
           "y": 1.27
@@ -7422,7 +7422,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.21,
           "y": 1.27
@@ -7430,7 +7430,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 71,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.46
@@ -7499,7 +7499,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Pact Tripwire#game_rules:normal false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 65 0.5 0.17 0 0,green economic 20 0.79 0.39 0 0,neutral empty 4 0.21 0.39 0 0,neutral empty 4 0.79 0.7 0 0,neutral empty 4 0.21 0.7 0 0,yellow empty 33 0.5 0.85 0 0,neutral empty 4 0.79 1.02 0 0,neutral empty 4 0.21 1.02 0 0,neutral empty 4 0.79 1.27 0 0,neutral empty 4 0.21 1.27 0 0,red defensive 71 0.5 1.46 0 0#links:neutral 0.79 0.39 0.5 0.17 true none 0 0,neutral 0.5 0.17 0.21 0.39 false none 0 0,neutral 0.79 0.39 0.79 0.7 false none 0 0,neutral 0.21 0.39 0.21 0.7 false none 0 0,neutral 0.79 0.7 0.5 0.85 true none 0 0,neutral 0.21 0.7 0.5 0.85 false none 0 0,neutral 0.5 0.85 0.79 1.02 false none 0 0,neutral 0.5 0.85 0.21 1.02 false none 0 0,neutral 0.79 1.02 0.79 1.27 true none 0 0,neutral 0.21 1.02 0.21 1.27 false none 0 0,neutral 0.79 1.27 0.5 1.46 false none 0 0,neutral 0.21 1.27 0.5 1.46 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Pact Tripwire#game_rules:normal false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.5 0.17 0 0,green economic 0 0.79 0.39 0 0,neutral empty 3 0.21 0.39 0 0,neutral empty 3 0.79 0.7 0 0,neutral empty 3 0.21 0.7 0 0,yellow empty 0 0.5 0.85 0 0,neutral empty 3 0.79 1.02 0 0,neutral empty 3 0.21 1.02 0 0,neutral empty 3 0.79 1.27 0 0,neutral empty 3 0.21 1.27 0 0,red defensive 0 0.5 1.46 0 0#links:neutral 0.79 0.39 0.5 0.17 true none 0 0,neutral 0.5 0.17 0.21 0.39 false none 0 0,neutral 0.79 0.39 0.79 0.7 false none 0 0,neutral 0.21 0.39 0.21 0.7 false none 0 0,neutral 0.79 0.7 0.5 0.85 true none 0 0,neutral 0.21 0.7 0.5 0.85 false none 0 0,neutral 0.5 0.85 0.79 1.02 false none 0 0,neutral 0.5 0.85 0.21 1.02 false none 0 0,neutral 0.79 1.02 0.79 1.27 true none 0 0,neutral 0.21 1.02 0.21 1.27 false none 0 0,neutral 0.79 1.27 0.5 1.46 false none 0 0,neutral 0.21 1.27 0.5 1.46 false none 0 0#tactics:#"
     },
     {
       "index": 46,
@@ -7516,7 +7516,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 90,
+          "troops": 0,
           "shield": 0,
           "x": 0.8,
           "y": 0.19
@@ -7524,7 +7524,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.48,
           "y": 0.2
@@ -7532,7 +7532,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.19,
           "y": 0.36
@@ -7540,7 +7540,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.78,
           "y": 0.53
@@ -7548,7 +7548,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.45,
           "y": 0.55
@@ -7556,7 +7556,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 0.72
@@ -7564,7 +7564,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.8,
           "y": 0.87
@@ -7572,7 +7572,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.49,
           "y": 0.86
@@ -7580,7 +7580,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.77,
           "y": 1.2
@@ -7588,7 +7588,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 34,
+          "troops": 0,
           "shield": 0,
           "x": 0.2,
           "y": 1.08
@@ -7596,7 +7596,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.48,
           "y": 1.17
@@ -7604,7 +7604,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.19,
           "y": 1.4
@@ -7612,7 +7612,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 74,
+          "troops": 0,
           "shield": 0,
           "x": 0.58,
           "y": 1.45
@@ -7701,7 +7701,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Pact High ground#game_rules:hard false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 90 0.8 0.19 0 0,green economic 20 0.48 0.2 0 0,neutral empty 4 0.19 0.36 0 0,neutral empty 4 0.78 0.53 0 0,neutral empty 4 0.45 0.55 0 0,neutral empty 4 0.18 0.72 0 0,neutral empty 4 0.8 0.87 0 0,neutral empty 4 0.49 0.86 0 0,neutral empty 4 0.77 1.2 0 0,yellow empty 34 0.2 1.08 0 0,neutral empty 4 0.48 1.17 0 0,neutral empty 4 0.19 1.4 0 0,red defensive 74 0.58 1.45 0 0#links:neutral 0.8 0.19 0.48 0.2 false none 0 0,neutral 0.8 0.19 0.78 0.53 false none 0 0,neutral 0.48 0.2 0.19 0.36 false none 0 0,neutral 0.48 0.2 0.45 0.55 true none 0 0,neutral 0.19 0.36 0.18 0.72 false none 0 0,neutral 0.78 0.53 0.45 0.55 false none 0 0,neutral 0.78 0.53 0.8 0.87 false none 0 0,neutral 0.45 0.55 0.49 0.86 true none 0 0,neutral 0.18 0.72 0.49 0.86 false none 0 0,neutral 0.18 0.72 0.2 1.08 false none 0 0,neutral 0.8 0.87 0.77 1.2 false none 0 0,neutral 0.48 1.17 0.49 0.86 true none 0 0,neutral 0.77 1.2 0.48 1.17 false none 0 0,neutral 0.2 1.08 0.19 1.4 false none 0 0,neutral 0.48 1.17 0.19 1.4 false none 0 0,neutral 0.48 1.17 0.58 1.45 true none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Pact High ground#game_rules:hard false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.8 0.19 0 0,green economic 0 0.48 0.2 0 0,neutral empty 3 0.19 0.36 0 0,neutral empty 3 0.78 0.53 0 0,neutral empty 3 0.45 0.55 0 0,neutral empty 3 0.18 0.72 0 0,neutral empty 3 0.8 0.87 0 0,neutral empty 3 0.49 0.86 0 0,neutral empty 3 0.77 1.2 0 0,yellow empty 0 0.2 1.08 0 0,neutral empty 3 0.48 1.17 0 0,neutral empty 3 0.19 1.4 0 0,red defensive 0 0.58 1.45 0 0#links:neutral 0.8 0.19 0.48 0.2 false none 0 0,neutral 0.8 0.19 0.78 0.53 false none 0 0,neutral 0.48 0.2 0.19 0.36 false none 0 0,neutral 0.48 0.2 0.45 0.55 true none 0 0,neutral 0.19 0.36 0.18 0.72 false none 0 0,neutral 0.78 0.53 0.45 0.55 false none 0 0,neutral 0.78 0.53 0.8 0.87 false none 0 0,neutral 0.45 0.55 0.49 0.86 true none 0 0,neutral 0.18 0.72 0.49 0.86 false none 0 0,neutral 0.18 0.72 0.2 1.08 false none 0 0,neutral 0.8 0.87 0.77 1.2 false none 0 0,neutral 0.48 1.17 0.49 0.86 true none 0 0,neutral 0.77 1.2 0.48 1.17 false none 0 0,neutral 0.2 1.08 0.19 1.4 false none 0 0,neutral 0.48 1.17 0.19 1.4 false none 0 0,neutral 0.48 1.17 0.58 1.45 true none 0 0#tactics:#"
     },
     {
       "index": 47,
@@ -7718,7 +7718,7 @@
         {
           "owner": "green",
           "type": "empty",
-          "troops": 93,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 0.16
@@ -7726,7 +7726,7 @@
         {
           "owner": "green",
           "type": "economic",
-          "troops": 20,
+          "troops": 0,
           "shield": 0,
           "x": 0.82,
           "y": 0.33
@@ -7734,7 +7734,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 0.33
@@ -7742,7 +7742,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.82,
           "y": 0.6
@@ -7750,7 +7750,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.5
@@ -7758,7 +7758,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 0.6
@@ -7766,7 +7766,7 @@
         {
           "owner": "yellow",
           "type": "empty",
-          "troops": 35,
+          "troops": 0,
           "shield": 0,
           "x": 0.82,
           "y": 0.87
@@ -7774,7 +7774,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 0.78
@@ -7782,7 +7782,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 0.87
@@ -7790,7 +7790,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.82,
           "y": 1.14
@@ -7798,7 +7798,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.5,
           "y": 1.05
@@ -7806,7 +7806,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 1.14
@@ -7814,7 +7814,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.82,
           "y": 1.41
@@ -7822,7 +7822,7 @@
         {
           "owner": "red",
           "type": "defensive",
-          "troops": 77,
+          "troops": 0,
           "shield": 0,
           "x": 0.5,
           "y": 1.45
@@ -7830,7 +7830,7 @@
         {
           "owner": "neutral",
           "type": "empty",
-          "troops": 4,
+          "troops": 3,
           "shield": 0,
           "x": 0.18,
           "y": 1.41
@@ -7949,7 +7949,7 @@
         }
       ],
       "flag": null,
-      "code": "opacha_level_code#map_name:Pact Crossroads#game_rules:hard false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 93 0.5 0.16 0 0,green economic 20 0.82 0.33 0 0,neutral empty 4 0.18 0.33 0 0,neutral empty 4 0.82 0.6 0 0,neutral empty 4 0.5 0.5 0 0,neutral empty 4 0.18 0.6 0 0,yellow empty 35 0.82 0.87 0 0,neutral empty 4 0.5 0.78 0 0,neutral empty 4 0.18 0.87 0 0,neutral empty 4 0.82 1.14 0 0,neutral empty 4 0.5 1.05 0 0,neutral empty 4 0.18 1.14 0 0,neutral empty 4 0.82 1.41 0 0,red defensive 77 0.5 1.45 0 0,neutral empty 4 0.18 1.41 0 0#links:neutral 0.5 0.16 0.82 0.33 false none 0 0,neutral 0.5 0.16 0.18 0.33 false none 0 0,neutral 0.5 0.16 0.5 0.5 true none 0 0,neutral 0.82 0.33 0.82 0.6 false none 0 0,neutral 0.18 0.33 0.18 0.6 false none 0 0,neutral 0.82 0.6 0.5 0.5 false none 0 0,neutral 0.5 0.5 0.18 0.6 true none 0 0,neutral 0.82 0.6 0.82 0.87 false none 0 0,neutral 0.5 0.5 0.5 0.78 false none 0 0,neutral 0.18 0.6 0.18 0.87 false none 0 0,neutral 0.5 0.78 0.82 0.87 true none 0 0,neutral 0.5 0.78 0.18 0.87 false none 0 0,neutral 0.82 0.87 0.82 1.14 false none 0 0,neutral 0.5 0.78 0.5 1.05 false none 0 0,neutral 0.18 0.87 0.18 1.14 true none 0 0,neutral 0.82 1.14 0.5 1.05 false none 0 0,neutral 0.5 1.05 0.18 1.14 false none 0 0,neutral 0.82 1.14 0.82 1.41 false none 0 0,neutral 0.5 1.05 0.5 1.45 true none 0 0,neutral 0.18 1.14 0.18 1.41 false none 0 0,neutral 0.82 1.41 0.5 1.45 false none 0 0,neutral 0.5 1.45 0.18 1.41 false none 0 0#tactics:#"
+      "code": "opacha_level_code#map_name:Pact Crossroads#game_rules:hard false alliances true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green empty 0 0.5 0.16 0 0,green economic 0 0.82 0.33 0 0,neutral empty 3 0.18 0.33 0 0,neutral empty 3 0.82 0.6 0 0,neutral empty 3 0.5 0.5 0 0,neutral empty 3 0.18 0.6 0 0,yellow empty 0 0.82 0.87 0 0,neutral empty 3 0.5 0.78 0 0,neutral empty 3 0.18 0.87 0 0,neutral empty 3 0.82 1.14 0 0,neutral empty 3 0.5 1.05 0 0,neutral empty 3 0.18 1.14 0 0,neutral empty 3 0.82 1.41 0 0,red defensive 0 0.5 1.45 0 0,neutral empty 3 0.18 1.41 0 0#links:neutral 0.5 0.16 0.82 0.33 false none 0 0,neutral 0.5 0.16 0.18 0.33 false none 0 0,neutral 0.5 0.16 0.5 0.5 true none 0 0,neutral 0.82 0.33 0.82 0.6 false none 0 0,neutral 0.18 0.33 0.18 0.6 false none 0 0,neutral 0.82 0.6 0.5 0.5 false none 0 0,neutral 0.5 0.5 0.18 0.6 true none 0 0,neutral 0.82 0.6 0.82 0.87 false none 0 0,neutral 0.5 0.5 0.5 0.78 false none 0 0,neutral 0.18 0.6 0.18 0.87 false none 0 0,neutral 0.5 0.78 0.82 0.87 true none 0 0,neutral 0.5 0.78 0.18 0.87 false none 0 0,neutral 0.82 0.87 0.82 1.14 false none 0 0,neutral 0.5 0.78 0.5 1.05 false none 0 0,neutral 0.18 0.87 0.18 1.14 true none 0 0,neutral 0.82 1.14 0.5 1.05 false none 0 0,neutral 0.5 1.05 0.18 1.14 false none 0 0,neutral 0.82 1.14 0.82 1.41 false none 0 0,neutral 0.5 1.05 0.5 1.45 true none 0 0,neutral 0.18 1.14 0.18 1.41 false none 0 0,neutral 0.82 1.41 0.5 1.45 false none 0 0,neutral 0.5 1.45 0.18 1.41 false none 0 0#tactics:#"
     }
   ]
 }

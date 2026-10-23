@@ -5,9 +5,12 @@
 **/build/
 .idea/
 *.iml
+__pycache__/
 .DS_Store
 hs_err_pid*.log
 .opacha-upgraded/
 local.properties
 *.keystore
 *.jks
+.playwright-cli/
+output/

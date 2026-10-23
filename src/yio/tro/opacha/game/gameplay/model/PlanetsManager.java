@@ -197,6 +197,7 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
 
         deselect();
         touchedPlanet.select();
+        yio.tro.opacha.menu.UiHaptics.nodeSelected();
         Scenes.selectionOverlay.setSelectedPlanet(touchedPlanet);
         Scenes.selectionOverlay.create();
         return true;
@@ -210,6 +211,7 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
         deselect();
         planet.select();
         planet.setHalvedSelectionMode(true);
+        yio.tro.opacha.menu.UiHaptics.nodeSelected();
         Scenes.selectionOverlay.setSelectedPlanet(planet);
         Scenes.selectionOverlay.create();
     }
@@ -222,7 +224,8 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
         if ((int) currentlySelectedPlanet.unitsInside == 0) return false;
         if (currentlySelectedPlanet == touchedPlanet) return false;
 
-        sendUnits(currentlySelectedPlanet, touchedPlanet);
+        if (!sendUnitsAmount(currentlySelectedPlanet,touchedPlanet,getUnitsToLaunch(currentlySelectedPlanet))) return false;
+        yio.tro.opacha.menu.UiHaptics.orderIssued();
         deselect();
 
         return true;
@@ -255,6 +258,7 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
         objectsLayer.unitManager.launchUnit(start, target, unitsToLaunch);
         start.decreaseUnitsInside(unitsToLaunch);
         start.applyPopEffect();
+        start.dispatchPulse = 1;
         return true;
     }
 
@@ -322,6 +326,7 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
         if (!canBeUpgradedToEconomic(currentlySelectedPlanet)) return;
 
         applyUpgrade(currentlySelectedPlanet, PlanetType.economic);
+        yio.tro.opacha.menu.UiHaptics.nodeUpgraded();
         Scenes.selectionOverlay.destroy();
         deselect();
         currentlySelectedPlanet.forceDeselection();
@@ -334,6 +339,7 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
         if (!canBeUpgradedToDefensive(currentlySelectedPlanet)) return;
 
         applyUpgrade(currentlySelectedPlanet, PlanetType.defensive);
+        yio.tro.opacha.menu.UiHaptics.nodeUpgraded();
         Scenes.selectionOverlay.destroy();
         deselect();
         currentlySelectedPlanet.forceDeselection();
@@ -361,10 +367,17 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
 
 
     public Planet findTouchedPlanet(PointYio touchPoint) {
-        Planet closestPlanet = findClosestPlanet(touchPoint, null);
+        Planet closestPlanet = getClosestPlanet(touchPoint);
         if (closestPlanet == null) return null;
-        if (!closestPlanet.isTouchedBy(touchPoint, 1)) return null;
+        if (closestPlanet.viewPosition.center.distanceTo(touchPoint) > getTouchRadius(closestPlanet)) return null;
         return closestPlanet;
+    }
+
+    /** Keep a 44-point target when zooming out; resolve overlaps by nearest centre. */
+    public double getTouchRadius(Planet planet) {
+        double zoom = objectsLayer.gameController.cameraController.orthoCam == null
+                ? 1 : objectsLayer.gameController.cameraController.orthoCam.zoom;
+        return Math.max(1.3 * planet.position.radius, 22 * GraphicsYio.width / 390.0 * zoom);
     }
 
 

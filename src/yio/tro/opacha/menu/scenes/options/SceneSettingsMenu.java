@@ -35,6 +35,7 @@ public class SceneSettingsMenu extends SceneYio {
     private CheckButtonYio chkThinBezels;
     public ButtonYio appearanceButton;
     public CheckButtonYio chkHaptics;
+    public ButtonYio testHapticsButton;
 
 
     @Override
@@ -95,7 +96,7 @@ public class SceneSettingsMenu extends SceneYio {
     private void createOtherLabel() {
         otherLabel = uiFactory.getButton()
                 .setParent(scrollableAreaYio)
-                .setSize(0.9, 0.61)
+                .setSize(0.9, 0.69)
                 .alignBottom(mainLabel, 0.06)
                 .centerHorizontal()
                 .applyText(" ")
@@ -230,7 +231,19 @@ public class SceneSettingsMenu extends SceneYio {
                 .setName("thin_bezels")
                 .alignBottom(previousElement);
         chkHaptics = uiFactory.getCheckButton().setParent(otherLabel).setName("ui_haptics")
-                .alignBottom(previousElement);
+                .alignBottom(previousElement).setReaction(new Reaction() {
+                    @Override protected void reaction() { SettingsManager.getInstance().hapticsEnabled=chkHaptics.isChecked(); }
+                });
+        testHapticsButton=uiFactory.getButton().setParent(otherLabel).setSize(.65,.055).centerHorizontal()
+                .alignBottom(chkHaptics,.018).applyText("ui_test_vibration").setReaction(new Reaction() {
+                    @Override protected void reaction() {
+                        applyValues(); SettingsManager.getInstance().saveValues();
+                        if (!SettingsManager.getInstance().hapticsEnabled) { Scenes.notification.show("ui_haptics_off"); return; }
+                        String status=yio.tro.opacha.menu.UiHaptics.getStatus();
+                        if (!status.isEmpty()) { Scenes.notification.show(status); return; }
+                        yio.tro.opacha.menu.UiHaptics.test();
+                    }
+                });
     }
 
 

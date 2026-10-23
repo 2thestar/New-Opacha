@@ -117,12 +117,12 @@ public class CameraController implements TouchableYio {
     public void onEndCreation() {
         initLevels();
         checkToFlyUp();
-        fitTinyBoardBelowControls();
+        fitBoardBelowControls();
         forceToTargetPosition();
     }
 
-    private void fitTinyBoardBelowControls() {
-        if (gameController.initialLevelSize != LevelSize.tiny || gameController.objectsLayer.planetsManager.planets.isEmpty()) return;
+    private void fitBoardBelowControls() {
+        if (gameController.objectsLayer.planetsManager.planets.isEmpty()) return;
         float minX=Float.MAX_VALUE, minY=Float.MAX_VALUE, maxX=-Float.MAX_VALUE, maxY=-Float.MAX_VALUE;
         for (yio.tro.opacha.game.gameplay.model.Planet node : gameController.objectsLayer.planetsManager.planets) {
             float margin=1.6f*node.position.radius;
@@ -131,7 +131,7 @@ public class CameraController implements TouchableYio {
         }
         float topOnScreen=(maxY-boundHeight/2)/targetZoomLevel+h/2;
         if (topOnScreen <= .80f*h) return;
-        float zoom=Math.max(1,Math.max((maxX-minX)/(.90f*w),(maxY-minY)/(.70f*h)));
+        float zoom=Math.max(targetZoomLevel,Math.max((maxX-minX)/(.90f*w),(maxY-minY)/(.70f*h)));
         setZoomMaximum(Math.max(zoomMaximum,zoom)); setTargetZoomLevel(zoom);
         focusOnPoint((minX+maxX)/2,(minY+maxY)/2+.05f*h*zoom);
         fittedVerticalPan=Math.abs(position.y);

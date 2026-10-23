@@ -6,10 +6,8 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import yio.tro.opacha.game.GameController;
 import yio.tro.opacha.game.GameRules;
@@ -46,7 +44,7 @@ public class YioGdxGame extends ApplicationAdapter implements InputProcessor {
     static boolean screenVeryNarrow;
 
     public int w, h;
-    int frameSkipCount, splashCount, currentBackgroundIndex;
+    int splashCount, currentBackgroundIndex;
 
     long lastTimeButtonPressed, timeToUnPause;
     public float pressX, pressY, backgroundHeight, splashOffset;
@@ -58,7 +56,6 @@ public class YioGdxGame extends ApplicationAdapter implements InputProcessor {
     public MenuViewYio menuViewYio;
     TextureRegion defBackground;
     TextureRegion splashTexture, currentBackground, lastBackground;
-    FrameBuffer frameBuffer;
     FactorYio transitionFactor, splashFactor;
     public static Random random = new Random();
     public static Random predictableRandom = new Random();
@@ -84,9 +81,7 @@ public class YioGdxGame extends ApplicationAdapter implements InputProcessor {
         GraphicsYio.height = (float) Gdx.graphics.getHeight();
         pressX = 0.5f * w;
         pressY = 0.5f * h;
-        frameSkipCount = 50; // >= 2
         movableController = new MovableController();
-        frameBuffer = FrameBufferYio.getInstance(Pixmap.Format.RGB565, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
         touchListeners = new ArrayList<>();
         tutorialManager = new TutorialManager(this);
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -184,6 +179,7 @@ public class YioGdxGame extends ApplicationAdapter implements InputProcessor {
     public void setGamePaused(boolean gamePaused) {
         if (gamePaused && !this.gamePaused) { // actions when paused
             this.gamePaused = true;
+            if (gameController != null && gameController.objectsLayer != null) gameController.objectsLayer.resetClock();
             onPaused();
         } else if (!gamePaused && this.gamePaused) { // actions when unpaused
             unPauseAfterSomeTime();
@@ -282,7 +278,6 @@ public class YioGdxGame extends ApplicationAdapter implements InputProcessor {
             gamePaused = false;
             readyToUnPause = false;
             gameController.currentTouchCount = 0;
-            frameSkipCount = 10; // >= 2
         }
     }
 
@@ -398,21 +393,9 @@ public class YioGdxGame extends ApplicationAdapter implements InputProcessor {
 
         tryToMove();
 
-        if (gamePaused || slowMo) {
-            renderInternals();
-        } else {
-            if (Gdx.graphics.getDeltaTime() < 0.025 || frameSkipCount >= 2) {
-                frameSkipCount = 0;
-                frameBuffer.begin();
-                renderInternals();
-                frameBuffer.end();
-            } else {
-                frameSkipCount++;
-            }
-            batch.begin();
-            batch.draw(frameBuffer.getColorBufferTexture(), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), false, true);
-            batch.end();
-        }
+        // Present the current world on every frame. Reusing an old framebuffer
+        // under load made motion jump, while adding a full-screen GPU copy.
+        renderInternals();
 
         if (splashVisible) {
             renderSplash();
@@ -512,6 +495,7 @@ public class YioGdxGame extends ApplicationAdapter implements InputProcessor {
         super.resume();
 
         if (startedExitProcess) return;
+        if (gameController != null && gameController.objectsLayer != null) gameController.objectsLayer.resetClock();
 
         if (gameView != null) {
             gameView.onResume();

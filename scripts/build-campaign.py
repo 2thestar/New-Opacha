@@ -23,7 +23,7 @@ LAYOUTS = [
 MODES = ["conquest", "capture_flag", "home_flags", "alliances"]
 CHAPTERS = ["Take ground", "Race for the flag", "Protect your flag", "Choose your allies"]
 CONCEPTS = [
-    (0, "Capture", "Tap your green node, then a linked node to send troops. Match the troops and shields to capture it. Take the red nodes to win."),
+    (0, "Capture", "Tap your green node, then a linked node to send troops. Send more than its troops and shields to capture it. Take the red nodes to win."),
     (1, "Keep a reserve", "Select a node and tap Send half. Keep a reserve while the rest takes the next node. Pause and the speed slider give you time to plan."),
     (3, "Grow", "Grow costs 10 troops and doubles production, but removes shields. Invest on a safe node, then use its troops to push forward."),
     (7, "Defend", "Defend costs 10 and replaces Grow. Its shields absorb attacks and recover faster. Hold the bridge while troops grow behind it."),
@@ -50,11 +50,6 @@ def make_level(chapter, number):
     features, concept, brief = CONCEPTS[number] if chapter == 0 else (127, "", "")
     mode = MODES[chapter]
     start, finish = 0, max(range(len(coords)), key=lambda i: coords[i][1])
-    powers = [28,30,34,40,42,48,48,54,170,65,110,75]
-    home_power = powers[number] if chapter == 0 else 38 + number * 3
-    enemy_power = (8 + number * 2) if chapter == 0 else 22 + number * 3
-    if number >= 10:
-        home_power += 22
     owners = {start: "green", finish: "red"}
     def hops(source):
         distances = {source: 0}
@@ -73,20 +68,14 @@ def make_level(chapter, number):
         candidate = max((i for i in range(len(coords)) if i not in owners),
                         key=lambda i: (min(d[i] for d in distances), coords[i][0]))
         owners[candidate] = "yellow"
-    if chapter == 0 and number >= 5 and number != 8:
-        home_power += 12
-    if chapter == 1:
-        home_power = 30 + min(number,6)*2
     # An exposed second front needs a visible rear supply source, rather than faster input.
-    supply_levels = {5,8,11,15,18,19,20,21,22,23,26,29,30,40,41,43,44,45,46,47}
+    supply_levels = {5,7,8,11,15,18,19,20,21,22,23,26,27,29,30,40,41,43,44,45,46,47}
     index = chapter * 12 + number
     supply = None
     if index in supply_levels:
         neighbors = [b if a == start else a for a,b in edges if a == start or b == start]
         supply = min((i for i in neighbors if i not in owners), key=lambda i: coords[i][1], default=None)
         if supply is not None: owners[supply] = "green"
-    if chapter == 3:
-        enemy_power += 22  # stronger rival makes cooperation useful; it is shown, never a hidden bonus.
     flag = None
     if mode == "capture_flag":
         distances = [hops(i) for i in owners if i != supply]
@@ -97,8 +86,7 @@ def make_level(chapter, number):
     nodes = []
     for i, (x,y) in enumerate(coords):
         owner = owners.get(i, "neutral")
-        supply_power = 40 if index in (11,23) else 20
-        troops = (supply_power if i == supply else home_power) if owner == "green" else enemy_power if owner == "red" else 24 + number if owner == "yellow" else 2 + number // 4
+        troops = 3 if owner == "neutral" else 0
         kind = "empty"
         shield = 0
         if i == supply: kind = "economic"
@@ -122,16 +110,16 @@ def make_level(chapter, number):
         if direction: a,b = direction
         rows.append(dict(a=a,b=b,directional=bool(direction)))
     if chapter == 0 and number == 10:
-        # A funded forward position can disable the exposed economy across a gap.
+        # A forward position can disable the exposed economy across a gap.
         # The lesson shows a useful gun target before asking players to design a siege.
-        nodes[6].update(owner="green",type="empty",troops=60,shield=0)
+        nodes[6].update(owner="green",type="economic",troops=0,shield=0)
         yellow = next(n for n in nodes if n["owner"] == "yellow")
-        yellow.update(type="economic",troops=8,shield=0)
+        yellow.update(type="economic",troops=0,shield=0)
     if chapter == 1 and number == 8:
         lengths = sorted(math.dist(coords[a], coords[b]) for a,b in edges)
         cost = max(80, math.ceil(80 * math.dist(coords[start],coords[flag]) / lengths[len(lengths)//2]))
         rows.append(dict(a=start,b=flag,directional=True,builder="green",cost=cost,spent=cost-80))
-        nodes[start]["troops"] = 125
+        nodes[start]["troops"] = 0
         nodes[start]["type"] = "economic"
     difficulty = "easy" if (chapter == 0 and number < 5) or (chapter > 0 and number < 3) else "hard" if chapter >= 2 and number >= 10 else "normal"
     ai = {"red": "simple" if number < 5 else "savvy", "yellow": "silly" if number < 8 else "simple"}
@@ -145,12 +133,12 @@ def make_level(chapter, number):
     title = name if chapter == 0 else ["", "Beacon", "Hold", "Pact"][chapter] + " " + name
     hint = TACTICS[layout_index]
     if chapter == 0 and number == 10:
-        hint = "Convert the forward 60-troop node to artillery. Fire at the weak yellow Grow node across the gap to strip its upgrade. Send troops around the links to capture it."
+        hint = "Save 20 troops at the forward node to build artillery, then 20 for a shot. Disable yellow's Grow upgrade across the gap. Capture it along the links."
     if chapter == 3 and number == 11:
         hint = "Offer yellow a pact early, while red is still the shared threat. Supply the common front. Breaking a pact makes that pair hostile for the rest of the match."
     if chapter == 1 and number == 8:
         title = "Unfinished crossing"
-        hint = "The route needs 80 more diggers. Combine your two armies to finish it and beat the flag's 50 troops. Half your starting army will not finish the route."
+        hint = "The route needs 80 more diggers. Grow both starting nodes, then combine their production to finish it and beat the flag's 50 troops."
     map_code = "opacha_level_code#map_name:" + title + "#game_rules:" + difficulty + " false " + mode + " " + str(bool(directed)).lower() + " " + str(features) + "#ai_types:"
     map_code += ",".join(owner + " " + ai.get(owner,"simple") for owner in owners.values() if owner != "green")
     map_code += "#general:tiny#planets:" + ",".join(f"{n['owner']} {n['type']} {n['troops']} {n['x']} {n['y']} 0 {n['shield']}" for n in nodes)

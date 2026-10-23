@@ -1,0 +1,28 @@
+{
+  "createdDate": "2026-10-21",
+  "approved": false,
+  "purpose": "Overhead upgrade options; pending Boris's selection",
+  "base": "variant-C.png",
+  "baseApproved": true,
+  "generator": "built-in image_gen",
+  "originalGeneratedPath": "C:/Users/boris/.codex/generated_images/01a15533-3d20-7c03-b455-c05bd175440f/exec-ccddfde6-dfe6-499f-a19e-0286fe63f7f1.png",
+  "options": {
+    "economy": [
+      "E4 Oil pump",
+      "E5 Generator",
+      "E6 Workshop"
+    ],
+    "tower": [
+      "T4 Radial spikes",
+      "T5 Corner bastions",
+      "T6 Round battlements"
+    ]
+  },
+  "shieldRequirement": "One countable segment per active shield; no shield badge, glyph or number. Implement exact segment counts procedurally; this study is a visual reference.",
+  "motionProposals": {
+    "E4": "Small walking-beam/crank cycle during production",
+    "E5": "Slow rotor rotation during production",
+    "E6": "Short roller/conveyor cycle during production"
+  },
+  "prompt": "Create a very refined GAME UI COMPONENT COMPARISON, landscape 1500x1200, for the mobile strategy map game New Opacha. Use the attached approved \"C / Crisp buttons\" image ONLY as reference for the circular smooth candy-button nodes, palette, soft lighting and crisp rounded typography. Preserve those node basics. The user clarified the game is a MAP VIEWED FROM DIRECTLY ABOVE. ALL equipment and towers must be STRICT ORTHOGRAPHIC TOP-DOWN PLAN VIEW, seen straight down. No isometric projection, no front elevations, no standing upright towers, no visible door façades, no conventional side-view oil-pump silhouettes. The node buttons themselves remain circular in plan, shallow domed candy 3D, with narrow bevel, gentle highlight, tight shadow and clear centered population count 35.\nWhite warm background. Green economy nodes, cyan tower nodes. Crisp dark numerals, mint/cyan/ivory/navy palette. No AI icons, crowns, flags, charts, leaves, medical plus signs, shield badges, shield counters or thick halos.\nTop title exactly \"Top-down upgrades\".\nLayout: a precise TWO-ROW THREE-COLUMN grid of LARGE, clearly comparable node samples, plus a narrow shield example strip along the bottom. Do not waste space on paragraphs. All node circles same size and separated well. Counts always 35, never obstructed by equipment.\n\nTOP ROW, heading \"Economy\", three alternatives with exact labels:\n\"E4 · Oil pump\": a TINY mechanical oil-pump mechanism seen DIRECTLY FROM ABOVE, fitted snugly to the outside lower-right edge of the green candy node, much smaller than the node. Its overhead footprint has a narrow olive/teal rectangular skid, short horizontal walking beam, central pivot and little visible round crank/counterweight. It should read as a small operating machine in plan, NOT a billboard pictogram, NOT a side-view pumpjack. A pair of very delicate motion marks at the moving beam implies a gentle reciprocating cycle; keep those marks away from 35.\n\"E5 · Generator\": a TINY compact rounded generator housing seen DIRECTLY FROM ABOVE at the outside lower-right edge; a three-blade rotor/cooling fan visible on its top. A restrained rotational mark suggests its slow activity. Matching candy material, minimalist.\n\"E6 · Workshop\": a TINY top-down rounded production pod at the outside lower-right edge, short conveyor/roller with two or three little round pellets emerging toward the node. Nothing on the center of the green node. This indicates producing units, not money or healing. No chimney, front doors or building elevation.\n\nMIDDLE ROW, heading \"Tower\", three alternatives, all preserving the same circular cyan candy face with centered35:\n\"T4 · Radial spikes\": SIX small clean triangular pyramidal spikes pointing RADIALLY OUTWARD at equal angles around the perimeter of the cyan node, all seen directly above. Stubby, friendly, polished same cyan material, not a spiky sea-urchin, no long thorns. This is a compact top-down fortification silhouette.\n\"T5 · Corner bastions\": four small square corner bastions at diagonal corners around a very tight thin rounded-square castle wall, seen in plan around the circular candy node. Clear round central face and35. No upright crenellated icon or door. Keep compact.\n\"T6 · Round battlements\": EIGHT short wide rounded rectangular merlons evenly spaced RADIALLY around the circular node's rim, top-down castle battlement plan. A squat fortified candy disc, distinct from the pointed T4 spikes. No crown silhouette and no extra badge.\n\nBOTTOM STRIP, heading exactly \"Shields\", show THREE smaller ordinary cyan candy nodes in a row on a narrow dark navy ground, all with centered population35. Above them short labels \"Low\", \"Medium\", \"Full\".\nShields have EXACTLY one SEPARATE thin rounded ARC SEGMENT for each active shield, around a clear outer ring beyond the node. Show precisely THREE active segments on Low, precisely SEVEN active segments on Medium, precisely FOURTEEN active segments on Full. The segments are all equal arc lengths on a fourteen-slot circle, with clear gaps so they can be individually counted. Only active segments visible; NO inactive ghost ring. Thin bright cyan with a restrained lighter top edge. NO SHIELD ICON, NO BADGE, NO SHIELD NUMBER ANYWHERE. The only numbers inside these three samples are the population35. Do not add a second count. A clean gap separates shield segments from the node rim. Show the fourteen segments clearly as14 separate pieces, not four quarters.\n\nThis is an artistically polished yet restrained SMALL-SCALE game interface, with countable geometric pieces and clean visual hierarchy. Avoid tiny illegible details. No device mockup, decorative illustrations, grunge or long prose."
+}

@@ -22,6 +22,7 @@ public final class AiSmokeTest extends YioGdxGame {
     private int frames, lastStageFrame, step;
     private boolean clicking, complete;
     private boolean matchesOnly;
+    private boolean rulesOnly;
     private final long deadline = System.nanoTime() + 110_000_000_000L;
 
     private AiSmokeTest(String directory) { output = new FileHandle(directory); }
@@ -30,6 +31,7 @@ public final class AiSmokeTest extends YioGdxGame {
         int width = Integer.parseInt(args[0]), height = Integer.parseInt(args[1]);
         AiSmokeTest game = new AiSmokeTest(args[2]);
         game.matchesOnly = args.length > 3 && args[3].equals("matches");
+        game.rulesOnly = args.length > 3 && args[3].equals("rules");
         platformType = PlatformType.pc;
         Lwjgl3ApplicationConfiguration config = Lwjgl3Launcher.configuration(width, height);
         config.setTitle("New Opacha AI check");
@@ -45,6 +47,14 @@ public final class AiSmokeTest extends YioGdxGame {
         if (clicking || gameController == null || splashVisible) return;
         require(System.nanoTime() < deadline, "AI smoke timeout at step " + step);
         require(!Scenes.catchedException.isCurrentlyVisible(), "Game exception screen");
+        if (rulesOnly) {
+            if (++frames < 2) return;
+            AiRegressionChecks.run(gameController);
+            AiBehaviorChecks.run(gameController);
+            complete = true;
+            exitApp();
+            return;
+        }
         if (matchesOnly) {
             if (++frames < 90) return;
             output.child("ai-matches.txt").writeString(AiMatchChecks.run(gameController), false);

@@ -1,0 +1,9 @@
+FAIL: Simple counts real commands: Empty launches spent commands
+FAIL: Simple waits for a winning force: Sent 18 against a target that grows past 40 before arrival
+FAIL: Simple avoids duplicate attacks: A second army was sent to an already secured neutral
+FAIL: Supplies work when Grow is disabled: Saved troops for an unavailable upgrade
+FAIL: Late waves cannot defend an earlier attack: A distant reinforcement prevented an immediate winning capture
+FAIL: Partial reinforcement saves a threatened node: Refused useful help because it could not cover the whole deficit
+FAIL: Supply follows the battle rather than a dead end: The smaller frontline army was sent away from the battle
+FAIL: AI timing follows game speed and refresh rate: 20 game seconds produced 78 commands at 60Hz / 0.5x
+AI REGRESSIONS: 0 passed, 8 failed

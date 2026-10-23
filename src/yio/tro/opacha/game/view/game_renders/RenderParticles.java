@@ -24,7 +24,9 @@ public class RenderParticles extends GameRender{
 
     @Override
     public void render() {
+        if(yio.tro.opacha.menu.UiMotion.reduced)return;
         for (Particle particle : gameController.objectsLayer.particlesManager.particles) {
+            if(particle.quietRouteEffect)continue;
             if (!particle.isCurrentlyVisible()) continue;
             if (particle.id > getCurrentZoomQuality() && particle.viewPosition.radius < 0.05f * GraphicsYio.width) continue;
 

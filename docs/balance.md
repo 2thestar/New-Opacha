@@ -1,5 +1,9 @@
 # Playability and balance
 
+The [AI audit](ai.md#october-21-balance-evidence) repairs troop planning and records the latest controlled comparisons and map-11 adjustment. The [original-feel revision](original-feel.md) replaces stocked armies with zero-troop campaign starts. The [fast playtest pass](fast-playtest.md) describes the test environment, mobile input and travel-based flag placement. The results below are historical and describe the builds in which they were measured.
+
+The [0.6.2 performance pass](performance.md) records the current 672-match sweep. Maps 21 and 36 have no scripted wins in that sample and still need a focused balance review.
+
 The campaign is built around a useful capture every few decisions: take a foothold, choose a front, then commit or hold a reserve. The 48 fixed maps have twelve layouts per mode, with changing objectives, directions, starting forces and opponents. They reuse tactical motifs across chapters so a familiar board asks a new question.
 
 ## What changed

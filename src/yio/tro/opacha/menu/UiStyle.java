@@ -27,30 +27,30 @@ public final class UiStyle {
     public static final Color CYAN = Color.valueOf("83CDE3");
     private static UiStyle instance;
     private static boolean night;
-    private final Pixmap shapePixels, circlePixels;
-    private final Texture shapeTexture, circleTexture;
+    private final Pixmap pixels;
+    private final Texture texture;
     private final NinePatch shape;
     public final TextureRegion circle, pixel;
+    private final float[] triangleVertices = new float[20];
 
     private UiStyle() {
         // Antialiased rounded rectangle, with a fully opaque centre for the pixel region.
-        shapePixels = new Pixmap(64, 64, Pixmap.Format.RGBA8888);
-        circlePixels = new Pixmap(128, 128, Pixmap.Format.RGBA8888);
-        shapePixels.setBlending(Pixmap.Blending.None);
-        circlePixels.setBlending(Pixmap.Blending.None);
+        // Lines combine a rectangle and two caps. Keep all three on one texture,
+        // otherwise each segment flushes SpriteBatch twice.
+        pixels = new Pixmap(256, 128, Pixmap.Format.RGBA8888);
+        pixels.setBlending(Pixmap.Blending.None);
         for (int y = 0; y < 64; y++) for (int x = 0; x < 64; x++) {
             double dx = Math.max(Math.abs(x - 31.5) - 16, 0);
             double dy = Math.max(Math.abs(y - 31.5) - 16, 0);
-            shapePixels.drawPixel(x, y, rgba(Math.min(1, Math.max(0, 16 - Math.hypot(dx, dy)))));
+            pixels.drawPixel(x, y, rgba(Math.min(1, Math.max(0, 16 - Math.hypot(dx, dy)))));
         }
         for (int y = 0; y < 128; y++) for (int x = 0; x < 128; x++) {
-            circlePixels.drawPixel(x, y, rgba(Math.min(1, Math.max(0, 63.5 - Math.hypot(x - 63.5, y - 63.5)))));
+            pixels.drawPixel(68 + x, y, rgba(Math.min(1, Math.max(0, 63.5 - Math.hypot(x - 63.5, y - 63.5)))));
         }
-        shapeTexture = managed(shapePixels);
-        circleTexture = managed(circlePixels);
-        shape = new NinePatch(shapeTexture, 16, 16, 16, 16);
-        circle = new TextureRegion(circleTexture);
-        pixel = new TextureRegion(shapeTexture, 31, 31, 1, 1);
+        texture = managed(pixels);
+        shape = new NinePatch(new TextureRegion(texture, 0, 0, 64, 64), 16, 16, 16, 16);
+        circle = new TextureRegion(texture, 68, 0, 128, 128);
+        pixel = new TextureRegion(texture, 31, 31, 1, 1);
     }
 
     private static int rgba(double alpha) { return 0xffffff00 | (int) (255 * alpha); }
@@ -106,6 +106,30 @@ public final class UiStyle {
         batch.setColor(Color.WHITE);
     }
 
+    /** Board marks share the node outline's stroke, including paths, arrows and shields. */
+    public static float gameStroke() { return .0055f * GraphicsYio.width; }
+
+    public void triangle(SpriteBatch batch, double x, double y, double angle, double radius, Color color, float alpha) {
+        double dx = Math.cos(angle), dy = Math.sin(angle);
+        float bits = Color.toFloatBits(color.r, color.g, color.b, alpha);
+        for (int i = 0; i < 4; i++) {
+            double forward = i == 0 ? radius : -.6 * radius;
+            double side = i == 1 ? .78 * radius : i == 0 ? 0 : -.78 * radius;
+            int v = i * 5;
+            triangleVertices[v] = (float) (x + dx * forward - dy * side);
+            triangleVertices[v+1] = (float) (y + dy * forward + dx * side);
+            triangleVertices[v+2] = bits;
+            triangleVertices[v+3] = pixel.getU(); triangleVertices[v+4] = pixel.getV();
+        }
+        batch.draw(pixel.getTexture(), triangleVertices, 0, triangleVertices.length);
+    }
+
+    public void arrow(SpriteBatch batch, double x, double y, double angle, double size, Color color, float alpha) {
+        double dx = Math.cos(angle), dy = Math.sin(angle);
+        line(batch,x-dx*size-dy*size*.65,y-dy*size+dx*size*.65,x,y,gameStroke(),color,alpha);
+        line(batch,x-dx*size+dy*size*.65,y-dy*size-dx*size*.65,x,y,gameStroke(),color,alpha);
+    }
+
     public static Color faction(FractionType fraction) {
         switch (fraction) {
             case green: return GREEN;
@@ -128,8 +152,8 @@ public final class UiStyle {
 
     public static void dispose() {
         if (instance == null) return;
-        instance.shapeTexture.dispose(); instance.circleTexture.dispose();
-        instance.shapePixels.dispose(); instance.circlePixels.dispose();
+        instance.texture.dispose();
+        instance.pixels.dispose();
         instance = null;
     }
 }

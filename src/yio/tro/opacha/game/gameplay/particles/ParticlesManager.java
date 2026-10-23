@@ -81,6 +81,7 @@ public class ParticlesManager implements AcceleratableYio{
 
         for (int i = 0; i < 25; i++) {
             Particle freshParticle = getFreshParticle();
+            freshParticle.quietRouteEffect = true;
 
             tempPoint.setBy(link.one.viewPosition.center);
             tempPoint.relocateRadial(YioGdxGame.random.nextDouble() * link.distance, link.angle);

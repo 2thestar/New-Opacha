@@ -1,0 +1,11 @@
+{
+  "matches": 672,
+  "wins": 400,
+  "statuses": {
+    "won": 400,
+    "lost": 242,
+    "timeout": 11,
+    "eliminated": 19
+  },
+  "maps": 48
+}

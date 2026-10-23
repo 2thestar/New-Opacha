@@ -29,7 +29,10 @@ public final class CampaignChecks {
             for (int a = 0; a < nodes.size(); a++) for (int b = a+1; b < nodes.size(); b++)
                 check(nodes.get(a).position.center.distanceTo(nodes.get(b).position.center) > .145 * GraphicsYio.width,
                         "Overlapping touch targets in map " + index);
-            for (Planet node : nodes) check(controller.objectsLayer.editorWorker.isPointInValidPlace(node.position.center), "Out-of-bounds node " + index);
+            for (Planet node : nodes) {
+                check(controller.objectsLayer.editorWorker.isPointInValidPlace(node.position.center), "Out-of-bounds node " + index);
+                check(node.isNeutral() || node.unitsInside == 0, "Nonzero starting army " + index);
+            }
             if (GameRules.playType == PlayType.capture_flag) {
                 Planet flag = controller.objectsLayer.tactics.flagPlanet;
                 check(flag != null && flag.isNeutral() && flag.unitsInside == 50, "Neutral flag must have 50 troops " + index);

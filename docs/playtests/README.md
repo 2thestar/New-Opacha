@@ -2,6 +2,8 @@
 
 These are scripted games of the actual model, with rendering and sound disabled during the accelerated simulation loop. They are not results from recruited players.
 
+[The original-feel runs](original-feel/) contain the latest zero-start comparisons and fresh-seed tests. [The findings](../original-feel.md) record reference research, controls, shields and haptics. [The expedited runs](expedited/) retain the earlier input and flag-placement comparisons. [The fast playtest guide](../fast-playtest.md) explains the commands. Earlier runs below remain historical evidence.
+
 | File | Games | Purpose |
 | --- | ---: | --- |
 | campaign.csv | 672 | All 48 maps × seven policies × two decision-error seeds |

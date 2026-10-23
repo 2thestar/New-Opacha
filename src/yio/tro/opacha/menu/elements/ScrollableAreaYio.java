@@ -20,6 +20,11 @@ public class ScrollableAreaYio extends InterfaceElement<ScrollableAreaYio>{
     private float lowerOffset, conflictResolveDistance;
     InterfaceElement conflictElement;
 
+    public void copyViewportTo(com.badlogic.gdx.math.Rectangle result) {
+        result.set(viewPosition.x, (float) (viewPosition.y + scrollEngineYio.getSlider().a - position.y),
+                position.width, position.height);
+    }
+
 
     public ScrollableAreaYio(MenuControllerYio menuControllerYio, int id) {
         super(menuControllerYio, id);

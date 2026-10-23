@@ -37,6 +37,8 @@ public final class AiBehaviorChecks {
     }
 
     private void reset() {
+        GameRules.playType = PlayType.conquest;
+        GameRules.features = RuleFeatures.ALL;
         GameRules.aiOnlyMode = false;
         GameRules.difficulty = Difficulty.hard;
         GameRules.aiTypes.clear();

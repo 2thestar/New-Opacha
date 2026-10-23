@@ -11,6 +11,7 @@ public class UnitManager implements IGameplayManager{
 
     ObjectsLayer objectsLayer;
     public ArrayList<Unit> units;
+    public final BattlefieldVisuals visuals;
     ObjectPoolYio<Unit> poolUnits;
     RepeatYio<UnitManager> repeatRemoveUnits;
 
@@ -18,6 +19,7 @@ public class UnitManager implements IGameplayManager{
     public UnitManager(ObjectsLayer objectsLayer) {
         this.objectsLayer = objectsLayer;
         units = new ArrayList<>();
+        visuals = new BattlefieldVisuals(objectsLayer);
         initPools();
         initRepeats();
     }
@@ -46,6 +48,7 @@ public class UnitManager implements IGameplayManager{
     @Override
     public void defaultValues() {
         poolUnits.clearExternalList();
+        visuals.clear();
     }
 
 
@@ -95,12 +98,13 @@ public class UnitManager implements IGameplayManager{
 
     @Override
     public void onEndCreation() {
-
+        visuals.onEndCreation();
     }
 
 
     @Override
     public void moveActually() {
+        visuals.prune();
         moveUnitsActually();
         repeatRemoveUnits.move();
     }

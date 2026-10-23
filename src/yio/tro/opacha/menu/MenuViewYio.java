@@ -4,8 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.utils.ScissorStack;
 import yio.tro.opacha.*;
 import yio.tro.opacha.menu.elements.InterfaceElement;
+import yio.tro.opacha.menu.elements.ScrollableAreaYio;
 import yio.tro.opacha.menu.menu_renders.MenuRenders;
 import yio.tro.opacha.stuff.GraphicsYio;
 
@@ -17,6 +20,7 @@ public class MenuViewYio {
     public ShapeRenderer shapeRenderer;
     public OrthographicCamera orthoCam;
     public int w, h;
+    private final Rectangle scrollViewport = new Rectangle(), scrollScissors = new Rectangle();
 
 
     public MenuViewYio(YioGdxGame yioGdxGame) {
@@ -57,33 +61,35 @@ public class MenuViewYio {
 
 
     private void renderLayers(boolean onTopOfGameView, boolean dyingStatus) {
-        // first layer
-        for (InterfaceElement element : menuControllerYio.visibleElements) {
+        for (int layer = 0; layer < 3; layer++) for (InterfaceElement element : menuControllerYio.visibleElements) {
             if (!element.isVisible()) continue;
             if (!element.compareGvStatus(onTopOfGameView)) continue;
             if (element.getDyingStatus() != dyingStatus) continue;
             if (element.isViewPositionNotUpdatedYet()) continue;
-            element.getRenderSystem().renderFirstLayer(element);
+            ScrollableAreaYio scroll = scrollParent(element);
+            if (scroll != null) {
+                scroll.copyViewportTo(scrollViewport);
+                ScissorStack.calculateScissors(orthoCam, batch.getTransformMatrix(), scrollViewport, scrollScissors);
+                batch.flush();
+                if (!ScissorStack.pushScissors(scrollScissors)) continue;
+            }
+            try {
+                if (layer == 0) element.getRenderSystem().renderFirstLayer(element);
+                else if (layer == 1) element.getRenderSystem().renderSecondLayer(element);
+                else {
+                    element.getRenderSystem().renderThirdLayer(element);
+                    MenuKeyboard.renderFocus(this, element);
+                }
+            } finally {
+                if (scroll != null) { batch.flush(); ScissorStack.popScissors(); }
+            }
         }
+    }
 
-        // second layer
-        for (InterfaceElement element : menuControllerYio.visibleElements) {
-            if (!element.isVisible()) continue;
-            if (!element.compareGvStatus(onTopOfGameView)) continue;
-            if (element.getDyingStatus() != dyingStatus) continue;
-            if (element.isViewPositionNotUpdatedYet()) continue;
-            element.getRenderSystem().renderSecondLayer(element);
-        }
-
-        // third layer
-        for (InterfaceElement element : menuControllerYio.visibleElements) {
-            if (!element.isVisible()) continue;
-            if (!element.compareGvStatus(onTopOfGameView)) continue;
-            if (element.getDyingStatus() != dyingStatus) continue;
-            if (element.isViewPositionNotUpdatedYet()) continue;
-            element.getRenderSystem().renderThirdLayer(element);
-            MenuKeyboard.renderFocus(this, element);
-        }
+    private ScrollableAreaYio scrollParent(InterfaceElement element) {
+        for (InterfaceElement parent = element.getParent(); parent != null; parent = parent.getParent())
+            if (parent instanceof ScrollableAreaYio) return (ScrollableAreaYio) parent;
+        return null;
     }
 
 

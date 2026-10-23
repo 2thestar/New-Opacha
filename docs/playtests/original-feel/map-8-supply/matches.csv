@@ -1,0 +1,15 @@
+mode,seed,seat,style,won,winner,seconds,first_capture,captures,recaptures,longest_drought,orders,upgrades,tools,pacts,level,status
+conquest,1,0,expand,true,green,64.52,8.52,11,0,13.00,33,0,0,0,8,won
+conquest,1,0,economy,true,green,151.02,18.02,23,12,18.02,71,8,0,0,8,won
+conquest,1,0,rush,true,green,64.52,8.52,11,0,13.00,33,0,0,0,8,won
+conquest,1,0,siege,true,green,64.52,8.52,11,0,13.00,33,0,0,0,8,won
+conquest,1,0,diplomat,true,green,64.52,8.52,11,0,13.00,33,0,0,0,8,won
+conquest,1,0,hesitant,false,red,135.52,11.02,18,10,12.00,28,3,0,0,8,lost
+conquest,1,0,planner,true,green,76.52,8.52,14,3,12.50,56,5,0,0,8,won
+conquest,2,0,expand,true,green,79.02,9.52,16,5,10.50,40,0,0,0,8,won
+conquest,2,0,economy,true,green,103.02,18.02,15,4,32.00,46,7,0,0,8,won
+conquest,2,0,rush,true,green,81.52,9.52,19,8,9.52,44,0,0,0,8,won
+conquest,2,0,siege,true,green,79.02,9.52,16,5,10.50,40,0,0,0,8,won
+conquest,2,0,diplomat,true,green,79.02,9.52,16,5,10.50,40,0,0,0,8,won
+conquest,2,0,hesitant,false,red,139.52,19.02,20,11,19.02,31,2,0,0,8,lost
+conquest,2,0,planner,true,green,84.52,9.52,14,3,18.00,59,6,0,0,8,won
