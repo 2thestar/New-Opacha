@@ -119,6 +119,19 @@ tasks.register('tacticsTest') {
     group = 'verification'
     dependsOn tasks.named('tacticsDesktop'), tasks.named('tacticsPhone')
 }
+
+['Desktop': [480, 800], 'Phone': [390, 844]].each { label, dimensions ->
+    tasks.register("weapons$label", JavaExec) {
+        group = 'verification'
+        dependsOn 'installDist', 'smokeTestClasses'
+        timeout = java.time.Duration.ofSeconds(95)
+        classpath = files(sourceSets.smokeTest.output, fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+        mainClass = 'yio.tro.opacha.lwjgl3.WeaponUsabilitySmokeTest'
+        workingDir rootProject.projectDir
+        args dimensions[0], dimensions[1], layout.buildDirectory.dir("weapons/$label").get().asFile.absolutePath
+    }
+}
+tasks.register('weaponsTest') { group = 'verification'; dependsOn 'weaponsDesktop', 'weaponsPhone' }
 tasks.register('tacticsRules', JavaExec) {
     group = 'verification'
     dependsOn tasks.named('installDist'), tasks.named('smokeTestClasses')

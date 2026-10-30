@@ -1208,7 +1208,7 @@
       "mode": "conquest",
       "layout": "Shortcut",
       "concept": "Dig a shortcut",
-      "brief": "Actions > Route blueprint, then tap a second node. Send troops from the first node to dig it. A normal length consumes about 80; the number is the work left.",
+      "brief": "Actions > Route blueprint, then tap a second node. Send troops from the first node to dig it. A normal length consumes about 120 troops.",
       "hint": "Compare a short dig with the cost of fighting round the bend.",
       "features": 31,
       "difficulty": "normal",
@@ -1382,8 +1382,8 @@
       "mode": "conquest",
       "layout": "Tripwire",
       "concept": "Set a bomb",
-      "brief": "Buy a bomb for 20 at a Grow node. Deliver bomb, then tap a route. A hidden two-troop courier follows your own supply routes. The planted bomb is visible; it hits the next enemy for 12.",
-      "hint": "Send a courier ahead of the next enemy wave. Route bombs become visible only after delivery.",
+      "brief": "Keep two Grow factories running. Send over 50 troops from a factory, then hold that group on the route to convert it into a secret bomb. Tap the bomb on a route to destroy the whole route and every troop on it.",
+      "hint": "Keep two factories running. Hold a group over 50 leaving a factory to make a secret bomb; tap it on the route to destroy that route.",
       "features": 63,
       "difficulty": "normal",
       "nodes": [
@@ -1548,8 +1548,8 @@
       "mode": "conquest",
       "layout": "High ground",
       "concept": "Artillery",
-      "brief": "Actions > Artillery costs 20 and replaces the node's upgrade. Fire within three usual route lengths: a shot costs 20, deals 10 damage and reloads in 5 game seconds. Guns never capture.",
-      "hint": "Save 20 troops at the forward node to build artillery, then 20 for a shot. Disable yellow's Grow upgrade across the gap. Capture it along the links.",
+      "brief": "Actions > Artillery costs 20 and replaces the node's upgrade. Tap the gun three times: full, half, cannon. The thicker cannon is ready to aim. Swipe or tap an enemy in range. Each shot costs 20, kills 20% of its troops through shields and reloads in 5 game seconds.",
+      "hint": "Save 20 troops at the forward node to build artillery, then 20 for a shot. Reduce yellow's troops across the gap, through its shields. Capture it along the links.",
       "features": 127,
       "difficulty": "normal",
       "nodes": [
@@ -1750,7 +1750,7 @@
       "mode": "conquest",
       "layout": "Crossroads",
       "concept": "Leave a surprise",
-      "brief": "Deliver a bomb to your own node, or use Trap this node at its supply node. Stack up to three. Enemies see neither the courier nor the traps. Each trap hits for 12 after capture; the attacker keeps the node.",
+      "brief": "Bombs follow your route arrows before troops. Tap a bomb at your own node to plant a secret mine. If enemies capture it, all invading survivors die. The node becomes neutral with 14 shields for 10 game seconds.",
       "hint": "Take one useful junction without abandoning the other front.",
       "features": 127,
       "difficulty": "normal",
@@ -3360,12 +3360,12 @@
           "b": 7,
           "directional": true,
           "builder": "green",
-          "cost": 213,
-          "spent": 133
+          "cost": 320,
+          "spent": 200
         }
       ],
       "flag": 7,
-      "code": "opacha_level_code#map_name:Unfinished crossing#game_rules:normal false capture_flag true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green economic 0 0.78 0.2 0 0,green economic 0 0.47 0.21 0 0,neutral empty 3 0.2 0.43 0 0,neutral empty 3 0.49 0.58 0 0,neutral empty 3 0.8 0.56 0 0,yellow empty 0 0.8 0.89 0 0,neutral empty 3 0.5 0.91 0 0,neutral empty 50 0.2 0.81 0 0,neutral empty 3 0.2 1.14 0 0,neutral empty 3 0.5 1.23 0 0,neutral empty 3 0.79 1.24 0 0,red defensive 0 0.5 1.46 0 0#links:neutral 0.78 0.2 0.47 0.21 false none 0 0,neutral 0.47 0.21 0.2 0.43 false none 0 0,neutral 0.2 0.43 0.49 0.58 false none 0 0,neutral 0.49 0.58 0.8 0.56 true none 0 0,neutral 0.8 0.56 0.8 0.89 false none 0 0,neutral 0.8 0.89 0.5 0.91 false none 0 0,neutral 0.5 0.91 0.2 0.81 false none 0 0,neutral 0.2 1.14 0.2 0.81 true none 0 0,neutral 0.2 1.14 0.5 1.23 false none 0 0,neutral 0.5 1.23 0.79 1.24 false none 0 0,neutral 0.5 1.23 0.5 1.46 false none 0 0,neutral 0.79 1.24 0.5 1.46 true none 0 0,neutral 0.78 0.2 0.2 0.81 true green 213 133#tactics:flag 7 none;#"
+      "code": "opacha_level_code#map_name:Unfinished crossing#game_rules:normal false capture_flag true 127#ai_types:red savvy,yellow simple#general:tiny#planets:green economic 0 0.78 0.2 0 0,green economic 0 0.47 0.21 0 0,neutral empty 3 0.2 0.43 0 0,neutral empty 3 0.49 0.58 0 0,neutral empty 3 0.8 0.56 0 0,yellow empty 0 0.8 0.89 0 0,neutral empty 3 0.5 0.91 0 0,neutral empty 50 0.2 0.81 0 0,neutral empty 3 0.2 1.14 0 0,neutral empty 3 0.5 1.23 0 0,neutral empty 3 0.79 1.24 0 0,red defensive 0 0.5 1.46 0 0#links:neutral 0.78 0.2 0.47 0.21 false none 0 0,neutral 0.47 0.21 0.2 0.43 false none 0 0,neutral 0.2 0.43 0.49 0.58 false none 0 0,neutral 0.49 0.58 0.8 0.56 true none 0 0,neutral 0.8 0.56 0.8 0.89 false none 0 0,neutral 0.8 0.89 0.5 0.91 false none 0 0,neutral 0.5 0.91 0.2 0.81 false none 0 0,neutral 0.2 1.14 0.2 0.81 true none 0 0,neutral 0.2 1.14 0.5 1.23 false none 0 0,neutral 0.5 1.23 0.79 1.24 false none 0 0,neutral 0.5 1.23 0.5 1.46 false none 0 0,neutral 0.79 1.24 0.5 1.46 true none 0 0,neutral 0.78 0.2 0.2 0.81 true green 320 200#tactics:flag 7 none;#"
     },
     {
       "index": 21,
@@ -3375,7 +3375,7 @@
       "layout": "Tripwire",
       "concept": "",
       "brief": "",
-      "hint": "Send a courier ahead of the next enemy wave. Route bombs become visible only after delivery.",
+      "hint": "Keep two factories running. Hold a group over 50 leaving a factory to make a secret bomb; tap it on the route to destroy that route.",
       "features": 127,
       "difficulty": "normal",
       "nodes": [
@@ -5359,7 +5359,7 @@
       "layout": "Tripwire",
       "concept": "",
       "brief": "",
-      "hint": "Send a courier ahead of the next enemy wave. Route bombs become visible only after delivery.",
+      "hint": "Keep two factories running. Hold a group over 50 leaving a factory to make a secret bomb; tap it on the route to destroy that route.",
       "features": 127,
       "difficulty": "normal",
       "nodes": [
@@ -7343,7 +7343,7 @@
       "layout": "Tripwire",
       "concept": "",
       "brief": "",
-      "hint": "Send a courier ahead of the next enemy wave. Route bombs become visible only after delivery.",
+      "hint": "Keep two factories running. Hold a group over 50 leaving a factory to make a secret bomb; tap it on the route to destroy that route.",
       "features": 127,
       "difficulty": "normal",
       "nodes": [

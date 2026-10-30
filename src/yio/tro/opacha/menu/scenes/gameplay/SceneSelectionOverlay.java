@@ -44,7 +44,7 @@ public class SceneSelectionOverlay extends ModalSceneYio {
                 .setAnimation(AnimationYio.down).setReaction(new Reaction() {
                     @Override protected void reaction() {
                         ObjectsLayer layer = gameController.objectsLayer;
-                        layer.planetsManager.onLongTappedPlanet(selectedPlanet);
+                        selectedPlanet.setHalvedSelectionMode(!selectedPlanet.halvedSelectionMode);
                         updateHalfLabel();
                     }
                 });

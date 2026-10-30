@@ -10,13 +10,15 @@ import java.util.*;
 public final class TacticsManager {
     public enum Action { none, blueprint, bomb, artillery }
     public static final int BOMB_PRICE = 20, BOMB_CREW = 2, BOMB_DAMAGE = 12;
-    public static final int MAX_NODE_BOMBS = 3;
-    public static final int ARTILLERY_PRICE = 20, SHOT_PRICE = 20, SHOT_DAMAGE = 10;
+    public static final int MAX_NODE_BOMBS = 1;
+    public static final int ARTILLERY_PRICE = 20, SHOT_PRICE = 20;
+    public static final double SHOT_FRACTION = .20;
     public static final float RELOAD_SECONDS = 5;
     public final ObjectsLayer layer;
     public final AllianceManager alliances;
     public final ArrayList<RouteBomb> bombs = new ArrayList<>();
     public final ArrayList<BombCourier> couriers = new ArrayList<>();
+    public final ArrayList<MobileBomb> mobileBombs = new ArrayList<>();
     public double elapsed;
     public double normalRouteLength;
     public Planet flagPlanet;
@@ -53,6 +55,8 @@ public final class TacticsManager {
     public void moveActually() {
         if (layer.gameController.gameMode == GameMode.editor) return;
         elapsed += RefreshRateDetector.getInstance().multiplier * VelocityManager.getInstance().value / 60.0;
+        for (MobileBomb bomb : mobileBombs) bomb.move();
+        mobileBombs.removeIf(bomb -> !bomb.active);
         for (int i = couriers.size() - 1; i >= 0; i--) {
             BombCourier courier = couriers.get(i);
             courier.move();
@@ -75,25 +79,93 @@ public final class TacticsManager {
         Link link = layer.linksManager.addLink(start, target);
         link.directional = true;
         link.builder = owner;
-        link.constructionCost = Math.max(1, (int) Math.ceil(80 * link.distance / normalRouteLength));
+        link.constructionCost = Math.max(1, (int) Math.ceil(120 * link.distance / normalRouteLength));
         link.constructionSpent = 0;
         link.initNPoints();
         return link;
     }
 
     public boolean buyBomb(Planet node) {
-        if (!RuleFeatures.has(RuleFeatures.BOMBS) || node == null || !node.isEconomic() || node.isNeutral() || node.unitsInside < BOMB_PRICE) return false;
-        node.decreaseUnitsInside(BOMB_PRICE);
-        node.bombStock++;
+        return false; // Legacy stock is importable, but new bombs require an entire moving army.
+    }
+
+    public boolean canConvertToBomb(Unit unit) {
+        return RuleFeatures.has(RuleFeatures.BOMBS) && unit != null && unit.isAlive() && unit.value > 50
+                && !unit.digger && !unit.link.isBlueprint()
+                && unit.factoryDeparture
+                && unit.acceleratableFactor.value > 0 && unit.acceleratableFactor.value < 1
+                && layer.planetsManager.getNumberOfEconomicPlanets(unit.fraction) >= 2;
+    }
+
+    public MobileBomb convertToBomb(Unit unit) {
+        if (!canConvertToBomb(unit)) return null;
+        MobileBomb bomb = new MobileBomb(unit.fraction, unit.link, unit.getTarget(), unit.acceleratableFactor.value);
+        unit.heldForBomb = false;
+        unit.setAlive(false);
+        mobileBombs.add(bomb);
+        return bomb;
+    }
+
+    public Unit findBombTroop(PointYio point, FractionType owner) {
+        Unit closest = null;
+        double distance = touchRadius();
+        for (Unit unit : layer.unitManager.units) {
+            if (unit.fraction != owner || !canConvertToBomb(unit)) continue;
+            double d = unit.touchPosition().distanceTo(point);
+            if (d < distance) { distance = d; closest = unit; }
+        }
+        return closest;
+    }
+
+    private double touchRadius() {
+        double zoom = layer.gameController.cameraController.orthoCam == null ? 1
+                : layer.gameController.cameraController.orthoCam.zoom;
+        return Math.max(.04 * GraphicsYio.width, 22 * GraphicsYio.width / 390.0 * zoom);
+    }
+
+    public MobileBomb findBomb(PointYio point, FractionType viewer) {
+        MobileBomb closest = null;
+        double distance = touchRadius();
+        for (MobileBomb bomb : mobileBombs) {
+            if (!bomb.visibleTo(viewer)) continue;
+            double d = bomb.position().distanceTo(point);
+            if (d < distance) { distance = d; closest = bomb; }
+        }
+        return closest;
+    }
+
+    public boolean activateBomb(MobileBomb bomb, FractionType owner) {
+        if (bomb == null || !bomb.active || bomb.owner != owner) return false;
+        if (bomb.link != null) {
+            Link route = bomb.link;
+            bomb.active = false;
+            // Link removal also clears every faction's walkers, arrows and other bombs on it.
+            layer.linksManager.removeLink(route);
+            return true;
+        }
+        if (bomb.node == null || bomb.node.fraction != owner || bomb.node.nodeBombs > 0) return false;
+        bomb.node.nodeBombs = 1;
+        bomb.active = false;
         return true;
     }
 
+    /** Cargo leaves a node before its next ordinary troop dispatch. */
+    public void forwardBombs(Planet node) {
+        for (MobileBomb bomb : mobileBombs) if (bomb.node == node) bomb.followArrow();
+    }
+
     public void onLinkRemoved(Link link) {
+        mobileBombs.removeIf(bomb -> { if (bomb.link != link) return false; bomb.active = false; return true; });
         couriers.removeIf(courier -> courier.uses(link));
         bombs.removeIf(bomb -> bomb.link == link);
     }
 
     public void onLinkEdited(Link link, boolean reversed, boolean unfinished) {
+        if (unfinished) mobileBombs.removeIf(bomb -> bomb.link == link);
+        else if (reversed) for (MobileBomb bomb : mobileBombs) if (bomb.link == link) {
+            bomb.progress.speed = -bomb.progress.speed;
+            bomb.progress.value = 1 - bomb.progress.value;
+        }
         couriers.removeIf(courier -> courier.uses(link));
         if (unfinished) { bombs.removeIf(bomb -> bomb.link == link); return; }
         if (reversed) for (int i = 0; i < bombs.size(); i++) {
@@ -103,13 +175,14 @@ public final class TacticsManager {
     }
 
     public void onNodeRemoved(Planet node) {
+        mobileBombs.removeIf(bomb -> bomb.node == node || bomb.target == node
+                || (bomb.link != null && bomb.link.contains(node)));
         couriers.removeIf(courier -> courier.path.contains(node) || courier.destination == node);
         if (shotSource == node || shotTarget == node) { shotSource = null; shotTarget = null; }
     }
 
     private boolean canDispatch(Planet depot) {
-        return RuleFeatures.has(RuleFeatures.BOMBS) && depot != null && !depot.isNeutral()
-                && depot.bombStock > 0 && depot.unitsInside >= BOMB_CREW;
+        return false; // Retained only to read maps from the previous delivery system.
     }
 
     public int reservedBombs(Planet node) {
@@ -227,7 +300,7 @@ public final class TacticsManager {
         if (!canFire(gun, target)) return false;
         gun.decreaseUnitsInside(SHOT_PRICE);
         gun.artilleryReload = RELOAD_SECONDS;
-        target.takeArtilleryDamage(SHOT_DAMAGE);
+        target.takeArtilleryDamage(SHOT_FRACTION);
         shotSource = gun; shotTarget = target; shotUntil = elapsed + .35;
         layer.unitManager.visuals.shot(gun, target);
         return true;
@@ -237,6 +310,7 @@ public final class TacticsManager {
         pending = action; source = planet;
         Scenes.selectionOverlay.destroy();
         Scenes.gameOverlay.setCommandMode(true);
+        if (action == Action.artillery) return;
         String message = action == Action.blueprint ? "route_pick_target" : action == Action.bomb ? "bomb_pick_troop" : "artillery_pick_target";
         Scenes.notification.show(yio.tro.opacha.menu.LanguagesManager.getInstance().getString(message));
     }
@@ -267,6 +341,15 @@ public final class TacticsManager {
             out.append("depot ").append(layer.planetsManager.planets.indexOf(node)).append(' ')
                     .append(node.bombStock).append(' ').append(node.nodeBombs).append(';');
         }
+        for (Planet node : layer.planetsManager.planets) if (node.mineShieldUntil > elapsed)
+            out.append("mineShield ").append(layer.planetsManager.planets.indexOf(node)).append(' ')
+                    .append(node.mineShieldUntil).append(';');
+        for (MobileBomb bomb : mobileBombs) if (bomb.active)
+            out.append("mobileBomb ").append(bomb.owner).append(' ')
+                    .append(layer.linksManager.links.indexOf(bomb.link)).append(' ')
+                    .append(layer.planetsManager.planets.indexOf(bomb.target)).append(' ')
+                    .append(layer.planetsManager.planets.indexOf(bomb.node)).append(' ')
+                    .append(bomb.progress.value).append(';');
         for (BombCourier courier : couriers) if (courier.active) {
             out.append("courier ").append(courier.owner).append(' ')
                     .append(layer.planetsManager.planets.indexOf(courier.destination)).append(' ')
@@ -287,6 +370,13 @@ public final class TacticsManager {
             if (p[0].equals("clock")) {
                 elapsed = Double.parseDouble(p[1]); normalRouteLength = Double.parseDouble(p[2]) * GraphicsYio.width;
                 loadedReference = true; nextAiAction = elapsed + 2;
+            } else if (p[0].equals("mobileBomb")) {
+                FractionType owner = FractionType.valueOf(p[1]);
+                int route = Integer.parseInt(p[2]), target = Integer.parseInt(p[3]), node = Integer.parseInt(p[4]);
+                mobileBombs.add(node >= 0 ? new MobileBomb(owner, layer.planetsManager.planets.get(node))
+                        : new MobileBomb(owner, layer.linksManager.links.get(route), layer.planetsManager.planets.get(target), Float.parseFloat(p[5])));
+            } else if (p[0].equals("mineShield")) {
+                layer.planetsManager.planets.get(Integer.parseInt(p[1])).restoreMineShield(Double.parseDouble(p[2]));
             } else if (p[0].equals("flag")) {
                 int index = Integer.parseInt(p[1]);
                 flagPlanet = index < 0 ? null : layer.planetsManager.planets.get(index);
@@ -317,7 +407,11 @@ public final class TacticsManager {
                 BombCourier courier = new BombCourier(this, FractionType.valueOf(p[1]), path,
                         node < 0 ? null : layer.planetsManager.planets.get(node),
                         route < 0 ? null : layer.linksManager.links.get(route), Float.parseFloat(p[4]));
-                courier.restore(Integer.parseInt(p[5]), Float.parseFloat(p[6])); couriers.add(courier);
+                courier.restore(Integer.parseInt(p[5]), Float.parseFloat(p[6]));
+                if (courier.active && courier.link != null) {
+                    Planet target = courier.progress.isInAppearState() ? courier.link.two : courier.link.one;
+                    mobileBombs.add(new MobileBomb(courier.owner, courier.link, target, courier.progress.value));
+                }
             } else if (p[0].equals("pact")) {
                 int a = FractionType.valueOf(p[1]).ordinal(), b = FractionType.valueOf(p[2]).ordinal();
                 alliances.offers[a][b] = Boolean.parseBoolean(p[3]);
@@ -325,14 +419,21 @@ public final class TacticsManager {
                 alliances.broken[a][b] = Boolean.parseBoolean(p[5]);
                 alliances.formedAt[a][b] = Double.parseDouble(p[6]);
             } else if (p[0].equals("bomb")) {
-                bombs.add(new RouteBomb(layer.linksManager.links.get(Integer.parseInt(p[1])), FractionType.valueOf(p[2]), Float.parseFloat(p[3])));
+                Link route = layer.linksManager.links.get(Integer.parseInt(p[1]));
+                mobileBombs.add(new MobileBomb(FractionType.valueOf(p[2]), route, route.two, Float.parseFloat(p[3])));
             }
         }
     }
 
     public boolean onWorldTap(PointYio point) {
         if (pending == Action.none) return false;
+        if (source == null || !source.isControlledByPlayer()) { cancel(); return true; }
         Planet target = layer.planetsManager.findTouchedPlanet(point);
+        if (pending == Action.artillery && target == source) {
+            Planet gun = source; cancel(); gun.select();
+            Scenes.selectionOverlay.setSelectedPlanet(gun); Scenes.selectionOverlay.create();
+            return true;
+        }
         boolean success = false;
         if (pending == Action.blueprint) success = createBlueprint(source, target, FractionType.green) != null;
         if (pending == Action.artillery) success = fire(source, target);

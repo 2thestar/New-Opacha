@@ -27,12 +27,12 @@ final class TacticsAi {
             Planet target = null;
             int enemies = 0;
             for (Planet other : t.layer.planetsManager.planets) {
-                if (other.isNeutral() || other.getFullHp() == 0 || t.alliances.friendly(owner, other.fraction)
+                if (other.isNeutral() || other.unitsInside <= 0 || t.alliances.friendly(owner, other.fraction)
                         || node.position.center.distanceTo(other.position.center) > t.artilleryRange()) continue;
                 if (other.type == PlanetType.empty && other.getFullHp() < 12 && other != t.flagPlanet
                         && !isHomeFlag(t, other)) continue;
                 enemies++;
-                if (target == null || other.getFullHp() < target.getFullHp()) target = other;
+                if (target == null || other.unitsInside > target.unitsInside) target = other;
             }
             if (node.type == PlanetType.artillery) {
                 if (target != null && node.unitsInside >= Math.max(30, t.layer.planetsManager.calculateThreat(node) + 20)) t.fire(node, target);
@@ -48,26 +48,26 @@ final class TacticsAi {
     }
 
     private static void bombs(TacticsManager t, FractionType owner, AiType type) {
-        for (BombCourier courier : t.couriers) if (courier.active && courier.owner == owner) return;
-        for (Planet depot : t.layer.planetsManager.planets) {
-            if (depot.fraction != owner || depot.unitsInside < 2) continue;
-            // Only react to visible incoming attacks. Never read an opponent's hidden stock or orders.
+        // Inspect only our own secret cargo and publicly visible troops.
+        for (MobileBomb bomb : new ArrayList<>(t.mobileBombs)) {
+            if (!bomb.active || bomb.owner != owner) continue;
+            if (bomb.node != null && bomb.node.fraction == owner
+                    && t.layer.planetsManager.calculateThreat(bomb.node) > bomb.node.getFullHp()) {
+                t.activateBomb(bomb, owner); return;
+            }
+            if (bomb.link == null) continue;
+            int hostile = 0, friendly = 0;
+            for (Unit unit : t.layer.unitManager.units) if (unit.isAlive() && unit.link == bomb.link) {
+                if (t.alliances.friendly(owner, unit.fraction)) friendly += unit.value; else hostile += unit.value;
+            }
+            if (hostile > friendly + 50) { t.activateBomb(bomb, owner); return; }
+        }
+        for (Unit unit : t.layer.unitManager.units) {
+            if (unit.fraction != owner || !t.canConvertToBomb(unit)) continue;
             for (Unit enemy : t.layer.unitManager.units) {
-                if (!enemy.isAlive() || enemy.value < 12 || t.alliances.friendly(owner, enemy.fraction)
-                        || enemy.target.fraction != owner) continue;
-                Planet front = enemy.target;
-                boolean armed = false;
-                for (RouteBomb bomb : t.bombs) if (bomb.active && bomb.link == enemy.link && bomb.owner == owner) armed = true;
-                if (armed) continue;
-                if (depot.bombStock == 0 && depot.isEconomic() && depot.unitsInside >= 65) t.buyBomb(depot);
-                if (depot.bombStock == 0) continue;
-                // A courier can get ahead of this attack from the defending endpoint.
-                float point = front == enemy.link.one ? .18f : .82f;
-                double remaining = front == enemy.link.one ? enemy.acceleratableFactor.value : 1 - enemy.acceleratableFactor.value;
-                double courierTime = .18 / enemy.link.speedFrom(front);
-                double enemyTime = (remaining - .18) / enemy.link.speedFrom(enemy.link.getOppositePlanet(front));
-                if (depot == front && courierTime < enemyTime && t.sendBomb(depot, enemy.link, point)) return;
-                if (t.reservedBombs(front) < (type == AiType.savvy ? 2 : 1) && t.sendBomb(depot, front)) return;
+                if (!enemy.isAlive() || enemy.link != unit.link || enemy.value <= unit.value
+                        || t.alliances.friendly(owner, enemy.fraction)) continue;
+                t.convertToBomb(unit); return;
             }
         }
     }
@@ -107,7 +107,7 @@ final class TacticsAi {
             for (Planet other : t.layer.planetsManager.planets) {
                 if (other == start || start.isLinkedTo(other) || t.alliances.friendly(owner, other.fraction)) continue;
                 double distance = start.position.center.distanceTo(other.position.center);
-                double cost = 80 * distance / t.normalRouteLength;
+                double cost = 120 * distance / t.normalRouteLength;
                 if (distance > 1.5 * t.normalRouteLength || start.unitsInside < cost + other.getFullHp() + 20) continue;
                 double score = cost + other.getFullHp() - (other.isEconomic() ? 20 : 0);
                 if (score < best) { best = score; target = other; }

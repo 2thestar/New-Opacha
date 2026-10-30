@@ -40,6 +40,7 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
     public float artilleryReload;
     public float capturePulse;
     public int bombStock, nodeBombs;
+    public double mineShieldUntil;
     RepeatYio<Planet> repeatBuildUnits, repeatIncreaseDefense;
     public Planet autoTarget;
     public CircleYio atViewPosition;
@@ -108,6 +109,7 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
 
     private void checkToApplyAutoTarget() {
         if (autoTarget == null) return;
+        planetsManager.objectsLayer.tactics.forwardBombs(this);
         autoSendClock += yio.tro.opacha.RefreshRateDetector.getInstance().multiplier
                 * VelocityManager.getInstance().value / 60.0;
         if (autoSendClock + 1e-8 < AUTO_SEND_SECONDS) return;
@@ -140,6 +142,7 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
     @Override
     public void reset() {
         bombStock = 0; nodeBombs = 0;
+        mineShieldUntil = 0;
         position.reset();
         viewPosition.reset();
         fraction = null;
@@ -190,6 +193,11 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
 
     @Override
     public void moveActually() {
+        if (mineShieldUntil > 0 && planetsManager.objectsLayer.tactics.elapsed >= mineShieldUntil) {
+            mineShieldUntil = 0;
+            updateMaxDefense(); createShields();
+            setCurrentDefense(Math.min(currentDefense, maxDefense));
+        }
         repeatBuildUnits.move();
         repeatIncreaseDefense.move();
         checkToApplyAutoTarget();
@@ -344,6 +352,8 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
         capturePulse = 0;
         bombStock = 0;
         nodeBombs = 0;
+        mineShieldUntil = 0;
+        updateMaxDefense(); createShields();
 
         setType(PlanetType.empty);
         setAutoTarget(null);
@@ -421,13 +431,8 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
         return (int) unitsInside + (int) currentDefense;
     }
 
-    public void takeArtilleryDamage(int damage) {
-        float shieldDamage = Math.min(currentDefense, damage);
-        setCurrentDefense(currentDefense - shieldDamage);
-        float remaining = damage - shieldDamage;
-        boolean destroyed = remaining >= unitsInside && currentDefense <= 0;
-        setUnitsInside(Math.max(0, unitsInside - remaining));
-        if (destroyed) { setType(PlanetType.empty); setCurrentDefense(0); }
+    public void takeArtilleryDamage(double fraction) {
+        setUnitsInside(unitsInside * (1 - fraction));
         applyPopEffect();
     }
 
@@ -453,12 +458,20 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
         }
 
         int v = unit.value - getFullHp();
-        int traps = nodeBombs;
+        if (nodeBombs > 0) {
+            setFraction(FractionType.neutral);
+            setUnitsInside(0);
+            restoreMineShield(planetsManager.objectsLayer.tactics.elapsed + 10);
+            setCurrentDefense(14);
+            applyPopEffect();
+            spawnExplosionCausedByUnit(unit);
+            planetsManager.objectsLayer.linksManager.syncFractions();
+            return;
+        }
         setCurrentDefense(0);
         setFraction(unit.fraction);
         setType(PlanetType.empty);
-        // The capture succeeds first. Traps punish its survivors without returning ownership.
-        setUnitsInside(Math.max(0, v - traps * TacticsManager.BOMB_DAMAGE));
+        setUnitsInside(v);
         applyPopEffect();
         spawnExplosionCausedByUnit(unit);
         planetsManager.objectsLayer.linksManager.syncFractions();
@@ -496,6 +509,7 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
 
 
     private void updateMaxDefense() {
+        if (mineShieldUntil > 0) { maxDefense = 14; return; }
         switch (type) {
             default:
                 maxDefense = 7;
@@ -504,6 +518,11 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
                 maxDefense = 14;
                 break;
         }
+    }
+
+    public void restoreMineShield(double until) {
+        mineShieldUntil = until;
+        updateMaxDefense(); createShields(); syncShieldsWithCurrentDefense();
     }
 
 

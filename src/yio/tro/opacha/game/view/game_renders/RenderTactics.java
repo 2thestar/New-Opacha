@@ -75,25 +75,32 @@ public final class RenderTactics extends GameRender {
 
     @Override public void render() {
         TacticsManager t = getObjectsLayer().tactics;
-        for (RouteBomb bomb : t.bombs) if (bomb.active) {
+        BattlefieldArt art=BattlefieldArt.get();
+        for (RouteBomb bomb : t.bombs) if (bomb.active && bomb.owner == FractionType.green) {
             double x = bomb.link.one.viewPosition.center.x + Math.cos(bomb.link.angle) * bomb.link.distance * bomb.position;
             double y = bomb.link.one.viewPosition.center.y + Math.sin(bomb.link.angle) * bomb.link.distance * bomb.position;
-            batchMovable.setColor(Color.WHITE); glyph("bomb", x, y, .045 * w);
+            art.bomb(batchMovable,x,y,w*.022,0,bomb.owner,t.elapsed,null);
         }
-        for (BombCourier courier : t.couriers) if (courier.visibleTo(FractionType.green)
-                || (GameRules.aiOnlyMode && courier.active)) {
+        for (BombCourier courier : t.couriers) if (courier.visibleTo(FractionType.green)) {
             PointYio p = courier.position();
-            batchMovable.setColor(Color.WHITE); glyph("bomb", p.x, p.y, .028 * w);
-            tint(courier.owner, 1); circle(p.x, p.y, .018 * w, 1, false);
+            art.bomb(batchMovable,p.x,p.y,w*.022,courier.link.angle,courier.owner,t.elapsed,Integer.toString(TacticsManager.BOMB_CREW));
+        }
+        for (MobileBomb bomb : t.mobileBombs) if (bomb.visibleTo(FractionType.green)) {
+            PointYio p = bomb.position();
+            if(bomb.node==null)art.bomb(batchMovable,p.x,p.y,w*.025,bomb.link.angle,bomb.owner,t.elapsed,null);
+            else art.bomb(batchMovable,p.x,p.y,
+                    bomb.node.viewPosition.radius*.39,0,bomb.owner,t.elapsed,null);
         }
         for (Planet node : getObjectsLayer().planetsManager.planets) {
+            if(!node.isCurrentlyVisible())continue;
             float x = node.viewPosition.center.x, y = node.viewPosition.center.y, r = node.viewPosition.radius;
-            int visibleTraps = GameRules.aiOnlyMode || gameController.gameMode == GameMode.editor
+            int visibleTraps = gameController.gameMode == GameMode.editor
                     ? node.nodeBombs : node.visibleNodeBombs(FractionType.green);
             if (visibleTraps > 0) {
                 for (int i = 0; i < visibleTraps; i++) {
-                    batchMovable.setColor(Color.WHITE);
-                    glyph("bomb", x - 1.55 * r, y + (i - (visibleTraps - 1) / 2.0) * .8 * r, .75 * r);
+                    double angle=2.65+i*.58;
+                    art.bomb(batchMovable,x+Math.cos(angle)*r*1.50,y+Math.sin(angle)*r*1.50,
+                            r*.30,0,node.fraction,t.elapsed,null);
                 }
             }
             if (node.type == PlanetType.artillery) {
@@ -169,14 +176,11 @@ public final class RenderTactics extends GameRender {
     private void cannon(Planet node){
         TacticsManager t=getObjectsLayer().tactics;
         double angle=t.shotSource==node&&t.shotTarget!=null?node.position.center.angleTo(t.shotTarget.position.center):Math.PI/4;
-        double recoil=0;
+        double shotAge=-1;
         for(BattlefieldVisuals.Shot shot:getObjectsLayer().unitManager.visuals.shots)if(shot.source==node){
-            double age=t.elapsed-shot.time;if(age>=0&&age<.16)recoil=.15*(1-BattlefieldArt.smooth(age/.16));
+            double age=t.elapsed-shot.time;if(age>=0&&(shotAge<0||age<shotAge))shotAge=age;
         }
-        if(yio.tro.opacha.menu.UiMotion.reduced)recoil=0;
-        double r=node.viewPosition.radius,dx=Math.cos(angle),dy=Math.sin(angle),x=node.viewPosition.center.x,y=node.viewPosition.center.y;
-        UiStyle.get().line(batchMovable,x+dx*r*.80,y+dy*r*.80,x+dx*r*(1.62-recoil),y+dy*r*(1.62-recoil),r*.34,BattlefieldArt.TREAD,1);
-        UiStyle.get().line(batchMovable,x+dx*r*.88,y+dy*r*.88,x+dx*r*(1.57-recoil),y+dy*r*(1.57-recoil),r*.20,BattlefieldArt.SAGE,1);
+        BattlefieldArt.get().tentacle(batchMovable,node,angle,shotAge,t.pending==TacticsManager.Action.artillery&&t.source==node);
     }
     private void effects(){
         BattlefieldArt art=BattlefieldArt.get();double now=getObjectsLayer().tactics.elapsed;
@@ -184,11 +188,14 @@ public final class RenderTactics extends GameRender {
             if(!hit.friendly)art.puff(batchMovable,hit.node,hit.angle,now-hit.time);
         for(BattlefieldVisuals.Shot shot:getObjectsLayer().unitManager.visuals.shots){
             double age=now-shot.time,dx=Math.cos(shot.angle),dy=Math.sin(shot.angle),r=shot.source.viewPosition.radius;
-            double ax=shot.source.viewPosition.center.x+dx*r*1.65,ay=shot.source.viewPosition.center.y+dy*r*1.65;
+            double ax=shot.source.viewPosition.center.x+dx*r*1.75,ay=shot.source.viewPosition.center.y+dy*r*1.75;
             double bx=shot.target.viewPosition.center.x-dx*shot.target.viewPosition.radius,by=shot.target.viewPosition.center.y-dy*shot.target.viewPosition.radius;
-            if(age>=0&&age<.08&&!yio.tro.opacha.menu.UiMotion.reduced)art.ellipse(batchMovable,ax,ay,r*.15,r*.09,shot.angle,BattlefieldArt.HOT,(float)(1-age/.08));
-            if(age>=0&&age<.22&&!yio.tro.opacha.menu.UiMotion.reduced){double p=age/.22;art.ellipse(batchMovable,ax+(bx-ax)*p,ay+(by-ay)*p,w*.0035,w*.0035,0,BattlefieldArt.NUMBER,1);}
-            art.puff(batchMovable,shot.target,shot.angle+Math.PI,age-.22);
+            double flight=age-BattlefieldArt.SHOT_RELEASE;
+            if(flight>=0&&flight<BattlefieldArt.SHOT_FLIGHT&&!yio.tro.opacha.menu.UiMotion.reduced){
+                double p=flight/BattlefieldArt.SHOT_FLIGHT;
+                art.cannonBall(batchMovable,ax+(bx-ax)*p,ay+(by-ay)*p,Math.max(w*.0055,r*.12));
+            }
+            art.puff(batchMovable,shot.target,shot.angle+Math.PI,flight-BattlefieldArt.SHOT_FLIGHT);
         }
     }
     private void circle(double x, double y, double radius, double portion, boolean dashed) {

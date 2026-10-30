@@ -33,7 +33,7 @@ public final class TimingSmokeTest extends PlaytestLab {
             clock.reset();int ticks=0;for(int i=0;i<rate*12;i++)ticks+=clock.advance(1d/rate);
             require(ticks==720,"Clock drift at "+rate+": "+ticks);
         }
-        StringBuilder csv=new StringBuilder("speed,fps,game_seconds,economy,garrison,shield,route_work,couriers,node_bombs,reload,repeat_events\n");
+        StringBuilder csv=new StringBuilder("speed,fps,game_seconds,economy,garrison,shield,route_work,moving_bombs,node_bombs,reload,repeat_events\n");
         for(int speed:new int[]{1,3}){
             String baseline=null;
             for(int rate:new int[]{60,15,30,90,120,144}){
@@ -54,12 +54,15 @@ public final class TimingSmokeTest extends PlaytestLab {
         Planet depot=node(.15,.35,FractionType.green,150,PlanetType.economic);
         Planet fort=node(.75,.35,FractionType.green,60,PlanetType.defensive);
         Planet gun=node(.15,1.1,FractionType.green,80,PlanetType.artillery);
+        Planet secondFactory=node(.45,1.4,FractionType.green,0,PlanetType.economic);
         Planet target=node(.75,1.1,FractionType.red,200,PlanetType.empty);
         Link supply=l.linksManager.addLink(depot,fort);supply.directional=true;
         Link dig=l.linksManager.addLink(fort,gun);dig.builder=FractionType.green;dig.constructionCost=80;dig.constructionSpent=10;
         l.linksManager.addLink(gun,target);
         gameController.onEndCreation();l.aiManager.entities.clear();l.linksManager.syncFractions();
-        require(l.tactics.buyBomb(depot)&&l.tactics.sendBomb(depot,fort),"Courier setup");
+        l.unitManager.launchUnit(depot,fort,60);
+        Unit cargo=l.unitManager.units.get(l.unitManager.units.size()-1);cargo.acceleratableFactor.value=.2f;
+        require(l.tactics.convertToBomb(cargo)!=null,"Factory army conversion setup");
         require(l.tactics.fire(gun,target),"Artillery setup");
         l.unitManager.launchUnit(fort,gun,16);
         l.unitManager.launchUnit(depot,fort,12);
@@ -77,7 +80,7 @@ public final class TimingSmokeTest extends PlaytestLab {
         gameController.speedManager.setSpeed(speed);
         l.moveFrame(1d/120);require(l.tactics.elapsed==elapsed,"Pause left a partial simulation tick");
         l.resetClock();
-        return String.format(Locale.ROOT,"%.6f,%.6f,%.6f,%.6f,%d,%d,%d,%.6f,%d",elapsed,depot.unitsInside,fort.unitsInside,fort.currentDefense,dig.constructionSpent,l.tactics.couriers.size(),fort.nodeBombs,gun.artilleryReload,events[0]);
+        return String.format(Locale.ROOT,"%.6f,%.6f,%.6f,%.6f,%d,%d,%d,%.6f,%d",elapsed,depot.unitsInside,fort.unitsInside,fort.currentDefense,dig.constructionSpent,l.tactics.mobileBombs.size(),fort.nodeBombs,gun.artilleryReload,events[0]);
     }
     private Planet node(double x,double y,FractionType faction,int count,PlanetType type){
         Planet p=gameController.objectsLayer.planetsManager.spawnPlanet(new CircleYio(x*w,y*w,w*.05),faction);

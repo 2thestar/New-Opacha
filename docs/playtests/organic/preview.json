@@ -1,0 +1,13 @@
+{
+  "frames": 41,
+  "capture_seconds": 3.9666666666666575,
+  "gif_seconds": 4.61,
+  "encoding": "worker thread; frame durations follow captured simulation time",
+  "native_sizes": [
+    "390x844",
+    "480x800"
+  ],
+  "scenarios": 4,
+  "stills": 28,
+  "sha256": "bd15bd7be928700625c79f07b017cce87631a4e5ddc684d2b94f91bb4a734e61"
+}

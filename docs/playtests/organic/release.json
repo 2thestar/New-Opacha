@@ -1,0 +1,24 @@
+{
+  "version": "0.6.3",
+  "version_code": 9,
+  "package": "io.github.twothestar.newopacha",
+  "signing_certificate_sha256": "270631fbbc296fba0e6156cd6a0bda2377b5eb7761665c61b4c714c5b35c461a",
+  "files": [
+    {
+      "name": "New-Opacha-0.6.3.apk",
+      "bytes": 8749295,
+      "sha256": "96c9d46e1a4ede0a9f2632b8a3aa34eeb6f9ad950a1b330f81a6e286f8e57799"
+    },
+    {
+      "name": "New-Opacha-0.6.3-install.zip",
+      "bytes": 7331863,
+      "sha256": "5125d17406b2d4937921fc7362d7d42c5bb87389a1ceb94219b315a87a9f0364"
+    }
+  ],
+  "battlefield_pngs_unchanged": {
+    "assets/game/battlefield/nodes.png": true,
+    "assets/game/battlefield/rig-hull.png": true,
+    "assets/game/battlefield/rounded.png": true,
+    "assets/game/battlefield/vapor.png": true
+  }
+}
