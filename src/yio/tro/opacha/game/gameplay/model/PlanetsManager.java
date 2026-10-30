@@ -141,6 +141,19 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
 
 
     private void onClickedOnPlanet(Planet touchedPlanet) {
+        Planet selected = getCurrentlySelectedPlanet();
+        if (selected == touchedPlanet && touchedPlanet.isControlledByPlayer()) {
+            if (touchedPlanet.halvedSelectionMode && touchedPlanet.type == PlanetType.artillery
+                    && yio.tro.opacha.game.RuleFeatures.has(yio.tro.opacha.game.RuleFeatures.ARTILLERY)) {
+                objectsLayer.tactics.begin(TacticsManager.Action.artillery, touchedPlanet);
+            } else if (yio.tro.opacha.game.RuleFeatures.has(yio.tro.opacha.game.RuleFeatures.HALF)) {
+                touchedPlanet.setHalvedSelectionMode(!touchedPlanet.halvedSelectionMode);
+                Scenes.selectionOverlay.setSelectedPlanet(touchedPlanet);
+                Scenes.selectionOverlay.create();
+            }
+            yio.tro.opacha.menu.UiHaptics.nodeSelected();
+            return;
+        }
         if (checkToSendUnits(touchedPlanet)) return;
         if (checkToSelectPlanet(touchedPlanet)) return;
         if (checkToCancelAutoTarget(touchedPlanet)) return;
@@ -290,6 +303,7 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
     public Planet getCurrentlySelectedPlanet() {
         for (Planet planet : planets) {
             if (!planet.selectionEngineYio.isSelected()) continue;
+            if (!planet.holdSelection) continue;
             if (!planet.isControlledByPlayer()) return null;
             return planet;
         }

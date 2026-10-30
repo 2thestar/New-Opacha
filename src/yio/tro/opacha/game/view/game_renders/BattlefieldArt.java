@@ -48,6 +48,11 @@ final class BattlefieldArt {
             EDGE_LIME=Color.valueOf("91BF74"),EDGE_CYAN=Color.valueOf("65BBC9"),EDGE_ROSE=Color.valueOf("CB8796"),
             EDGE_YELLOW=Color.valueOf("C6AA68"),EDGE_VIOLET=Color.valueOf("9773B5");
     static final Color SHIELD=Color.valueOf("147B9B"),SHIELD_LIGHT=Color.valueOf("85EDFC");
+    static final double SHOT_RELEASE=.09,SHOT_FLIGHT=.24;
+    private static final Color FUSE=Color.valueOf("655244"),FUSE_LIGHT=Color.valueOf("D7C29F"),
+            SPARK=Color.valueOf("FFD467"),SPARK_HOT=Color.valueOf("F29B54"),BALL=Color.valueOf("24242A"),
+            BALL_LIGHT=Color.valueOf("73757C");
+    private final double[] tentaclePoints=new double[13*3];
     // Same faction colors as the existing colorblind unit atlas (yellow becomes violet).
     private static final Color ACCESS_CYAN=Color.valueOf("7AE7E7"),ACCESS_GREEN=Color.valueOf("B1E67B"),
             ACCESS_RED=Color.valueOf("E8797A"),ACCESS_YELLOW=Color.valueOf("B57AE7");
@@ -59,21 +64,30 @@ final class BattlefieldArt {
         switch(f){case cyan:return EDGE_CYAN;case green:return EDGE_LIME;case red:return EDGE_ROSE;
             case yellow:return SettingsManager.getInstance().colorblindMode?EDGE_VIOLET:EDGE_YELLOW;default:return TREAD;}
     }
-    void node(SpriteBatch batch,Planet node,double angle,double extension){
+    void node(SpriteBatch batch,Planet node,double angle,double extension,double time){
         float r=node.viewPosition.radius,x=node.viewPosition.center.x,y=node.viewPosition.center.y;
         TextureRegion region=nodes[SettingsManager.getInstance().colorblindMode?1:0][node.fraction.ordinal()][node.isDefensive()?1:0];
         float extent=r*4/3;batch.setColor(Color.WHITE);
-        if(extension<.001){batch.draw(region,x-extent,y-extent,2*extent,2*extent);return;}
-        // Only the transient contact sector deforms. The rest keeps the exact approved atlas and fixed light.
+        boolean factory=node.isEconomic(),reduced=yio.tro.opacha.menu.UiMotion.reduced;
+        if(extension<.001&&!factory){batch.draw(region,x-extent,y-extent,2*extent,2*extent);return;}
+        // Deform the existing material, keeping its light and the count independent.
+        double phase=reduced?0:time*.90+node.position.center.x*.013+node.position.center.y*.017;
+        double breath=factory&&!reduced?.028*Math.sin(phase*2.3):0;
         double dx=Math.cos(angle),dy=Math.sin(angle);
         int steps=r<48?12:r<90?16:20,stride=steps+1;
         // Evaluate shared corners once, then submit the entire mesh together.
         for(int row=0;row<=steps;row++)for(int col=0;col<=steps;col++){
             double u=col/(double)steps,v=row/(double)steps;
             double lx=(u*2-1)*extent,ly=(v*2-1)*extent,along=(lx*dx+ly*dy)/r,across=(-lx*dy+ly*dx)/(r*.48);
-            double square=across*across,shift=extension*smooth((along-.55)/.45)*Math.exp(-square*square);
+            double square=across*across,shift=extension>.001?extension*smooth((along-.55)/.45)*Math.exp(-square*square):0;
+            double scale=1;
+            if(factory){
+                double radius=Math.hypot(lx,ly)/r,a=Math.atan2(ly,lx);
+                double wave=.078*Math.sin(5*a-phase)+.027*Math.sin(3*a+phase*.63);
+                scale+=smooth((radius-.30)/.70)*(wave+breath);
+            }
             int k=(row*stride+col)*4;
-            nodeGrid[k]=(float)(x+lx+dx*shift);nodeGrid[k+1]=(float)(y+ly+dy*shift);
+            nodeGrid[k]=(float)(x+lx*scale+dx*shift);nodeGrid[k+1]=(float)(y+ly*scale+dy*shift);
             nodeGrid[k+2]=(float)(region.getU()+u*(region.getU2()-region.getU()));
             nodeGrid[k+3]=(float)(region.getV2()+v*(region.getV()-region.getV2()));
         }
@@ -87,6 +101,63 @@ final class BattlefieldArt {
             }
         }
         batch.draw(texture,nodeVertices,0,offset);
+    }
+    /** A bomb retains the quiet fleet body. Its fuse supplies the distinction. */
+    void bomb(SpriteBatch batch,double x,double y,double rx,double angle,FractionType faction,double time,String crew){
+        double ry=rx*.73,dx=Math.cos(angle),dy=Math.sin(angle);
+        ellipse(batch,x,y,rx+rx*.065,ry+rx*.065,angle,UiStyle.BOARD,1);
+        ellipse(batch,x,y,rx,ry,angle,troopFace(faction),1);
+        ovalOutline(batch,x,y,rx,ry,angle,rx*.075,troopEdge(faction),0,0);
+        double oldX=x+dx*rx*.48-dy*ry*.72,oldY=y+dy*rx*.48+dx*ry*.72;
+        for(int i=1;i<=8;i++){
+            double t=i/8.0,localX=rx*(.48+.90*t-.23*t*t),localY=ry*(.72+1.58*t-.68*t*t);
+            double nextX=x+dx*localX-dy*localY,nextY=y+dy*localX+dx*localY;
+            UiStyle.get().line(batch,oldX,oldY,nextX,nextY,rx*.105,FUSE,1);
+            UiStyle.get().line(batch,oldX-rx*.014,oldY+rx*.025,nextX-rx*.014,nextY+rx*.025,rx*.035,FUSE_LIGHT,.8f);
+            oldX=nextX;oldY=nextY;
+        }
+        boolean reduced=yio.tro.opacha.menu.UiMotion.reduced;
+        double phase=reduced?0:time*5.5+x*.017+y*.013;
+        ellipse(batch,oldX,oldY,rx*.13,rx*.13,0,SPARK_HOT,.7f);
+        ellipse(batch,oldX,oldY,rx*.075,rx*.075,0,SPARK,1);
+        if(!reduced)for(int i=0;i<3;i++){
+            double age=(phase+i/3.0)%1,a=angle+.50+i*1.9,d=rx*(.10+.38*age);
+            UiStyle.get().line(batch,oldX+Math.cos(a)*d,oldY+Math.sin(a)*d,
+                    oldX+Math.cos(a)*(d+rx*.09),oldY+Math.sin(a)*(d+rx*.09),rx*.045,SPARK,(float)(1-age));
+        }
+        if(crew!=null)count(batch,crew,x,y,ry*1.2,rx*1.5);
+    }
+    /** A soft overhead tube grows directly from the node rim, leaving its count clear. */
+    void tentacle(SpriteBatch batch,Planet node,double angle,double age,boolean selected){
+        boolean reduced=yio.tro.opacha.menu.UiMotion.reduced;
+        double pulse=!reduced&&age>=0&&age<.29?(age<SHOT_RELEASE?smooth(age/SHOT_RELEASE):1-smooth((age-SHOT_RELEASE)/.20)):0;
+        double recoil=!reduced&&age>=SHOT_RELEASE&&age<.30?.11*(1-smooth((age-SHOT_RELEASE)/.21)):0;
+        double r=node.viewPosition.radius,x=node.viewPosition.center.x,y=node.viewPosition.center.y,dx=Math.cos(angle),dy=Math.sin(angle);
+        double tip=1.75-recoil,armedScale=selected?1.5:1,root=.84+.26*armedScale;
+        for(int i=0;i<=12;i++){
+            double u=i/12.0,along=r*(root+(tip-root)*u),bend=r*.18*Math.pow(Math.sin(Math.PI*u),2);
+            tentaclePoints[i*3]=x+dx*along-dy*bend;
+            tentaclePoints[i*3+1]=y+dy*along+dx*bend;
+            tentaclePoints[i*3+2]=r*(.52-.14*u)*armedScale*(1+.16*pulse*Math.sin(Math.PI*u));
+        }
+        Color edge=troopEdge(node.fraction),face=troopFace(node.fraction);
+        for(int layer=0;layer<3;layer++)for(int i=1;i<=12;i++){
+            double offsetX=layer==2?-r*.028:0,offsetY=layer==2?r*.040:0;
+            double width=tentaclePoints[i*3+2]-(layer==1?r*.065:0);
+            if(layer==2)width=r*.060;
+            UiStyle.get().line(batch,tentaclePoints[(i-1)*3]+offsetX,tentaclePoints[(i-1)*3+1]+offsetY,
+                    tentaclePoints[i*3]+offsetX,tentaclePoints[i*3+1]+offsetY,width,
+                    layer==0?edge:layer==1?face:Color.WHITE,layer==2?.36f:1);
+        }
+        double mx=x+dx*r*tip,my=y+dy*r*tip,opening=.60+.40*pulse,thickness=selected?1.5:1;
+        ellipse(batch,mx,my,r*.105,r*.235*thickness,angle,edge,1);
+        ellipse(batch,mx-dx*r*.012,my-dy*r*.012,r*.075,r*.202*thickness,angle,face,1);
+        ellipse(batch,mx+dx*r*.012,my+dy*r*.012,r*.045*opening,r*.145*opening*thickness,angle,BALL,1);
+    }
+    void cannonBall(SpriteBatch batch,double x,double y,double radius){
+        if(UiStyle.isNight())ellipse(batch,x,y,radius*1.30,radius*1.30,0,UiStyle.OUTLINE,.95f);
+        ellipse(batch,x,y,radius,radius,0,BALL,1);
+        ellipse(batch,x-radius*.27,y+radius*.30,radius*.21,radius*.16,-.4,BALL_LIGHT,.7f);
     }
     void ellipse(SpriteBatch batch,double x,double y,double rx,double ry,double angle,Color color,float alpha){
         batch.setColor(color.r,color.g,color.b,alpha);TextureRegion t=UiStyle.get().circle;

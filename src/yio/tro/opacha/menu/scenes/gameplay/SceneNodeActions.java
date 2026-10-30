@@ -42,16 +42,11 @@ public final class SceneNodeActions extends ModalSceneYio {
     @Override protected void onAppear() {
         options.clear();
         if (yio.tro.opacha.game.RuleFeatures.has(16)) options.add(routeButton);
-        if (node.isEconomic() && yio.tro.opacha.game.RuleFeatures.has(32)) options.add(buyBombButton);
         if (yio.tro.opacha.game.RuleFeatures.has(64)) {
             if (node.type != PlanetType.artillery) options.add(buildGunButton);
             else options.add(fireButton);
         }
         int stock = node.bombStock;
-        if (stock > 0 && yio.tro.opacha.game.RuleFeatures.has(32)) {
-            options.add(placeBombButton);
-            if (yioGdxGame.gameController.objectsLayer.tactics.reservedBombs(node) < 3) options.add(armBombButton);
-        }
         placeBombButton.applyText(languagesManager.getString("place_bomb") + " (" + stock + ")");
         armBombButton.applyText(languagesManager.getString("arm_node_bomb") + " (" + node.nodeBombs + "/3)");
         defaultLabel.setSize(.86, .11 + .08 * options.size()).alignBottom(.12).centerHorizontal();

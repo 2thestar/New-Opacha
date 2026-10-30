@@ -1,0 +1,4 @@
+scene,frames,fresh_frames,mean_ms,p50_ms,p95_ms,max_ms,draw_calls,texture_binds,vertices
+idle,120,120,0.344,0.340,0.401,0.452,43.8,43.8,20042.2
+contacts,120,120,0.807,0.868,0.979,1.091,80.0,80.0,56838.0
+stress,120,120,4.577,5.005,5.146,5.248,316.0,316.0,330624.0

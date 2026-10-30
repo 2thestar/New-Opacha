@@ -29,6 +29,7 @@ public final class TacticsSmokeTest extends YioGdxGame {
     private final long deadline = System.nanoTime() + 260_000_000_000L;
     private TacticsSmokeTest(String directory) { output = new FileHandle(directory); }
     public static void main(String[] args) {
+        if (args.length <= 3) { WeaponUsabilitySmokeTest.main(args); return; }
         platformType = PlatformType.pc;
         TacticsSmokeTest game = new TacticsSmokeTest(args[2]);
         game.rulesOnly = args.length > 3 && args[3].equals("rules");

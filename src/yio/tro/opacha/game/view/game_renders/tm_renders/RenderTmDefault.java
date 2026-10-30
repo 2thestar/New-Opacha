@@ -60,7 +60,9 @@ public class RenderTmDefault extends GameRender{
         }
         float scaleX = label.font.getData().scaleX, scaleY = label.font.getData().scaleY;
         label.font.getData().setScale(gameController.cameraController.orthoCam.zoom);
-        label.setString(LanguagesManager.getInstance().getString(source.halvedSelectionMode ? "ui_repeat_half" : "ui_repeat")); label.updateMetrics();
+        label.setString(LanguagesManager.getInstance().getString(gameController.objectsLayer.tactics.pending
+                == yio.tro.opacha.game.gameplay.model.TacticsManager.Action.artillery ? "fire_artillery"
+                : source.halvedSelectionMode ? "ui_repeat_half" : "ui_repeat")); label.updateMetrics();
         label.position.set((sx + tx) / 2 - label.width / 2, (sy + ty) / 2 + label.height + .012 * w);
         style.rounded(batchMovable, label.position.x - .012f * w, label.position.y - label.height - .006f * w,
                 label.width + .024f * w, label.height + .012f * w, UiStyle.BOARD, .97f);

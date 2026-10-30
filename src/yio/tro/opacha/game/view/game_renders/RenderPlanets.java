@@ -9,7 +9,6 @@ import yio.tro.opacha.menu.UiStyle;
 import yio.tro.opacha.stuff.*;
 
 public class RenderPlanets extends GameRender {
-    private static final Color CONVEYOR_LIGHT=Color.valueOf("E6FFCE");
     private Object homesLayer;
     @Override protected void loadTextures(){
         BattlefieldArt.get();
@@ -22,7 +21,7 @@ public class RenderPlanets extends GameRender {
         for(Planet p:getObjectsLayer().planetsManager.planets){
             if(!p.isCurrentlyVisible())continue;
             selection(p);node(p);accessibleMark(p);
-            shields(p);economy(p);order(p);
+            shields(p);order(p);
         }
         for(Planet p:getObjectsLayer().planetsManager.planets){
             if(!p.isCurrentlyVisible())continue;
@@ -45,20 +44,10 @@ public class RenderPlanets extends GameRender {
         double r=p.viewPosition.radius,x=p.viewPosition.center.x,y=p.viewPosition.center.y,step=Math.PI*2/7;
         for(int i=0;i<count;i++){
             double a,b;
-            if(p.isDefensive()){int gap=i/2,slot=i%2;double center=Math.PI/2-gap*step-step/2+(slot==0?.12:-.12);a=center-.072;b=center+.072;}
+            if(p.maxDefense>7){int gap=i/2,slot=i%2;double center=Math.PI/2-gap*step-step/2+(slot==0?.12:-.12);a=center-.072;b=center+.072;}
             else{a=-Math.PI/2+i*step+.20;b=a+.49;}
             arc(x,y,r*1.085,a,b,Math.max(w*.0030,r*.057),BattlefieldArt.SHIELD,1);
             arc(x,y+r*.008,r*1.085,a,b,Math.max(w*.0019,r*.042),BattlefieldArt.SHIELD_LIGHT,1);
-        }
-    }
-    private void economy(Planet p){
-        if(!p.isEconomic())return;
-        double r=p.viewPosition.radius,x=p.viewPosition.center.x,y=p.viewPosition.center.y,phase=yio.tro.opacha.menu.UiMotion.reduced?0:getObjectsLayer().tactics.elapsed*.40;
-        arc(x,y,r*.77,0,Math.PI*2,r*.10,BattlefieldArt.troopEdge(p.fraction),.32f);
-        for(int i=0;i<15;i++){
-            double a=phase+i*Math.PI*2/15;
-            BattlefieldArt.get().smallBox(batchMovable,x+Math.cos(a)*r*.77,y+Math.sin(a)*r*.77,
-                    r*.094,r*.044,r*.02,a+Math.PI/2,i%5==0?CONVEYOR_LIGHT:BattlefieldArt.face(p.fraction));
         }
     }
     private void order(Planet p){
@@ -83,7 +72,7 @@ public class RenderPlanets extends GameRender {
             double amount=r*.24*(1-BattlefieldArt.smooth(age/.38));if(amount>extension){extension=amount;angle=hit.angle;}
         }
         }
-        BattlefieldArt.get().node(batchMovable,p,angle,extension);
+        BattlefieldArt.get().node(batchMovable,p,angle,extension,now);
     }
     private void accessibleMark(Planet p){
         if(!SettingsManager.getInstance().colorblindMode||p.fraction==FractionType.neutral)return;

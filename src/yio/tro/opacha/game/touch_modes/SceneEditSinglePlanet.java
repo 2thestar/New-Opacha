@@ -4,6 +4,7 @@ import yio.tro.opacha.game.gameplay.EditorWorker;
 import yio.tro.opacha.game.gameplay.model.FractionType;
 import yio.tro.opacha.game.gameplay.model.Planet;
 import yio.tro.opacha.game.gameplay.model.PlanetType;
+import yio.tro.opacha.game.gameplay.model.MobileBomb;
 import yio.tro.opacha.menu.LanguagesManager;
 import yio.tro.opacha.menu.elements.AnimationYio;
 import yio.tro.opacha.menu.elements.LightBottomPanelElement;
@@ -97,7 +98,11 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
                 .setReaction(new yio.tro.opacha.menu.reactions.Reaction() {
                     @Override protected void reaction() {
                         if (selectedPlanet.isNeutral()) return;
-                        selectedPlanet.bombStock = (selectedPlanet.bombStock + 1) % 6; updateAiLabel();
+                        java.util.ArrayList<MobileBomb> bombs = gameController.objectsLayer.tactics.mobileBombs;
+                        MobileBomb existing = bombAtNode();
+                        if (existing == null) bombs.add(new MobileBomb(selectedPlanet.fraction, selectedPlanet));
+                        else bombs.remove(existing);
+                        updateAiLabel();
                     }
                 });
         trapsButton = uiFactory.getButton().setParent(lightBottomPanelElement).setSize(.80,.055)
@@ -105,7 +110,7 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
                 .setReaction(new yio.tro.opacha.menu.reactions.Reaction() {
                     @Override protected void reaction() {
                         if (selectedPlanet.isNeutral()) return;
-                        selectedPlanet.nodeBombs = (selectedPlanet.nodeBombs + 1) % 4; updateAiLabel();
+                        selectedPlanet.nodeBombs = 1 - Math.min(1, selectedPlanet.nodeBombs); updateAiLabel();
                     }
                 });
         flagButton = uiFactory.getButton().setParent(lightBottomPanelElement).setSize(.80,.055)
@@ -119,8 +124,14 @@ public class SceneEditSinglePlanet extends ModalSceneYio{
         yio.tro.opacha.game.gameplay.ai.AiType type = yio.tro.opacha.game.GameRules.aiTypes.get(selectedPlanet.fraction);
         aiButton.applyText(selectedPlanet.isNeutral() ? "editor_no_ai" : "AI: " + (type == null ? "simple" : type.toString()));
         stockButton.applyText(LanguagesManager.getInstance().getString("editor_bombs") + ": "
-                + selectedPlanet.bombStock);
-        trapsButton.applyText(LanguagesManager.getInstance().getString("editor_node_bombs") + ": " + selectedPlanet.nodeBombs + "/3");
+                + (bombAtNode() == null ? 0 : 1));
+        trapsButton.applyText(LanguagesManager.getInstance().getString("editor_node_bombs") + ": " + selectedPlanet.nodeBombs);
+    }
+
+    private MobileBomb bombAtNode() {
+        for (MobileBomb bomb : yioGdxGame.gameController.objectsLayer.tactics.mobileBombs)
+            if (bomb.active && bomb.node == selectedPlanet && bomb.owner == selectedPlanet.fraction) return bomb;
+        return null;
     }
 
 

@@ -23,6 +23,8 @@ public class Unit implements ReusableYio, AcceleratableYio{
     public RenderableTextYio title;
     public boolean digger;
     public boolean workingDigger;
+    public boolean heldForBomb;
+    public boolean factoryDeparture;
     private double digAccumulator;
     private static int nextJourney;
     int journeyId;
@@ -49,6 +51,8 @@ public class Unit implements ReusableYio, AcceleratableYio{
         target = null;
         digger = false;
         workingDigger = false;
+        heldForBomb = false;
+        factoryDeparture = false;
         digAccumulator = 0;
     }
 
@@ -60,7 +64,7 @@ public class Unit implements ReusableYio, AcceleratableYio{
 
 
     private void applyWalk() {
-        if (!alive) return;
+        if (!alive || heldForBomb) return;
         float oldPosition = acceleratableFactor.value;
         if (acceleratableFactor.move(VelocityManager.getInstance().value)) {
             if (digger) dig(oldPosition);
@@ -118,6 +122,7 @@ public class Unit implements ReusableYio, AcceleratableYio{
         }
 
         this.link = link;
+        factoryDeparture = start.isEconomic();
         journeyId = ++nextJourney;
 
         if (start == link.one) {
@@ -200,6 +205,17 @@ public class Unit implements ReusableYio, AcceleratableYio{
     }
 
     public Planet getTarget(){return target;}
+    public yio.tro.opacha.stuff.PointYio touchPosition() {
+        Planet start = getStart();
+        double p = start == link.one ? acceleratableFactor.value : 1 - acceleratableFactor.value;
+        double radius = .029 * yio.tro.opacha.stuff.GraphicsYio.width;
+        double from = start.viewPosition.radius + radius * .82;
+        double to = link.distance - target.viewPosition.radius - radius * .82;
+        yio.tro.opacha.stuff.PointYio point = new yio.tro.opacha.stuff.PointYio();
+        point.setBy(start.viewPosition.center);
+        point.relocateRadial(from + p * (to - from), start.position.center.angleTo(target.position.center));
+        return point;
+    }
     public Planet getStart(){return link.getOppositePlanet(target);}
     public double digFraction(){return Math.max(0,Math.min(1,digAccumulator));}
 }

@@ -51,7 +51,7 @@ public class EditorWorker implements IGameplayManager{
         link.two = nextRouteStyle == 2 ? one : two;
         link.directional = nextRouteStyle != 0;
         link.builder = nextRouteStyle == 3 ? one.fraction : null;
-        link.constructionCost = nextRouteStyle == 3 ? Math.max(1, (int) Math.ceil(80 * link.distance / objectsLayer.tactics.normalRouteLength)) : 0;
+        link.constructionCost = nextRouteStyle == 3 ? Math.max(1, (int) Math.ceil(120 * link.distance / objectsLayer.tactics.normalRouteLength)) : 0;
         link.constructionSpent = 0;
         syncLinkFraction(link);
         link.initNPoints();

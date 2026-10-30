@@ -6,6 +6,10 @@ import yio.tro.opacha.game.GameRules;
 import yio.tro.opacha.game.gameplay.ObjectsLayer;
 import yio.tro.opacha.game.gameplay.model.Planet;
 import yio.tro.opacha.game.gameplay.model.PlanetsManager;
+import yio.tro.opacha.game.gameplay.model.Unit;
+import yio.tro.opacha.game.gameplay.model.MobileBomb;
+import yio.tro.opacha.game.gameplay.model.FractionType;
+import yio.tro.opacha.game.gameplay.model.TacticsManager;
 import yio.tro.opacha.game.view.game_renders.GameRender;
 import yio.tro.opacha.game.view.game_renders.GameRendersList;
 import yio.tro.opacha.menu.two_finger_touch.TwoFingerListener;
@@ -22,6 +26,9 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
     long touchDownTime;
     TwoFingerTouchManager twoFingerTouchManager;
     boolean twoFingerDetected;
+    Unit heldTroop;
+    MobileBomb touchedBomb;
+    boolean gestureConsumed;
 
 
     public TmDefault(GameController gameController) {
@@ -46,6 +53,7 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
 
     @Override
     public void onModeBegin() {
+        releaseTroop();
         iconAnimFactor.reset();
         cameraBlocked = false;
         touchDownPlanet = null;
@@ -55,7 +63,7 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
 
     @Override
     public void onModeEnd() {
-
+        releaseTroop();
     }
 
 
@@ -79,13 +87,27 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
         if (gameController.objectsLayer.spectateManager.active) return;
 
         twoFingerDetected = false;
+        gestureConsumed = false;
+        releaseTroop();
         longTapDetector.onTouchDown(gameController.currentTouch);
         twoFingerTouchManager.onTouchDown(gameController.currentTouch);
+        if (twoFingerDetected) {
+            cameraBlocked = true; touchDownPlanet = null; touchedBomb = null;
+            return;
+        }
 
         cameraBlocked = false;
         touchDownPlanet = null;
         checkToBlockCamera();
         checkToHighlightPlanet();
+        TacticsManager tactics = gameController.objectsLayer.tactics;
+        touchedBomb = tactics.pending == TacticsManager.Action.none
+                ? tactics.findBomb(gameController.currentTouchConverted, FractionType.green) : null;
+        if (touchedBomb != null) { cameraBlocked = true; touchDownPlanet = null; }
+        else if (touchDownPlanet == null && tactics.pending == TacticsManager.Action.none) {
+            heldTroop = tactics.findBombTroop(gameController.currentTouchConverted, FractionType.green);
+            if (heldTroop != null) { heldTroop.heldForBomb = true; cameraBlocked = true; }
+        }
     }
 
 
@@ -119,6 +141,10 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
         if (GameRules.aiOnlyMode) return;
         longTapDetector.onTouchDrag(gameController.currentTouch);
         twoFingerTouchManager.onTouchDrag(gameController.currentTouch);
+        if (heldTroop != null && gameController.currentTouch.distanceTo(gameController.touchDownPos)
+                > .05 * yio.tro.opacha.stuff.GraphicsYio.width) {
+            releaseTroop(); cameraBlocked = false; gestureConsumed = true;
+        }
     }
 
 
@@ -129,10 +155,22 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
         twoFingerTouchManager.onTouchUp(gameController.currentTouch);
         checkToUnblockCamera();
         getPlanetsManager().releaseHighlights();
+        releaseTroop();
+        touchedBomb = null;
     }
 
 
     private void checkToUnblockCamera() {
+        if (gestureConsumed) { cameraBlocked = false; return; }
+        TacticsManager tactics = gameController.objectsLayer.tactics;
+        if (tactics.pending == TacticsManager.Action.artillery) {
+            Planet target = getDragTarget();
+            cameraBlocked = false;
+            if (target != null && tactics.fire(tactics.source, target)) {
+                tactics.cancel(); yio.tro.opacha.menu.UiHaptics.orderIssued();
+            }
+            return;
+        }
         if (gameController.objectsLayer.tactics.pending != yio.tro.opacha.game.gameplay.model.TacticsManager.Action.none) {
             cameraBlocked = false;
             return;
@@ -147,6 +185,13 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
 
     /** Preview and release share one decision, including ownership and route legality. */
     public Planet getDragTarget() {
+        TacticsManager tactics = gameController.objectsLayer.tactics;
+        if (tactics.pending == TacticsManager.Action.artillery) {
+            if (!cameraBlocked || twoFingerDetected || touchDownPlanet == null || touchDownPlanet != tactics.source
+                    || !touchDownPlanet.isControlledByPlayer()) return null;
+            Planet target = getPlanetsManager().findTouchedPlanet(gameController.currentTouchConverted);
+            return tactics.canFire(tactics.source, target) ? target : null;
+        }
         if (!cameraBlocked || twoFingerDetected || touchDownPlanet == null
                 || !touchDownPlanet.isControlledByPlayer()
                 || gameController.objectsLayer.tactics.pending != yio.tro.opacha.game.gameplay.model.TacticsManager.Action.none) return null;
@@ -167,6 +212,14 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
         if (GameRules.aiOnlyMode) return false;
         if (gameController.objectsLayer.spectateManager.active) return false;
         ObjectsLayer objectsLayer = gameController.objectsLayer;
+        gestureConsumed = true;
+        if (twoFingerDetected) return true;
+        if (touchedBomb != null) {
+            if (objectsLayer.tactics.activateBomb(touchedBomb, FractionType.green))
+                yio.tro.opacha.menu.UiHaptics.orderIssued();
+            return true;
+        }
+        if (heldTroop != null) return true;
         objectsLayer.planetsManager.onClick(gameController.currentTouchConverted);
         return true;
     }
@@ -175,6 +228,14 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
     private void onLongTapDetected() {
         if (gameController.objectsLayer.tactics.pending != yio.tro.opacha.game.gameplay.model.TacticsManager.Action.none) return;
         if (GameRules.aiOnlyMode) return;
+        if (gestureConsumed) return;
+        if (twoFingerDetected || gameController.objectsLayer.spectateManager.active) return;
+        if (heldTroop != null) {
+            if (gameController.objectsLayer.tactics.convertToBomb(heldTroop) != null)
+                yio.tro.opacha.menu.UiHaptics.orderIssued();
+            releaseTroop(); cameraBlocked = false; gestureConsumed = true;
+            return;
+        }
 
         Planet touchedPlanet = getPlanetsManager().findTouchedPlanet(gameController.currentTouchConverted);
         if (touchedPlanet == null) return;
@@ -200,6 +261,7 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
 
     @Override
     public void onReachedTwoFingerState() {
+        releaseTroop();
         twoFingerDetected = true;
         cameraBlocked = true;
     }
@@ -220,5 +282,17 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
     @Override
     public void onTwoFingerRotated(double deltaAngle) {
 
+    }
+
+    private void releaseTroop() {
+        if (heldTroop != null) heldTroop.heldForBomb = false;
+        heldTroop = null;
+    }
+
+    public void cancelGesture() {
+        releaseTroop(); touchedBomb = null; touchDownPlanet = null;
+        gestureConsumed = true; cameraBlocked = false;
+        longTapDetector.onTouchUp(gameController.currentTouch);
+        getPlanetsManager().releaseHighlights();
     }
 }

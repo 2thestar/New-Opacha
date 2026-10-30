@@ -70,7 +70,7 @@ public final class CampaignSmokeTest extends YioGdxGame {
                 screenshot("07-editor-node");
                 click(Scenes.editSinglePlanet.aiButton); click(Scenes.editSinglePlanet.stockButton); click(Scenes.editSinglePlanet.trapsButton); break;
             case 9:
-                require(gameController.objectsLayer.planetsManager.planets.get(0).bombStock==1,"Editor bomb stock control failed"); require(gameController.objectsLayer.planetsManager.planets.get(0).nodeBombs==1,"Editor node traps control failed"); screenshot("08-editor-stock"); key(Input.Keys.ESCAPE); break;
+                require(gameController.objectsLayer.tactics.mobileBombs.size()==1,"Editor bomb placement control failed"); require(gameController.objectsLayer.planetsManager.planets.get(0).nodeBombs==1,"Editor node traps control failed"); screenshot("08-editor-stock"); key(Input.Keys.ESCAPE); break;
             case 10:
                 LoadingParameters p = new LoadingParameters(); p.addParameter("index",0); loadingManager.startInstantly(LoadingType.campaign_create,p); break;
             case 11:

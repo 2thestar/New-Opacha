@@ -356,6 +356,7 @@ public class GameController {
 
 
     public void onEscapedToPauseMenu() {
+        TouchMode.tmDefault.cancelGesture();
         objectsLayer.tactics.cancel();
         Scenes.nodeActions.destroy();
         Scenes.diplomacy.destroy();
@@ -365,7 +366,7 @@ public class GameController {
 
 
     public void onPause() {
-
+        TouchMode.tmDefault.cancelGesture();
     }
 
 

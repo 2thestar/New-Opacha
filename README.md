@@ -17,23 +17,23 @@ The [original-feel revision](docs/original-feel.md) adds zero-troop campaign ope
 
 ## Install on a Pixel 8a
 
-Download **[New-Opacha-0.6.2-install.zip](https://github.com/2thestar/New-Opacha/releases/download/v0.6.2-preview/New-Opacha-0.6.2-install.zip)**. Open it in Files by Google, tap **Extract**, then open the extracted APK to install **New Opacha**. Android may ask you to allow Files to install apps. The app has its own package ID and saves, so it can be installed alongside the original game.
+Download **[New-Opacha-0.6.3-install.zip](https://github.com/2thestar/New-Opacha/releases/download/v0.6.3-preview/New-Opacha-0.6.3-install.zip)**. Open it in Files by Google, tap **Extract**, then open the extracted APK to install **New Opacha**. Android may ask you to allow Files to install apps. The app has its own package ID and saves, so it can be installed alongside the original game.
 
 The ZIP avoids Chrome's stalled direct APK downloads and contains the same signed APK. ZIP installation was confirmed on the affected Pixel 8a with version 0.1.0. Install updates over the existing app to keep its saves.
 
-Version 0.6.2 removes repeated game frames, batches battlefield drawing, separates game timing from display frame rate, and fits large maps below the controls. [Performance measurements and test limits](docs/performance.md) document the changes.
+Version 0.6.3 adds softly pulsing wavy factories, bomb bubbles with sparking fuses, and soft cannons that release little black balls. It includes the updated weapon gestures and digging effort. [Graphics, captures and checks](docs/organic-0.6.3.md) describe this preview. The [0.6.2 performance correction](docs/performance.md) remains its rendering and timing foundation.
 
 ## Campaign and maps
 
 The campaign has 48 fixed maps: 12 each for conquest, neutral flag, starting flags and alliances. Lessons introduce captures, half sends, Grow, Defend, opponent types, directional routes, digging, bombs and artillery before combining them with flag and alliance objectives. New concepts get a short paused briefing. **Menu → Hint** gives a tactical suggestion during a campaign map.
 
-Campaign lessons unlock in order. **Play → Maps** opens every map immediately, with Play and Edit map controls. Edited copies can be saved or exported through the editor; the original library stays available. The editor supports all four modes, route directions and blueprints, flag placement, artillery, garrisons, AI types, local bomb stock and hidden node traps.
+Campaign lessons unlock in order. **Play → Maps** opens every map immediately, with Play and Edit map controls. Edited copies can be saved or exported through the editor; the original library stays available. The editor supports all four modes, route directions and blueprints, flag placement, artillery, garrisons, AI types, bombs waiting at nodes and hidden mines.
 
 All factions' owned campaign nodes start with zero troops. Captures have a brief gold pulse, the existing capture sound, and Android feedback. Selection, orders and upgrades also give tactile feedback. **Settings → Haptics** controls vibration; **Test vibration** checks delivery and reports blocked feedback. A fresh install starts at 1×; existing speed preferences are preserved. The new campaign uses separate progress, so old generated-campaign progress does not skip its lessons. Earlier editor saves remain available.
 
 [Balance findings and proposed experiments](docs/balance.md) explain the strategy tests and their limits. Raw results and reproduction commands are included.
 
-Bombs stay at the economic node that sells them. **Actions > Deliver bomb** sends a hidden two-troop courier to your node or a point on a route. Route bombs become visible once planted. **Trap this node** arms a local bomb; each node holds up to three. They hit invading survivors after capture, while the attacker keeps the node.
+With two owned Grow factories running, hold a moving group above 50 that departed a factory to convert the entire group into a secret bomb. Tap it on an edge to destroy that edge and every troop on it. Bombs follow your route arrows first; tap one at your own node to plant a hidden mine. A capturing enemy loses all its surviving troops and leaves a neutral node with 14 shields for 10 game seconds.
 
 ## AI players
 
@@ -49,7 +49,7 @@ Names appear only at each AI's home node. Difficulty controls decision speed sep
 
 Skirmish setup cycles between **Conquest**, **Flag: neutral supernode**, **Flag: starting nodes**, and **Alliances**. Choose normal routes or a mix that includes directional routes.
 
-Select one of your nodes and tap **Actions** to draw a route, buy or deliver bombs, or build and fire artillery. In alliance matches, use **Pacts** to offer, accept or break an alliance. [Gameplay rules](docs/tactics.md) list the costs, controls and victory conditions.
+Select one of your nodes and tap **Actions** to draw a route or build artillery. On a gun node, successive taps select full send, half send, then cannon aiming; the armed cannon thickens. Swipe or tap an enemy to shoot for 20 troops, removing 20% of its garrison through shields. Digging now consumes 120 troops per typical route length. In alliance matches, use **Pacts** to offer, accept or break an alliance. [Gameplay rules](docs/tactics.md) list the costs, controls and victory conditions.
 
 The battlefield uses smooth candy nodes, integrated tower spikes and countable shield segments. Troop drops stay flat and numbered on their routes; groups above 50 use a tiny tank. Departures pinch free, friendly arrivals merge, and enemy hits release a short warm puff. A single digging rig shows its working crew, including zero, while reinforcements travel into it. Cannons recoil and show a travelling shell and small target burst. The speed slider has its own wide row, visible stops and a light Android haptic tick when speed changes. **Settings → Appearance** offers Day or Night and optional abstract backgrounds that change with campaign chapters. Android's Remove animations preference suppresses decorative motion. [DESIGN.md](DESIGN.md) records the visual conventions and font licenses.
 

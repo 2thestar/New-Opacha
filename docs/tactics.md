@@ -1,84 +1,72 @@
-# New Opacha gameplay additions
+# Gameplay controls and rules
 
-## Controls and costs
+## Controls
 
-Select your node and tap **Actions**. A targeting command shows a **Cancel** button. Pause cancels targeting.
+Swipe from an owned node toward a linked node to set its repeating troop route. Taps on the same node cycle full send and half send. Artillery adds a third state: cannon aiming, shown by a thicker barrel. From that state, swipe from the gun onto an enemy node or tap an enemy node to fire. Tap the gun again to return to full send, or use Cancel. Artillery aiming does not issue troop orders.
+
+Actions opens route construction and artillery building. A targeting command has a Cancel button. Pause cancels targeting and releases any held troop group.
+
+## Bombs
+
+Keep at least two owned Grow factories running. Hold a moving group of at least 51 troops for half a second to convert the entire group into one bomb. The group must have departed a factory and must be on a completed edge, away from its endpoints. Troops leaving an ordinary node and working diggers do not qualify. The group pauses while held; dragging, a second finger, cancellation or releasing early lets it continue.
+
+The bomb replaces the whole group. It keeps its location, direction and route speed, and travels separately from combat troops. At an owned node it follows that node's standard route arrow before ordinary troops. Without a usable arrow it waits. On an enemy or neutral node it waits and cannot plant a mine until its owner controls that node.
+
+Tap your bomb:
+
+- On an edge: destroy the entire edge, all troops of every faction on it, and other bombs on it. Orders using that edge are cleared. Other edges and node garrisons survive.
+- At your own node: plant one hidden mine. A node with a mine cannot consume another bomb.
+
+A mine triggers when a hostile invasion would capture its node. All invading survivors die, the node becomes neutral with zero troops, and it receives 14 shields with a capacity of 14 for ten game seconds. After ten game seconds the ordinary capacity of seven returns. Failed invasions, friendly or allied arrivals and artillery do not trigger mines. A mined flag does not award victory to an invasion that the mine destroys.
+
+Bombs and mines are visible only to their owner. Enemy hit testing and AI threat calculations cannot inspect them. AI weapon decisions inspect only their own secret cargo and public troop traffic. Old purchase and delivery controls are retired.
+
+## Artillery and digging
 
 | Action | Rule |
 | --- | --- |
-| Directional route | Chevrons point toward the fast end: 2× normal speed, 0.3× in reverse. |
-| Route blueprint | Choose a second node. The first node is the fast-direction start. Existing connections cannot be duplicated. Crossing another route creates no junction. |
-| Digging | Send troops from the blueprint's start. They build from that end and are consumed as the construction front advances. A typical route costs 80 diggers; cost scales with distance and rounds up. The number beside the blueprint is the remaining work. |
-| Completed route | Becomes available to everyone in both directions, with directional speeds. Surviving diggers continue to the destination as ordinary troops. |
-| Bomb purchase | Costs 20 troops at an owned economic node. Stock stays at that node; capture destroys it. |
-| Bomb delivery | At a node with stock, choose Deliver bomb and tap an owned node or a point on a completed route. One bomb and two troops depart as a hidden courier. It follows the fastest existing path through your own nodes, then plants the bomb at the destination. |
-| Node traps | Trap this node uses local stock and two troops immediately. Up to three bombs can be armed on each owned node; deliveries in transit reserve space. Each deals 12 to the invading survivors after hostile capture. The attacker keeps the node even at zero troops. Traps are consumed together. Ordinary attacks that fail to capture, allied arrivals and artillery do not detonate them. |
-| Bomb hit | The first hostile fleet to cross loses up to 12 troops. The bomb is consumed. Own and allied fleets pass safely. Hidden couriers also pass allied bombs, but an enemy bomb destroys the courier and cargo. |
-| Artillery setup | Costs 20 troops and replaces the node's current type. The first shot is ready immediately. |
-| Artillery shot | Costs 20 troops from the gun node, deals 10 damage, and reloads for five game seconds. Damage consumes shields before population. |
-| Artillery range | Three typical route lengths, measured directly between nodes. Target an enemy node inside the dashed range circle. |
+| Artillery setup | Costs 20 troops and replaces the existing upgrade. The first shot is ready immediately. |
+| Artillery shot | Costs 20 troops. Removes 20% of the target's current troop population, including fractional population. Shields, ownership and upgrades survive. Reload takes five game seconds. |
+| Artillery range | Three typical route lengths measured directly between nodes. Only hostile, non-neutral nodes qualify. |
+| Route blueprint | Actions > Route blueprint, then choose a second node. Existing connections cannot be duplicated. Crossing another edge does not create a junction. |
+| Digging | Troops dig from the blueprint's start and are consumed as work advances. A typical route costs 120 troops, 1.5 times the previous 80. Cost scales with distance and rounds up. |
+| Completed route | Public in both directions. Surviving diggers continue as troops. Directional speed is 2 times normal forward and 0.3 times normal in reverse. |
 
-The typical route length is the median original route length on that map. New construction does not change it. Reloading pauses with the match and follows velocity and fast-forward settings. Artillery cannot capture a node or damage a neutral node. A hit that exhausts shields and population leaves the same owner with an ordinary, empty node.
-
-Couriers and node traps are visible only to their owner; the editor and AI spectator view show traps for inspection. Planted route bombs are visible to everyone. Couriers do not fight or capture, so hiding one never hides an army. The bomb and two troops leave the origin on dispatch; the crew does not reinforce the destination. A destroyed courier loses both its cargo and crew. A courier lost at a captured intermediate or destination node cannot arm that node. It cannot cross an ally's territory or an unfinished blueprint. Its speed follows route direction, pause and game speed. Capturing its origin after departure does not recall it.
+The typical route length is the median original route length on the map. New construction does not change it. Bomb movement, mine shield expiry and artillery reload follow simulation time, including pause, velocity and fast-forward.
 
 ## Match modes
 
-- **Conquest:** the original last-player-standing victory condition.
-- **Flag: neutral supernode:** one larger, marked neutral node starts with 50 troops. Its location favours similar route counts from the starting nodes. The first player to capture it wins immediately.
-- **Flag: starting nodes:** each player's original starting node carries a flag. The first player to capture an enemy starting flag wins immediately; no return trip is required.
-- **Alliances:** offers require acceptance. Friendship is pairwise: your ally's ally can still be your enemy. Allied fleets pass through each other; arrivals add 70% of their size to the recipient's garrison without changing ownership or node type. Fractional reinforcements accumulate in the garrison. Either partner can break a pact immediately. That pair stays hostile for the rest of the match. A surviving group wins together when every surviving pair is allied.
+- Conquest: the last surviving faction wins.
+- Neutral flag: the first successful capture of the marked neutral supernode wins.
+- Starting flags: the first successful capture of an enemy starting flag wins.
+- Alliances: offers require acceptance. Friendship is pairwise. Allied fleets pass each other; arrivals add 70% of their size without changing ownership. Breaking a pact makes that pair hostile for the rest of the match. Surviving players win together when every surviving pair is allied.
 
-Pacts shows incoming offers, pending offers, active alliances and permanently broken alliances. AI players consider offers while at least three players remain. Simple accepts useful cooperation, Savvy weighs other threats and may later betray a much weaker partner, and Silly sometimes changes its mind. Acceptance is not automatic. Bombs already on routes use the current relationship when a fleet reaches them. Fleets that already passed peacefully do not collide retroactively after a betrayal.
+## Maps and editor
 
-## AI and map compatibility
+The 48 fixed campaign maps are authored in `scripts/build-campaign.py` and generated into `assets/campaign/levels.json`. Campaign briefings and hints describe the current controls. Owned campaign nodes start at zero troops.
 
-All personalities can buy bombs, place them ahead of an approaching enemy fleet, and operate artillery while keeping troops for defence. Savvy can fund a short new route when a safe, large garrison can cover construction, the destination and a reserve. Ordinary troop planning ignores unfinished routes; the construction decision funds them separately. Savvy includes directional travel speed when sizing attacks and coordinating arrivals.
+The editor supports node owners, upgrades, exact garrisons, AI types, bombs waiting at nodes, a mine toggle, flags, directional routes and blueprints. Bomb and mine placement in the editor authors a starting scenario. Gameplay conversion still requires two factories and an eligible departing troop group.
 
-Exported maps preserve mode, directional endpoints, construction progress, local bomb stock, node traps, couriers in transit and route bomb positions, artillery reload and shields, original flag locations, and pact state. Original maps without the optional fields load as conquest with normal routes. Map export remains a map feature; it does not save ordinary moving fleets. Bomb couriers retain their route and progress so exporting cannot duplicate their stock. Older faction-wide bomb stock is moved to one economic node, or an owned node if none is economic.
+Exported maps preserve mobile bombs on edges and at nodes, mines, mine shield expiry, construction progress, artillery reload and shields, flags and pacts. Ordinary moving troops remain outside map export. Existing unfinished routes retain their saved work costs; newly created routes use 120 troops per normal length. Legacy route bombs and active couriers load as secret mobile bombs; legacy stock is retained for compatibility but cannot purchase or dispatch bombs. Legacy stacked traps load as one mine.
 
-### Bomb fields in exported maps
-
-The optional `tactics` section contains semicolon-separated records. Node and route indices are zero-based positions in the preceding map sections.
+New records in the optional `tactics` section:
 
 | Record | Fields |
 | --- | --- |
-| `depot` | `nodeIndex stock armedTraps` |
-| `courier` | `owner targetNodeIndex routeIndex point leg progress pathNodeIndices` |
-| `bomb` | `routeIndex owner point` |
+| `mobileBomb` | `owner routeIndex targetNodeIndex waitingNodeIndex progress` |
+| `mineShield` | `nodeIndex expiryGameSeconds` |
+| `depot` | `nodeIndex legacyStock mineCount` |
 
-A node delivery uses a target node and route index `-1`; a route delivery uses target node index `-1`. Route points and current progress are measured from `link.one` (0) to `link.two` (1), including reverse travel. The courier path is a comma-separated node list with a trailing comma. Its leg starts at 1 and selects `path[leg-1]` to `path[leg]`; after those legs it travels to the requested route point. Export records only active couriers and route bombs. Node traps load within the limit of three; older `stock owner count` records migrate to local stock. Changing a node's owner in the editor clears its stock and traps without a combat detonation.
+Indices refer to the preceding node and route lists. An absent route, target or waiting node uses -1. Progress runs from `link.one` at zero to `link.two` at one.
 
-## Campaign and editor
+## Verification
 
-The 48 fixed boards in `assets/campaign/levels.json` replace the generated campaign. `scripts/build-campaign.py` builds their explicit graphs, objectives, visible starting forces and lesson text. There are twelve maps in each mode. Maps remain available outside campaign progression through Play → Maps.
+Run `.\opacha.ps1 :lwjgl3:weaponsTest` for deterministic combat checks and real pointer gestures at 480 by 800 and 390 by 844. Native screenshots are saved under `lwjgl3/build/weapons/`. Checks cover the full/half/cannon cycle, swipe and tap fire, long-press conversion and its release, edge destruction, mines, owner-only visibility, arrows, pause, cancellation, two-finger input, save/load, AI tools, digging conservation and percentage artillery damage. `:lwjgl3:timingRules` compares simulation timing across frame rates and speeds. `:lwjgl3:campaignRules` validates all authored maps.
 
-New lesson tools unlock one at a time. The optional fifth `game_rules` token records a capability mask: half send 1, Grow 2, Defend 4, directional routes 8, construction 16, bombs 32, artillery 64. Older maps default to all 127. The editor's Unlock all tools control removes lesson restrictions from the edited copy.
+When changing these controls, keep pointer down, click, pointer up and long-press consumption distinct: the game dispatches clicks before pointer-up. A conversion release must not become detonation, and a shot must not also send troops. Release held units on drag cancellation, second-finger input, pause and native touch cancellation. Hit tests must match the rendered troop location, which is inset from the route endpoints.
 
-In editor Settings, cycle the mode and the New route control. Drag between two nodes to create or change a normal, forward, reverse or unfinished route. An unfinished route starts from the first node and requires an owned builder. Tap a node to change its owner, upgrade, exact garrison, AI type, that node's bomb stock or armed traps, or to place a flag. Neutral flag placement sets the required 50 troops. Starting flags must belong to players; deleting or changing their ownership clears stale references. Launch checks for a green player, opponents and a valid objective. Save and export retain the new rules.
+Keep hidden cargo separate from combat units and public threat data. Resolve a mine before assigning hostile ownership, so a destroyed invasion cannot win a flag. Save remaining temporary shield time with the same simulation clock used for movement and reload.
 
-## Verification and future changes
+Language resources use UTF-16. Preserve that encoding. Run native tests after finishing source changes; rebuilding a packaged JAR during a graphics-context restoration check can invalidate an asset read.
 
-Run `.\opacha.ps1 :lwjgl3:tacticsTest` for deterministic simulation checks and a touch-driven tour at 480 × 800 and 390 × 844. Screenshots are written to `lwjgl3/build/tactics/`. The tour uses an isolated preference directory and slow simulation for reliable courier inspection. It tests real menu input, both flag selectors, buying, delivering and planting bombs, constructing a route, artillery targeting, pausing, context restoration and pact acceptance/breaking.
-
-Run `:lwjgl3:tacticsRules` for the combat scenarios, AI tool decisions and eight complete mixed-AI matches across the four modes. `:lwjgl3:victoryDesktop` and `:lwjgl3:victoryPhone` check the flag and coalition result screens and the Continue control without repeating the full tour.
-
-When changing traffic rules, test several opposing fleets on the same route, allied crossings followed by betrayal, and unit removal during collision iteration. When changing digging, test partial funding, two simultaneous crews, final distance rounding, and troop conservation. Generated textures retain their CPU pixels so Android can restore them after graphics context loss. Touch tests must use `getViewPosition()` for controls inside a parent panel.
-
-When multiple chats share a checkout, finish edits before taking a source snapshot, then build and test in that separate directory. Rebuilding the same packaged JAR during a running texture-restoration test can produce an invalid ZIP header when libGDX reopens an asset. Preserve the tested source hashes and publish the APK from that exact snapshot.
-
-Wait for the packaging task to finish before recording file sizes or hashes. A ZIP can already exist while its contents are still being written.
-
-### Bomb regression notes
-
-Treat local stock, an in-transit bomb and an armed bomb as three different states. Charge stock and reserve the two-person crew once, on dispatch; reserve destination capacity while the order travels. Never turn a courier into an attack fleet. Visibility checks belong in the renderer and must use the human viewer's faction; AI decisions must not inspect opposing secret state.
-
-On hostile capture, remember the old trap count, complete the ownership change, then subtract trap damage from the occupying survivors. Clamp population at zero without changing the new owner. Clear captured stock and spent traps. A friendly or allied arrival must never take this path, and a flag capture still wins even when the traps kill every survivor.
-
-A paused courier must return before calling AcceleratableFactor.move(0): at a starting endpoint, its limit check otherwise disables movement permanently. Save the current leg and progress, not just the original dispatch order. A saved courier already in transit may finish its current leg after its origin is captured; it must still check intermediate and destination ownership on arrival.
-
-The language resource is UTF-16. Preserve its encoding when editing it. Measure targeting prompts at both viewport widths; the old transport prompt overflowed on Android and was shortened before release. Keep snapshots with running JVMs immutable, as described above.
-
-Autoskill review: project-note. These checks depend on this game's capture order, object lifecycle, text resource and release harness; a separate global skill would add little value. The executable scenarios remain in TacticsChecks and TacticsSmokeTest.
-
-Deleting or changing a supply route in the editor cancels affected courier orders. Removing nodes or routes removes their bomb references before export. Reversing a completed route preserves planted bombs at the same world positions.
+Autoskill review: project note. These capture-order, input-dispatch and rendering rules are specific to this game; executable checks and this document are their maintained home.

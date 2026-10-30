@@ -613,6 +613,10 @@ public class YioGdxGame extends ApplicationAdapter implements InputProcessor {
 
     @Override
     public boolean touchCancelled(int screenX, int screenY, int pointer, int button) {
+        if (gameController != null && gameController.touchMode == yio.tro.opacha.game.touch_modes.TouchMode.tmDefault) {
+            yio.tro.opacha.game.touch_modes.TouchMode.tmDefault.cancelGesture();
+            gameController.currentTouchCount = 0;
+        }
         return Scenes.velocityControls != null && Scenes.velocityControls.velocitySliderElement != null
                 && Scenes.velocityControls.velocitySliderElement.cancelTouch(pointer);
     }

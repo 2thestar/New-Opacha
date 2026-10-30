@@ -31,12 +31,12 @@ CONCEPTS = [
     (7, "Two kinds of trouble", "A crown marks Savvy AI: it keeps reserves and combines attacks. A circle marks Silly AI: some orders are erratic. Protect both approaches."),
     (15, "Follow the arrows", "Arrows mark a directional route: twice the normal speed forward, 0.3 times backward. Send along the arrows and return by another route."),
     (15, "The long way round", "A slow reverse route can expose your home. Use the side path to reinforce the front, and keep a reserve on the return side."),
-    (31, "Dig a shortcut", "Actions > Route blueprint, then tap a second node. Send troops from the first node to dig it. A normal length consumes about 80; the number is the work left."),
-    (63, "Set a bomb", "Buy a bomb for 20 at a Grow node. Deliver bomb, then tap a route. A hidden two-troop courier follows your own supply routes. The planted bomb is visible; it hits the next enemy for 12."),
-    (127, "Artillery", "Actions > Artillery costs 20 and replaces the node's upgrade. Fire within three usual route lengths: a shot costs 20, deals 10 damage and reloads in 5 game seconds. Guns never capture."),
-    (127, "Leave a surprise", "Deliver a bomb to your own node, or use Trap this node at its supply node. Stack up to three. Enemies see neither the courier nor the traps. Each trap hits for 12 after capture; the attacker keeps the node."),
+    (31, "Dig a shortcut", "Actions > Route blueprint, then tap a second node. Send troops from the first node to dig it. A normal length consumes about 120 troops."),
+    (63, "Set a bomb", "Keep two Grow factories running. Send over 50 troops from a factory, then hold that group on the route to convert it into a secret bomb. Tap the bomb on a route to destroy the whole route and every troop on it."),
+    (127, "Artillery", "Actions > Artillery costs 20 and replaces the node's upgrade. Tap the gun three times: full, half, cannon. The thicker cannon is ready to aim. Swipe or tap an enemy in range. Each shot costs 20, kills 20% of its troops through shields and reloads in 5 game seconds."),
+    (127, "Leave a surprise", "Bombs follow your route arrows before troops. Tap a bomb at your own node to plant a secret mine. If enemies capture it, all invading survivors die. The node becomes neutral with 14 shields for 10 game seconds."),
 ]
-TACTICS = ["Secure the first foothold before splitting your army.", "Choose which arm to grow and which to defend.", "Keep a rear supply lane on one bank.", "Hold the bridge; attack from both sides together.", "Use the loop to avoid the strongest garrison.", "Arrange two arrivals instead of feeding one losing attack.", "Exploit the fast direction before the defender can react.", "Treat the slow reverse link as a commitment.", "Compare a short dig with the cost of fighting round the bend.", "Send a courier ahead of the next enemy wave. Route bombs become visible only after delivery.", "Place a gun where it can reach more than one useful target.", "Take one useful junction without abandoning the other front."]
+TACTICS = ["Secure the first foothold before splitting your army.", "Choose which arm to grow and which to defend.", "Keep a rear supply lane on one bank.", "Hold the bridge; attack from both sides together.", "Use the loop to avoid the strongest garrison.", "Arrange two arrivals instead of feeding one losing attack.", "Exploit the fast direction before the defender can react.", "Treat the slow reverse link as a commitment.", "Compare a short dig with the cost of fighting round the bend.", "Keep two factories running. Hold a group over 50 leaving a factory to make a secret bomb; tap it on the route to destroy that route.", "Place a gun where it can reach more than one useful target.", "Take one useful junction without abandoning the other front."]
 
 
 def make_level(chapter, number):
@@ -117,8 +117,8 @@ def make_level(chapter, number):
         yellow.update(type="economic",troops=0,shield=0)
     if chapter == 1 and number == 8:
         lengths = sorted(math.dist(coords[a], coords[b]) for a,b in edges)
-        cost = max(80, math.ceil(80 * math.dist(coords[start],coords[flag]) / lengths[len(lengths)//2]))
-        rows.append(dict(a=start,b=flag,directional=True,builder="green",cost=cost,spent=cost-80))
+        cost = max(120, math.ceil(120 * math.dist(coords[start],coords[flag]) / lengths[len(lengths)//2]))
+        rows.append(dict(a=start,b=flag,directional=True,builder="green",cost=cost,spent=cost-120))
         nodes[start]["troops"] = 0
         nodes[start]["type"] = "economic"
     difficulty = "easy" if (chapter == 0 and number < 5) or (chapter > 0 and number < 3) else "hard" if chapter >= 2 and number >= 10 else "normal"
@@ -133,7 +133,7 @@ def make_level(chapter, number):
     title = name if chapter == 0 else ["", "Beacon", "Hold", "Pact"][chapter] + " " + name
     hint = TACTICS[layout_index]
     if chapter == 0 and number == 10:
-        hint = "Save 20 troops at the forward node to build artillery, then 20 for a shot. Disable yellow's Grow upgrade across the gap. Capture it along the links."
+        hint = "Save 20 troops at the forward node to build artillery, then 20 for a shot. Reduce yellow's troops across the gap, through its shields. Capture it along the links."
     if chapter == 3 and number == 11:
         hint = "Offer yellow a pact early, while red is still the shared threat. Supply the common front. Breaking a pact makes that pair hostile for the rest of the match."
     if chapter == 1 and number == 8:
