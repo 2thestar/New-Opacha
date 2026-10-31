@@ -641,6 +641,8 @@ public class Planet extends GameObject implements ReusableYio, AcceleratableYio,
         if (previousAutoTarget == null || autoTarget == null) autoSendClock = 0;
 
         onAutoTargetChanged(previousAutoTarget);
+        if (yio.tro.opacha.menu.scenes.Scenes.selectionOverlay != null)
+            yio.tro.opacha.menu.scenes.Scenes.selectionOverlay.onAutoTargetChanged(this);
     }
 
 

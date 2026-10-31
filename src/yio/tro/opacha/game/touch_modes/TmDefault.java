@@ -180,6 +180,7 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
         if (targetPlanet == null) return;
         touchDownPlanet.setAutoTarget(targetPlanet);
         touchDownPlanet.prepareToSendAutoTargetQuickly();
+        getPlanetsManager().showSelectedPlanet(touchDownPlanet);
         yio.tro.opacha.menu.UiHaptics.orderIssued();
     }
 
@@ -211,6 +212,7 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
     public boolean onClick() {
         if (GameRules.aiOnlyMode) return false;
         if (gameController.objectsLayer.spectateManager.active) return false;
+        if (gestureConsumed) return true;
         ObjectsLayer objectsLayer = gameController.objectsLayer;
         gestureConsumed = true;
         if (twoFingerDetected) return true;
@@ -242,6 +244,7 @@ public class TmDefault extends TouchMode implements TwoFingerListener{
         if (!touchedPlanet.isControlledByPlayer()) return;
 
         cameraBlocked = false; // no auto target after long tap
+        gestureConsumed = true;
         ObjectsLayer objectsLayer = gameController.objectsLayer;
         objectsLayer.planetsManager.onLongTappedPlanet(touchedPlanet);
     }

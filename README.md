@@ -17,11 +17,11 @@ The [original-feel revision](docs/original-feel.md) adds zero-troop campaign ope
 
 ## Install on a Pixel 8a
 
-Download **[New-Opacha-0.6.3-install.zip](https://github.com/2thestar/New-Opacha/releases/download/v0.6.3-preview/New-Opacha-0.6.3-install.zip)**. Open it in Files by Google, tap **Extract**, then open the extracted APK to install **New Opacha**. Android may ask you to allow Files to install apps. The app has its own package ID and saves, so it can be installed alongside the original game.
+Download **[New-Opacha-0.6.4-install.zip](https://github.com/2thestar/New-Opacha/releases/download/v0.6.4-preview/New-Opacha-0.6.4-install.zip)**. Open it in Files by Google, tap **Extract**, then open the extracted APK to install **New Opacha**. Android may ask you to allow Files to install apps. The app has its own package ID and saves, so it can be installed alongside the original game.
 
 The ZIP avoids Chrome's stalled direct APK downloads and contains the same signed APK. ZIP installation was confirmed on the affected Pixel 8a with version 0.1.0. Install updates over the existing app to keep its saves.
 
-Version 0.6.3 adds softly pulsing wavy factories, bomb bubbles with sparking fuses, and soft cannons that release little black balls. It includes the updated weapon gestures and digging effort. [Graphics, captures and checks](docs/organic-0.6.3.md) describe this preview. The [0.6.2 performance correction](docs/performance.md) remains its rendering and timing foundation.
+Version 0.6.4 restores stopping troop routes: tap a sending source once or press **Stop sending**. Swipes keep the source selected; stopping preserves full/half mode. It also improves node selection and cannon cancellation. [Controls and verification](docs/node-controls-0.6.4.md) describe this preview. It retains the [organic graphics](docs/organic-0.6.3.md) and the [0.6.2 performance correction](docs/performance.md).
 
 ## Campaign and maps
 

@@ -142,6 +142,9 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
 
     private void onClickedOnPlanet(Planet touchedPlanet) {
         Planet selected = getCurrentlySelectedPlanet();
+        // A sending source must always have a reachable stop action, before the mode cycle.
+        // Tapping a different linked node still means "send there" from the selected source.
+        if ((selected == null || selected == touchedPlanet) && stopSending(touchedPlanet)) return;
         if (selected == touchedPlanet && touchedPlanet.isControlledByPlayer()) {
             if (touchedPlanet.halvedSelectionMode && touchedPlanet.type == PlanetType.artillery
                     && yio.tro.opacha.game.RuleFeatures.has(yio.tro.opacha.game.RuleFeatures.ARTILLERY)) {
@@ -156,22 +159,28 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
         }
         if (checkToSendUnits(touchedPlanet)) return;
         if (checkToSelectPlanet(touchedPlanet)) return;
-        if (checkToCancelAutoTarget(touchedPlanet)) return;
 
         deselect();
     }
 
 
-    private boolean checkToCancelAutoTarget(Planet touchedPlanet) {
-        Planet currentlySelectedPlanet = getCurrentlySelectedPlanet();
-        if (currentlySelectedPlanet == null) return false;
-        if (touchedPlanet != currentlySelectedPlanet) return false;
-        if (!touchedPlanet.isControlledByPlayer()) return false;
-        if (!touchedPlanet.hasAutoTarget()) return false;
-
-        touchedPlanet.setAutoTarget(null);
-        deselect();
+    public boolean stopSending(Planet planet) {
+        if (planet == null || !planet.isControlledByPlayer() || !planet.hasAutoTarget()) return false;
+        planet.setAutoTarget(null);
+        showSelectedPlanet(planet);
+        yio.tro.opacha.menu.UiHaptics.orderIssued();
         return true;
+    }
+
+    /** Keep the current full/half choice when a swipe or stop changes the route. */
+    public void showSelectedPlanet(Planet planet) {
+        if (planet == null || !planet.isControlledByPlayer()) return;
+        boolean half = planet.halvedSelectionMode;
+        deselect();
+        planet.select();
+        planet.setHalvedSelectionMode(half);
+        Scenes.selectionOverlay.setSelectedPlanet(planet);
+        Scenes.selectionOverlay.create();
     }
 
 
@@ -205,7 +214,6 @@ public class PlanetsManager implements IGameplayManager, SavableYio {
 
 
     private boolean checkToSelectPlanet(Planet touchedPlanet) {
-        if (getCurrentlySelectedPlanet() != null) return false;
         if (!touchedPlanet.isControlledByPlayer()) return false;
 
         deselect();

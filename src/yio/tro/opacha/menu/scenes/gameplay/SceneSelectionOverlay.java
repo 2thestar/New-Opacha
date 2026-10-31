@@ -2,7 +2,6 @@ package yio.tro.opacha.menu.scenes.gameplay;
 
 import yio.tro.opacha.Fonts;
 import yio.tro.opacha.SettingsManager;
-import yio.tro.opacha.game.gameplay.ObjectsLayer;
 import yio.tro.opacha.game.gameplay.model.Planet;
 import yio.tro.opacha.game.gameplay.model.PlanetsManager;
 import yio.tro.opacha.game.gameplay.model.PlanetType;
@@ -15,7 +14,7 @@ import yio.tro.opacha.menu.scenes.ModalSceneYio;
 import yio.tro.opacha.menu.scenes.Scenes;
 
 public class SceneSelectionOverlay extends ModalSceneYio {
-    public ButtonYio bDefensive, bEconomic, actionsButton, halvedModeButton;
+    public ButtonYio bDefensive, bEconomic, actionsButton, halvedModeButton, stopSendingButton;
     Planet selectedPlanet;
 
     @Override protected void initialize() {
@@ -35,15 +34,23 @@ public class SceneSelectionOverlay extends ModalSceneYio {
         });
         actionsButton = action(.675, "node_actions", new Reaction() {
             @Override protected void reaction() {
+                if (selectedPlanet == null || !selectedPlanet.isControlledByPlayer()) return;
                 Scenes.nodeActions.node = selectedPlanet;
                 destroy(); Scenes.nodeActions.create();
             }
         }).setGroundIndex(GroundIndex.YELLOW);
-        halvedModeButton = uiFactory.getButton().setSize(.38, .052).centerHorizontal()
+        stopSendingButton = uiFactory.getButton().setSize(.49, .055).alignRight(.035)
+                .alignBottom(.11 + getBottomOffset()).setFont(Fonts.smallFont).applyText("ui_stop_sending")
+                .setTouchOffset(.004).setGroundIndex(GroundIndex.YELLOW)
+                .setAnimation(AnimationYio.down).setIgnoreResumePause(true).setReaction(new Reaction() {
+                    @Override protected void reaction() { gameController.objectsLayer.planetsManager.stopSending(selectedPlanet); }
+                });
+        halvedModeButton = uiFactory.getButton().setSize(.38, .055).centerHorizontal()
                 .alignBottom(.11 + getBottomOffset()).setFont(Fonts.smallFont).applyText("ui_send_half")
+                .setTouchOffset(.004).setIgnoreResumePause(true)
                 .setAnimation(AnimationYio.down).setReaction(new Reaction() {
                     @Override protected void reaction() {
-                        ObjectsLayer layer = gameController.objectsLayer;
+                        if (selectedPlanet == null || !selectedPlanet.isControlledByPlayer()) return;
                         selectedPlanet.setHalvedSelectionMode(!selectedPlanet.halvedSelectionMode);
                         updateHalfLabel();
                     }
@@ -57,12 +64,41 @@ public class SceneSelectionOverlay extends ModalSceneYio {
                 .setAnimation(AnimationYio.down).setIgnoreResumePause(true).setReaction(reaction);
     }
 
-    @Override protected void onAppear() { super.onAppear(); updateHalfLabel(); }
+    @Override protected void onAppear() {
+        super.onAppear(); updateHalfLabel(); positionOrderButtons();
+        bEconomic.alignBottom(.035 + getBottomOffset());
+        bDefensive.alignBottom(.035 + getBottomOffset());
+        actionsButton.alignBottom(.035 + getBottomOffset());
+    }
+
+    private void positionOrderButtons() {
+        halvedModeButton.alignBottom(.11 + getBottomOffset());
+        stopSendingButton.alignBottom(.11 + getBottomOffset());
+        boolean sending = selectedPlanet != null && selectedPlanet.hasAutoTarget();
+        boolean halfVisible = yio.tro.opacha.game.RuleFeatures.has(yio.tro.opacha.game.RuleFeatures.HALF)
+                && SettingsManager.getInstance().halvedModeButtonEnabled;
+        if (sending && halfVisible) {
+            halvedModeButton.setSize(.40, .055).alignLeft(.035);
+            stopSendingButton.setSize(.49, .055).alignRight(.035);
+        } else {
+            halvedModeButton.setSize(.38, .055).centerHorizontal();
+            stopSendingButton.setSize(.49, .055).centerHorizontal();
+        }
+    }
+
+    /** Route deletion/capture must also remove a now-meaningless Stop control. */
+    public void onAutoTargetChanged(Planet planet) {
+        if (planet != selectedPlanet || !isCurrentlyVisible() || stopSendingButton == null) return;
+        positionOrderButtons();
+        if (planet.hasAutoTarget()) super.appearElement(stopSendingButton);
+        else stopSendingButton.destroy();
+    }
     private void updateHalfLabel() {
         halvedModeButton.applyText(selectedPlanet.halvedSelectionMode ? "ui_send_all" : "ui_send_half")
                 .setGroundIndex(selectedPlanet.halvedSelectionMode ? GroundIndex.YELLOW : GroundIndex.BUTTON_WHITE);
     }
     @Override protected void appearElement(InterfaceElement element) {
+        if (element == stopSendingButton && !selectedPlanet.hasAutoTarget()) return;
         if (element == bEconomic && !yio.tro.opacha.game.RuleFeatures.has(yio.tro.opacha.game.RuleFeatures.GROW)) return;
         if (element == bDefensive && !yio.tro.opacha.game.RuleFeatures.has(yio.tro.opacha.game.RuleFeatures.DEFEND)) return;
         if (element == halvedModeButton && !yio.tro.opacha.game.RuleFeatures.has(yio.tro.opacha.game.RuleFeatures.HALF)) return;
