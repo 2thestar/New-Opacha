@@ -2,7 +2,11 @@
 
 ## Controls
 
-Swipe from an owned node toward a linked node to set its repeating troop route. Taps on the same node cycle full send and half send. Artillery adds a third state: cannon aiming, shown by a thicker barrel. From that state, swipe from the gun onto an enemy node or tap an enemy node to fire. Tap the gun again to return to full send, or use Cancel. Artillery aiming does not issue troop orders.
+Swipe from an owned node toward a linked node to set or redirect its repeating troop route. The source stays selected. **Tap that source once, or press Stop sending, to remove its arrow and stop future departures.** Troops already travelling continue. Stopping keeps the current full/half choice and works during tactical pause.
+
+With no repeating route, taps on the selected node cycle full send and half send. Artillery adds a third state: cannon aiming, shown by a thicker barrel. From that state, swipe from the gun onto an enemy node or tap an enemy node to fire. Tap the gun again to return to full send, tap empty space, or use Cancel. Arming a cannon stops its troop route so it retains ammunition. Artillery aiming does not issue troop orders.
+
+Tap an owned source and then a linked target for a single send. A friendly target keeps its own repeating route. Tapping an unlinked friendly node switches selection directly.
 
 Actions opens route construction and artillery building. A targeting command has a Cancel button. Pause cancels targeting and releases any held troop group.
 
@@ -61,9 +65,13 @@ Indices refer to the preceding node and route lists. An absent route, target or 
 
 ## Verification
 
-Run `.\opacha.ps1 :lwjgl3:weaponsTest` for deterministic combat checks and real pointer gestures at 480 by 800 and 390 by 844. Native screenshots are saved under `lwjgl3/build/weapons/`. Checks cover the full/half/cannon cycle, swipe and tap fire, long-press conversion and its release, edge destruction, mines, owner-only visibility, arrows, pause, cancellation, two-finger input, save/load, AI tools, digging conservation and percentage artillery damage. `:lwjgl3:timingRules` compares simulation timing across frame rates and speeds. `:lwjgl3:campaignRules` validates all authored maps.
+Run `.\opacha.ps1 :lwjgl3:nodeControlsTest` for stopping, restarting and redirecting routes; single full/half sends; selection switching; cannon targeting and cancellation; long presses; upgrades; lost ownership; pointer cancellation; and the visible Stop control with half mode shown or hidden. It drives real pointer input at 480 by 800 and 390 by 844, saving native screenshots under `lwjgl3/build/node-controls/`.
+
+Run `.\opacha.ps1 :lwjgl3:weaponsTest` for deterministic combat checks and real weapon gestures at both sizes. Native screenshots are saved under `lwjgl3/build/weapons/`. Checks cover the full/half/cannon cycle, swipe and tap fire, long-press conversion and its release, edge destruction, mines, owner-only visibility, arrows, pause, cancellation, two-finger input, save/load, AI tools, digging conservation and percentage artillery damage. `:lwjgl3:timingRules` compares simulation timing across frame rates and speeds. `:lwjgl3:campaignRules` validates all authored maps.
 
 When changing these controls, keep pointer down, click, pointer up and long-press consumption distinct: the game dispatches clicks before pointer-up. A conversion release must not become detonation, and a shot must not also send troops. Release held units on drag cancellation, second-finger input, pause and native touch cancellation. Hit tests must match the rendered troop location, which is inset from the route endpoints.
+
+The 0.6.4 regression was caused by an early return in the full/half handler hiding the stop-arrow handler. Exercise cancellation with an active route on both selected and unselected sources whenever changing the tap cycle. UI button reactions run after their press feedback; let them settle before checking the result. These project-specific checks are kept here and in the executable walkthrough rather than a separate installed skill.
 
 Keep hidden cargo separate from combat units and public threat data. Resolve a mine before assigning hostile ownership, so a destroyed invasion cannot win a flag. Save remaining temporary shield time with the same simulation clock used for movement and reload.
 

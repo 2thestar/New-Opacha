@@ -1,6 +1,6 @@
 allprojects {
     group = 'yio.tro.opacha'
-version = '0.6.3'
+version = '0.6.4'
 
     repositories {
         google()

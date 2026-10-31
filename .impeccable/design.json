@@ -1057,6 +1057,26 @@
         ],
         "boundary": "Native desktop renderer captures; physical phone frame rate and haptics are not established by these images."
       }
+    },
+    "nodeControls": {
+      "source": "src/yio/tro/opacha/menu/scenes/gameplay/SceneSelectionOverlay.java",
+      "stop": "Tap a sending source or Stop sending; preserve full/half mode and keep the source selected.",
+      "sendMode": "Without a repeating route, taps cycle full/half; artillery adds cannon aiming.",
+      "cannon": "Arming stops troop departures. Tap source, empty space or Cancel to leave aiming.",
+      "orderRow": {
+        "heightH": 0.055,
+        "bottomH": 0.11,
+        "halfWidthW": 0.4,
+        "stopWidthW": 0.49,
+        "leftW": 0.035,
+        "rightW": 0.035,
+        "thinBezelOffsetH": 0.025
+      },
+      "evidence": [
+        "lwjgl3/build/node-controls/final-Phone",
+        "lwjgl3/build/node-controls/final-Desktop"
+      ],
+      "verification": "Native pointer walkthrough at phone and desktop dimensions; Android emulator remains paused."
     }
   },
   "components": [

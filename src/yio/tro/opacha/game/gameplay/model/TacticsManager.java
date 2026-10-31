@@ -308,6 +308,7 @@ public final class TacticsManager {
 
     public void begin(Action action, Planet planet) {
         pending = action; source = planet;
+        if (action == Action.artillery && planet != null) planet.setAutoTarget(null);
         Scenes.selectionOverlay.destroy();
         Scenes.gameOverlay.setCommandMode(true);
         if (action == Action.artillery) return;
@@ -429,7 +430,8 @@ public final class TacticsManager {
         if (pending == Action.none) return false;
         if (source == null || !source.isControlledByPlayer()) { cancel(); return true; }
         Planet target = layer.planetsManager.findTouchedPlanet(point);
-        if (pending == Action.artillery && target == source) {
+        if (target == null && pending != Action.bomb) { cancel(); return true; }
+        if (target == source) {
             Planet gun = source; cancel(); gun.select();
             Scenes.selectionOverlay.setSelectedPlanet(gun); Scenes.selectionOverlay.create();
             return true;
