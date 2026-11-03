@@ -707,7 +707,7 @@
       },
       {
         "name": "troop-transfer",
-        "value": "Actual route progress controls departure and friendly-arrival necks through smoothstep over 0.027W. Each neck uses 32 curved strips. An adaptive shared-corner 12/16/20-cell mesh displaces only the contact sector of the same exported node material; maximum lobe=0.24r. Light and texture orientation stay fixed. Friendly contact settles within 0.38s. Reduced motion suppresses necks and mesh deformation.",
+        "value": "Route position drives a broad connected bulge and narrowing waist. Reciprocal axial/across stretch preserves the fleet body area. The outline opening seals with the bridge. After actual friendly transfer, the unnumbered remainder folds into the rim over 0.28s; node deformation settles over 0.38s. Reduced motion suppresses this deformation.",
         "purpose": "Upright counts remain separate from shell deformation; dispatch and arrival obey the existing model."
       },
       {
@@ -979,8 +979,8 @@
         "emptyPocket": "#E9E7D9"
       },
       "contacts": {
-        "nodeMesh": "20x20 quads, same exported atlas UVs and fixed light; shift=extension*smooth((along-0.55)/0.45)*exp(-(across/0.48)^4).",
-        "neck": "32 strips; minimum waist=min(halfA,halfB)*attachment*0.23; smoothstep taper to and from the waist.",
+        "nodeMesh": "Adaptive 12/16/20-cell mesh of the original candy atlas, fixed upper-left light; peak contact extension=0.33r.",
+        "neck": "Adaptive 8/20-strip gradient bridge, 8 below a 20-pixel projected node radius. Broad root, cubic narrowing waist, and 1.30*attachment opening close with the fleet outline. Packed fill/edge mesh, with shared endpoint colors.",
         "enemy": "Crescent at 1.03r; five outward radial puffs and two tiny hot flecks; clears in 0.56s.",
         "day": {
           "steam": "#D1BBA7",
@@ -990,7 +990,9 @@
           "steam": "#EAD7BE",
           "hot": "#FFC18B"
         },
-        "reducedMotion": "No necks, contour deformation, or moving vapor; short static contact mark only."
+        "reducedMotion": "No necks, contour deformation, or moving vapor; short static contact mark only.",
+        "merge": "At actual transfer, a value/owner/time snapshot paints an unnumbered remainder for 0.28 simulation seconds. The destination count updates once; pooled Unit objects are not retained.",
+        "countLayer": "Travelling fleet counts are rendered above nodes and equipment until actual transfer."
       },
       "evidenceBoundary": "These paths identify native captures and actual-model output, not an acceptance verdict. Exclude stale 12-reduced-motion.png captures; the current reduced-motion state is 13-reduced-motion.png. Source and asset documentation does not certify motion feel or a separate browser render of the illustrative sidecar.",
       "rigCorridor": {
@@ -1056,6 +1058,31 @@
           ".impeccable/review/organic-2026-10-30-night.png"
         ],
         "boundary": "Native desktop renderer captures; physical phone frame rate and haptics are not established by these images."
+      },
+      "orderArrow": {
+        "shape": "Antialiased rounded filled arrow with short stem in the shared managed UiStyle atlas",
+        "face": "node faction face; yellow becomes violet in colorblind mode",
+        "border": "troop faction edge multiplied by 0.65",
+        "position": "1.55r along order angle, 0.77r beside travel lane",
+        "size": "0.58r glyph scale; 1.15x border layer"
+      },
+      "liquidEvidence": {
+        "source": "lwjgl3/src/smokeTest/java/yio/tro/opacha/lwjgl3/LiquidVisualTest.java",
+        "root": "lwjgl3/build/liquid-20261103/verified",
+        "sizes": [
+          [
+            390,
+            844
+          ],
+          [
+            480,
+            800
+          ]
+        ],
+        "poses": 189,
+        "sampleTime": "1/30 simulation second; two real 60 Hz unit steps per pose",
+        "gif": "docs/previews/liquid-0.6.5.gif",
+        "boundary": "Native renderer at phone dimensions; Android emulator remains paused; GIF export is not an FPS measurement."
       }
     },
     "nodeControls": {
@@ -1170,7 +1197,7 @@
   ],
   "narrative": {
     "northStar": "Crisp buttons",
-    "overview": "Warm paper, rounded ink lines, and restrained yellow actions make the strategy easy to read and operate. Night mode keeps the same layout with dark surfaces and cream menu text. Bright candy nodes sit above quieter matte troops and fine routes. Fraunces titles give menus character; Quicksand carries choices and numbers.\n\nThis documents the implemented libGDX canvas. Menu styling retains the [Inkwell Stars](https://inkwellgames.com/games/stars/tutorial) reference. Battlefield authority is the approved [Crisp buttons direction and later decisions](.impeccable/mocks/battlefield/2026-10-21/DECISIONS.md), including Fine ink, the cozy digging rig, and liquid troop flow. The [30 October organic details](.impeccable/mocks/battlefield/2026-10-30/DECISIONS.md) replace the factory Conveyor, bomb glyph and rigid cannon barrel. The existing candy material stays in the managed atlas; `BattlefieldArt` and the game renderers supply its contours and equipment.",
+    "overview": "Warm paper, rounded ink lines, and restrained yellow actions make the strategy easy to read and operate. Night mode keeps the same layout with dark surfaces and cream menu text. Bright candy nodes sit above quieter matte troops and fine routes. Fraunces titles give menus character; Quicksand carries choices and numbers.\n\nThis documents the implemented libGDX canvas. Menu styling retains the [Inkwell Stars](https://inkwellgames.com/games/stars/tutorial) reference. Battlefield authority is the approved [Crisp buttons direction and later decisions](.impeccable/mocks/battlefield/2026-10-21/DECISIONS.md), including Fine ink, the cozy digging rig, and liquid troop flow. The [30 October organic details](.impeccable/mocks/battlefield/2026-10-30/DECISIONS.md) replace the factory Conveyor, bomb glyph and rigid cannon barrel. The existing candy material stays in the managed atlas; `BattlefieldArt` and the game renderers supply its contours and equipment. The [3 November arrow and liquid-contact decisions](.impeccable/mocks/battlefield/2026-11-03/DECISIONS.md) refine the sending indicator and ordinary troop contact.",
     "keyCharacteristics": [
       "Bright candy nodes with a narrow bevel and fixed upper-left light.",
       "Softer matte troops, fine contours, and fine ink routes.",

@@ -146,6 +146,23 @@ tasks.register('weaponsTest') { group = 'verification'; dependsOn 'weaponsDeskto
     }
 }
 tasks.register('nodeControlsTest') { group = 'verification'; dependsOn 'nodeControlsDesktop', 'nodeControlsPhone' }
+
+['Desktop': [480,800], 'Phone': [390,844]].each { label,dimensions ->
+    ['Day': ['day'], 'Night': ['night','colorblind']].each { theme,options ->
+        tasks.register("liquid${label}${theme}", JavaExec) {
+            group = 'verification'
+            dependsOn 'installDist','smokeTestClasses'
+            timeout = java.time.Duration.ofSeconds(110)
+            maxHeapSize = '384m'
+            classpath = files(sourceSets.smokeTest.output,fileTree(layout.buildDirectory.dir('install/new-opacha/lib')))
+            mainClass = 'yio.tro.opacha.lwjgl3.LiquidVisualTest'
+            workingDir rootProject.projectDir
+            systemProperty 'liquidFrames', providers.gradleProperty('liquidFrames').getOrElse('false')
+            args([dimensions[0],dimensions[1],layout.buildDirectory.dir("liquid/${label}-${theme}").get().asFile.absolutePath]+options)
+        }
+    }
+}
+tasks.register('liquidVisuals') { group = 'verification'; dependsOn 'liquidPhoneDay','liquidPhoneNight','liquidDesktopDay','liquidDesktopNight' }
 tasks.register('tacticsRules', JavaExec) {
     group = 'verification'
     dependsOn tasks.named('installDist'), tasks.named('smokeTestClasses')
