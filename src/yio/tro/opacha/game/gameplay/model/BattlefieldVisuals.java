@@ -10,8 +10,11 @@ public final class BattlefieldVisuals {
         public final FractionType faction;
         public final double angle, time;
         public final boolean friendly;
-        Contact(Planet node, FractionType faction, double angle, double time, boolean friendly) {
+        public final int value;
+        public final boolean liquid;
+        Contact(Planet node, FractionType faction, double angle, double time, boolean friendly, int value, boolean liquid) {
             this.node=node;this.faction=faction;this.angle=angle;this.time=time;this.friendly=friendly;
+            this.value=value;this.liquid=liquid;
         }
     }
     public static final class Shot {
@@ -36,7 +39,7 @@ public final class BattlefieldVisuals {
         double angle=unit.link.getOppositePlanet(target).position.center.angleTo(target.position.center)+Math.PI;
         if(contacts.size()>=32)contacts.remove(0);
         contacts.add(new Contact(target,unit.fraction,angle,layer.tactics.elapsed,
-                layer.tactics.alliances.friendly(unit.fraction,target.fraction)));
+                layer.tactics.alliances.friendly(unit.fraction,target.fraction),unit.value,unit.value<=50&&!unit.digger));
     }
     public void shot(Planet source,Planet target){
         if(shots.size()>=16)shots.remove(0);

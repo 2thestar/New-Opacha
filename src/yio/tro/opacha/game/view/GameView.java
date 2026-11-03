@@ -164,6 +164,7 @@ public class GameView implements LoadingListener{
         instance.renderUnits.render();
         instance.renderPlanets.render();
         instance.renderTactics.render();
+        instance.renderUnits.renderCounts();
         instance.renderFillers.render();
 
         renderDyingTouchModes();

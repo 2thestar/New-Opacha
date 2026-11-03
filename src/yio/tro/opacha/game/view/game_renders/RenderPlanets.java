@@ -52,8 +52,10 @@ public class RenderPlanets extends GameRender {
     }
     private void order(Planet p){
         if(p.atFactor.get()==0)return;
-        double r=p.viewPosition.radius,a=p.atViewPosition.angle,d=r*1.65;
-        UiStyle.get().triangle(batchMovable,p.viewPosition.center.x+Math.cos(a)*d,p.viewPosition.center.y+Math.sin(a)*d,a,r*.25,UiStyle.TEXT,(float)p.atFactor.get());
+        double r=p.viewPosition.radius,a=p.atViewPosition.angle,d=r*1.55,side=r*.77;
+        // Leave the travel lane and fleet counts clear; the little arrow still points along it.
+        BattlefieldArt.get().orderArrow(batchMovable,p.viewPosition.center.x+Math.cos(a)*d-Math.sin(a)*side,
+                p.viewPosition.center.y+Math.sin(a)*d+Math.cos(a)*side,a,r*.58,p.fraction,(float)p.atFactor.get());
     }
     private void node(Planet p){
         double now=getObjectsLayer().tactics.elapsed,extension=0,angle=0,r=p.viewPosition.radius;
@@ -65,11 +67,12 @@ public class RenderPlanets extends GameRender {
                 RenderUnits.Pose pose=renderer.pose(unit);double strength=0,a=pose.angle;
                 if(pose.start==p)strength=pose.outgoing;
                 else if(pose.target==p){strength=pose.incoming;a+=Math.PI;}
-                if(strength*r*.24>extension){extension=strength*r*.24;angle=a;}
+                if(strength*r*.33>extension){extension=strength*r*.33;angle=a;}
             }
         for(BattlefieldVisuals.Contact hit:getObjectsLayer().unitManager.visuals.contacts){
             double age=now-hit.time;if(hit.node!=p||!hit.friendly||age<0||age>.38)continue;
-            double amount=r*.24*(1-BattlefieldArt.smooth(age/.38));if(amount>extension){extension=amount;angle=hit.angle;}
+            if(!hit.liquid)continue;
+            double amount=r*.33*(1-BattlefieldArt.smooth(age/.38));if(amount>extension){extension=amount;angle=hit.angle;}
         }
         }
         BattlefieldArt.get().node(batchMovable,p,angle,extension,now);

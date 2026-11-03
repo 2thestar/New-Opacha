@@ -30,7 +30,7 @@ public final class UiStyle {
     private final Pixmap pixels;
     private final Texture texture;
     private final NinePatch shape;
-    public final TextureRegion circle, pixel;
+    public final TextureRegion circle, pixel, orderArrow;
     private final float[] triangleVertices = new float[20];
 
     private UiStyle() {
@@ -47,10 +47,39 @@ public final class UiStyle {
         for (int y = 0; y < 128; y++) for (int x = 0; x < 128; x++) {
             pixels.drawPixel(68 + x, y, rgba(Math.min(1, Math.max(0, 63.5 - Math.hypot(x - 63.5, y - 63.5)))));
         }
+        drawOrderArrow();
         texture = managed(pixels);
         shape = new NinePatch(new TextureRegion(texture, 0, 0, 64, 64), 16, 16, 16, 16);
         circle = new TextureRegion(texture, 68, 0, 128, 128);
         pixel = new TextureRegion(texture, 31, 31, 1, 1);
+        orderArrow = new TextureRegion(texture, 204, 0, 48, 48);
+    }
+
+    /** Rounded filled arrow in the same managed atlas as paths and fleet contours. */
+    private void drawOrderArrow() {
+        double[] corners={-.50,-.18,-.12,-.18,-.12,-.39,.56,0,-.12,.39,-.12,.18,-.50,.18};
+        double[] ring=new double[56];
+        for(int i=0;i<7;i++){
+            int prev=(i+6)%7,next=(i+1)%7;
+            double x=corners[i*2],y=corners[i*2+1];
+            double ax=x+(corners[prev*2]-x)*.23,ay=y+(corners[prev*2+1]-y)*.23;
+            double bx=x+(corners[next*2]-x)*.23,by=y+(corners[next*2+1]-y)*.23;
+            for(int j=0;j<4;j++){
+                double t=j/3.0,u=1-t;int k=(i*4+j)*2;
+                ring[k]=24+36*(u*u*ax+2*u*t*x+t*t*bx);
+                ring[k+1]=24-36*(u*u*ay+2*u*t*y+t*t*by);
+            }
+        }
+        for(int y=0;y<48;y++)for(int x=0;x<48;x++){
+            double px=x+.5,py=y+.5,distance=100;boolean inside=false;
+            for(int i=0,j=27;i<28;j=i++){
+                double ax=ring[j*2],ay=ring[j*2+1],bx=ring[i*2],by=ring[i*2+1];
+                if((ay>py)!=(by>py)&&px<(bx-ax)*(py-ay)/(by-ay)+ax)inside=!inside;
+                double dx=bx-ax,dy=by-ay,t=Math.max(0,Math.min(1,((px-ax)*dx+(py-ay)*dy)/Math.max(1e-9,dx*dx+dy*dy)));
+                distance=Math.min(distance,Math.hypot(px-ax-t*dx,py-ay-t*dy));
+            }
+            pixels.drawPixel(204+x,y,rgba(Math.max(0,Math.min(1,.5+(inside?distance:-distance)))));
+        }
     }
 
     private static int rgba(double alpha) { return 0xffffff00 | (int) (255 * alpha); }

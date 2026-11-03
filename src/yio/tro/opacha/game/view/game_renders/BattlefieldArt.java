@@ -16,7 +16,7 @@ final class BattlefieldArt {
     private final TextureRegion vapor;
     private final NinePatch rounded,hull;
     private final GlyphLayout glyph=new GlyphLayout();
-    private final float[] quad=new float[20];
+    private final float[] liquidVertices=new float[20*20*3];
     private final float[] nodeVertices=new float[20*20*20];
     private final float[] nodeGrid=new float[21*21*4];
     static final Color NUMBER=Color.valueOf("171C34"),TREAD=Color.valueOf("849687"),
@@ -63,6 +63,20 @@ final class BattlefieldArt {
     static Color troopEdge(FractionType f){
         switch(f){case cyan:return EDGE_CYAN;case green:return EDGE_LIME;case red:return EDGE_ROSE;
             case yellow:return SettingsManager.getInstance().colorblindMode?EDGE_VIOLET:EDGE_YELLOW;default:return TREAD;}
+    }
+    private static Color nodeFace(FractionType faction){
+        return faction==FractionType.yellow&&SettingsManager.getInstance().colorblindMode?MATTE_VIOLET:face(faction);
+    }
+    void orderArrow(SpriteBatch batch,double x,double y,double angle,double size,FractionType faction,float alpha){
+        scratch.set(troopEdge(faction));scratch.mul(.65f);scratch.a=1;
+        arrowShape(batch,x,y,angle,size*1.15,scratch,alpha);
+        arrowShape(batch,x,y,angle,size,nodeFace(faction),alpha);
+    }
+    private void arrowShape(SpriteBatch batch,double x,double y,double angle,double size,Color color,float alpha){
+        float half=(float)(size*24/36);
+        batch.setColor(color.r,color.g,color.b,alpha);
+        batch.draw(UiStyle.get().orderArrow,(float)x-half,(float)y-half,half,half,half*2,half*2,1,1,(float)Math.toDegrees(angle));
+        batch.setColor(Color.WHITE);
     }
     void node(SpriteBatch batch,Planet node,double angle,double extension,double time){
         float r=node.viewPosition.radius,x=node.viewPosition.center.x,y=node.viewPosition.center.y;
@@ -172,8 +186,8 @@ final class BattlefieldArt {
     }
     void smallBox(SpriteBatch batch,double x,double y,double width,double height,double radius,double angle,Color color){box(batch,x,y,width,height,radius,angle,color);}
     void ovalOutline(SpriteBatch batch,double x,double y,double rx,double ry,double angle,double width,Color color,double outgoing,double incoming){
-        boolean attached=outgoing>.004||incoming>.004;
-        double from=attached?(outgoing>incoming?-Math.PI*.68:Math.PI*.32):0,length=attached?Math.PI*1.36:Math.PI*2,dx=Math.cos(angle),dy=Math.sin(angle);
+        double attachment=Math.max(outgoing,incoming),gap=attachment>.03?1.30*attachment:0;
+        double from=gap>0?(outgoing>incoming?-Math.PI+gap:gap):0,length=Math.PI*2-2*gap,dx=Math.cos(angle),dy=Math.sin(angle);
         for(int i=0;i<32;i++){
             double a=from+length*i/32,b=from+length*(i+1)/32;
             UiStyle.get().line(batch,x+dx*rx*Math.cos(a)-dy*ry*Math.sin(a),y+dy*rx*Math.cos(a)+dx*ry*Math.sin(a),
@@ -190,16 +204,54 @@ final class BattlefieldArt {
         font.draw(batch,glyph,(float)(x-glyph.width/2),(float)(y+glyph.height/2));
         font.getData().setScale(sx,sy);font.setColor(UiStyle.INK);batch.setColor(Color.WHITE);
     }
-    void neck(SpriteBatch batch,double x,double y,double angle,double length,double halfA,double halfB,double attachment,Color color){
-        if(yio.tro.opacha.menu.UiMotion.reduced||attachment<.003||length<=0)return;
-        double dx=Math.cos(angle),dy=Math.sin(angle),waist=Math.min(halfA,halfB)*attachment*.23;
-        double old=halfA;
-        for(int i=1;i<=32;i++){
-            double a=(i-1)/32.0,b=i/32.0,t=b<.5?b*2:(b-.5)*2;t=t*t*(3-2*t);
-            double width=b<.5?halfA+(waist-halfA)*t:waist+(halfB-waist)*t;
-            for(int j=0;j<4;j++){int k=j*5;double d=j<2?a:b,side=j==0?old:j==1?-old:j==2?-width:width;quad[k]=(float)(x+dx*length*d-dy*side);quad[k+1]=(float)(y+dy*length*d+dx*side);quad[k+2]=color.toFloatBits();quad[k+3]=UiStyle.get().pixel.getU();quad[k+4]=UiStyle.get().pixel.getV();}
-            batch.draw(UiStyle.get().pixel.getTexture(),quad,0,20);old=width;
+    /** One continuous, rounded opening: a broad bulge tightens to a waist, then seals. */
+    void liquidBridge(SpriteBatch batch,double x,double y,double radius,double angle,double distance,double rx,double ry,
+                      double attachment,FractionType nodeFaction,FractionType fleetFaction,double zoom){
+        if(yio.tro.opacha.menu.UiMotion.reduced||attachment<=.03)return;
+        double gap=1.30*attachment,start=radius*.60,end=distance-rx*Math.cos(gap),length=end-start;
+        if(length<=0)return;
+        double root=radius*.54*Math.sqrt(attachment),tip=ry*Math.sin(gap);
+        double waist=Math.min(root,tip)*(.18+.82*Math.pow(attachment,1.5));
+        double slope=ry/rx*Math.cos(gap)/Math.max(.02,Math.sin(gap));
+        double control=Math.max(waist,tip-Math.min(tip*.80,slope*length/6));
+        double dx=Math.cos(angle),dy=Math.sin(angle),old=root;
+        Color from=nodeFace(nodeFaction),to=troopFace(fleetFaction),edge=troopEdge(fleetFaction);
+        TextureRegion pixel=UiStyle.get().pixel;double widthStroke=Gdx.graphics.getWidth()*.0018;int offset=0;
+        int steps=radius/zoom<20?8:20;
+        float oldBits=from.toFloatBits(),edgeBits=edge.toFloatBits();
+        for(int i=1;i<=steps;i++){
+            double a=(i-1)/(double)steps,b=i/(double)steps,t=b<.5?b*2:(b-.5)*2,u=1-t;
+            double width=b<.5?root+(waist-root)*smooth(t):u*u*u*waist+3*u*u*t*waist+3*u*t*t*control+t*t*t*tip;
+            float bits=scratch.set(from).lerp(to,(float)smooth(b)).toFloatBits();
+            for(int j=0;j<4;j++){
+                double at=j<2?a:b,side=j==0?old:j==1?-old:j==2?-width:width;
+                liquidVertices[offset++]=(float)(x+dx*(start+length*at)-dy*side);
+                liquidVertices[offset++]=(float)(y+dy*(start+length*at)+dx*side);
+                liquidVertices[offset++]=j<2?oldBits:bits;liquidVertices[offset++]=pixel.getU();liquidVertices[offset++]=pixel.getV();
+            }
+            double along=length*(b-a),difference=width-old,normal=Math.hypot(along,difference);
+            for(int side=-1;side<=1;side+=2){
+                double nx=-difference*side/normal*widthStroke/2,ny=along/normal*widthStroke/2;
+                for(int j=0;j<4;j++){
+                    boolean first=j<2;double direction=(j==0||j==3)?1:-1;
+                    double px=start+length*(first?a:b)+nx*direction,py=(first?old:width)*side+ny*direction;
+                    liquidVertices[offset++]=(float)(x+dx*px-dy*py);liquidVertices[offset++]=(float)(y+dy*px+dx*py);
+                    liquidVertices[offset++]=edgeBits;liquidVertices[offset++]=pixel.getU();liquidVertices[offset++]=pixel.getV();
+                }
+            }
+            old=width;oldBits=bits;
         }
+        batch.draw(pixel.getTexture(),liquidVertices,0,offset);
+    }
+    void mergeRemainder(SpriteBatch batch,Planet node,FractionType faction,int value,double angle,double age,double zoom){
+        double radius=node.viewPosition.radius,base=Math.min(Gdx.graphics.getWidth()*.038,Gdx.graphics.getWidth()*(.020+Math.sqrt(value)*.0012));
+        double u=smooth(age/.28),scale=Math.sqrt(1-u),rx=base*1.15*scale,ry=base*.73/1.15*scale;
+        if(rx<.01||ry<.01)return;
+        double distance=radius+base*.82-(base*1.15+radius*.30)*u,dx=Math.cos(angle),dy=Math.sin(angle);
+        double x=node.viewPosition.center.x+dx*distance,y=node.viewPosition.center.y+dy*distance;
+        liquidBridge(batch,node.viewPosition.center.x,node.viewPosition.center.y,radius,angle,distance,rx,ry,1,node.fraction,faction,zoom);
+        ellipse(batch,x,y,rx,ry,angle,troopFace(faction),1);
+        ovalOutline(batch,x,y,rx,ry,angle,Gdx.graphics.getWidth()*.0019,troopEdge(faction),1,0);
     }
     void tank(SpriteBatch batch,double x,double y,double size,double angle,FractionType faction){
         double dx=Math.cos(angle),dy=Math.sin(angle),s=size/15;
